@@ -6,7 +6,7 @@
   <title>Kinobi — GTM intelligence for AI agents</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
@@ -17,14 +17,22 @@
       --mono:'JetBrains Mono',monospace;
       --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     }
-    html{font-size:16px;-webkit-font-smoothing:antialiased}
+    html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
     body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.6}
     ::selection{background:#18181b10}
 
     nav{max-width:1120px;margin:0 auto;padding:16px 40px 0;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-size:20px;font-weight:600;letter-spacing:-.02em;color:var(--fg);text-decoration:none}
+    .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--fg);text-decoration:none}
     .nav-cta{font-size:13px;font-weight:400;color:var(--fg2);text-decoration:none;padding:7px 18px;border:1px solid var(--border2);border-radius:100px;transition:all .2s}
     .nav-cta:hover{color:var(--fg);border-color:var(--fg3)}
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-link{font-size:13px;font-weight:400;color:var(--fg2);text-decoration:none;transition:color .2s}
+    .nav-link:hover{color:var(--fg)}
+    .nav-dropdown{position:relative}
+    .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;padding:8px 0;background:var(--white);border:1px solid var(--border2);border-radius:8px;min-width:160px;box-shadow:0 4px 16px rgba(0,0,0,.05);z-index:10;margin-top:8px}
+    .nav-dropdown:hover .nav-dropdown-menu{display:block}
+    .nav-dropdown-menu a{display:block;font-size:12px;font-weight:400;color:var(--fg2);text-decoration:none;padding:6px 16px;transition:all .15s}
+    .nav-dropdown-menu a:hover{color:var(--fg);background:#f8f8fa}
 
     .hero{max-width:1120px;margin:0 auto;padding:clamp(48px,6vh,80px) 40px clamp(28px,3.5vh,44px)}
     .hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:14px}
@@ -40,6 +48,16 @@
     .btn-dark:hover{background:#27272a}
     .btn-ghost{background:none;color:var(--fg2);border:1px solid var(--border2);font-size:13px;padding:9px 22px;border-radius:100px}
     .btn-ghost:hover{border-color:var(--fg3);color:var(--fg)}
+
+    /* Trust bar */
+    .trust-bar{max-width:1120px;margin:0 auto;padding:0 40px 40px;display:flex;align-items:center;justify-content:center;gap:24px;font-size:12px;font-weight:400;color:var(--fg3)}
+    .trust-sep{width:1px;height:12px;background:var(--border2)}
+
+    /* Terminal header */
+    .terminal-header{text-align:center;margin-bottom:24px}
+    .terminal-header h2{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:500;letter-spacing:-.025em;margin:0 auto;max-width:100%}
+    .terminal-header h2 strong{font-weight:600}
+    .terminal-header p{font-size:13px;font-weight:400;color:var(--fg2);margin-top:6px}
 
     /* Terminal (small — screen) */
     .terminal-wrap{padding:0 0 16px}
@@ -283,6 +301,12 @@
     .statement-line{width:40px;height:1px;background:var(--border2);margin:0 auto 20px}
     .footer-tagline{font-size:11px;letter-spacing:.06em;color:var(--fg4);font-weight:400}
 
+    /* Vision */
+    .vision{max-width:1120px;margin:0 auto;padding:72px 40px;text-align:center}
+    .vision h2{font-size:clamp(1.2rem,2.2vw,1.7rem);font-weight:500;letter-spacing:-.025em;line-height:1.3;max-width:100%;margin:0 auto}
+    .vision h2 strong{font-weight:600;color:var(--fg)}
+    .vision-text{font-size:14px;font-weight:400;color:var(--fg2);line-height:1.7;max-width:560px;margin:20px auto 0;text-align:left}
+
     /* Scroll-reveal animations */
     .reveal-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
     .reveal-up.visible{opacity:1;transform:translateY(0)}
@@ -322,6 +346,8 @@
       .grid{grid-template-columns:1fr}
       .g-node{min-width:120px;padding:7px 9px}
       .g-name{font-size:10px}
+      .nav-links{display:none}
+      .trust-bar{flex-direction:column;gap:8px}
     }
     @media(max-width:480px){
       .t-head,.t-row{grid-template-columns:1.5fr 1fr .8fr}
@@ -333,27 +359,55 @@
 
   <nav>
     <a href="/" class="logo">kinobi</a>
-    <a href="mailto:me@ankitpansari.com" class="nav-cta">Request Access</a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link">Products <span style="font-size:10px;opacity:.5">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="#searchApi">Search API</a>
+          <a href="#enrichApi">Enrich API</a>
+          <a href="#signalsApi">Signals API</a>
+          <a href="#graphApi">Graph API</a>
+          <a href="#mcpServer">MCP Server</a>
+        </div>
+      </div>
+      <a href="#features" class="nav-link">Docs</a>
+      <a href="#" class="nav-link">Blog</a>
+      <a href="#" class="nav-link">About</a>
+    </div>
+    <a href="#mcpServer" class="nav-cta" style="background:var(--fg);color:#fff;border-color:var(--fg)">Start Building</a>
   </nav>
 
   <div class="hero">
-    <div class="hero-tag"><span class="dot"></span> Early access</div>
-    <h1>The GTM intelligence layer <em>built for AI agents.</em></h1>
-    <p class="hero-p">Pipe warm intros, technographics, and hiring signals into Claude Code, your scripts, or any MCP client.</p>
+    <div class="hero-tag"><span class="dot"></span> A GTM API purpose-built for AI agents</div>
+    <h1>The highest-accuracy GTM intelligence <em>for your AI.</em></h1>
+    <p class="hero-p">Warm paths, technographics, hiring signals, and relationship graphs — structured JSON for Claude Code, your scripts, or any MCP client.</p>
     <div class="hero-actions">
-      <a href="mailto:me@ankitpansari.com" class="btn btn-dark">Get early access</a>
+      <a href="#mcpServer" class="btn btn-dark">Start building</a>
       <a href="#how" class="btn btn-ghost">How it works →</a>
     </div>
   </div>
 
+  <!-- Trust bar -->
+  <div class="trust-bar">
+    <span>Powering 10K+ daily queries</span>
+    <span class="trust-sep"></span>
+    <span>99.9% uptime</span>
+    <span class="trust-sep"></span>
+    <span>Trusted by GTM teams at top fintech companies</span>
+  </div>
+
   <!-- Terminal -->
   <div class="terminal-bg">
+  <div class="terminal-header">
+    <h2>Five APIs. <strong>One CLI.</strong></h2>
+    <p>Every endpoint returns structured JSON. Pipe it anywhere.</p>
+  </div>
   <div class="terminal-wrap">
     <div class="terminal-tabs">
-      <button class="terminal-tab active" onclick="switchTab(0)"><span class="tab-dot dot-search"></span>search<span class="tab-progress tp-search"></span></button>
-      <button class="terminal-tab" onclick="switchTab(1)"><span class="tab-dot dot-tech"></span>techstack<span class="tab-progress tp-tech"></span></button>
-      <button class="terminal-tab" onclick="switchTab(2)"><span class="tab-dot dot-jobs"></span>jobs<span class="tab-progress tp-jobs"></span></button>
-      <button class="terminal-tab" onclick="switchTab(3)"><span class="tab-dot dot-mcp"></span>mcp<span class="tab-progress tp-mcp"></span></button>
+      <button class="terminal-tab active" onclick="switchTab(0)"><span class="tab-dot dot-search"></span>Search<span class="tab-progress tp-search"></span></button>
+      <button class="terminal-tab" onclick="switchTab(1)"><span class="tab-dot dot-tech"></span>Enrich<span class="tab-progress tp-tech"></span></button>
+      <button class="terminal-tab" onclick="switchTab(2)"><span class="tab-dot dot-jobs"></span>Signals<span class="tab-progress tp-jobs"></span></button>
+      <button class="terminal-tab" onclick="switchTab(3)"><span class="tab-dot dot-mcp"></span>MCP<span class="tab-progress tp-mcp"></span></button>
     </div>
     <div class="terminal" id="term">
       <!-- Tab 0: search -->
@@ -372,10 +426,10 @@
         <div class="t-block"><span class="label">  4.</span> <span class="hi">James Liu</span> <span class="re">(Advisor)</span></div>
         <div class="t-block"><span class="re">     → Stanford MBA 2018 — score:</span> <span class="score-md">71</span></div>
       </div>
-      <!-- Tab 1: techstack -->
+      <!-- Tab 1: enrich -->
       <div class="term-pane" data-tab="1" style="display:none">
         <div class="t-block"><span class="cm"># get full technographic profile</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi techstack</span> <span class="st">"ramp.com"</span> <span class="fl">--json</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi enrich</span> <span class="st">"ramp.com"</span> <span class="fl">--json</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="jb">{</span></div>
         <div class="t-block">  <span class="jk">"company"</span><span class="jb">:</span> <span class="js">"Ramp"</span><span class="jb">,</span></div>
@@ -387,10 +441,10 @@
         <div class="t-block">  <span class="jk">"confidence"</span><span class="jb">:</span> <span class="jn">0.94</span></div>
         <div class="t-block"><span class="jb">}</span></div>
       </div>
-      <!-- Tab 2: jobs -->
+      <!-- Tab 2: signals -->
       <div class="term-pane" data-tab="2" style="display:none">
         <div class="t-block"><span class="cm"># pull open roles and hiring velocity</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi jobs</span> <span class="st">"ramp.com"</span> <span class="fl">--dept</span> <span class="st">"cx,eng"</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi signals</span> <span class="st">"ramp.com"</span> <span class="fl">--dept</span> <span class="st">"cx,eng"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="hi">18 open roles</span><span class="re"> at Ramp </span><span class="label">(cx: 6, eng: 12)</span></div>
         <div class="t-block"><br/></div>
@@ -423,57 +477,10 @@
         <div class="t-block"><span class="cm"># or run as an MCP server for Claude Code</span></div>
         <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi mcp start</span></div>
         <div class="t-block"><span class="re">MCP server running on stdio</span></div>
-        <div class="t-block"><span class="label">  tools:</span> <span class="hi">search</span> <span class="hi">enrich</span> <span class="hi">techstack</span> <span class="hi">jobs</span> <span class="hi">graph</span> <span class="hi">intro</span></div>
+        <div class="t-block"><span class="label">  tools:</span> <span class="hi">search</span> <span class="hi">enrich</span> <span class="hi">signals</span> <span class="hi">graph</span> <span class="hi">intro</span></div>
       </div>
     </div>
   </div>
-  </div>
-
-  <!-- Built for agents -->
-  <div class="agent-section">
-    <div class="agent-grid">
-      <div class="agent-text">
-        <p class="s-label">Built for agents</p>
-        <h2>your GTM data speaks <strong>structured JSON.</strong></h2>
-        <p>Every command returns machine-readable output. Pipe it to Claude Code, feed it to your scripts, or use Kinobi as an MCP tool.</p>
-        <div class="af-list">
-          <div class="af"><span class="af-dot"></span><div><h4>CLI-first</h4><p>Unix-native. Pipe-friendly. Composable with any workflow.</p></div></div>
-          <div class="af"><span class="af-dot"></span><div><h4>Structured output</h4><p>Every command supports <code style="font-family:var(--mono);font-size:12px">--json</code> for agent-readable responses.</p></div></div>
-          <div class="af"><span class="af-dot"></span><div><h4>MCP server</h4><p>Drop-in tool server for Claude Code, Cursor, and any MCP client.</p></div></div>
-        </div>
-      </div>
-      <div class="agent-terminal" id="agentTerm">
-        <div class="at-block"><span class="cm"># Claude Code using Kinobi as a tool</span></div>
-        <div class="at-block"><span class="pr">&gt;</span> <span class="hi">Find warm paths to Ramp and draft an intro</span></div>
-        <div class="at-block">&nbsp;</div>
-        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.search</span></div>
-        <div class="at-block"><span class="re">  company:</span> <span class="val">"Ramp"</span></div>
-        <div class="at-block"><span class="re">  min_score:</span> <span class="num">70</span></div>
-        <div class="at-block">&nbsp;</div>
-        <div class="at-block"><span class="fl">Result:</span> <span class="hi">4 warm paths</span> <span class="re">found</span></div>
-        <div class="at-block"><span class="re">  Best:</span> <span class="hi">Sarah Chen</span> <span class="re">(score:</span> <span class="num">94</span><span class="re">)</span></div>
-        <div class="at-block"><span class="re">  Shared board at Plaid →</span> <span class="hi">Alex Rivera, VP CX</span></div>
-        <div class="at-block">&nbsp;</div>
-        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.techstack</span></div>
-        <div class="at-block"><span class="re">  Ramp:</span> <span class="val">Intercom</span><span class="re">,</span> <span class="val">Segment</span><span class="re">,</span> <span class="val">Snowflake</span></div>
-        <div class="at-block"><span class="re">  Changed:</span> <span class="warn">Zendesk</span> <span class="re">→</span> <span class="vel">Intercom</span> <span class="re">(Q3 '25)</span></div>
-        <div class="at-block">&nbsp;</div>
-        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.jobs</span></div>
-        <div class="at-block"><span class="re">  </span><span class="num">47</span><span class="re"> open roles · CX hiring</span> <span class="vel">+42%</span></div>
-        <div class="at-block"><span class="re">  VP Customer Experience posted</span> <span class="vel">1d ago</span></div>
-        <div class="at-block">&nbsp;</div>
-        <div class="at-block"><span class="draft">Drafting outreach...</span></div>
-        <div class="at-block"><span class="hi">Subject:</span> <span class="val">Quick intro via Sarah Chen?</span></div>
-        <div class="at-block"><span class="re">Hi Alex — I noticed Ramp just migrated to</span></div>
-        <div class="at-block"><span class="re">Intercom and is hiring a VP CX...</span><span class="cursor"></span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Statement -->
-  <div class="statement reveal-up" id="statementSection">
-    <div class="statement-line"></div>
-    <h2>made for <strong>machines</strong> and <strong>humans</strong> alike.</h2>
   </div>
 
   <!-- Intelligence Table -->
@@ -497,31 +504,52 @@
     </div>
   </div>
 
-  <!-- Relationship Graph -->
-  <div class="screen-section" id="graphSection">
-    <div class="screen-intro reveal-up">
-      <p class="s-label">Relationship graph</p>
-      <h2>see every <strong>warm path.</strong></h2>
-      <p class="s-desc">5 connectors, 4 shared contexts, 7 targets — your agent finds the strongest path through the graph automatically.</p>
-    </div>
-    <div class="graph-canvas" id="graphCanvas">
-      <svg id="gSvg" style="width:100%;height:100%;position:absolute;top:0;left:0;pointer-events:none"></svg>
-      <div id="gNodes"></div>
-      <div class="g-popover" id="gPopover">
-        <div>
-          <div class="g-popover-route" id="gpRoute">Sarah Chen → Alex Rivera, VP CX</div>
-          <div class="g-popover-via" id="gpVia">Shared board seat at Plaid · 3yr overlap</div>
+  <!-- Search API -->
+  <div class="agent-section" id="searchApi">
+    <div class="agent-grid">
+      <div class="agent-text">
+        <p class="s-label">Search API</p>
+        <h2>your GTM data speaks <strong>structured JSON.</strong></h2>
+        <p>Every command returns machine-readable output. Pipe it to Claude Code, feed it to your scripts, or use Kinobi as an MCP tool.</p>
+        <div class="af-list">
+          <div class="af"><span class="af-dot"></span><div><h4>CLI-first</h4><p>Unix-native. Pipe-friendly. Composable with any workflow.</p></div></div>
+          <div class="af"><span class="af-dot"></span><div><h4>Structured output</h4><p>Every command supports <code style="font-family:var(--mono);font-size:12px">--json</code> for agent-readable responses.</p></div></div>
+          <div class="af"><span class="af-dot"></span><div><h4>Warm path scoring</h4><p>Every path scored 0–100 on shared experience, overlap duration, and recency.</p></div></div>
         </div>
-        <span class="g-popover-score" id="gpScore">94<small>/100</small></span>
-        <button class="g-popover-btn">Request intro</button>
+        <div style="margin-top:24px"><a href="#" class="btn btn-ghost">Find warm paths →</a></div>
+      </div>
+      <div class="agent-terminal" id="agentTerm">
+        <div class="at-block"><span class="cm"># Claude Code using Kinobi as a tool</span></div>
+        <div class="at-block"><span class="pr">&gt;</span> <span class="hi">Find warm paths to Ramp and draft an intro</span></div>
+        <div class="at-block">&nbsp;</div>
+        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.search</span></div>
+        <div class="at-block"><span class="re">  company:</span> <span class="val">"Ramp"</span></div>
+        <div class="at-block"><span class="re">  min_score:</span> <span class="num">70</span></div>
+        <div class="at-block">&nbsp;</div>
+        <div class="at-block"><span class="fl">Result:</span> <span class="hi">4 warm paths</span> <span class="re">found</span></div>
+        <div class="at-block"><span class="re">  Best:</span> <span class="hi">Sarah Chen</span> <span class="re">(score:</span> <span class="num">94</span><span class="re">)</span></div>
+        <div class="at-block"><span class="re">  Shared board at Plaid →</span> <span class="hi">Alex Rivera, VP CX</span></div>
+        <div class="at-block">&nbsp;</div>
+        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.enrich</span></div>
+        <div class="at-block"><span class="re">  Ramp:</span> <span class="val">Intercom</span><span class="re">,</span> <span class="val">Segment</span><span class="re">,</span> <span class="val">Snowflake</span></div>
+        <div class="at-block"><span class="re">  Changed:</span> <span class="warn">Zendesk</span> <span class="re">→</span> <span class="vel">Intercom</span> <span class="re">(Q3 '25)</span></div>
+        <div class="at-block">&nbsp;</div>
+        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.signals</span></div>
+        <div class="at-block"><span class="re">  </span><span class="num">47</span><span class="re"> open roles · CX hiring</span> <span class="vel">+42%</span></div>
+        <div class="at-block"><span class="re">  VP Customer Experience posted</span> <span class="vel">1d ago</span></div>
+        <div class="at-block">&nbsp;</div>
+        <div class="at-block"><span class="draft">Drafting outreach...</span></div>
+        <div class="at-block"><span class="hi">Subject:</span> <span class="val">Quick intro via Sarah Chen?</span></div>
+        <div class="at-block"><span class="re">Hi Alex — I noticed Ramp just migrated to</span></div>
+        <div class="at-block"><span class="re">Intercom and is hiring a VP CX...</span><span class="cursor"></span></div>
       </div>
     </div>
   </div>
 
-  <!-- Technographic Intelligence -->
-  <div class="screen-section" id="techSection">
+  <!-- Enrich API -->
+  <div class="screen-section" id="enrichApi">
     <div class="screen-intro reveal-up">
-      <p class="s-label">Technographic intelligence</p>
+      <p class="s-label">Enrich API</p>
       <h2>know what they use <strong>before you call.</strong></h2>
       <p class="s-desc">Full tech stack by category — with change detection. Your agent knows when a competitor's contract expires.</p>
     </div>
@@ -611,12 +639,13 @@
         <div class="tech-change"><span class="tech-change-arrow">→</span> Outreach → Apollo switch (Q1 2026) · Chronosphere added (Q4 2025)</div>
       </div>
     </div>
+    <div style="text-align:center;margin-top:28px"><a href="#" class="btn btn-ghost">Enrich a company →</a></div>
   </div>
 
-  <!-- Job Intelligence -->
-  <div class="screen-section" id="jobsSection">
+  <!-- Signals API -->
+  <div class="screen-section" id="signalsApi">
     <div class="screen-intro reveal-up">
-      <p class="s-label">Job intelligence</p>
+      <p class="s-label">Signals API</p>
       <h2>hiring signals tell you <strong>when to strike.</strong></h2>
       <p class="s-desc">Track open roles, hiring velocity, and department growth. Your agent uses this to time outreach perfectly.</p>
     </div>
@@ -656,46 +685,112 @@
         <div class="j-row"><div class="j-title">Enterprise Account Exec</div><span class="j-dept sales">Sales</span><div class="j-level">Senior</div><div class="j-loc">New York</div><div class="j-posted">15d</div></div>
       </div>
     </div>
+    <div style="text-align:center;margin-top:28px"><a href="#" class="btn btn-ghost">Track buying signals →</a></div>
   </div>
 
-  <!-- Features -->
+  <!-- Graph API -->
+  <div class="screen-section" id="graphApi">
+    <div class="screen-intro reveal-up">
+      <p class="s-label">Graph API</p>
+      <h2>query the relationship graph <strong>programmatically.</strong></h2>
+      <p class="s-desc">5 connectors, 4 shared contexts, 7 targets — your agent finds the strongest path through the graph automatically.</p>
+    </div>
+    <div class="graph-canvas" id="graphCanvas">
+      <svg id="gSvg" style="width:100%;height:100%;position:absolute;top:0;left:0;pointer-events:none"></svg>
+      <div id="gNodes"></div>
+      <div class="g-popover" id="gPopover">
+        <div>
+          <div class="g-popover-route" id="gpRoute">Sarah Chen → Alex Rivera, VP CX</div>
+          <div class="g-popover-via" id="gpVia">Shared board seat at Plaid · 3yr overlap</div>
+        </div>
+        <span class="g-popover-score" id="gpScore">94<small>/100</small></span>
+        <button class="g-popover-btn">Request intro</button>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px"><a href="#" class="btn btn-ghost">Map your network →</a></div>
+  </div>
+
+  <!-- MCP Server -->
+  <div class="agent-section" id="mcpServer">
+    <div class="agent-grid">
+      <div class="agent-text">
+        <p class="s-label">MCP Server</p>
+        <h2>drop-in intelligence for <strong>Claude Code, Cursor, and any MCP client.</strong></h2>
+        <p>Start the MCP server and your AI agent gets access to every Kinobi tool — search, enrich, signals, and graph — with zero integration work.</p>
+        <div class="af-list">
+          <div class="af"><span class="af-dot"></span><div><h4>Zero integration</h4><p>One command to start. Your agent discovers available tools automatically.</p></div></div>
+          <div class="af"><span class="af-dot"></span><div><h4>Works everywhere</h4><p>Claude Code, Cursor, Windsurf, and any MCP-compatible client.</p></div></div>
+          <div class="af"><span class="af-dot"></span><div><h4>Structured output</h4><p>Every tool returns typed JSON. No parsing, no guessing.</p></div></div>
+        </div>
+        <div style="margin-top:24px"><a href="#" class="btn btn-ghost">Connect your agent →</a></div>
+      </div>
+      <div class="agent-terminal" id="mcpTerm">
+        <div class="at-block"><span class="cm"># start the MCP server</span></div>
+        <div class="at-block"><span class="pr">$</span> <span class="hi">kinobi mcp start</span></div>
+        <div class="at-block"><span class="re">MCP server running on stdio</span></div>
+        <div class="at-block"><span class="fl">  tools:</span> <span class="hi">search</span> <span class="hi">enrich</span> <span class="hi">signals</span> <span class="hi">graph</span> <span class="hi">intro</span></div>
+        <div class="at-block">&nbsp;</div>
+        <div class="at-block"><span class="cm"># Claude Code auto-discovers tools</span></div>
+        <div class="at-block"><span class="pr">&gt;</span> <span class="hi">Research Ramp and find the best intro path</span></div>
+        <div class="at-block">&nbsp;</div>
+        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.search</span></div>
+        <div class="at-block"><span class="re">  → </span><span class="hi">4 warm paths</span><span class="re"> found</span></div>
+        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.enrich</span></div>
+        <div class="at-block"><span class="re">  → </span><span class="val">Intercom</span><span class="re">, </span><span class="val">Segment</span><span class="re">, </span><span class="val">Snowflake</span></div>
+        <div class="at-block"><span class="fl">Using tool:</span> <span class="tool">kinobi.signals</span></div>
+        <div class="at-block"><span class="re">  → </span><span class="num">47</span><span class="re"> open roles · CX </span><span class="vel">+42%</span></div>
+        <div class="at-block">&nbsp;</div>
+        <div class="at-block"><span class="draft">Drafting intro request to Sarah Chen...</span><span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Platform -->
   <section id="features">
-    <p class="s-label">Capabilities</p>
-    <h2>your network, <strong>structured and scored.</strong></h2>
+    <p class="s-label">Platform</p>
+    <h2>everything your GTM agent <strong>needs.</strong></h2>
     <p class="s-desc">Kinobi ingests LinkedIn connections, board affiliations, investor networks, and alumni ties — then scores every path to every target.</p>
     <div class="grid">
-      <div class="grid-item"><p class="num">01</p><h3>Relationship graph</h3><p>Map connections between your team, investors, board, and advisors to any decision maker.</p></div>
-      <div class="grid-item"><p class="num">02</p><h3>Connection scoring</h3><p>Every path scored 0–100 on shared experience, overlap duration, recency, and seniority.</p></div>
-      <div class="grid-item"><p class="num">03</p><h3>Board intelligence</h3><p>Automated board affiliation mapping, cross-company bridges, and executive networks.</p></div>
-      <div class="grid-item"><p class="num">04</p><h3>CLI + MCP native</h3><p>Works from your terminal. Pipe to agents. Run as an MCP server for Claude Code.</p></div>
-      <div class="grid-item"><p class="num">05</p><h3>Technographic data</h3><p>Full tech stack by category with change detection. Know when a competitor's contract expires.</p></div>
-      <div class="grid-item"><p class="num">06</p><h3>Job intelligence</h3><p>Open roles, hiring velocity, department growth. Time your outreach to hiring surges.</p></div>
+      <div class="grid-item"><p class="num">01</p><h3>Search API</h3><p>Find warm paths through your team's network to any decision maker at any company.</p></div>
+      <div class="grid-item"><p class="num">02</p><h3>Graph API</h3><p>Query the relationship graph. Every path scored 0–100 on shared context and recency.</p></div>
+      <div class="grid-item"><p class="num">03</p><h3>Enrich API</h3><p>Full tech stack by category with change detection. Know when a competitor's contract expires.</p></div>
+      <div class="grid-item"><p class="num">04</p><h3>Signals API</h3><p>Open roles, hiring velocity, department growth. Time your outreach to hiring surges.</p></div>
+      <div class="grid-item"><p class="num">05</p><h3>MCP Server</h3><p>Drop-in tool server for Claude Code, Cursor, and any MCP-compatible client.</p></div>
+      <div class="grid-item"><p class="num">06</p><h3>Structured JSON</h3><p>Every endpoint returns typed, machine-readable output. Pipe it anywhere.</p></div>
     </div>
   </section>
+
+  <!-- Vision -->
+  <div class="vision reveal-up" id="visionSection">
+    <div class="statement-line"></div>
+    <h2>towards <strong>programmatic go-to-market.</strong></h2>
+    <p class="vision-text">Today's GTM tools were built for humans browsing dashboards. The next generation of sales is agent-driven — AI systems that research prospects, identify warm paths, and draft outreach autonomously. They need structured, queryable data, not point-and-click UIs. Kinobi is building the programmatic GTM layer that makes this possible.</p>
+    <div style="margin-top:28px"><a href="#mcpServer" class="btn btn-dark">Start building</a></div>
+  </div>
 
   <!-- How it works -->
   <section id="how">
     <p class="s-label">How it works</p>
-    <h2>install. connect. <strong>let your agent sell.</strong></h2>
+    <h2>three steps to <strong>programmatic GTM.</strong></h2>
     <p class="s-desc">Three commands to go from cold pipeline to warm intros.</p>
     <div class="steps">
       <div class="step"><span class="step-n">01</span><div><h3>Install the CLI</h3><p><code style="font-family:var(--mono);font-size:12px">brew install kinobi</code> — authenticate with your API key. Done.</p></div></div>
       <div class="step"><span class="step-n">02</span><div><h3>Connect your network</h3><p>Import LinkedIn connections, share your investor list, upload target accounts. Kinobi builds the graph.</p></div></div>
       <div class="step"><span class="step-n">03</span><div><h3>Query from anywhere</h3><p>Use the CLI, pipe to Claude Code, or add Kinobi as an MCP tool. Your agent gets structured data on every warm path.</p></div></div>
-      <div class="step"><span class="step-n">04</span><div><h3>Close through warm paths</h3><p>Your agent drafts outreach through the strongest connections. You approve and send.</p></div></div>
+      <div class="step"><span class="step-n">04</span><div><h3>Deploy your GTM agent</h3><p>Your agent drafts outreach through the strongest connections. You approve and send.</p></div></div>
     </div>
   </section>
 
   <section class="cta">
-    <h2>your pipeline has warm paths. <strong>let your agent find them.</strong></h2>
+    <h2>start building <strong>programmatic GTM.</strong></h2>
     <p class="s-desc">Kinobi turns your team's network into structured, queryable intelligence — built for the way agents work.</p>
-    <div class="hero-actions"><a href="mailto:me@ankitpansari.com" class="btn btn-dark">Get early access</a></div>
+    <div class="hero-actions"><a href="#mcpServer" class="btn btn-dark">Start building</a></div>
     <code>$ brew install kinobi && kinobi init</code>
   </section>
 
   <footer>
     <span>&copy; 2026 Kinobi — Ankit Pansari</span>
-    <span class="footer-tagline">made for machines and humans alike</span>
+    <span class="footer-tagline">towards programmatic go-to-market</span>
     <div style="display:flex;gap:16px">
       <a href="mailto:me@ankitpansari.com">me@ankitpansari.com</a>
       <a href="https://github.com/ankitkumarpansari">GitHub</a>
@@ -1054,7 +1149,7 @@
     entries.forEach(entry=>{
       if(entry.isIntersecting){
         // Intro
-        const intro=document.querySelector('#graphSection .screen-intro');
+        const intro=document.querySelector('#graphApi .screen-intro');
         if(intro) intro.classList.add('visible');
         // Nodes
         const nodes=document.querySelectorAll('#gNodes .g-node');
@@ -1079,24 +1174,47 @@
       }
     });
   },{threshold:0.1});
-  graphObs.observe(document.getElementById('graphSection'));
+  graphObs.observe(document.getElementById('graphApi'));
 
-  // Statement divider — simple reveal
-  const stmtEl=document.getElementById('statementSection');
-  if(stmtEl){
-    const stmtObs=new IntersectionObserver((entries)=>{
+  // Vision — simple reveal
+  const visionEl=document.getElementById('visionSection');
+  if(visionEl){
+    const visionObs=new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
-        if(entry.isIntersecting){stmtEl.classList.add('visible');stmtObs.disconnect();}
+        if(entry.isIntersecting){visionEl.classList.add('visible');visionObs.disconnect();}
       });
     },{threshold:0.3});
-    stmtObs.observe(stmtEl);
+    visionObs.observe(visionEl);
   }
 
-  // Technographic cards — slide up with stagger
-  staggerReveal('.reveal-up','techSection',150);
+  // Enrich cards — slide up with stagger
+  staggerReveal('.reveal-up','enrichApi',150);
 
-  // Job cards — slide up with stagger
-  staggerReveal('.reveal-up','jobsSection',150);
+  // Signals cards — slide up with stagger
+  staggerReveal('.reveal-up','signalsApi',150);
+
+  // MCP terminal scroll-triggered animation
+  const mcpTerm=document.getElementById('mcpTerm');
+  if(mcpTerm){
+    let mcpAnimated=false;
+    const mcpObs=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting&&!mcpAnimated){
+          mcpAnimated=true;
+          const blocks=mcpTerm.querySelectorAll('.at-block');
+          blocks.forEach((b,i)=>{
+            setTimeout(()=>b.classList.add('visible'), 80*i);
+          });
+          const mcpCursor=mcpTerm.querySelector('.cursor');
+          if(mcpCursor){
+            setTimeout(()=>{mcpCursor.style.display='inline-block'}, 80*blocks.length+300);
+          }
+          mcpObs.disconnect();
+        }
+      });
+    },{threshold:0.2});
+    mcpObs.observe(mcpTerm);
+  }
   </script>
 
 </body>
