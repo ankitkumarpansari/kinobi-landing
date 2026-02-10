@@ -8,491 +8,142 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
     :root {
-      --fg: #0a0a0a;
-      --fg-secondary: #525252;
-      --fg-tertiary: #a3a3a3;
-      --bg: #fafafa;
-      --bg-card: #ffffff;
-      --border: #e5e5e5;
-      --accent: #0a0a0a;
-      --accent-hover: #262626;
-      --green: #22c55e;
-      --green-bg: #f0fdf4;
-      --blue: #3b82f6;
-      --blue-bg: #eff6ff;
-      --mono: 'JetBrains Mono', monospace;
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --fg:#0a0a0a;--fg-secondary:#525252;--fg-tertiary:#a3a3a3;
+      --bg:#fafafa;--bg-card:#ffffff;--border:#e5e5e5;
+      --accent:#0a0a0a;--accent-hover:#262626;
+      --green:#22c55e;--green-bg:#f0fdf4;
+      --blue:#3b82f6;--blue-bg:#eff6ff;
+      --purple:#8b5cf6;--purple-bg:#f5f3ff;
+      --orange:#f97316;--orange-bg:#fff7ed;
+      --mono:'JetBrains Mono',monospace;
+      --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     }
 
-    html {
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.6}
+
+    /* Nav */
+    nav{max-width:1080px;margin:0 auto;padding:20px 24px 0;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:1rem;font-weight:600;letter-spacing:-0.02em;color:var(--fg);text-decoration:none}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:0.9rem;font-weight:500;color:#fff;background:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:12px 24px;text-decoration:none;transition:background .15s,transform .1s;cursor:pointer}
+    .btn-primary:hover{background:var(--accent-hover)}
+    .btn-primary:active{transform:scale(0.98)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--fg);background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 24px;text-decoration:none;transition:border-color .15s,transform .1s;cursor:pointer}
+    .btn-secondary:hover{border-color:var(--fg-tertiary)}
+
+    /* Hero */
+    .hero{max-width:1080px;margin:0 auto;padding:100px 24px 60px}
+    .badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:0.8rem;font-weight:500;color:var(--fg-secondary);background:var(--bg-card);border:1px solid var(--border);border-radius:100px;padding:6px 14px;margin-bottom:32px}
+    .badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+    h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:700;letter-spacing:-0.035em;line-height:1.05;color:var(--fg);max-width:720px}
+    .hero-sub{font-size:1.125rem;color:var(--fg-secondary);line-height:1.7;max-width:540px;margin-top:24px}
+    .hero-actions{display:flex;gap:12px;margin-top:40px;flex-wrap:wrap}
+
+    /* Section */
+    section{max-width:1080px;margin:0 auto;padding:80px 24px}
+    .section-label{font-family:var(--mono);font-size:0.8rem;font-weight:500;color:var(--fg-tertiary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+    h2{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15;max-width:600px}
+    .section-desc{font-size:1rem;color:var(--fg-secondary);line-height:1.7;max-width:540px;margin-top:16px}
+
+    /* ========== INTERACTIVE DEMO ========== */
+    .demo-container{max-width:1080px;margin:0 auto;padding:0 24px 80px}
+    .demo-label{font-family:var(--mono);font-size:0.8rem;font-weight:500;color:var(--fg-tertiary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+    .demo-title{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15;max-width:600px;margin-bottom:8px}
+    .demo-desc{font-size:1rem;color:var(--fg-secondary);line-height:1.7;max-width:540px;margin-bottom:32px}
+
+    .demo-shell{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg-card)}
+    .demo-toolbar{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--bg);border-bottom:1px solid var(--border)}
+    .demo-dots{display:flex;gap:6px}
+    .demo-dots span{width:10px;height:10px;border-radius:50%;background:var(--border)}
+    .demo-toolbar-title{font-family:var(--mono);font-size:0.75rem;color:var(--fg-tertiary);margin-left:8px}
+    .demo-tabs{display:flex;gap:0;margin-left:auto}
+    .demo-tab{font-family:var(--mono);font-size:0.7rem;font-weight:500;padding:6px 14px;cursor:pointer;color:var(--fg-tertiary);border:1px solid transparent;border-radius:6px;background:none;transition:all .15s}
+    .demo-tab.active{color:var(--fg);background:var(--bg-card);border-color:var(--border)}
+    .demo-tab:hover:not(.active){color:var(--fg-secondary)}
+
+    .demo-body{display:grid;grid-template-columns:1fr 1fr;min-height:480px}
+    .demo-table-pane{border-right:1px solid var(--border);overflow:auto}
+    .demo-graph-pane{position:relative;overflow:hidden;background:#fafafa}
+
+    /* Table inside demo */
+    .dt-header{display:grid;grid-template-columns:1.8fr 1fr 0.8fr 0.6fr;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:0.68rem;font-weight:500;color:var(--fg-tertiary);text-transform:uppercase;letter-spacing:0.06em}
+    .dt-row{display:grid;grid-template-columns:1.8fr 1fr 0.8fr 0.6fr;padding:12px 16px;border-bottom:1px solid var(--border);font-size:0.8rem;cursor:pointer;transition:background .1s}
+    .dt-row:last-child{border-bottom:none}
+    .dt-row:hover,.dt-row.selected{background:#f0f7ff}
+    .dt-row.selected{border-left:3px solid var(--blue);padding-left:13px}
+    .dt-company{font-weight:600;display:flex;align-items:center;gap:6px}
+    .dt-company .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .dt-tool{color:var(--fg-secondary)}
+    .dt-paths{font-family:var(--mono);font-size:0.7rem}
+    .dt-score{font-family:var(--mono);font-size:0.75rem;font-weight:600}
+
+    .tag{display:inline-block;font-family:var(--mono);font-size:0.65rem;font-weight:500;padding:2px 7px;border-radius:4px}
+    .tag-green{color:#15803d;background:var(--green-bg)}
+    .tag-blue{color:#1d4ed8;background:var(--blue-bg)}
+    .tag-purple{color:#6d28d9;background:var(--purple-bg)}
+    .tag-orange{color:#c2410c;background:var(--orange-bg)}
+
+    /* Graph canvas */
+    .graph-svg{width:100%;height:100%}
+    .graph-node{cursor:pointer;transition:transform .2s}
+    .graph-node:hover{transform:scale(1.05)}
+    .graph-label{font-family:var(--sans);font-size:10px;font-weight:600;fill:var(--fg);pointer-events:none}
+    .graph-sublabel{font-family:var(--mono);font-size:8px;fill:var(--fg-tertiary);pointer-events:none}
+    .graph-edge{stroke:var(--border);stroke-width:1.5;fill:none;transition:stroke .3s,stroke-width .3s}
+    .graph-edge.active{stroke:var(--blue);stroke-width:2.5;stroke-dasharray:none}
+    .graph-edge.strong{stroke:var(--green);stroke-width:2}
+    .score-badge{font-family:var(--mono);font-size:8px;font-weight:700;fill:#fff}
+
+    /* Path detail popover */
+    .path-detail{position:absolute;bottom:16px;left:16px;right:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:0.78rem;box-shadow:0 4px 24px rgba(0,0,0,0.06);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(8px);pointer-events:none}
+    .path-detail.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+    .path-detail-title{font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+    .path-detail-via{color:var(--fg-secondary);font-family:var(--mono);font-size:0.72rem}
+    .path-detail-score{font-family:var(--mono);font-weight:700;margin-left:auto}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:48px}
+    .grid-item{background:var(--bg-card);padding:32px 28px}
+    .grid-icon{font-family:var(--mono);font-size:0.8rem;font-weight:500;color:var(--fg-tertiary);margin-bottom:16px}
+    .grid-item h3{font-size:1rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:8px}
+    .grid-item p{font-size:0.875rem;color:var(--fg-secondary);line-height:1.6}
+
+    /* Steps */
+    .steps{margin-top:48px;display:flex;flex-direction:column;gap:0}
+    .step{display:grid;grid-template-columns:48px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--border)}
+    .step:last-child{border-bottom:none}
+    .step-num{font-family:var(--mono);font-size:0.85rem;font-weight:500;color:var(--fg-tertiary);padding-top:2px}
+    .step h3{font-size:1rem;font-weight:600;margin-bottom:6px}
+    .step p{font-size:0.875rem;color:var(--fg-secondary);line-height:1.6}
+
+    /* CTA */
+    .cta{text-align:center;padding:120px 24px}
+    .cta h2{max-width:none;margin:0 auto}
+    .cta .section-desc{max-width:480px;margin:16px auto 0}
+    .cta .hero-actions{justify-content:center}
+
+    /* Footer */
+    footer{max-width:1080px;margin:0 auto;padding:32px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;color:var(--fg-tertiary);flex-wrap:wrap;gap:12px}
+    footer a{color:var(--fg-secondary);text-decoration:none}
+    footer a:hover{color:var(--fg)}
+
+    /* Responsive */
+    @media(max-width:768px){
+      .demo-body{grid-template-columns:1fr;min-height:auto}
+      .demo-table-pane{border-right:none;border-bottom:1px solid var(--border)}
+      .demo-graph-pane{min-height:360px}
+      .grid{grid-template-columns:1fr}
+      .step{grid-template-columns:36px 1fr;gap:16px}
+      .hero{padding:80px 24px 60px}
+      .dt-header,.dt-row{grid-template-columns:1.5fr 1fr 0.7fr 0.5fr;font-size:0.75rem;padding:10px 12px}
     }
-
-    body {
-      font-family: var(--sans);
-      color: var(--fg);
-      background: var(--bg);
-      line-height: 1.6;
-    }
-
-    /* — Nav — */
-    nav {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px 24px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--fg);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.875rem;
-      color: var(--fg-secondary);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover {
-      color: var(--fg);
-    }
-
-    /* — Hero — */
-    .hero {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 120px 24px 80px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--fg-secondary);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 14px;
-      margin-bottom: 32px;
-    }
-
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -0.035em;
-      line-height: 1.05;
-      color: var(--fg);
-      max-width: 720px;
-    }
-
-    .hero-sub {
-      font-size: 1.125rem;
-      color: var(--fg-secondary);
-      line-height: 1.7;
-      max-width: 540px;
-      margin-top: 24px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #fff;
-      background: var(--accent);
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      padding: 12px 24px;
-      text-decoration: none;
-      transition: background 0.15s, transform 0.1s;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-hover);
-    }
-
-    .btn-primary:active {
-      transform: scale(0.98);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--fg);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 24px;
-      text-decoration: none;
-      transition: border-color 0.15s, transform 0.1s;
-      cursor: pointer;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--fg-tertiary);
-    }
-
-    /* — Terminal block — */
-    .terminal {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
-
-    .terminal-window {
-      background: #0a0a0a;
-      border-radius: 12px;
-      padding: 20px 24px;
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      line-height: 1.8;
-      color: #e5e5e5;
-      overflow-x: auto;
-    }
-
-    .terminal-window .comment {
-      color: #525252;
-    }
-
-    .terminal-window .prompt {
-      color: var(--green);
-    }
-
-    .terminal-window .flag {
-      color: var(--blue);
-    }
-
-    .terminal-window .string {
-      color: #fbbf24;
-    }
-
-    .terminal-window .result {
-      color: #a3a3a3;
-    }
-
-    /* — Section — */
-    section {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--fg-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-    }
-
-    h2 {
-      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      max-width: 600px;
-    }
-
-    .section-desc {
-      font-size: 1rem;
-      color: var(--fg-secondary);
-      line-height: 1.7;
-      max-width: 540px;
-      margin-top: 16px;
-    }
-
-    /* — Grid — */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 48px;
-    }
-
-    .grid-item {
-      background: var(--bg-card);
-      padding: 32px 28px;
-    }
-
-    .grid-icon {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--fg-tertiary);
-      margin-bottom: 16px;
-    }
-
-    .grid-item h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
-    }
-
-    .grid-item p {
-      font-size: 0.875rem;
-      color: var(--fg-secondary);
-      line-height: 1.6;
-    }
-
-    /* — How it works — */
-    .steps {
-      margin-top: 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .step {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 24px;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .step:last-child {
-      border-bottom: none;
-    }
-
-    .step-num {
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--fg-tertiary);
-      padding-top: 2px;
-    }
-
-    .step h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .step p {
-      font-size: 0.875rem;
-      color: var(--fg-secondary);
-      line-height: 1.6;
-    }
-
-    /* — Data table — */
-    .data-section {
-      margin-top: 48px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--bg-card);
-    }
-
-    .data-header {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      padding: 14px 24px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--fg-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .data-row {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      padding: 16px 24px;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.875rem;
-      transition: background 0.1s;
-    }
-
-    .data-row:last-child {
-      border-bottom: none;
-    }
-
-    .data-row:hover {
-      background: var(--bg);
-    }
-
-    .data-company {
-      font-weight: 500;
-    }
-
-    .data-tool {
-      color: var(--fg-secondary);
-    }
-
-    .data-paths {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-    }
-
-    .data-score {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-    }
-
-    .tag {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 500;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    .tag-green {
-      color: #15803d;
-      background: var(--green-bg);
-    }
-
-    .tag-blue {
-      color: #1d4ed8;
-      background: var(--blue-bg);
-    }
-
-    /* — CTA — */
-    .cta {
-      text-align: center;
-      padding: 120px 24px;
-    }
-
-    .cta h2 {
-      max-width: none;
-      margin: 0 auto;
-    }
-
-    .cta .section-desc {
-      max-width: 480px;
-      margin: 16px auto 0;
-    }
-
-    .cta .hero-actions {
-      justify-content: center;
-    }
-
-    /* — Footer — */
-    footer {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 32px 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--fg-tertiary);
-    }
-
-    footer a {
-      color: var(--fg-secondary);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--fg);
-    }
-
-    /* — Responsive — */
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .data-header,
-      .data-row {
-        grid-template-columns: 1.5fr 1fr 0.8fr 0.8fr;
-        font-size: 0.8rem;
-        padding: 12px 16px;
-      }
-
-      .hero {
-        padding: 80px 24px 60px;
-      }
-
-      .step {
-        grid-template-columns: 36px 1fr;
-        gap: 16px;
-      }
-
-      .nav-links {
-        gap: 16px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .data-header,
-      .data-row {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .data-header > :nth-child(3),
-      .data-header > :nth-child(4),
-      .data-row > :nth-child(3),
-      .data-row > :nth-child(4) {
-        display: none;
-      }
+    @media(max-width:480px){
+      .dt-header,.dt-row{grid-template-columns:1fr 1fr}
+      .dt-header>:nth-child(3),.dt-header>:nth-child(4),.dt-row>:nth-child(3),.dt-row>:nth-child(4){display:none}
     }
   </style>
 </head>
@@ -517,31 +168,89 @@
       outreach starts with a connection, not a cold email.
     </p>
     <div class="hero-actions">
-      <a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary">
-        Request early access &rarr;
-      </a>
-      <a href="#how" class="btn-secondary">
-        See how it works
-      </a>
+      <a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary">Request early access &rarr;</a>
+      <a href="#how" class="btn-secondary">See how it works</a>
     </div>
   </div>
 
-  <!-- Terminal -->
-  <div class="terminal">
-    <div class="terminal-window">
-      <div><span class="comment"># find warm paths to any target company</span></div>
-      <div><span class="prompt">$</span> kinobi search <span class="flag">--company</span> <span class="string">"Ramp"</span> <span class="flag">--min-score</span> 70</div>
-      <br />
-      <div><span class="result">Found 4 warm paths to Ramp (ramp.com)</span></div>
-      <br />
-      <div><span class="result">  1. Sarah Chen (Board, Kleiner Perkins)</span></div>
-      <div><span class="result">     &rarr; via shared board seat at Plaid &mdash; score: 94</span></div>
-      <div><span class="result">  2. David Kim (Investor, General Catalyst)</span></div>
-      <div><span class="result">     &rarr; via Series B co-investor &mdash; score: 87</span></div>
-      <div><span class="result">  3. Priya Rao (VP Eng, your team)</span></div>
-      <div><span class="result">     &rarr; via LinkedIn 1st &bull; ex-Stripe overlap 2yr &mdash; score: 82</span></div>
-      <div><span class="result">  4. James Liu (Advisor)</span></div>
-      <div><span class="result">     &rarr; via Stanford MBA cohort 2018 &mdash; score: 71</span></div>
+  <!-- Interactive Demo (Second Fold) -->
+  <div class="demo-container" id="demo">
+    <p class="demo-label">Live demo</p>
+    <h2 class="demo-title">Intelligence + Graph, together.</h2>
+    <p class="demo-desc">Click any company to see warm intro paths through your network. Every connection is scored and mapped.</p>
+
+    <div class="demo-shell">
+      <!-- Toolbar -->
+      <div class="demo-toolbar">
+        <div class="demo-dots"><span></span><span></span><span></span></div>
+        <span class="demo-toolbar-title">kinobi &mdash; pipeline intelligence</span>
+        <div class="demo-tabs">
+          <button class="demo-tab active" data-view="graph">Graph</button>
+          <button class="demo-tab" data-view="board">Board</button>
+          <button class="demo-tab" data-view="signals">Signals</button>
+        </div>
+      </div>
+
+      <!-- Split view -->
+      <div class="demo-body">
+        <!-- Left: Intelligence Table -->
+        <div class="demo-table-pane">
+          <div class="dt-header">
+            <span>Company</span>
+            <span>CX Stack</span>
+            <span>Paths</span>
+            <span>Score</span>
+          </div>
+          <div class="dt-row selected" data-company="ramp" onclick="selectCompany('ramp')">
+            <span class="dt-company"><span class="dot" style="background:#3b82f6"></span>Ramp</span>
+            <span class="dt-tool">Intercom</span>
+            <span class="dt-paths"><span class="tag tag-green">4 paths</span></span>
+            <span class="dt-score">94</span>
+          </div>
+          <div class="dt-row" data-company="chime" onclick="selectCompany('chime')">
+            <span class="dt-company"><span class="dot" style="background:#22c55e"></span>Chime</span>
+            <span class="dt-tool">Zendesk</span>
+            <span class="dt-paths"><span class="tag tag-green">7 paths</span></span>
+            <span class="dt-score">91</span>
+          </div>
+          <div class="dt-row" data-company="bilt" onclick="selectCompany('bilt')">
+            <span class="dt-company"><span class="dot" style="background:#8b5cf6"></span>Bilt Rewards</span>
+            <span class="dt-tool">Custom</span>
+            <span class="dt-paths"><span class="tag tag-blue">3 paths</span></span>
+            <span class="dt-score">88</span>
+          </div>
+          <div class="dt-row" data-company="navan" onclick="selectCompany('navan')">
+            <span class="dt-company"><span class="dot" style="background:#f97316"></span>Navan</span>
+            <span class="dt-tool">Salesforce SC</span>
+            <span class="dt-paths"><span class="tag tag-blue">2 paths</span></span>
+            <span class="dt-score">76</span>
+          </div>
+          <div class="dt-row" data-company="duolingo" onclick="selectCompany('duolingo')">
+            <span class="dt-company"><span class="dot" style="background:#ec4899"></span>Duolingo</span>
+            <span class="dt-tool">Zendesk</span>
+            <span class="dt-paths"><span class="tag tag-purple">1 path</span></span>
+            <span class="dt-score">72</span>
+          </div>
+          <div class="dt-row" data-company="brex" onclick="selectCompany('brex')">
+            <span class="dt-company"><span class="dot" style="background:#14b8a6"></span>Brex</span>
+            <span class="dt-tool">Intercom</span>
+            <span class="dt-paths"><span class="tag tag-green">5 paths</span></span>
+            <span class="dt-score">89</span>
+          </div>
+        </div>
+
+        <!-- Right: Relationship Graph -->
+        <div class="demo-graph-pane" id="graphPane">
+          <svg class="graph-svg" id="graphSvg" viewBox="0 0 500 480"></svg>
+          <div class="path-detail" id="pathDetail">
+            <div class="path-detail-title">
+              <span id="pdTitle">Sarah Chen &rarr; VP CX at Ramp</span>
+              <span class="path-detail-score" id="pdScore">94</span>
+            </div>
+            <div class="path-detail-via" id="pdVia">via shared board seat at Plaid &bull; 3yr overlap</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -553,92 +262,36 @@
       Kinobi ingests your team's LinkedIn connections, board affiliations, investor
       networks, and alumni ties. Then scores every path to every target account.
     </p>
-
     <div class="grid">
       <div class="grid-item">
         <p class="grid-icon">01</p>
         <h3>Relationship graph</h3>
-        <p>Map every connection between your team, investors, board, and advisors
-           to decision makers at target companies.</p>
+        <p>Map every connection between your team, investors, board, and advisors to decision makers at target companies.</p>
       </div>
       <div class="grid-item">
         <p class="grid-icon">02</p>
         <h3>Connection scoring</h3>
-        <p>Every path scored 0&ndash;100 based on shared experience, overlap duration,
-           recency, and seniority. No guesswork.</p>
+        <p>Every path scored 0&ndash;100 based on shared experience, overlap duration, recency, and seniority.</p>
       </div>
       <div class="grid-item">
         <p class="grid-icon">03</p>
         <h3>Board intelligence</h3>
-        <p>Automated mapping of board affiliations, cross-company bridges, and
-           executive networks from SEC filings and LinkedIn.</p>
+        <p>Automated mapping of board affiliations, cross-company bridges, and executive networks.</p>
       </div>
       <div class="grid-item">
         <p class="grid-icon">04</p>
         <h3>Warm intro workflows</h3>
-        <p>One-click intro requests through the strongest path. Track from
-           request to meeting booked.</p>
+        <p>One-click intro requests through the strongest path. Track from request to meeting booked.</p>
       </div>
       <div class="grid-item">
         <p class="grid-icon">05</p>
         <h3>Company intelligence</h3>
-        <p>Tech stack detection, CX tool research, buying signals, org charts,
-           and funding data &mdash; enriched daily.</p>
+        <p>Tech stack detection, buying signals, org charts, and funding data &mdash; enriched daily.</p>
       </div>
       <div class="grid-item">
         <p class="grid-icon">06</p>
         <h3>Agent-native API</h3>
-        <p>Built for AI agents and workflows. Structured JSON, real-time webhooks,
-           and natural language queries over your GTM graph.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Data preview -->
-  <section>
-    <p class="section-label">Live intelligence</p>
-    <h2>Every target account, every warm path.</h2>
-    <p class="section-desc">
-      A unified view of your pipeline with relationship intelligence layered on top.
-      See who you know, how strong the connection is, and the best path in.
-    </p>
-
-    <div class="data-section">
-      <div class="data-header">
-        <span>Company</span>
-        <span>CX Tool</span>
-        <span>Warm Paths</span>
-        <span>Top Score</span>
-      </div>
-      <div class="data-row">
-        <span class="data-company">Ramp</span>
-        <span class="data-tool">Intercom</span>
-        <span class="data-paths"><span class="tag tag-green">4 paths</span></span>
-        <span class="data-score">94</span>
-      </div>
-      <div class="data-row">
-        <span class="data-company">Chime</span>
-        <span class="data-tool">Zendesk</span>
-        <span class="data-paths"><span class="tag tag-green">7 paths</span></span>
-        <span class="data-score">91</span>
-      </div>
-      <div class="data-row">
-        <span class="data-company">Bilt Rewards</span>
-        <span class="data-tool">Custom</span>
-        <span class="data-paths"><span class="tag tag-green">3 paths</span></span>
-        <span class="data-score">88</span>
-      </div>
-      <div class="data-row">
-        <span class="data-company">Navan</span>
-        <span class="data-tool">Salesforce SC</span>
-        <span class="data-paths"><span class="tag tag-blue">2 paths</span></span>
-        <span class="data-score">76</span>
-      </div>
-      <div class="data-row">
-        <span class="data-company">Duolingo</span>
-        <span class="data-tool">Zendesk</span>
-        <span class="data-paths"><span class="tag tag-blue">1 path</span></span>
-        <span class="data-score">72</span>
+        <p>Built for AI agents. Structured JSON, real-time webhooks, and natural language queries.</p>
       </div>
     </div>
   </section>
@@ -651,38 +304,33 @@
       Connect your network. We build the graph. You reach targets
       through people who already know them.
     </p>
-
     <div class="steps">
       <div class="step">
         <span class="step-num">01</span>
         <div>
           <h3>Connect your network</h3>
-          <p>Import your team's LinkedIn connections, share your investor list,
-             and upload your target account list. Takes 10 minutes.</p>
+          <p>Import your team's LinkedIn connections, share your investor list, and upload your target account list. Takes 10 minutes.</p>
         </div>
       </div>
       <div class="step">
         <span class="step-num">02</span>
         <div>
           <h3>We build the graph</h3>
-          <p>Kinobi crawls public sources to map board affiliations, shared experiences,
-             alumni networks, and investor ties. Every connection scored automatically.</p>
+          <p>Kinobi crawls public sources to map board affiliations, shared experiences, alumni networks, and investor ties. Every connection scored automatically.</p>
         </div>
       </div>
       <div class="step">
         <span class="step-num">03</span>
         <div>
           <h3>See every warm path</h3>
-          <p>For each target account, see exactly who in your network can make an introduction,
-             how they're connected, and how strong the path is.</p>
+          <p>For each target account, see exactly who in your network can make an introduction, how they're connected, and how strong the path is.</p>
         </div>
       </div>
       <div class="step">
         <span class="step-num">04</span>
         <div>
           <h3>Request intros, book meetings</h3>
-          <p>One click to draft an intro request through the strongest path.
-             Track status from request to meeting. Close the loop.</p>
+          <p>One click to draft an intro request through the strongest path. Track status from request to meeting. Close the loop.</p>
         </div>
       </div>
     </div>
@@ -691,13 +339,9 @@
   <!-- CTA -->
   <section class="cta">
     <h2>Stop sending cold emails.<br />Start using warm paths.</h2>
-    <p class="section-desc">
-      Your team has thousands of connections. Kinobi turns them into pipeline.
-    </p>
+    <p class="section-desc">Your team has thousands of connections. Kinobi turns them into pipeline.</p>
     <div class="hero-actions">
-      <a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary">
-        Request early access &rarr;
-      </a>
+      <a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary">Request early access &rarr;</a>
     </div>
   </section>
 
@@ -710,6 +354,330 @@
       <a href="https://linkedin.com/in/ankitkumarpansari">LinkedIn</a>
     </div>
   </footer>
+
+  <script>
+    // ========== GRAPH DATA ==========
+    const graphData = {
+      ramp: {
+        target: { id: 'target', label: 'VP CX', sub: 'Ramp', x: 400, y: 100, color: '#3b82f6', r: 24 },
+        connectors: [
+          { id: 'c1', label: 'Sarah Chen', sub: 'Board, KP', x: 80, y: 80, color: '#0a0a0a', r: 20 },
+          { id: 'c2', label: 'David Kim', sub: 'Investor, GC', x: 100, y: 220, color: '#0a0a0a', r: 18 },
+          { id: 'c3', label: 'Priya Rao', sub: 'VP Eng, Team', x: 60, y: 360, color: '#0a0a0a', r: 18 },
+          { id: 'c4', label: 'James Liu', sub: 'Advisor', x: 120, y: 440, color: '#0a0a0a', r: 16 },
+        ],
+        bridges: [
+          { id: 'b1', label: 'Plaid', sub: 'Shared board', x: 250, y: 60, color: '#e5e5e5', r: 14 },
+          { id: 'b2', label: 'Series B', sub: 'Co-investor', x: 260, y: 200, color: '#e5e5e5', r: 14 },
+          { id: 'b3', label: 'ex-Stripe', sub: '2yr overlap', x: 240, y: 340, color: '#e5e5e5', r: 14 },
+          { id: 'b4', label: 'Stanford', sub: 'MBA 2018', x: 270, y: 430, color: '#e5e5e5', r: 14 },
+        ],
+        edges: [
+          { from: 'c1', to: 'b1', strength: 'strong' },
+          { from: 'b1', to: 'target', strength: 'strong' },
+          { from: 'c2', to: 'b2', strength: 'strong' },
+          { from: 'b2', to: 'target', strength: 'strong' },
+          { from: 'c3', to: 'b3', strength: 'medium' },
+          { from: 'b3', to: 'target', strength: 'medium' },
+          { from: 'c4', to: 'b4', strength: 'weak' },
+          { from: 'b4', to: 'target', strength: 'weak' },
+        ],
+        paths: [
+          { title: 'Sarah Chen \u2192 VP CX at Ramp', via: 'via shared board seat at Plaid \u2022 3yr overlap', score: 94 },
+          { title: 'David Kim \u2192 VP CX at Ramp', via: 'via Series B co-investor at General Catalyst', score: 87 },
+          { title: 'Priya Rao \u2192 VP CX at Ramp', via: 'via ex-Stripe \u2022 2yr overlap \u2022 LinkedIn 1st', score: 82 },
+          { title: 'James Liu \u2192 VP CX at Ramp', via: 'via Stanford MBA cohort 2018', score: 71 },
+        ]
+      },
+      chime: {
+        target: { id: 'target', label: 'Head of CX', sub: 'Chime', x: 400, y: 140, color: '#22c55e', r: 24 },
+        connectors: [
+          { id: 'c1', label: 'Mark Torres', sub: 'Board, a16z', x: 70, y: 60, color: '#0a0a0a', r: 20 },
+          { id: 'c2', label: 'Lisa Wang', sub: 'VP Sales, Team', x: 90, y: 200, color: '#0a0a0a', r: 18 },
+          { id: 'c3', label: 'Raj Patel', sub: 'Advisor', x: 80, y: 350, color: '#0a0a0a', r: 18 },
+        ],
+        bridges: [
+          { id: 'b1', label: 'a16z', sub: 'Portfolio co.', x: 240, y: 80, color: '#e5e5e5', r: 14 },
+          { id: 'b2', label: 'ex-Square', sub: '3yr overlap', x: 250, y: 210, color: '#e5e5e5', r: 14 },
+          { id: 'b3', label: 'Wharton', sub: 'MBA 2016', x: 240, y: 360, color: '#e5e5e5', r: 14 },
+        ],
+        edges: [
+          { from: 'c1', to: 'b1', strength: 'strong' },
+          { from: 'b1', to: 'target', strength: 'strong' },
+          { from: 'c2', to: 'b2', strength: 'strong' },
+          { from: 'b2', to: 'target', strength: 'strong' },
+          { from: 'c3', to: 'b3', strength: 'medium' },
+          { from: 'b3', to: 'target', strength: 'medium' },
+        ],
+        paths: [
+          { title: 'Mark Torres \u2192 Head of CX at Chime', via: 'via a16z portfolio network \u2022 board connection', score: 91 },
+          { title: 'Lisa Wang \u2192 Head of CX at Chime', via: 'via ex-Square \u2022 3yr overlap in payments', score: 85 },
+          { title: 'Raj Patel \u2192 Head of CX at Chime', via: 'via Wharton MBA cohort 2016', score: 74 },
+        ]
+      },
+      bilt: {
+        target: { id: 'target', label: 'Dir. Support', sub: 'Bilt Rewards', x: 400, y: 160, color: '#8b5cf6', r: 24 },
+        connectors: [
+          { id: 'c1', label: 'Anna Lee', sub: 'Board, Kairos', x: 80, y: 100, color: '#0a0a0a', r: 20 },
+          { id: 'c2', label: 'Tom Nash', sub: 'CEO Office', x: 100, y: 280, color: '#0a0a0a', r: 18 },
+        ],
+        bridges: [
+          { id: 'b1', label: 'Kairos HQ', sub: 'Board member', x: 250, y: 110, color: '#e5e5e5', r: 14 },
+          { id: 'b2', label: 'ex-Compass', sub: '1yr overlap', x: 260, y: 290, color: '#e5e5e5', r: 14 },
+        ],
+        edges: [
+          { from: 'c1', to: 'b1', strength: 'strong' },
+          { from: 'b1', to: 'target', strength: 'strong' },
+          { from: 'c2', to: 'b2', strength: 'medium' },
+          { from: 'b2', to: 'target', strength: 'medium' },
+        ],
+        paths: [
+          { title: 'Anna Lee \u2192 Dir. Support at Bilt', via: 'via Kairos HQ board \u2022 direct connection', score: 88 },
+          { title: 'Tom Nash \u2192 Dir. Support at Bilt', via: 'via ex-Compass \u2022 1yr overlap in ops', score: 73 },
+        ]
+      },
+      navan: {
+        target: { id: 'target', label: 'VP Support', sub: 'Navan', x: 400, y: 180, color: '#f97316', r: 24 },
+        connectors: [
+          { id: 'c1', label: 'Kevin Wu', sub: 'Investor, TCV', x: 80, y: 140, color: '#0a0a0a', r: 20 },
+          { id: 'c2', label: 'Maya Singh', sub: 'SDR, Team', x: 100, y: 320, color: '#0a0a0a', r: 18 },
+        ],
+        bridges: [
+          { id: 'b1', label: 'TCV Fund', sub: 'Portfolio co.', x: 250, y: 140, color: '#e5e5e5', r: 14 },
+          { id: 'b2', label: 'LinkedIn', sub: '2nd degree', x: 260, y: 310, color: '#e5e5e5', r: 14 },
+        ],
+        edges: [
+          { from: 'c1', to: 'b1', strength: 'strong' },
+          { from: 'b1', to: 'target', strength: 'medium' },
+          { from: 'c2', to: 'b2', strength: 'weak' },
+          { from: 'b2', to: 'target', strength: 'weak' },
+        ],
+        paths: [
+          { title: 'Kevin Wu \u2192 VP Support at Navan', via: 'via TCV portfolio network', score: 76 },
+          { title: 'Maya Singh \u2192 VP Support at Navan', via: 'via LinkedIn 2nd degree \u2022 mutual: Alex Cho', score: 61 },
+        ]
+      },
+      duolingo: {
+        target: { id: 'target', label: 'Head of Ops', sub: 'Duolingo', x: 400, y: 200, color: '#ec4899', r: 24 },
+        connectors: [
+          { id: 'c1', label: 'Chris Park', sub: 'Advisor', x: 80, y: 200, color: '#0a0a0a', r: 20 },
+        ],
+        bridges: [
+          { id: 'b1', label: 'Carnegie M.', sub: 'Alumni', x: 250, y: 200, color: '#e5e5e5', r: 14 },
+        ],
+        edges: [
+          { from: 'c1', to: 'b1', strength: 'medium' },
+          { from: 'b1', to: 'target', strength: 'medium' },
+        ],
+        paths: [
+          { title: 'Chris Park \u2192 Head of Ops at Duolingo', via: 'via Carnegie Mellon alumni network', score: 72 },
+        ]
+      },
+      brex: {
+        target: { id: 'target', label: 'Dir. CX', sub: 'Brex', x: 400, y: 120, color: '#14b8a6', r: 24 },
+        connectors: [
+          { id: 'c1', label: 'Sarah Chen', sub: 'Board, KP', x: 70, y: 60, color: '#0a0a0a', r: 20 },
+          { id: 'c2', label: 'David Kim', sub: 'Investor, GC', x: 80, y: 180, color: '#0a0a0a', r: 18 },
+          { id: 'c3', label: 'Priya Rao', sub: 'VP Eng, Team', x: 90, y: 300, color: '#0a0a0a', r: 18 },
+          { id: 'c4', label: 'Kevin Wu', sub: 'Investor, TCV', x: 70, y: 400, color: '#0a0a0a', r: 16 },
+        ],
+        bridges: [
+          { id: 'b1', label: 'Y Combinator', sub: 'Batch W17', x: 245, y: 60, color: '#e5e5e5', r: 14 },
+          { id: 'b2', label: 'GC Fund', sub: 'Series C lead', x: 255, y: 180, color: '#e5e5e5', r: 14 },
+          { id: 'b3', label: 'ex-Stripe', sub: '1yr overlap', x: 245, y: 300, color: '#e5e5e5', r: 14 },
+          { id: 'b4', label: 'Fintech Forum', sub: 'Speaker 2024', x: 260, y: 400, color: '#e5e5e5', r: 14 },
+        ],
+        edges: [
+          { from: 'c1', to: 'b1', strength: 'strong' },
+          { from: 'b1', to: 'target', strength: 'strong' },
+          { from: 'c2', to: 'b2', strength: 'strong' },
+          { from: 'b2', to: 'target', strength: 'strong' },
+          { from: 'c3', to: 'b3', strength: 'medium' },
+          { from: 'b3', to: 'target', strength: 'medium' },
+          { from: 'c4', to: 'b4', strength: 'weak' },
+          { from: 'b4', to: 'target', strength: 'weak' },
+        ],
+        paths: [
+          { title: 'Sarah Chen \u2192 Dir. CX at Brex', via: 'via Y Combinator batch W17 \u2022 direct intro', score: 89 },
+          { title: 'David Kim \u2192 Dir. CX at Brex', via: 'via GC Series C lead investor', score: 85 },
+          { title: 'Priya Rao \u2192 Dir. CX at Brex', via: 'via ex-Stripe \u2022 1yr overlap', score: 78 },
+          { title: 'Kevin Wu \u2192 Dir. CX at Brex', via: 'via Fintech Forum speaker 2024', score: 64 },
+        ]
+      }
+    };
+
+    let currentCompany = 'ramp';
+    let currentPathIndex = 0;
+    let pathCycleTimer = null;
+
+    function getNodeById(data, id) {
+      if (data.target.id === id) return data.target;
+      const c = data.connectors.find(n => n.id === id);
+      if (c) return c;
+      return data.bridges.find(n => n.id === id);
+    }
+
+    function renderGraph(companyKey) {
+      const data = graphData[companyKey];
+      const svg = document.getElementById('graphSvg');
+      svg.innerHTML = '';
+
+      // "Your Team" label
+      const teamLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      teamLabel.setAttribute('x', '20');
+      teamLabel.setAttribute('y', '28');
+      teamLabel.setAttribute('font-family', 'JetBrains Mono, monospace');
+      teamLabel.setAttribute('font-size', '9');
+      teamLabel.setAttribute('fill', '#a3a3a3');
+      teamLabel.setAttribute('text-transform', 'uppercase');
+      teamLabel.setAttribute('letter-spacing', '0.1em');
+      teamLabel.textContent = 'YOUR NETWORK';
+      svg.appendChild(teamLabel);
+
+      // "Target" label
+      const targetLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      targetLabel.setAttribute('x', '380');
+      targetLabel.setAttribute('y', '28');
+      targetLabel.setAttribute('font-family', 'JetBrains Mono, monospace');
+      targetLabel.setAttribute('font-size', '9');
+      targetLabel.setAttribute('fill', '#a3a3a3');
+      targetLabel.setAttribute('letter-spacing', '0.1em');
+      targetLabel.textContent = 'TARGET';
+      svg.appendChild(targetLabel);
+
+      // Draw edges
+      data.edges.forEach((edge, i) => {
+        const fromNode = getNodeById(data, edge.from);
+        const toNode = getNodeById(data, edge.to);
+        if (!fromNode || !toNode) return;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const mx = (fromNode.x + toNode.x) / 2;
+        const my = (fromNode.y + toNode.y) / 2;
+        const cp1x = fromNode.x + (toNode.x - fromNode.x) * 0.4;
+        const cp2x = fromNode.x + (toNode.x - fromNode.x) * 0.6;
+        path.setAttribute('d', `M${fromNode.x},${fromNode.y} C${cp1x},${fromNode.y} ${cp2x},${toNode.y} ${toNode.x},${toNode.y}`);
+        path.setAttribute('class', 'graph-edge');
+        if (edge.strength === 'strong') path.classList.add('strong');
+        path.setAttribute('data-edge-index', i);
+        path.style.strokeDasharray = edge.strength === 'weak' ? '4,4' : 'none';
+        svg.appendChild(path);
+      });
+
+      // Draw nodes helper
+      function drawNode(node, type) {
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        g.setAttribute('class', 'graph-node');
+        g.setAttribute('data-node-id', node.id);
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', node.x);
+        circle.setAttribute('cy', node.y);
+        circle.setAttribute('r', node.r);
+        circle.setAttribute('fill', type === 'bridge' ? '#f5f5f5' : node.color);
+        circle.setAttribute('stroke', type === 'bridge' ? '#d4d4d4' : 'none');
+        circle.setAttribute('stroke-width', type === 'bridge' ? '1' : '0');
+        g.appendChild(circle);
+
+        if (type === 'target') {
+          // Outer ring
+          const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          ring.setAttribute('cx', node.x);
+          ring.setAttribute('cy', node.y);
+          ring.setAttribute('r', node.r + 4);
+          ring.setAttribute('fill', 'none');
+          ring.setAttribute('stroke', node.color);
+          ring.setAttribute('stroke-width', '2');
+          ring.setAttribute('opacity', '0.3');
+          g.insertBefore(ring, circle);
+        }
+
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', node.x);
+        label.setAttribute('y', node.y + node.r + 14);
+        label.setAttribute('text-anchor', 'middle');
+        label.setAttribute('class', 'graph-label');
+        label.setAttribute('fill', type === 'bridge' ? '#a3a3a3' : '#0a0a0a');
+        label.setAttribute('font-size', type === 'bridge' ? '8' : '10');
+        label.textContent = node.label;
+        g.appendChild(label);
+
+        const sub = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        sub.setAttribute('x', node.x);
+        sub.setAttribute('y', node.y + node.r + 24);
+        sub.setAttribute('text-anchor', 'middle');
+        sub.setAttribute('class', 'graph-sublabel');
+        sub.textContent = node.sub;
+        g.appendChild(sub);
+
+        svg.appendChild(g);
+      }
+
+      // Draw in order: bridges, connectors, target
+      data.bridges.forEach(n => drawNode(n, 'bridge'));
+      data.connectors.forEach(n => drawNode(n, 'connector'));
+      drawNode(data.target, 'target');
+
+      // Show first path
+      currentPathIndex = 0;
+      highlightPath(0);
+      startPathCycle(data);
+    }
+
+    function highlightPath(index) {
+      const data = graphData[currentCompany];
+      if (!data || index >= data.paths.length) return;
+
+      const svg = document.getElementById('graphSvg');
+      const edges = svg.querySelectorAll('.graph-edge');
+      edges.forEach(e => e.classList.remove('active'));
+
+      // Each path uses 2 edges (connector->bridge, bridge->target)
+      const edgeStart = index * 2;
+      edges.forEach((e, i) => {
+        if (i === edgeStart || i === edgeStart + 1) {
+          e.classList.add('active');
+        }
+      });
+
+      // Update path detail
+      const p = data.paths[index];
+      const pd = document.getElementById('pathDetail');
+      document.getElementById('pdTitle').textContent = p.title;
+      document.getElementById('pdVia').textContent = p.via;
+      document.getElementById('pdScore').textContent = p.score;
+      pd.classList.add('visible');
+    }
+
+    function startPathCycle(data) {
+      if (pathCycleTimer) clearInterval(pathCycleTimer);
+      if (data.paths.length <= 1) return;
+      pathCycleTimer = setInterval(() => {
+        currentPathIndex = (currentPathIndex + 1) % data.paths.length;
+        highlightPath(currentPathIndex);
+      }, 3000);
+    }
+
+    function selectCompany(key) {
+      currentCompany = key;
+      // Update table selection
+      document.querySelectorAll('.dt-row').forEach(r => {
+        r.classList.toggle('selected', r.dataset.company === key);
+      });
+      renderGraph(key);
+    }
+
+    // Tab switching (visual only for demo)
+    document.querySelectorAll('.demo-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Init
+    renderGraph('ramp');
+  </script>
 
 </body>
 </html>
