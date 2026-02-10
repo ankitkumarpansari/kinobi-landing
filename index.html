@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kinobi — GTM data built for agents</title>
+  <title>Kinobi — GTM intelligence for AI agents</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
@@ -18,168 +18,207 @@
       --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     }
     html{font-size:16px;-webkit-font-smoothing:antialiased}
-    body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.5}
+    body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.6}
     ::selection{background:#6366f120}
 
-    /* Nav */
-    nav{max-width:980px;margin:0 auto;padding:28px 24px 0;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-size:13px;font-weight:500;letter-spacing:-.01em;color:var(--fg);text-decoration:none}
-    .nav-cta{font-size:11px;font-weight:400;letter-spacing:.02em;color:var(--fg2);text-decoration:none;padding:6px 14px;border:1px solid var(--border2);border-radius:100px;transition:all .2s}
-    .nav-cta:hover{color:var(--fg);border-color:var(--fg3)}
+    /* ── Nav ── */
+    nav{max-width:1060px;margin:0 auto;padding:28px 32px 0;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--fg);text-decoration:none}
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-links a{font-size:14px;font-weight:400;color:var(--fg2);text-decoration:none;transition:color .2s}
+    .nav-links a:hover{color:var(--fg)}
+    .nav-cta{font-size:13px;font-weight:500;color:var(--white)!important;background:var(--fg);padding:8px 20px;border-radius:8px;transition:background .2s}
+    .nav-cta:hover{background:#27272a}
 
-    /* Hero */
-    .hero{max-width:980px;margin:0 auto;padding:100px 24px 64px}
-    .hero-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:28px}
-    .hero-tag .dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+    /* ── Hero ── */
+    .hero{max-width:1060px;margin:0 auto;padding:100px 32px 48px;text-align:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);background:#eef2ff;padding:6px 16px;border-radius:100px;margin-bottom:32px}
+    .hero-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:300;letter-spacing:-.03em;line-height:1.1;color:var(--fg);max-width:580px}
-    .hero h1 em{font-style:normal;font-weight:500}
-    .hero-p{font-size:14px;font-weight:300;color:var(--fg2);line-height:1.75;max-width:440px;margin-top:20px;letter-spacing:.01em}
-    .hero-actions{display:flex;gap:10px;margin-top:32px;align-items:center}
-    .btn{font-size:11px;font-weight:400;font-family:var(--sans);padding:8px 20px;border-radius:100px;text-decoration:none;transition:all .2s;cursor:pointer;letter-spacing:.02em}
-    .btn-dark{background:var(--fg);color:#fff;border:1px solid var(--fg)}
-    .btn-dark:hover{background:#27272a}
-    .btn-ghost{background:none;color:var(--fg2);border:1px solid var(--border2)}
-    .btn-ghost:hover{border-color:var(--fg3);color:var(--fg)}
+    .hero h1{font-size:clamp(2.4rem,5.5vw,3.8rem);font-weight:700;letter-spacing:-.04em;line-height:1.08;color:var(--fg);max-width:720px;margin:0 auto}
+    .hero h1 span{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:18px;font-weight:400;color:var(--fg2);line-height:1.7;max-width:540px;margin:24px auto 0}
+    .hero-sub code{font-family:var(--mono);font-size:15px;font-weight:500;background:#f4f4f5;padding:2px 8px;border-radius:5px;color:var(--fg)}
+    .hero-actions{display:flex;gap:12px;margin-top:40px;justify-content:center;align-items:center;flex-wrap:wrap}
+    .btn{font-size:15px;font-weight:500;font-family:var(--sans);padding:12px 28px;border-radius:10px;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+    .btn-primary{background:var(--fg);color:#fff}
+    .btn-primary:hover{background:#27272a}
+    .btn-outline{background:none;color:var(--fg);border:1.5px solid var(--border2)}
+    .btn-outline:hover{border-color:var(--fg3);color:var(--fg)}
 
-    /* Terminal */
-    .terminal-wrap{max-width:980px;margin:0 auto;padding:0 24px 72px}
-    .terminal{background:#09090b;border-radius:10px;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:2;color:#a1a1aa;overflow-x:auto;border:1px solid #27272a}
+    /* ── CLI Tagline ── */
+    .cli-tag{max-width:1060px;margin:0 auto;padding:0 32px;text-align:center}
+    .cli-tag p{font-family:var(--mono);font-size:14px;color:var(--fg3);font-weight:400}
+    .cli-tag p span{color:var(--fg2)}
+
+    /* ── Terminal (small fonts — app screen) ── */
+    .terminal-wrap{max-width:1060px;margin:0 auto;padding:24px 32px 0}
+    .terminal{background:#09090b;border-radius:12px;padding:24px 28px;font-family:var(--mono);font-size:12px;line-height:2;color:#a1a1aa;overflow-x:auto;border:1px solid #27272a;position:relative}
+    .terminal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#6366f140,transparent)}
     .terminal .cm{color:#3f3f46}
     .terminal .pr{color:var(--green)}
     .terminal .fl{color:var(--blue)}
     .terminal .st{color:#fbbf24}
     .terminal .re{color:#71717a}
     .terminal .hi{color:#e4e4e7}
+    .terminal .dim{color:#27272a}
+    .t-block{margin-top:4px}
+    .t-sep{border:none;border-top:1px solid #1a1a1e;margin:8px 0}
 
-    /* Sections */
-    section{max-width:980px;margin:0 auto;padding:72px 24px}
-    .s-label{font-size:10px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:12px}
-    h2{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:300;letter-spacing:-.02em;line-height:1.2;max-width:480px}
-    h2 strong{font-weight:500}
-    .s-desc{font-size:13px;font-weight:300;color:var(--fg2);line-height:1.7;max-width:420px;margin-top:12px}
+    /* ── Agent Highlight Section ── */
+    .agent-section{max-width:1060px;margin:0 auto;padding:96px 32px 0}
+    .agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:40px}
+    .agent-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.15}
+    .agent-text h2 span{color:var(--blue)}
+    .agent-text p{font-size:16px;font-weight:400;color:var(--fg2);line-height:1.75;margin-top:16px;max-width:440px}
+    .agent-features{display:flex;flex-direction:column;gap:20px;margin-top:32px}
+    .af{display:flex;gap:14px;align-items:flex-start}
+    .af-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+    .af-icon.cli{background:#eef2ff;color:var(--blue)}
+    .af-icon.json{background:#ecfdf5;color:var(--green)}
+    .af-icon.mcp{background:#fef3c7;color:var(--amber)}
+    .af h4{font-size:15px;font-weight:600;margin-bottom:2px}
+    .af p{font-size:14px;color:var(--fg2);font-weight:400;line-height:1.6}
 
-    /* ===== INTELLIGENCE TABLE (inline, no chrome) ===== */
-    .intel-section{max-width:980px;margin:0 auto;padding:0 24px 72px}
-    .intel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    /* Agent terminal (small — screen) */
+    .agent-terminal{background:#09090b;border-radius:12px;padding:20px 22px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a1a1aa;border:1px solid #27272a;overflow-x:auto}
+    .agent-terminal .cm{color:#3f3f46}
+    .agent-terminal .pr{color:var(--green)}
+    .agent-terminal .fl{color:var(--blue)}
+    .agent-terminal .st{color:#fbbf24}
+    .agent-terminal .re{color:#71717a}
+    .agent-terminal .hi{color:#e4e4e7}
+    .agent-terminal .json-key{color:#93c5fd}
+    .agent-terminal .json-str{color:#86efac}
+    .agent-terminal .json-num{color:#fbbf24}
+
+    /* ── Section headings (normal readable size) ── */
+    section{max-width:1060px;margin:0 auto;padding:96px 32px}
+    .s-label{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+    h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;max-width:520px}
+    .s-desc{font-size:16px;font-weight:400;color:var(--fg2);line-height:1.75;max-width:460px;margin-top:16px}
+
+    /* ── Screens: Intelligence Table (small fonts — app viz) ── */
+    .screen-section{max-width:1060px;margin:0 auto;padding:0 32px 96px}
+    .screen-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px}
+    .screen-header h2{margin:0}
+    .screen-header .s-desc{margin-top:8px}
+
+    .intel-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 4px}
     .intel-tabs{display:flex;gap:0}
-    .intel-tab{font-size:10px;font-weight:400;letter-spacing:.04em;padding:5px 14px;color:var(--fg3);cursor:pointer;border:1px solid var(--border2);background:var(--white);transition:all .15s;font-family:var(--sans)}
-    .intel-tab:first-child{border-radius:6px 0 0 6px}
-    .intel-tab:last-child{border-radius:0 6px 6px 0}
+    .intel-tab{font-size:10px;font-weight:400;letter-spacing:.04em;padding:4px 12px;color:var(--fg3);cursor:pointer;border:1px solid var(--border2);background:var(--white);transition:all .15s;font-family:var(--sans)}
+    .intel-tab:first-child{border-radius:5px 0 0 5px}
+    .intel-tab:last-child{border-radius:0 5px 5px 0}
     .intel-tab:not(:first-child){border-left:none}
     .intel-tab.active{background:var(--fg);color:#fff;border-color:var(--fg)}
     .intel-count{font-size:10px;color:var(--fg3);font-weight:300}
 
     .table-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white)}
-    .t-head{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 16px;background:#fafafa;border-bottom:1px solid var(--border)}
-    .t-head span{font-size:9.5px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:9px 0}
-    .t-row{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 16px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
+    .t-head{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 14px;background:#fafafa;border-bottom:1px solid var(--border)}
+    .t-head span{font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:8px 0}
+    .t-row{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 14px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
     .t-row:last-child{border-bottom:none}
     .t-row:hover{background:#fafaff}
     .t-row.active{background:#f5f3ff}
 
-    .t-company{padding:10px 0}
-    .t-name{font-size:12px;font-weight:500;color:var(--fg);letter-spacing:-.01em}
-    .t-domain{font-size:9.5px;font-weight:300;color:var(--fg3);margin-top:1px}
-    .t-cust{font-size:8px;font-weight:500;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:#ede9fe;color:#7c3aed;margin-left:6px;text-transform:uppercase}
+    .t-company{padding:8px 0}
+    .t-name{font-size:11px;font-weight:500;color:var(--fg);letter-spacing:-.01em}
+    .t-domain{font-size:9px;font-weight:300;color:var(--fg3);margin-top:1px}
+    .t-cust{font-size:7.5px;font-weight:600;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:#ede9fe;color:#7c3aed;margin-left:5px;text-transform:uppercase}
 
-    .t-industry{font-size:11px;font-weight:300;color:var(--fg2);padding:10px 0}
-    .t-tool{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:400;padding:2px 8px;border-radius:100px;background:#eef2ff;color:#4f46e5}
-    .t-tool-more{font-size:9px;color:var(--fg3);margin-left:3px;font-weight:300}
-    .t-num{font-size:11px;font-weight:400;color:var(--fg2);text-align:center;padding:10px 0;font-variant-numeric:tabular-nums}
+    .t-industry{font-size:10px;font-weight:300;color:var(--fg2);padding:8px 0}
+    .t-tool{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:400;padding:2px 7px;border-radius:100px;background:#eef2ff;color:#4f46e5}
+    .t-tool-more{font-size:8px;color:var(--fg3);margin-left:3px;font-weight:300}
+    .t-num{font-size:10px;font-weight:400;color:var(--fg2);text-align:center;padding:8px 0;font-variant-numeric:tabular-nums}
     .t-num.strong{font-weight:500;color:var(--fg)}
 
-    .t-score{display:flex;align-items:center;gap:6px;padding:10px 0}
-    .t-bar{width:44px;height:3px;border-radius:2px;background:#f4f4f5;overflow:hidden}
+    .t-score{display:flex;align-items:center;gap:5px;padding:8px 0}
+    .t-bar{width:40px;height:3px;border-radius:2px;background:#f4f4f5;overflow:hidden}
     .t-bar-fill{height:100%;border-radius:2px}
     .t-bar-fill.hi{background:var(--green)}
     .t-bar-fill.md{background:var(--amber)}
     .t-bar-fill.lo{background:var(--fg4)}
-    .t-score-val{font-size:10px;font-weight:400;color:var(--fg2);font-variant-numeric:tabular-nums;min-width:18px}
+    .t-score-val{font-size:9px;font-weight:400;color:var(--fg2);font-variant-numeric:tabular-nums;min-width:16px}
 
-    .t-data{font-size:9px;font-weight:400;padding:2px 7px;border-radius:100px;text-align:center}
+    .t-data{font-size:8px;font-weight:500;padding:2px 6px;border-radius:100px;text-align:center}
     .t-data.complete{background:#ecfdf5;color:#059669}
     .t-data.partial{background:#fffbeb;color:#d97706}
     .t-data.stub{background:#f4f4f5;color:#a1a1aa}
 
-    /* ===== GRAPH VISUALIZATION (inline) ===== */
-    .graph-section{max-width:980px;margin:0 auto;padding:0 24px 72px}
-    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:10px;background:var(--white);min-height:400px;overflow:hidden}
-
-    .g-node{position:absolute;border-radius:8px;padding:10px 12px;background:var(--white);border:1px solid;font-size:11px;min-width:160px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+    /* ── Screens: Graph (small fonts — app viz) ── */
+    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:10px;background:var(--white);min-height:420px;overflow:hidden}
+    .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid;font-size:10px;min-width:155px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.03)}
     .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px)}
-
     .g-connector{border-color:#e0e7ff;background:#fafafe}
     .g-target{border-color:#ede9fe}
-
-    .g-badge{font-size:8px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;padding:1.5px 6px;border-radius:100px;display:inline-flex;align-items:center;gap:3px}
+    .g-badge{font-size:7.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:1.5px 5px;border-radius:100px;display:inline-flex;align-items:center;gap:3px}
     .g-badge.board{background:#dbeafe;color:#3b82f6}
     .g-badge.investor{background:#ecfdf5;color:#10b981}
     .g-badge.team{background:#fef3c7;color:#d97706}
     .g-badge.dept{background:#f4f4f5;color:#71717a}
-
-    .g-name{font-size:12px;font-weight:500;color:var(--fg);margin:4px 0 1px;letter-spacing:-.01em}
-    .g-title{font-size:10px;font-weight:300;color:var(--fg3)}
-    .g-reach{font-size:9px;font-weight:300;color:var(--fg3);margin-top:5px}
+    .g-name{font-size:11px;font-weight:500;color:var(--fg);margin:3px 0 1px;letter-spacing:-.01em}
+    .g-title{font-size:9px;font-weight:300;color:var(--fg3)}
+    .g-reach{font-size:8px;font-weight:300;color:var(--fg3);margin-top:4px}
     .g-reach em{font-style:normal;color:var(--green);font-weight:400}
-
-    .g-via{display:flex;align-items:center;gap:4px;margin-top:7px;padding-top:7px;border-top:1px solid var(--border);font-size:9px;font-weight:300;color:var(--fg3)}
+    .g-via{display:flex;align-items:center;gap:4px;margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:8px;font-weight:300;color:var(--fg3)}
     .g-via strong{font-weight:400;color:var(--fg2)}
-    .g-strength{font-size:8px;font-weight:400;padding:1px 6px;border-radius:100px}
+    .g-strength{font-size:7.5px;font-weight:400;padding:1px 5px;border-radius:100px}
     .g-strength.strong{background:#ecfdf5;color:#059669}
     .g-strength.medium{background:#fffbeb;color:#d97706}
+    .g-company-dot{width:4px;height:4px;border-radius:50%;display:inline-block}
 
-    .g-company-dot{width:5px;height:5px;border-radius:50%;display:inline-block}
-
-    /* Path popover */
-    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:11px;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px)}
+    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:10px;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px)}
     .g-popover.show{opacity:1;transform:translateY(0)}
-    .g-popover-route{font-weight:400;color:var(--fg);font-size:11px}
-    .g-popover-via{font-size:9.5px;font-weight:300;color:var(--fg3)}
-    .g-popover-score{margin-left:auto;font-size:13px;font-weight:500;color:var(--fg);font-variant-numeric:tabular-nums}
+    .g-popover-route{font-weight:500;color:var(--fg);font-size:11px}
+    .g-popover-via{font-size:9px;font-weight:300;color:var(--fg3)}
+    .g-popover-score{margin-left:auto;font-size:14px;font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
     .g-popover-score small{font-size:9px;font-weight:300;color:var(--fg3)}
-    .g-popover-btn{font-size:9px;font-weight:400;padding:5px 12px;border-radius:100px;border:1px solid var(--border2);background:none;color:var(--fg2);cursor:pointer;white-space:nowrap;font-family:var(--sans);transition:all .15s}
+    .g-popover-btn{font-size:9px;font-weight:500;padding:5px 12px;border-radius:100px;border:1px solid var(--border2);background:none;color:var(--fg2);cursor:pointer;white-space:nowrap;font-family:var(--sans);transition:all .15s}
     .g-popover-btn:hover{border-color:var(--fg3);color:var(--fg)}
 
-    /* Edge labels */
-    .g-edge-label{font-family:var(--mono);font-size:8px;fill:var(--fg3)}
-
-    /* SVG */
     .g-edge{fill:none;stroke-width:1;transition:all .4s}
     .g-edge.lit{stroke-width:1.5;filter:drop-shadow(0 0 4px rgba(99,102,241,.2))}
+    .g-edge-label{font-family:var(--mono);font-size:8px;fill:var(--fg3)}
 
-    /* Grid */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:36px}
-    .grid-item{background:var(--white);padding:24px 20px}
-    .grid-item .num{font-size:9px;font-weight:300;color:var(--fg4);margin-bottom:10px}
-    .grid-item h3{font-size:13px;font-weight:400;letter-spacing:-.01em;margin-bottom:5px}
-    .grid-item p{font-size:11.5px;font-weight:300;color:var(--fg2);line-height:1.6}
+    /* ── Features Grid (normal readable fonts) ── */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:40px}
+    .grid-item{background:var(--white);padding:32px 28px}
+    .grid-item .num{font-size:12px;font-weight:300;color:var(--fg4);margin-bottom:12px;font-family:var(--mono)}
+    .grid-item h3{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+    .grid-item p{font-size:14px;font-weight:400;color:var(--fg2);line-height:1.65}
 
-    /* Steps */
-    .steps{margin-top:36px}
-    .step{display:grid;grid-template-columns:32px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--border)}
+    /* ── How it works (normal readable fonts) ── */
+    .steps{margin-top:40px}
+    .step{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--border)}
     .step:last-child{border-bottom:none}
-    .step-n{font-size:10px;font-weight:300;color:var(--fg4)}
-    .step h3{font-size:13px;font-weight:400;margin-bottom:3px}
-    .step p{font-size:11.5px;font-weight:300;color:var(--fg2);line-height:1.6}
+    .step-n{font-size:14px;font-weight:300;color:var(--fg4);font-family:var(--mono)}
+    .step h3{font-size:17px;font-weight:600;margin-bottom:4px}
+    .step p{font-size:15px;font-weight:400;color:var(--fg2);line-height:1.65}
 
-    /* CTA */
-    .cta{text-align:center;padding:96px 24px}
+    /* ── CTA ── */
+    .cta{text-align:center;padding:96px 32px}
     .cta h2{max-width:none;margin:0 auto}
-    .cta .s-desc{max-width:380px;margin:12px auto 0}
-    .cta .hero-actions{justify-content:center;margin-top:24px}
+    .cta .s-desc{max-width:420px;margin:16px auto 0}
+    .cta .hero-actions{justify-content:center;margin-top:32px}
+    .cta code{font-family:var(--mono);font-size:14px;font-weight:500;background:#09090b;color:var(--green);padding:8px 20px;border-radius:8px;display:inline-block;margin-top:24px}
 
-    /* Footer */
-    footer{max-width:980px;margin:0 auto;padding:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:300;color:var(--fg3);flex-wrap:wrap;gap:10px}
+    /* ── Footer ── */
+    footer{max-width:1060px;margin:0 auto;padding:28px 32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:400;color:var(--fg3);flex-wrap:wrap;gap:10px}
     footer a{color:var(--fg2);text-decoration:none;font-weight:400}
     footer a:hover{color:var(--fg)}
 
+    @media(max-width:900px){
+      .agent-grid{grid-template-columns:1fr}
+      .agent-terminal{margin-top:32px}
+    }
     @media(max-width:768px){
       .t-head,.t-row{grid-template-columns:2fr 1fr 1fr .8fr}
       .t-head span:nth-child(n+5),.t-row>*:nth-child(n+5){display:none}
       .grid{grid-template-columns:1fr}
-      .g-node{min-width:130px;padding:8px 10px}
-      .g-name{font-size:11px}
+      .g-node{min-width:120px;padding:7px 9px}
+      .g-name{font-size:10px}
+      .hero h1{font-size:2rem}
+      .nav-links a:not(.nav-cta){display:none}
     }
     @media(max-width:480px){
       .t-head,.t-row{grid-template-columns:1.5fr 1fr .8fr}
@@ -191,25 +230,35 @@
 
   <nav>
     <a href="/" class="logo">kinobi</a>
-    <a href="mailto:ankitkumarpansari@gmail.com" class="nav-cta">Request Access</a>
+    <div class="nav-links">
+      <a href="#cli">CLI</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="mailto:ankitkumarpansari@gmail.com" class="nav-cta">Request Access</a>
+    </div>
   </nav>
 
   <!-- Hero -->
   <div class="hero">
-    <div class="hero-tag"><span class="dot"></span> Early access</div>
-    <h1>GTM data <em>built for agents.</em></h1>
-    <p class="hero-p">The relationship intelligence layer for go-to-market teams. We map warm paths between your network and your pipeline.</p>
+    <div class="hero-badge"><span class="dot"></span> Now in early access</div>
+    <h1>GTM intelligence <span>your agent can use.</span></h1>
+    <p class="hero-sub">Kinobi is a CLI-first relationship intelligence layer. Pipe <code>kinobi</code> into your AI agent, your scripts, or Claude Code — and get warm paths to any account.</p>
     <div class="hero-actions">
-      <a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-dark">Get early access</a>
-      <a href="#how" class="btn btn-ghost">How it works</a>
+      <a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-primary">Get early access</a>
+      <a href="#cli" class="btn btn-outline">See the CLI</a>
     </div>
   </div>
 
-  <!-- Terminal -->
-  <div class="terminal-wrap">
+  <!-- CLI install one-liner -->
+  <div class="cli-tag">
+    <p>$ <span>brew install kinobi</span></p>
+  </div>
+
+  <!-- Terminal Hero (small monospace — this is the app screen) -->
+  <div class="terminal-wrap" id="cli">
     <div class="terminal">
-      <div><span class="cm"># find warm paths to any target account</span></div>
-      <div><span class="pr">$</span> <span class="hi">kinobi search</span> <span class="fl">--company</span> <span class="st">"Ramp"</span> <span class="fl">--min-score</span> <span class="st">70</span></div>
+      <div><span class="cm"># search warm paths to any company</span></div>
+      <div><span class="pr">$</span> <span class="hi">kinobi search</span> <span class="fl">--company</span> <span class="st">"Ramp"</span> <span class="fl">--min-score</span> <span class="st">70</span> <span class="fl">--json</span></div>
       <br/>
       <div><span class="re">Found 4 warm paths to Ramp (ramp.com)</span></div>
       <br/>
@@ -221,19 +270,98 @@
       <div><span class="re">     &rarr; ex-Stripe &bull; 2yr overlap &mdash; score:</span> <span class="pr">82</span></div>
       <div><span class="re">  4.</span> <span class="hi">James Liu</span> <span class="re">(Advisor)</span></div>
       <div><span class="re">     &rarr; Stanford MBA 2018 &mdash; score:</span> <span class="pr">71</span></div>
+
+      <hr class="t-sep"/>
+
+      <div><span class="cm"># enrich a company and pipe to your agent</span></div>
+      <div><span class="pr">$</span> <span class="hi">kinobi enrich</span> <span class="st">"brex.com"</span> <span class="fl">--json</span> <span class="dim">|</span> <span class="hi">claude</span> <span class="st">"draft an outreach plan"</span></div>
+      <br/>
+      <div><span class="re">{</span></div>
+      <div><span class="re">  "company": "Brex",</span></div>
+      <div><span class="re">  "cx_stack": ["Intercom", "Segment", "Snowflake"],</span></div>
+      <div><span class="re">  "warm_paths": 7,</span></div>
+      <div><span class="re">  "strongest_path": { "via": "Sarah Chen", "score": 89 },</span></div>
+      <div><span class="re">  "signals": ["Series D", "Expanding CX team", "Zendesk contract ending"]</span></div>
+      <div><span class="re">}</span></div>
+
+      <hr class="t-sep"/>
+
+      <div><span class="cm"># works as an MCP server for Claude Code</span></div>
+      <div><span class="pr">$</span> <span class="hi">kinobi mcp start</span></div>
+      <div><span class="re">MCP server running on stdio &mdash; tools: search, enrich, graph, intro</span></div>
     </div>
   </div>
 
-  <!-- Intelligence Table -->
-  <div class="intel-section">
-    <div class="intel-header">
-      <div style="display:flex;align-items:center;gap:12px">
-        <p class="s-label" style="margin:0">Pipeline intelligence</p>
-        <div class="intel-tabs">
-          <button class="intel-tab active" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">All</button>
-          <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Customers</button>
-          <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Prospects</button>
+  <!-- Agent-Native Section -->
+  <div class="agent-section">
+    <div class="agent-grid">
+      <div class="agent-text">
+        <p class="s-label">Built for agents</p>
+        <h2>Your GTM data speaks <span>structured JSON.</span></h2>
+        <p>Every command returns machine-readable output. Pipe it to Claude Code, feed it to your scripts, or use it as an MCP tool — Kinobi was designed for AI agents from day one.</p>
+        <div class="agent-features">
+          <div class="af">
+            <div class="af-icon cli">&gt;_</div>
+            <div>
+              <h4>CLI-first</h4>
+              <p>Unix-native. Pipe-friendly. Composable with any workflow.</p>
+            </div>
+          </div>
+          <div class="af">
+            <div class="af-icon json">{}</div>
+            <div>
+              <h4>Structured output</h4>
+              <p>Every command supports <code style="font-size:12px;background:#f4f4f5;padding:1px 5px;border-radius:3px">--json</code> for machine-readable responses.</p>
+            </div>
+          </div>
+          <div class="af">
+            <div class="af-icon mcp">&#9671;</div>
+            <div>
+              <h4>MCP server</h4>
+              <p>Drop-in tool server for Claude Code, Cursor, and any MCP client.</p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div>
+        <div class="agent-terminal">
+          <div><span class="cm"># Claude Code using Kinobi as a tool</span></div>
+          <div><span class="pr">&gt;</span> <span class="hi">Find warm paths to Ramp and draft an intro email</span></div>
+          <div><span class="re">&nbsp;</span></div>
+          <div><span class="fl">Using tool:</span> <span class="hi">kinobi.search</span></div>
+          <div><span class="re">  company: "Ramp"</span></div>
+          <div><span class="re">  min_score: 70</span></div>
+          <div><span class="re">&nbsp;</span></div>
+          <div><span class="fl">Result:</span> <span class="re">4 warm paths found</span></div>
+          <div><span class="re">  Best path: Sarah Chen (score: 94)</span></div>
+          <div><span class="re">  Shared board seat at Plaid with Alex Rivera, VP CX</span></div>
+          <div><span class="re">&nbsp;</span></div>
+          <div><span class="fl">Using tool:</span> <span class="hi">kinobi.enrich</span></div>
+          <div><span class="re">  company: "ramp.com"</span></div>
+          <div><span class="re">&nbsp;</span></div>
+          <div><span class="fl">Drafting email:</span></div>
+          <div><span class="hi">Subject: Quick intro via Sarah Chen?</span></div>
+          <div><span class="re">Hi Alex — Sarah Chen mentioned you're</span></div>
+          <div><span class="re">rethinking the CX stack at Ramp...</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pipeline Intelligence (small app viz) -->
+  <div class="screen-section" style="padding-top:96px">
+    <div class="screen-header">
+      <div>
+        <p class="s-label">Live data</p>
+        <h2>Pipeline intelligence, always enriched.</h2>
+        <p class="s-desc">Every company scored, every connection mapped. Your agent queries it — you close deals.</p>
+      </div>
+    </div>
+    <div class="intel-bar">
+      <div class="intel-tabs">
+        <button class="intel-tab active" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">All</button>
+        <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Customers</button>
+        <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Prospects</button>
       </div>
       <span class="intel-count">127 companies</span>
     </div>
@@ -245,11 +373,14 @@
     </div>
   </div>
 
-  <!-- Graph Visualization -->
-  <div class="graph-section">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <p class="s-label" style="margin:0">Relationship graph</p>
-      <span class="intel-count">Ramp &mdash; 4 warm paths</span>
+  <!-- Relationship Graph (small app viz) -->
+  <div class="screen-section">
+    <div class="screen-header">
+      <div>
+        <p class="s-label">Relationship graph</p>
+        <h2>See every warm path, visually.</h2>
+        <p class="s-desc">Connectors on the left, targets on the right. Your agent finds the strongest paths automatically.</p>
+      </div>
     </div>
     <div class="graph-canvas" id="graphCanvas">
       <svg id="gSvg" style="width:100%;height:100%;position:absolute;top:0;left:0;pointer-events:none"></svg>
@@ -268,40 +399,41 @@
   <!-- Features -->
   <section id="features">
     <p class="s-label">Capabilities</p>
-    <h2>Your network, <strong>structured and scored.</strong></h2>
-    <p class="s-desc">Kinobi ingests LinkedIn connections, board affiliations, investor networks, and alumni ties. Then scores every path to every target.</p>
+    <h2>Your network, structured and scored.</h2>
+    <p class="s-desc">Kinobi ingests LinkedIn connections, board affiliations, investor networks, and alumni ties — then scores every path to every target.</p>
     <div class="grid">
-      <div class="grid-item"><p class="num">01</p><h3>Relationship graph</h3><p>Map connections between your team, investors, board, and advisors to decision makers.</p></div>
-      <div class="grid-item"><p class="num">02</p><h3>Connection scoring</h3><p>Every path scored 0&ndash;100 based on shared experience, overlap, recency, and seniority.</p></div>
-      <div class="grid-item"><p class="num">03</p><h3>Board intelligence</h3><p>Automated board affiliation mapping, cross-company bridges, and executive networks.</p></div>
-      <div class="grid-item"><p class="num">04</p><h3>Warm intro workflows</h3><p>One-click intro requests through the strongest path. Track to meeting booked.</p></div>
-      <div class="grid-item"><p class="num">05</p><h3>Company intelligence</h3><p>Tech stack detection, buying signals, org charts, and funding data enriched daily.</p></div>
-      <div class="grid-item"><p class="num">06</p><h3>Agent-native API</h3><p>Structured JSON, real-time webhooks, and natural language queries over your graph.</p></div>
+      <div class="grid-item"><p class="num">01</p><h3>Relationship graph</h3><p>Map connections between your team, investors, board, and advisors to decision makers at any company.</p></div>
+      <div class="grid-item"><p class="num">02</p><h3>Connection scoring</h3><p>Every path scored 0-100 based on shared experience, overlap duration, recency, and seniority.</p></div>
+      <div class="grid-item"><p class="num">03</p><h3>Board intelligence</h3><p>Automated board affiliation mapping, cross-company bridges, and executive network discovery.</p></div>
+      <div class="grid-item"><p class="num">04</p><h3>CLI + MCP native</h3><p>Works from your terminal. Pipe to agents. Run as an MCP server for Claude Code or Cursor.</p></div>
+      <div class="grid-item"><p class="num">05</p><h3>Company enrichment</h3><p>Tech stack, buying signals, org charts, and funding data — structured and updated daily.</p></div>
+      <div class="grid-item"><p class="num">06</p><h3>Warm intro workflows</h3><p>One-click intro requests through the strongest path. Track all the way to meeting booked.</p></div>
     </div>
   </section>
 
   <!-- How it works -->
   <section id="how">
     <p class="s-label">How it works</p>
-    <h2>Cold pipeline to <strong>warm paths</strong> in 48 hours.</h2>
-    <p class="s-desc">Connect your network. We build the graph. You reach targets through people who already know them.</p>
+    <h2>Install. Connect. Let your agent sell.</h2>
+    <p class="s-desc">Three commands to go from cold pipeline to warm intros.</p>
     <div class="steps">
-      <div class="step"><span class="step-n">01</span><div><h3>Connect your network</h3><p>Import LinkedIn connections, share your investor list, upload target accounts. Takes 10 minutes.</p></div></div>
-      <div class="step"><span class="step-n">02</span><div><h3>We build the graph</h3><p>Kinobi crawls public sources to map board affiliations, shared experiences, alumni networks, and investor ties.</p></div></div>
-      <div class="step"><span class="step-n">03</span><div><h3>See every warm path</h3><p>For each target account, see who in your network can make an introduction and how strong the connection is.</p></div></div>
-      <div class="step"><span class="step-n">04</span><div><h3>Request intros, book meetings</h3><p>One click to draft an intro request through the strongest path. Track from request to meeting.</p></div></div>
+      <div class="step"><span class="step-n">01</span><div><h3>Install the CLI</h3><p>One command: <code style="font-family:var(--mono);font-size:13px;background:#f4f4f5;padding:2px 8px;border-radius:4px">brew install kinobi</code>. Authenticate with your API key. Done.</p></div></div>
+      <div class="step"><span class="step-n">02</span><div><h3>Connect your network</h3><p>Import LinkedIn connections, share your investor list, upload target accounts. Kinobi builds the relationship graph automatically.</p></div></div>
+      <div class="step"><span class="step-n">03</span><div><h3>Query from anywhere</h3><p>Use the CLI directly, pipe to Claude Code, or add Kinobi as an MCP tool. Your agent gets structured data about every warm path.</p></div></div>
+      <div class="step"><span class="step-n">04</span><div><h3>Close through warm paths</h3><p>Your agent drafts outreach through the strongest connections. You just approve and send.</p></div></div>
     </div>
   </section>
 
   <section class="cta">
-    <h2>Stop cold emails.<br/><strong>Start warm paths.</strong></h2>
-    <p class="s-desc">Your team has thousands of connections. Kinobi turns them into pipeline.</p>
-    <div class="hero-actions"><a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-dark">Get early access</a></div>
+    <h2>Your pipeline has warm paths.<br/>Let your agent find them.</h2>
+    <p class="s-desc">Kinobi turns your team's network into structured, queryable intelligence — built for the way agents work.</p>
+    <div class="hero-actions"><a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-primary">Get early access</a></div>
+    <code>$ brew install kinobi && kinobi init</code>
   </section>
 
   <footer>
     <span>&copy; 2026 Kinobi &mdash; Ankit Pansari</span>
-    <div style="display:flex;gap:16px">
+    <div style="display:flex;gap:20px">
       <a href="mailto:ankitkumarpansari@gmail.com">ankitkumarpansari@gmail.com</a>
       <a href="https://github.com/ankitkumarpansari">GitHub</a>
       <a href="https://linkedin.com/in/ankitkumarpansari">LinkedIn</a>
@@ -326,11 +458,11 @@
     return`<div class="t-row${i===0?' active':''}" onclick="document.querySelectorAll('.t-row').forEach(r=>r.classList.remove('active'));this.classList.add('active')">
       <div class="t-company"><div class="t-name">${c.name}${c.cust?'<span class=t-cust>customer</span>':''}</div><div class="t-domain">${c.domain}</div></div>
       <div class="t-industry">${c.industry}</div>
-      <div style="padding:10px 0"><span class="t-tool">${c.tool}</span>${c.more?'<span class=t-tool-more>'+c.more+'</span>':''}</div>
+      <div style="padding:8px 0"><span class="t-tool">${c.tool}</span>${c.more?'<span class=t-tool-more>'+c.more+'</span>':''}</div>
       <div class="t-num${c.board?' strong':''}">${c.board}</div>
       <div class="t-num${c.paths?' strong':''}">${c.paths}</div>
       <div class="t-score"><div class="t-bar"><div class="t-bar-fill ${sc}" style="width:${c.score}%"></div></div><span class="t-score-val">${c.score}</span></div>
-      <div style="padding:10px 0;text-align:center"><span class="t-data ${c.data}">${c.data==='complete'?'Complete':c.data==='partial'?'Partial':'Stub'}</span></div>
+      <div style="padding:8px 0;text-align:center"><span class="t-data ${c.data}">${c.data==='complete'?'Complete':c.data==='partial'?'Partial':'Stub'}</span></div>
     </div>`;
   }).join('');
 
@@ -357,29 +489,27 @@
     const canvas=document.getElementById('graphCanvas');
     const w=canvas.offsetWidth;
     const nodes=document.getElementById('gNodes');
-    const rightX=w-190;
+    const rightX=w-185;
 
     gData.targets.forEach(t=>t.x=rightX);
 
     nodes.innerHTML='';
-    // Connectors
     gData.connectors.forEach(c=>{
       nodes.innerHTML+=`<div class="g-node g-connector" style="left:${c.x}px;top:${c.y}px">
         <div style="display:flex;gap:4px;align-items:center">
           <span class="g-badge ${c.type}">${c.type}</span>
-          ${c.firm?`<span style="font-size:9px;font-weight:300;color:var(--fg3)">${c.firm}</span>`:''}
+          ${c.firm?`<span style="font-size:8px;font-weight:300;color:var(--fg3)">${c.firm}</span>`:''}
         </div>
         <div class="g-name">${c.name}</div>
         <div class="g-title">${c.title}</div>
         <div class="g-reach">Can reach <em>${c.reach}</em> people</div>
       </div>`;
     });
-    // Targets
     gData.targets.forEach(t=>{
       nodes.innerHTML+=`<div class="g-node g-target" style="left:${t.x}px;top:${t.y}px;border-color:${t.color}20">
         <div style="display:flex;gap:4px;align-items:center">
           <span class="g-company-dot" style="background:${t.color}"></span>
-          <span style="font-size:9px;font-weight:300;color:var(--fg3)">${t.company}</span>
+          <span style="font-size:8px;font-weight:300;color:var(--fg3)">${t.company}</span>
           <span class="g-badge dept">${t.dept}</span>
         </div>
         <div class="g-name" style="color:${t.color}">${t.name}</div>
@@ -388,7 +518,6 @@
       </div>`;
     });
 
-    // Edges
     requestAnimationFrame(()=>{
       const svg=document.getElementById('gSvg');
       const rect=canvas.getBoundingClientRect();
@@ -410,7 +539,6 @@
       });
     });
 
-    // Cycle
     let idx=0;
     setInterval(()=>{
       idx=(idx+1)%gData.paths.length;
