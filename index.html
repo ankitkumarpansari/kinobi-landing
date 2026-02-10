@@ -6,195 +6,184 @@
   <title>Kinobi — GTM data built for agents</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --fg:#171717;--fg-secondary:#404040;--fg-muted:#737373;
-      --bg:#ffffff;--bg-secondary:#f5f5f5;--bg-tertiary:#e5e5e5;
-      --border:#e5e5e5;--border-strong:#d4d4d4;
-      --blue:#3b82f6;--emerald:#10b981;--amber:#f59e0b;--red:#ef4444;
-      --violet:#8b5cf6;--indigo:#6366f1;--cyan:#06b6d4;--slate:#64748b;--stone:#78716c;--pink:#ec4899;
-      --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      --fg:#18181b;--fg2:#52525b;--fg3:#a1a1aa;--fg4:#d4d4d8;
+      --bg:#fafafa;--white:#fff;
+      --border:#f0f0f0;--border2:#e4e4e7;
+      --blue:#6366f1;--green:#10b981;--amber:#f59e0b;--rose:#f43f5e;
+      --mono:'JetBrains Mono',monospace;
+      --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     }
-    html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-    body{font-family:var(--sans);color:var(--fg);background:#fafafa;line-height:1.5}
+    html{font-size:16px;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.5}
+    ::selection{background:#6366f120}
 
-    /* ===== LANDING PAGE STYLES ===== */
-    nav{max-width:1120px;margin:0 auto;padding:20px 24px 0;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-size:1rem;font-weight:600;letter-spacing:-0.02em;color:var(--fg);text-decoration:none}
-    .btn-primary{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:0.85rem;font-weight:500;color:#fff;background:#171717;border:1px solid #171717;border-radius:8px;padding:10px 20px;text-decoration:none;transition:background .15s;cursor:pointer}
-    .btn-primary:hover{background:#262626}
-    .btn-secondary{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:0.85rem;font-weight:500;color:var(--fg);background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 20px;text-decoration:none;transition:border-color .15s;cursor:pointer}
-    .btn-secondary:hover{border-color:#a3a3a3}
+    /* Nav */
+    nav{max-width:980px;margin:0 auto;padding:28px 24px 0;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:13px;font-weight:500;letter-spacing:-.01em;color:var(--fg);text-decoration:none}
+    .nav-cta{font-size:11px;font-weight:400;letter-spacing:.02em;color:var(--fg2);text-decoration:none;padding:6px 14px;border:1px solid var(--border2);border-radius:100px;transition:all .2s}
+    .nav-cta:hover{color:var(--fg);border-color:var(--fg3)}
 
-    .hero{max-width:1120px;margin:0 auto;padding:80px 24px 48px}
-    .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--fg-muted);background:#fff;border:1px solid var(--border);border-radius:100px;padding:5px 14px;margin-bottom:28px}
-    .hero-badge .dot{width:6px;height:6px;background:var(--emerald);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-    .hero h1{font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:700;letter-spacing:-0.035em;line-height:1.05;max-width:680px}
-    .hero p{font-size:1.05rem;color:var(--fg-secondary);line-height:1.7;max-width:520px;margin-top:20px}
-    .hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+    /* Hero */
+    .hero{max-width:980px;margin:0 auto;padding:100px 24px 64px}
+    .hero-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:28px}
+    .hero-tag .dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:300;letter-spacing:-.03em;line-height:1.1;color:var(--fg);max-width:580px}
+    .hero h1 em{font-style:normal;font-weight:500}
+    .hero-p{font-size:14px;font-weight:300;color:var(--fg2);line-height:1.75;max-width:440px;margin-top:20px;letter-spacing:.01em}
+    .hero-actions{display:flex;gap:10px;margin-top:32px;align-items:center}
+    .btn{font-size:11px;font-weight:400;font-family:var(--sans);padding:8px 20px;border-radius:100px;text-decoration:none;transition:all .2s;cursor:pointer;letter-spacing:.02em}
+    .btn-dark{background:var(--fg);color:#fff;border:1px solid var(--fg)}
+    .btn-dark:hover{background:#27272a}
+    .btn-ghost{background:none;color:var(--fg2);border:1px solid var(--border2)}
+    .btn-ghost:hover{border-color:var(--fg3);color:var(--fg)}
 
-    /* ===== APP PREVIEW ===== */
-    .app-preview{max-width:1120px;margin:0 auto;padding:0 24px 80px}
-    .app-preview-label{font-size:12px;font-weight:500;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+    /* Terminal */
+    .terminal-wrap{max-width:980px;margin:0 auto;padding:0 24px 72px}
+    .terminal{background:#09090b;border-radius:10px;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:2;color:#a1a1aa;overflow-x:auto;border:1px solid #27272a}
+    .terminal .cm{color:#3f3f46}
+    .terminal .pr{color:var(--green)}
+    .terminal .fl{color:var(--blue)}
+    .terminal .st{color:#fbbf24}
+    .terminal .re{color:#71717a}
+    .terminal .hi{color:#e4e4e7}
 
-    .app-window{border:1px solid var(--border-strong);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 40px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04)}
+    /* Sections */
+    section{max-width:980px;margin:0 auto;padding:72px 24px}
+    .s-label{font-size:10px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:12px}
+    h2{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:300;letter-spacing:-.02em;line-height:1.2;max-width:480px}
+    h2 strong{font-weight:500}
+    .s-desc{font-size:13px;font-weight:300;color:var(--fg2);line-height:1.7;max-width:420px;margin-top:12px}
 
-    /* App Header */
-    .app-header{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);background:#fff}
-    .app-logo{font-size:13px;font-weight:600;color:var(--fg);display:flex;align-items:center;gap:6px}
-    .app-logo svg{width:16px;height:16px;color:var(--fg-muted)}
-    .app-tabs{display:flex;gap:0;margin-left:16px;background:var(--bg-secondary);border-radius:6px;padding:2px}
-    .app-tab{font-size:12px;font-weight:500;padding:4px 12px;border-radius:4px;cursor:pointer;color:var(--fg-muted);border:none;background:none;transition:all .15s;font-family:var(--sans)}
-    .app-tab.active{background:#fff;color:var(--fg);box-shadow:0 1px 2px rgba(0,0,0,.06)}
-    .app-search{flex:1;max-width:320px;margin-left:auto;display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:8px;padding:5px 10px;background:var(--bg-secondary);transition:all .15s}
-    .app-search svg{width:14px;height:14px;color:var(--fg-muted);flex-shrink:0}
-    .app-search span{font-size:12px;color:var(--fg-muted)}
-    .app-theme-toggle{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:none;background:none;cursor:pointer;color:var(--fg-muted)}
-    .app-theme-toggle:hover{background:var(--bg-secondary)}
+    /* ===== INTELLIGENCE TABLE (inline, no chrome) ===== */
+    .intel-section{max-width:980px;margin:0 auto;padding:0 24px 72px}
+    .intel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .intel-tabs{display:flex;gap:0}
+    .intel-tab{font-size:10px;font-weight:400;letter-spacing:.04em;padding:5px 14px;color:var(--fg3);cursor:pointer;border:1px solid var(--border2);background:var(--white);transition:all .15s;font-family:var(--sans)}
+    .intel-tab:first-child{border-radius:6px 0 0 6px}
+    .intel-tab:last-child{border-radius:0 6px 6px 0}
+    .intel-tab:not(:first-child){border-left:none}
+    .intel-tab.active{background:var(--fg);color:#fff;border-color:var(--fg)}
+    .intel-count{font-size:10px;color:var(--fg3);font-weight:300}
 
-    /* Stats Bar */
-    .app-stats{display:flex;gap:24px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg-secondary)}
-    .app-stat{display:flex;align-items:baseline;gap:5px}
-    .app-stat-val{font-size:15px;font-weight:700;color:var(--fg);font-variant-numeric:tabular-nums}
-    .app-stat-label{font-size:11px;color:var(--fg-muted)}
+    .table-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white)}
+    .t-head{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 16px;background:#fafafa;border-bottom:1px solid var(--border)}
+    .t-head span{font-size:9.5px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:9px 0}
+    .t-row{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 16px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
+    .t-row:last-child{border-bottom:none}
+    .t-row:hover{background:#fafaff}
+    .t-row.active{background:#f5f3ff}
 
-    /* App Body Split */
-    .app-body{display:flex;min-height:460px}
-    .app-body.view-intel{flex-direction:column}
+    .t-company{padding:10px 0}
+    .t-name{font-size:12px;font-weight:500;color:var(--fg);letter-spacing:-.01em}
+    .t-domain{font-size:9.5px;font-weight:300;color:var(--fg3);margin-top:1px}
+    .t-cust{font-size:8px;font-weight:500;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:#ede9fe;color:#7c3aed;margin-left:6px;text-transform:uppercase}
 
-    /* ===== INTELLIGENCE TABLE ===== */
-    .intel-toolbar{display:flex;align-items:center;gap:8px;padding:8px 16px;border-bottom:1px solid var(--border)}
-    .intel-filter{font-size:11px;font-weight:500;padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:#fff;color:var(--fg-secondary);cursor:pointer;font-family:var(--sans);display:flex;align-items:center;gap:4px}
-    .intel-filter.active{background:#171717;color:#fff;border-color:#171717}
-    .intel-filter svg{width:10px;height:10px}
-    .intel-showing{font-size:11px;color:var(--fg-muted);margin-left:auto}
+    .t-industry{font-size:11px;font-weight:300;color:var(--fg2);padding:10px 0}
+    .t-tool{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:400;padding:2px 8px;border-radius:100px;background:#eef2ff;color:#4f46e5}
+    .t-tool-more{font-size:9px;color:var(--fg3);margin-left:3px;font-weight:300}
+    .t-num{font-size:11px;font-weight:400;color:var(--fg2);text-align:center;padding:10px 0;font-variant-numeric:tabular-nums}
+    .t-num.strong{font-weight:500;color:var(--fg)}
 
-    .intel-table{width:100%;border-collapse:collapse}
-    .intel-table th{position:sticky;top:0;background:#fff;font-size:11px;font-weight:500;color:var(--fg-muted);text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none}
-    .intel-table th:hover{color:var(--fg-secondary)}
-    .intel-table th svg{width:10px;height:10px;vertical-align:middle;margin-left:2px}
-    .intel-table td{font-size:12px;padding:9px 12px;border-bottom:1px solid #f5f5f5;font-variant-numeric:tabular-nums;white-space:nowrap}
-    .intel-table tr{cursor:pointer;transition:background .1s}
-    .intel-table tbody tr:hover{background:#fafafa}
-    .intel-table tbody tr.row-active{background:#f0f7ff}
+    .t-score{display:flex;align-items:center;gap:6px;padding:10px 0}
+    .t-bar{width:44px;height:3px;border-radius:2px;background:#f4f4f5;overflow:hidden}
+    .t-bar-fill{height:100%;border-radius:2px}
+    .t-bar-fill.hi{background:var(--green)}
+    .t-bar-fill.md{background:var(--amber)}
+    .t-bar-fill.lo{background:var(--fg4)}
+    .t-score-val{font-size:10px;font-weight:400;color:var(--fg2);font-variant-numeric:tabular-nums;min-width:18px}
 
-    .company-cell{display:flex;align-items:center;gap:8px;min-width:180px}
-    .company-name{font-size:13px;font-weight:600;color:var(--fg)}
-    .company-domain{font-size:11px;color:var(--fg-muted)}
-    .customer-badge{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:#dbeafe;color:#1d4ed8}
+    .t-data{font-size:9px;font-weight:400;padding:2px 7px;border-radius:100px;text-align:center}
+    .t-data.complete{background:#ecfdf5;color:#059669}
+    .t-data.partial{background:#fffbeb;color:#d97706}
+    .t-data.stub{background:#f4f4f5;color:#a1a1aa}
 
-    .tool-badge{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;padding:2px 7px;border-radius:4px;background:#eff6ff;color:#1d4ed8}
-    .tool-secondary{font-size:10px;color:var(--fg-muted);margin-left:2px}
-    .source-badge{display:inline-flex;align-items:center;gap:2px;font-size:10px;font-weight:500;padding:1px 5px;border-radius:3px;background:#ecfdf5;color:#059669}
+    /* ===== GRAPH VISUALIZATION (inline) ===== */
+    .graph-section{max-width:980px;margin:0 auto;padding:0 24px 72px}
+    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:10px;background:var(--white);min-height:400px;overflow:hidden}
 
-    .score-bar-wrap{display:flex;align-items:center;gap:6px}
-    .score-bar{width:56px;height:5px;border-radius:3px;background:#f5f5f5;overflow:hidden}
-    .score-bar-fill{height:100%;border-radius:3px;transition:width .3s}
-    .score-bar-fill.high{background:var(--emerald)}
-    .score-bar-fill.medium{background:var(--amber)}
-    .score-bar-fill.low{background:#a3a3a3}
-    .score-val{font-size:11px;font-weight:600;color:var(--fg-secondary);min-width:24px;text-align:right}
+    .g-node{position:absolute;border-radius:8px;padding:10px 12px;background:var(--white);border:1px solid;font-size:11px;min-width:160px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+    .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px)}
 
-    .completeness{font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px}
-    .completeness.complete{background:#ecfdf5;color:#047857}
-    .completeness.partial{background:#fffbeb;color:#b45309}
-    .completeness.stub{background:#f5f5f5;color:#737373}
+    .g-connector{border-color:#e0e7ff;background:#fafafe}
+    .g-target{border-color:#ede9fe}
 
-    .count-cell{font-size:12px;color:var(--fg-secondary);text-align:center}
-    .count-cell.has-data{font-weight:600;color:var(--fg)}
+    .g-badge{font-size:8px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;padding:1.5px 6px;border-radius:100px;display:inline-flex;align-items:center;gap:3px}
+    .g-badge.board{background:#dbeafe;color:#3b82f6}
+    .g-badge.investor{background:#ecfdf5;color:#10b981}
+    .g-badge.team{background:#fef3c7;color:#d97706}
+    .g-badge.dept{background:#f4f4f5;color:#71717a}
 
-    /* ===== GRAPH VIEW (right pane or full) ===== */
-    .graph-pane{flex:1;position:relative;background:#fafafa;border-left:1px solid var(--border);overflow:hidden;min-height:460px}
-    .graph-canvas{width:100%;height:100%}
+    .g-name{font-size:12px;font-weight:500;color:var(--fg);margin:4px 0 1px;letter-spacing:-.01em}
+    .g-title{font-size:10px;font-weight:300;color:var(--fg3)}
+    .g-reach{font-size:9px;font-weight:300;color:var(--fg3);margin-top:5px}
+    .g-reach em{font-style:normal;color:var(--green);font-weight:400}
 
-    /* ReactFlow-style nodes */
-    .rf-node{position:absolute;border-radius:8px;border:2px solid;padding:10px 12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:12px;min-width:180px;transition:box-shadow .2s,opacity .2s}
-    .rf-node:hover{box-shadow:0 2px 12px rgba(0,0,0,.1)}
-    .rf-node-name{font-size:13px;font-weight:600;color:var(--fg);margin-bottom:2px}
-    .rf-node-title{font-size:11px;color:var(--fg-muted);margin-bottom:4px}
-    .rf-node-meta{display:flex;align-items:center;gap:6px;font-size:10px}
-    .rf-node-badge{font-size:9px;font-weight:600;padding:1px 5px;border-radius:3px;text-transform:uppercase;letter-spacing:.03em}
-    .rf-node-link{font-size:10px;color:var(--blue);text-decoration:none;display:flex;align-items:center;gap:3px}
+    .g-via{display:flex;align-items:center;gap:4px;margin-top:7px;padding-top:7px;border-top:1px solid var(--border);font-size:9px;font-weight:300;color:var(--fg3)}
+    .g-via strong{font-weight:400;color:var(--fg2)}
+    .g-strength{font-size:8px;font-weight:400;padding:1px 6px;border-radius:100px}
+    .g-strength.strong{background:#ecfdf5;color:#059669}
+    .g-strength.medium{background:#fffbeb;color:#d97706}
 
-    /* Connector node (left, blue border) */
-    .rf-connector{border-color:var(--blue);background:rgba(59,130,246,.04)}
-    .rf-connector .rf-node-badge{background:#dbeafe;color:#1d4ed8}
-    .rf-connector .reach{font-size:10px;color:var(--fg-muted);margin-top:4px}
-    .rf-connector .reach strong{color:var(--emerald);font-weight:600}
+    .g-company-dot{width:5px;height:5px;border-radius:50%;display:inline-block}
 
-    /* Target prospect node (right, dynamic color) */
-    .rf-target .rf-node-name{color:inherit}
-    .rf-target .company-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
-    .rf-target .path-info{display:flex;align-items:center;gap:4px;margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:10px;color:var(--fg-muted)}
-    .rf-target .path-info .via{font-weight:500;color:var(--fg-secondary)}
-    .rf-target .strength-badge{font-size:9px;font-weight:600;padding:1px 5px;border-radius:3px}
-    .rf-target .strength-badge.strong{background:#ecfdf5;color:#047857}
-    .rf-target .strength-badge.medium{background:#fffbeb;color:#b45309}
+    /* Path popover */
+    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:11px;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px)}
+    .g-popover.show{opacity:1;transform:translateY(0)}
+    .g-popover-route{font-weight:400;color:var(--fg);font-size:11px}
+    .g-popover-via{font-size:9.5px;font-weight:300;color:var(--fg3)}
+    .g-popover-score{margin-left:auto;font-size:13px;font-weight:500;color:var(--fg);font-variant-numeric:tabular-nums}
+    .g-popover-score small{font-size:9px;font-weight:300;color:var(--fg3)}
+    .g-popover-btn{font-size:9px;font-weight:400;padding:5px 12px;border-radius:100px;border:1px solid var(--border2);background:none;color:var(--fg2);cursor:pointer;white-space:nowrap;font-family:var(--sans);transition:all .15s}
+    .g-popover-btn:hover{border-color:var(--fg3);color:var(--fg)}
 
-    /* SVG edges */
-    .edge-line{fill:none;stroke-width:1.5;transition:stroke .3s,stroke-width .3s,opacity .3s}
-    .edge-line.highlight{stroke-width:2.5;filter:drop-shadow(0 0 3px rgba(59,130,246,.3))}
+    /* Edge labels */
+    .g-edge-label{font-family:var(--mono);font-size:8px;fill:var(--fg3)}
 
-    /* Path detail bar */
-    .path-bar{position:absolute;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:12px;font-size:12px;transition:transform .3s;transform:translateY(100%)}
-    .path-bar.visible{transform:translateY(0)}
-    .path-bar-route{font-weight:600;color:var(--fg)}
-    .path-bar-via{color:var(--fg-muted);font-size:11px}
-    .path-bar-score{margin-left:auto;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
-    .path-bar-label{font-size:10px;color:var(--fg-muted);margin-left:2px;font-weight:400}
-    .path-bar-btn{font-size:11px;font-weight:500;padding:5px 12px;border-radius:6px;border:none;background:#171717;color:#fff;cursor:pointer;margin-left:12px}
+    /* SVG */
+    .g-edge{fill:none;stroke-width:1;transition:all .4s}
+    .g-edge.lit{stroke-width:1.5;filter:drop-shadow(0 0 4px rgba(99,102,241,.2))}
 
-    /* Detail sidebar */
-    .detail-sidebar{width:280px;border-left:1px solid var(--border);padding:16px;overflow-y:auto;background:#fff;display:none}
-    .detail-sidebar.open{display:block}
-    .detail-sidebar h3{font-size:13px;font-weight:600;margin-bottom:12px}
-    .detail-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f5f5f5;font-size:12px}
-    .detail-row .label{color:var(--fg-muted)}
-    .detail-row .value{font-weight:500;color:var(--fg)}
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:36px}
+    .grid-item{background:var(--white);padding:24px 20px}
+    .grid-item .num{font-size:9px;font-weight:300;color:var(--fg4);margin-bottom:10px}
+    .grid-item h3{font-size:13px;font-weight:400;letter-spacing:-.01em;margin-bottom:5px}
+    .grid-item p{font-size:11.5px;font-weight:300;color:var(--fg2);line-height:1.6}
 
-    /* ===== SECTIONS ===== */
-    section{max-width:1120px;margin:0 auto;padding:80px 24px}
-    .section-label{font-size:12px;font-weight:500;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
-    h2{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15;max-width:560px}
-    .section-desc{font-size:1rem;color:var(--fg-secondary);line-height:1.7;max-width:520px;margin-top:14px}
-
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:40px}
-    .grid-item{background:#fff;padding:28px 24px}
-    .grid-num{font-size:11px;font-weight:500;color:var(--fg-muted);margin-bottom:12px}
-    .grid-item h3{font-size:14px;font-weight:600;margin-bottom:6px}
-    .grid-item p{font-size:13px;color:var(--fg-secondary);line-height:1.55}
-
-    .steps{margin-top:40px}
-    .step{display:grid;grid-template-columns:44px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--border)}
+    /* Steps */
+    .steps{margin-top:36px}
+    .step{display:grid;grid-template-columns:32px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--border)}
     .step:last-child{border-bottom:none}
-    .step-num{font-size:13px;font-weight:500;color:var(--fg-muted)}
-    .step h3{font-size:14px;font-weight:600;margin-bottom:4px}
-    .step p{font-size:13px;color:var(--fg-secondary);line-height:1.55}
+    .step-n{font-size:10px;font-weight:300;color:var(--fg4)}
+    .step h3{font-size:13px;font-weight:400;margin-bottom:3px}
+    .step p{font-size:11.5px;font-weight:300;color:var(--fg2);line-height:1.6}
 
-    .cta{text-align:center;padding:100px 24px}
+    /* CTA */
+    .cta{text-align:center;padding:96px 24px}
     .cta h2{max-width:none;margin:0 auto}
-    .cta .section-desc{max-width:460px;margin:14px auto 0}
-    .cta .hero-actions{justify-content:center;margin-top:28px}
+    .cta .s-desc{max-width:380px;margin:12px auto 0}
+    .cta .hero-actions{justify-content:center;margin-top:24px}
 
-    footer{max-width:1120px;margin:0 auto;padding:28px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--fg-muted);flex-wrap:wrap;gap:12px}
-    footer a{color:var(--fg-secondary);text-decoration:none}
+    /* Footer */
+    footer{max-width:980px;margin:0 auto;padding:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:300;color:var(--fg3);flex-wrap:wrap;gap:10px}
+    footer a{color:var(--fg2);text-decoration:none;font-weight:400}
     footer a:hover{color:var(--fg)}
 
-    @media(max-width:900px){
-      .app-body{flex-direction:column}
-      .graph-pane{border-left:none;border-top:1px solid var(--border);min-height:340px}
-      .detail-sidebar{display:none!important}
+    @media(max-width:768px){
+      .t-head,.t-row{grid-template-columns:2fr 1fr 1fr .8fr}
+      .t-head span:nth-child(n+5),.t-row>*:nth-child(n+5){display:none}
       .grid{grid-template-columns:1fr}
-      .app-search{display:none}
-      .intel-table td:nth-child(n+5),.intel-table th:nth-child(n+5){display:none}
+      .g-node{min-width:130px;padding:8px 10px}
+      .g-name{font-size:11px}
     }
-    @media(max-width:600px){
-      .app-stats{gap:12px;flex-wrap:wrap}
-      .intel-table td:nth-child(n+4),.intel-table th:nth-child(n+4){display:none}
-      .hero h1{font-size:2rem}
+    @media(max-width:480px){
+      .t-head,.t-row{grid-template-columns:1.5fr 1fr .8fr}
+      .t-head span:nth-child(n+4),.t-row>*:nth-child(n+4){display:none}
     }
   </style>
 </head>
@@ -202,155 +191,117 @@
 
   <nav>
     <a href="/" class="logo">kinobi</a>
-    <a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary" style="padding:7px 16px;font-size:12px;">Request Access &rarr;</a>
+    <a href="mailto:ankitkumarpansari@gmail.com" class="nav-cta">Request Access</a>
   </nav>
 
+  <!-- Hero -->
   <div class="hero">
-    <div class="hero-badge"><span class="dot"></span>Now in early access</div>
-    <h1>GTM data built for agents.</h1>
-    <p>The relationship intelligence layer for go-to-market teams. Map warm paths between your network and your pipeline &mdash; so every outreach starts with a connection, not a cold email.</p>
+    <div class="hero-tag"><span class="dot"></span> Early access</div>
+    <h1>GTM data <em>built for agents.</em></h1>
+    <p class="hero-p">The relationship intelligence layer for go-to-market teams. We map warm paths between your network and your pipeline.</p>
     <div class="hero-actions">
-      <a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary">Request early access &rarr;</a>
-      <a href="#how" class="btn-secondary">See how it works</a>
+      <a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-dark">Get early access</a>
+      <a href="#how" class="btn btn-ghost">How it works</a>
     </div>
   </div>
 
-  <!-- ===== APP PREVIEW ===== -->
-  <div class="app-preview">
-    <div class="app-window" id="appWindow">
+  <!-- Terminal -->
+  <div class="terminal-wrap">
+    <div class="terminal">
+      <div><span class="cm"># find warm paths to any target account</span></div>
+      <div><span class="pr">$</span> <span class="hi">kinobi search</span> <span class="fl">--company</span> <span class="st">"Ramp"</span> <span class="fl">--min-score</span> <span class="st">70</span></div>
+      <br/>
+      <div><span class="re">Found 4 warm paths to Ramp (ramp.com)</span></div>
+      <br/>
+      <div><span class="re">  1.</span> <span class="hi">Sarah Chen</span> <span class="re">(Board, Kleiner Perkins)</span></div>
+      <div><span class="re">     &rarr; shared board seat at Plaid &mdash; score:</span> <span class="pr">94</span></div>
+      <div><span class="re">  2.</span> <span class="hi">David Kim</span> <span class="re">(Investor, General Catalyst)</span></div>
+      <div><span class="re">     &rarr; Series B co-investor &mdash; score:</span> <span class="pr">87</span></div>
+      <div><span class="re">  3.</span> <span class="hi">Priya Rao</span> <span class="re">(VP Eng, your team)</span></div>
+      <div><span class="re">     &rarr; ex-Stripe &bull; 2yr overlap &mdash; score:</span> <span class="pr">82</span></div>
+      <div><span class="re">  4.</span> <span class="hi">James Liu</span> <span class="re">(Advisor)</span></div>
+      <div><span class="re">     &rarr; Stanford MBA 2018 &mdash; score:</span> <span class="pr">71</span></div>
+    </div>
+  </div>
 
-      <!-- App Header (exact replica) -->
-      <div class="app-header">
-        <div class="app-logo">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 0 12M2 8h12M8 2c-2 2-3 4-3 6s1 4 3 6"/></svg>
-          kinobi
-        </div>
-        <div class="app-tabs">
-          <button class="app-tab" id="tabGraph" onclick="switchView('graph')">Graph</button>
-          <button class="app-tab active" id="tabIntel" onclick="switchView('intel')">Intelligence</button>
-        </div>
-        <div class="app-search">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
-          <span>Search companies, people, board members...</span>
-        </div>
-        <button class="app-theme-toggle" title="Toggle theme">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41"/></svg>
-        </button>
-      </div>
-
-      <!-- Stats Bar -->
-      <div class="app-stats">
-        <div class="app-stat"><span class="app-stat-val">127</span><span class="app-stat-label">companies</span></div>
-        <div class="app-stat"><span class="app-stat-val">48</span><span class="app-stat-label">board connections</span></div>
-        <div class="app-stat"><span class="app-stat-val">312</span><span class="app-stat-label">warm paths</span></div>
-        <div class="app-stat"><span class="app-stat-val">89</span><span class="app-stat-label">decision makers</span></div>
-      </div>
-
-      <!-- Intelligence View -->
-      <div id="viewIntel">
-        <div class="intel-toolbar">
-          <button class="intel-filter">Industry <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l3 3 3-3"/></svg></button>
-          <button class="intel-filter active">CX Tool <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l3 3 3-3"/></svg></button>
-          <button class="intel-filter">Data <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l3 3 3-3"/></svg></button>
-          <button class="intel-filter" style="background:#171717;color:#fff;border-color:#171717">Customers</button>
-          <span class="intel-showing">Showing 1&ndash;8 of 127</span>
-        </div>
-        <div style="overflow-x:auto">
-        <table class="intel-table">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Industry</th>
-              <th>CX Tools</th>
-              <th style="text-align:center">Board</th>
-              <th style="text-align:center">Paths</th>
-              <th>Strongest</th>
-              <th style="text-align:center">DMs</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody id="intelBody">
-          </tbody>
-        </table>
+  <!-- Intelligence Table -->
+  <div class="intel-section">
+    <div class="intel-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <p class="s-label" style="margin:0">Pipeline intelligence</p>
+        <div class="intel-tabs">
+          <button class="intel-tab active" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">All</button>
+          <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Customers</button>
+          <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Prospects</button>
         </div>
       </div>
-
-      <!-- Graph View -->
-      <div id="viewGraph" style="display:none">
-        <div class="app-body">
-          <!-- Graph Canvas -->
-          <div class="graph-pane" id="graphPane">
-            <svg id="graphSvg" style="width:100%;height:100%;position:absolute;top:0;left:0"></svg>
-            <div id="graphNodes"></div>
-            <div class="path-bar visible" id="pathBar">
-              <span class="path-bar-route" id="pbRoute">Sarah Chen &rarr; VP CX, Ramp</span>
-              <span class="path-bar-via" id="pbVia">via shared board seat at Plaid &bull; 3yr overlap</span>
-              <span class="path-bar-score" id="pbScore">94<span class="path-bar-label">/100</span></span>
-              <button class="path-bar-btn">Request Intro</button>
-            </div>
-          </div>
-
-          <!-- Detail Sidebar -->
-          <div class="detail-sidebar open" id="detailSidebar">
-            <h3>Ramp</h3>
-            <div class="detail-row"><span class="label">Domain</span><span class="value">ramp.com</span></div>
-            <div class="detail-row"><span class="label">Industry</span><span class="value">Fintech</span></div>
-            <div class="detail-row"><span class="label">Primary CX</span><span class="value"><span class="tool-badge">Intercom</span></span></div>
-            <div class="detail-row"><span class="label">Employees</span><span class="value">1,200</span></div>
-            <div class="detail-row"><span class="label">Funding</span><span class="value">$750M Series D</span></div>
-            <div class="detail-row"><span class="label">Board Conn.</span><span class="value" style="font-weight:700;color:var(--emerald)">4</span></div>
-            <div class="detail-row"><span class="label">Warm Paths</span><span class="value" style="font-weight:700;color:var(--blue)">6</span></div>
-            <div class="detail-row"><span class="label">Best Score</span><span class="value" style="font-weight:700">94</span></div>
-            <div style="margin-top:16px;padding-top:12px;border-top:1px solid #f5f5f5">
-              <div style="font-size:11px;font-weight:600;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Decision Makers</div>
-              <div style="font-size:12px;padding:4px 0"><span style="font-weight:500">Alex Rivera</span> <span style="font-size:10px;color:var(--fg-muted)">VP Customer Experience</span></div>
-              <div style="font-size:12px;padding:4px 0"><span style="font-weight:500">Sarah Kim</span> <span style="font-size:10px;color:var(--fg-muted)">Dir. Support Operations</span></div>
-              <div style="font-size:12px;padding:4px 0"><span style="font-weight:500">James Wu</span> <span style="font-size:10px;color:var(--fg-muted)">Head of CX Engineering</span></div>
-            </div>
-          </div>
-        </div>
+      <span class="intel-count">127 companies</span>
+    </div>
+    <div class="table-wrap">
+      <div class="t-head">
+        <span>Company</span><span>Industry</span><span>CX Stack</span><span>Board</span><span>Paths</span><span>Strongest</span><span>Data</span>
       </div>
+      <div id="tableRows"></div>
+    </div>
+  </div>
 
+  <!-- Graph Visualization -->
+  <div class="graph-section">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <p class="s-label" style="margin:0">Relationship graph</p>
+      <span class="intel-count">Ramp &mdash; 4 warm paths</span>
+    </div>
+    <div class="graph-canvas" id="graphCanvas">
+      <svg id="gSvg" style="width:100%;height:100%;position:absolute;top:0;left:0;pointer-events:none"></svg>
+      <div id="gNodes"></div>
+      <div class="g-popover show" id="gPopover">
+        <div>
+          <div class="g-popover-route" id="gpRoute">Sarah Chen &rarr; Alex Rivera, VP CX</div>
+          <div class="g-popover-via" id="gpVia">Shared board seat at Plaid &bull; 3yr overlap</div>
+        </div>
+        <span class="g-popover-score" id="gpScore">94<small>/100</small></span>
+        <button class="g-popover-btn">Request intro</button>
+      </div>
     </div>
   </div>
 
   <!-- Features -->
   <section id="features">
-    <p class="section-label">What you get</p>
-    <h2>Your entire network, structured and scored.</h2>
-    <p class="section-desc">Kinobi ingests your team's LinkedIn connections, board affiliations, investor networks, and alumni ties. Then scores every path to every target account.</p>
+    <p class="s-label">Capabilities</p>
+    <h2>Your network, <strong>structured and scored.</strong></h2>
+    <p class="s-desc">Kinobi ingests LinkedIn connections, board affiliations, investor networks, and alumni ties. Then scores every path to every target.</p>
     <div class="grid">
-      <div class="grid-item"><p class="grid-num">01</p><h3>Relationship graph</h3><p>Map every connection between your team, investors, board, and advisors to decision makers at target companies.</p></div>
-      <div class="grid-item"><p class="grid-num">02</p><h3>Connection scoring</h3><p>Every path scored 0&ndash;100 based on shared experience, overlap duration, recency, and seniority.</p></div>
-      <div class="grid-item"><p class="grid-num">03</p><h3>Board intelligence</h3><p>Automated mapping of board affiliations, cross-company bridges, and executive networks.</p></div>
-      <div class="grid-item"><p class="grid-num">04</p><h3>Warm intro workflows</h3><p>One-click intro requests through the strongest path. Track from request to meeting booked.</p></div>
-      <div class="grid-item"><p class="grid-num">05</p><h3>Company intelligence</h3><p>Tech stack detection, buying signals, org charts, and funding data &mdash; enriched daily.</p></div>
-      <div class="grid-item"><p class="grid-num">06</p><h3>Agent-native API</h3><p>Built for AI agents. Structured JSON, real-time webhooks, and natural language queries.</p></div>
+      <div class="grid-item"><p class="num">01</p><h3>Relationship graph</h3><p>Map connections between your team, investors, board, and advisors to decision makers.</p></div>
+      <div class="grid-item"><p class="num">02</p><h3>Connection scoring</h3><p>Every path scored 0&ndash;100 based on shared experience, overlap, recency, and seniority.</p></div>
+      <div class="grid-item"><p class="num">03</p><h3>Board intelligence</h3><p>Automated board affiliation mapping, cross-company bridges, and executive networks.</p></div>
+      <div class="grid-item"><p class="num">04</p><h3>Warm intro workflows</h3><p>One-click intro requests through the strongest path. Track to meeting booked.</p></div>
+      <div class="grid-item"><p class="num">05</p><h3>Company intelligence</h3><p>Tech stack detection, buying signals, org charts, and funding data enriched daily.</p></div>
+      <div class="grid-item"><p class="num">06</p><h3>Agent-native API</h3><p>Structured JSON, real-time webhooks, and natural language queries over your graph.</p></div>
     </div>
   </section>
 
   <!-- How it works -->
   <section id="how">
-    <p class="section-label">How it works</p>
-    <h2>From cold pipeline to warm paths in 48 hours.</h2>
-    <p class="section-desc">Connect your network. We build the graph. You reach targets through people who already know them.</p>
+    <p class="s-label">How it works</p>
+    <h2>Cold pipeline to <strong>warm paths</strong> in 48 hours.</h2>
+    <p class="s-desc">Connect your network. We build the graph. You reach targets through people who already know them.</p>
     <div class="steps">
-      <div class="step"><span class="step-num">01</span><div><h3>Connect your network</h3><p>Import your team's LinkedIn connections, share your investor list, and upload your target account list. Takes 10 minutes.</p></div></div>
-      <div class="step"><span class="step-num">02</span><div><h3>We build the graph</h3><p>Kinobi crawls public sources to map board affiliations, shared experiences, alumni networks, and investor ties. Every connection scored automatically.</p></div></div>
-      <div class="step"><span class="step-num">03</span><div><h3>See every warm path</h3><p>For each target account, see exactly who in your network can make an introduction, how they're connected, and how strong the path is.</p></div></div>
-      <div class="step"><span class="step-num">04</span><div><h3>Request intros, book meetings</h3><p>One click to draft an intro request through the strongest path. Track status from request to meeting. Close the loop.</p></div></div>
+      <div class="step"><span class="step-n">01</span><div><h3>Connect your network</h3><p>Import LinkedIn connections, share your investor list, upload target accounts. Takes 10 minutes.</p></div></div>
+      <div class="step"><span class="step-n">02</span><div><h3>We build the graph</h3><p>Kinobi crawls public sources to map board affiliations, shared experiences, alumni networks, and investor ties.</p></div></div>
+      <div class="step"><span class="step-n">03</span><div><h3>See every warm path</h3><p>For each target account, see who in your network can make an introduction and how strong the connection is.</p></div></div>
+      <div class="step"><span class="step-n">04</span><div><h3>Request intros, book meetings</h3><p>One click to draft an intro request through the strongest path. Track from request to meeting.</p></div></div>
     </div>
   </section>
 
   <section class="cta">
-    <h2>Stop sending cold emails.<br/>Start using warm paths.</h2>
-    <p class="section-desc">Your team has thousands of connections. Kinobi turns them into pipeline.</p>
-    <div class="hero-actions"><a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary">Request early access &rarr;</a></div>
+    <h2>Stop cold emails.<br/><strong>Start warm paths.</strong></h2>
+    <p class="s-desc">Your team has thousands of connections. Kinobi turns them into pipeline.</p>
+    <div class="hero-actions"><a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-dark">Get early access</a></div>
   </section>
 
   <footer>
-    <span>&copy; 2026 Kinobi &mdash; Built by Ankit Pansari</span>
-    <div style="display:flex;gap:20px">
+    <span>&copy; 2026 Kinobi &mdash; Ankit Pansari</span>
+    <div style="display:flex;gap:16px">
       <a href="mailto:ankitkumarpansari@gmail.com">ankitkumarpansari@gmail.com</a>
       <a href="https://github.com/ankitkumarpansari">GitHub</a>
       <a href="https://linkedin.com/in/ankitkumarpansari">LinkedIn</a>
@@ -358,166 +309,125 @@
   </footer>
 
   <script>
-  // ===== DATA =====
-  const companies = [
-    { name:'Ramp', domain:'ramp.com', industry:'Fintech', tool:'Intercom', toolSecondary:'+2', sources:3, board:4, paths:6, score:94, dms:3, data:'complete', customer:true, color:'#6366F1' },
-    { name:'Chime', domain:'chime.com', industry:'Fintech', tool:'Zendesk', toolSecondary:'+1', sources:2, board:7, paths:9, score:91, dms:5, data:'complete', customer:false, color:'#10B981' },
-    { name:'Bilt Rewards', domain:'biltrewards.com', industry:'Fintech', tool:'Custom', toolSecondary:'', sources:1, board:3, paths:4, score:88, dms:2, data:'partial', customer:false, color:'#8B5CF6' },
-    { name:'Brex', domain:'brex.com', industry:'Fintech', tool:'Intercom', toolSecondary:'+3', sources:4, board:5, paths:7, score:89, dms:4, data:'complete', customer:true, color:'#06B6D4' },
-    { name:'Navan', domain:'navan.com', industry:'Travel Tech', tool:'Salesforce SC', toolSecondary:'+1', sources:2, board:2, paths:3, score:76, dms:2, data:'partial', customer:false, color:'#F59E0B' },
-    { name:'Duolingo', domain:'duolingo.com', industry:'EdTech', tool:'Zendesk', toolSecondary:'+2', sources:3, board:1, paths:2, score:72, dms:3, data:'complete', customer:false, color:'#EF4444' },
-    { name:'Wealthsimple', domain:'wealthsimple.com', industry:'Fintech', tool:'Intercom', toolSecondary:'+1', sources:2, board:2, paths:3, score:81, dms:2, data:'partial', customer:false, color:'#64748B' },
-    { name:'Robinhood', domain:'robinhood.com', industry:'Fintech', tool:'Custom', toolSecondary:'+2', sources:1, board:3, paths:5, score:85, dms:4, data:'complete', customer:false, color:'#78716C' },
+  const companies=[
+    {name:'Ramp',domain:'ramp.com',industry:'Fintech',tool:'Intercom',more:'+2',board:4,paths:6,score:94,data:'complete',cust:true,color:'#6366f1'},
+    {name:'Chime',domain:'chime.com',industry:'Fintech',tool:'Zendesk',more:'+1',board:7,paths:9,score:91,data:'complete',cust:false,color:'#10b981'},
+    {name:'Bilt Rewards',domain:'biltrewards.com',industry:'Fintech',tool:'Custom',more:'',board:3,paths:4,score:88,data:'partial',cust:false,color:'#8b5cf6'},
+    {name:'Brex',domain:'brex.com',industry:'Fintech',tool:'Intercom',more:'+3',board:5,paths:7,score:89,data:'complete',cust:true,color:'#06b6d4'},
+    {name:'Navan',domain:'navan.com',industry:'Travel',tool:'Salesforce',more:'+1',board:2,paths:3,score:76,data:'partial',cust:false,color:'#f59e0b'},
+    {name:'Duolingo',domain:'duolingo.com',industry:'EdTech',tool:'Zendesk',more:'+2',board:1,paths:2,score:72,data:'complete',cust:false,color:'#f43f5e'},
+    {name:'Wealthsimple',domain:'wealthsimple.com',industry:'Fintech',tool:'Intercom',more:'+1',board:2,paths:3,score:81,data:'partial',cust:false,color:'#64748b'},
+    {name:'Robinhood',domain:'robinhood.com',industry:'Fintech',tool:'Custom',more:'+2',board:3,paths:5,score:85,data:'complete',cust:false,color:'#78716c'},
   ];
 
-  const graphCompanies = {
-    ramp: {
-      connectors: [
-        { name:'Sarah Chen', title:'Board Member', type:'board', firm:'Kleiner Perkins', reach:12, strong:4, x:20, y:30 },
-        { name:'David Kim', title:'Managing Director', type:'investor', firm:'General Catalyst', reach:8, strong:2, x:20, y:180 },
-        { name:'Priya Rao', title:'VP Engineering', type:'team', firm:'', reach:5, strong:1, x:20, y:330 },
-      ],
-      targets: [
-        { name:'Alex Rivera', title:'VP Customer Experience', company:'Ramp', dept:'Customer Success', via:'Sarah Chen', strength:'Strong', score:94, x:520, y:20, color:'#6366F1' },
-        { name:'Sarah Kim', title:'Dir. Support Operations', company:'Ramp', dept:'Operations', via:'David Kim', strength:'Strong', score:87, x:520, y:170, color:'#6366F1' },
-        { name:'James Wu', title:'Head of CX Engineering', company:'Ramp', dept:'Engineering', via:'Priya Rao', strength:'Medium', score:78, x:520, y:320, color:'#6366F1' },
-      ],
-      paths: [
-        { from:'Sarah Chen', to:'Alex Rivera', via:'Shared board seat at Plaid \u2022 3yr overlap', score:94 },
-        { from:'David Kim', to:'Sarah Kim', via:'Series B co-investor \u2022 General Catalyst portfolio', score:87 },
-        { from:'Priya Rao', to:'James Wu', via:'ex-Stripe \u2022 2yr overlap \u2022 LinkedIn 1st', score:78 },
-      ]
-    }
+  // Table
+  document.getElementById('tableRows').innerHTML=companies.map((c,i)=>{
+    const sc=c.score>=75?'hi':c.score>=50?'md':'lo';
+    return`<div class="t-row${i===0?' active':''}" onclick="document.querySelectorAll('.t-row').forEach(r=>r.classList.remove('active'));this.classList.add('active')">
+      <div class="t-company"><div class="t-name">${c.name}${c.cust?'<span class=t-cust>customer</span>':''}</div><div class="t-domain">${c.domain}</div></div>
+      <div class="t-industry">${c.industry}</div>
+      <div style="padding:10px 0"><span class="t-tool">${c.tool}</span>${c.more?'<span class=t-tool-more>'+c.more+'</span>':''}</div>
+      <div class="t-num${c.board?' strong':''}">${c.board}</div>
+      <div class="t-num${c.paths?' strong':''}">${c.paths}</div>
+      <div class="t-score"><div class="t-bar"><div class="t-bar-fill ${sc}" style="width:${c.score}%"></div></div><span class="t-score-val">${c.score}</span></div>
+      <div style="padding:10px 0;text-align:center"><span class="t-data ${c.data}">${c.data==='complete'?'Complete':c.data==='partial'?'Partial':'Stub'}</span></div>
+    </div>`;
+  }).join('');
+
+  // Graph
+  const gData={
+    connectors:[
+      {name:'Sarah Chen',title:'Board Member',type:'board',firm:'Kleiner Perkins',reach:12,x:24,y:28},
+      {name:'David Kim',title:'Managing Director',type:'investor',firm:'General Catalyst',reach:8,x:24,y:168},
+      {name:'Priya Rao',title:'VP Engineering',type:'team',firm:'',reach:5,x:24,y:308},
+    ],
+    targets:[
+      {name:'Alex Rivera',title:'VP Customer Experience',company:'Ramp',dept:'CX',via:'Sarah Chen',strength:'strong',x:0,y:20,color:'#6366f1'},
+      {name:'Sarah Kim',title:'Dir. Support Ops',company:'Ramp',dept:'Ops',via:'David Kim',strength:'strong',x:0,y:160,color:'#6366f1'},
+      {name:'James Wu',title:'Head of CX Eng',company:'Ramp',dept:'Eng',via:'Priya Rao',strength:'medium',x:0,y:300,color:'#6366f1'},
+    ],
+    paths:[
+      {from:'Sarah Chen',to:'Alex Rivera, VP CX',via:'Shared board seat at Plaid \u2022 3yr overlap',score:94},
+      {from:'David Kim',to:'Sarah Kim, Dir. Support',via:'Series B co-investor \u2022 GC portfolio',score:87},
+      {from:'Priya Rao',to:'James Wu, CX Eng',via:'ex-Stripe \u2022 2yr overlap \u2022 LinkedIn 1st',score:78},
+    ]
   };
 
-  // ===== RENDER INTELLIGENCE TABLE =====
-  function renderIntelTable() {
-    const tbody = document.getElementById('intelBody');
-    tbody.innerHTML = companies.map((c, i) => {
-      const scoreClass = c.score >= 75 ? 'high' : c.score >= 50 ? 'medium' : 'low';
-      return `<tr class="${i===0?'row-active':''}" onclick="highlightRow(this)" data-idx="${i}">
-        <td><div class="company-cell">
-          <div><div class="company-name">${c.name} ${c.customer ? '<span class=customer-badge>Customer</span>' : ''}</div><div class="company-domain">${c.domain}</div></div>
-        </div></td>
-        <td style="color:var(--fg-secondary)">${c.industry}</td>
-        <td><span class="tool-badge">${c.tool}</span>${c.toolSecondary ? '<span class=tool-secondary>' + c.toolSecondary + '</span>' : ''}${c.sources ? ' <span class=source-badge>' + c.sources + ' src</span>' : ''}</td>
-        <td class="count-cell ${c.board?'has-data':''}">${c.board||'&mdash;'}</td>
-        <td class="count-cell ${c.paths?'has-data':''}">${c.paths||'&mdash;'}</td>
-        <td><div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-fill ${scoreClass}" style="width:${c.score}%"></div></div><span class="score-val">${c.score}</span></div></td>
-        <td class="count-cell ${c.dms?'has-data':''}">${c.dms||'&mdash;'}</td>
-        <td><span class="completeness ${c.data}">${c.data==='complete'?'Complete':c.data==='partial'?'Partial':'Stub'}</span></td>
-      </tr>`;
-    }).join('');
-  }
+  function renderGraph(){
+    const canvas=document.getElementById('graphCanvas');
+    const w=canvas.offsetWidth;
+    const nodes=document.getElementById('gNodes');
+    const rightX=w-190;
 
-  function highlightRow(tr) {
-    document.querySelectorAll('.intel-table tbody tr').forEach(r => r.classList.remove('row-active'));
-    tr.classList.add('row-active');
-  }
+    gData.targets.forEach(t=>t.x=rightX);
 
-  // ===== RENDER GRAPH VIEW =====
-  function renderGraphView() {
-    const data = graphCompanies.ramp;
-    const nodesEl = document.getElementById('graphNodes');
-    const svg = document.getElementById('graphSvg');
-    nodesEl.innerHTML = '';
-    svg.innerHTML = '';
-
-    // Draw connector nodes
-    data.connectors.forEach(c => {
-      nodesEl.innerHTML += `
-        <div class="rf-node rf-connector" style="left:${c.x}px;top:${c.y}px">
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
-            <span class="rf-node-badge">${c.type}</span>
-            ${c.firm ? `<span style="font-size:10px;color:var(--fg-muted)">${c.firm}</span>` : ''}
-          </div>
-          <div class="rf-node-name">${c.name}</div>
-          <div class="rf-node-title">${c.title}</div>
-          <div class="reach">Can reach <strong>${c.reach}</strong> people &bull; ${c.strong} strong</div>
-        </div>`;
+    nodes.innerHTML='';
+    // Connectors
+    gData.connectors.forEach(c=>{
+      nodes.innerHTML+=`<div class="g-node g-connector" style="left:${c.x}px;top:${c.y}px">
+        <div style="display:flex;gap:4px;align-items:center">
+          <span class="g-badge ${c.type}">${c.type}</span>
+          ${c.firm?`<span style="font-size:9px;font-weight:300;color:var(--fg3)">${c.firm}</span>`:''}
+        </div>
+        <div class="g-name">${c.name}</div>
+        <div class="g-title">${c.title}</div>
+        <div class="g-reach">Can reach <em>${c.reach}</em> people</div>
+      </div>`;
+    });
+    // Targets
+    gData.targets.forEach(t=>{
+      nodes.innerHTML+=`<div class="g-node g-target" style="left:${t.x}px;top:${t.y}px;border-color:${t.color}20">
+        <div style="display:flex;gap:4px;align-items:center">
+          <span class="g-company-dot" style="background:${t.color}"></span>
+          <span style="font-size:9px;font-weight:300;color:var(--fg3)">${t.company}</span>
+          <span class="g-badge dept">${t.dept}</span>
+        </div>
+        <div class="g-name" style="color:${t.color}">${t.name}</div>
+        <div class="g-title">${t.title}</div>
+        <div class="g-via">via <strong>${t.via}</strong> <span class="g-strength ${t.strength}">${t.strength}</span></div>
+      </div>`;
     });
 
-    // Draw target nodes
-    data.targets.forEach(t => {
-      nodesEl.innerHTML += `
-        <div class="rf-node rf-target" style="left:${t.x}px;top:${t.y}px;border-color:${t.color}">
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
-            <span class="company-dot" style="background:${t.color}"></span>
-            <span style="font-size:10px;font-weight:500;color:var(--fg-muted)">${t.company}</span>
-            <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#f5f5f5;color:var(--fg-muted)">${t.dept}</span>
-          </div>
-          <div class="rf-node-name" style="color:${t.color}">${t.name}</div>
-          <div class="rf-node-title">${t.title}</div>
-          <div class="path-info">
-            <span>via <span class="via">${t.via}</span></span>
-            <span class="strength-badge ${t.strength.toLowerCase()}">${t.strength}</span>
-          </div>
-        </div>`;
-    });
-
-    // Draw SVG edges (bezier curves)
-    requestAnimationFrame(() => {
-      const pane = document.getElementById('graphPane');
-      const rect = pane.getBoundingClientRect();
-      const connectorNodes = pane.querySelectorAll('.rf-connector');
-      const targetNodes = pane.querySelectorAll('.rf-target');
-
-      const colors = ['#3b82f6','#3b82f6','#3b82f6'];
-      const highlights = [true, false, false];
-
-      connectorNodes.forEach((cn, i) => {
-        if (!targetNodes[i]) return;
-        const cr = cn.getBoundingClientRect();
-        const tr = targetNodes[i].getBoundingClientRect();
-        const x1 = cr.right - rect.left;
-        const y1 = cr.top + cr.height/2 - rect.top;
-        const x2 = tr.left - rect.left;
-        const y2 = tr.top + tr.height/2 - rect.top;
-        const cpx = (x1 + x2) / 2;
-
-        const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-        path.setAttribute('d', `M${x1},${y1} C${cpx},${y1} ${cpx},${y2} ${x2},${y2}`);
-        path.setAttribute('class', 'edge-line' + (highlights[i] ? ' highlight' : ''));
-        path.setAttribute('stroke', colors[i]);
-        path.style.opacity = highlights[i] ? '1' : '0.3';
-        svg.appendChild(path);
+    // Edges
+    requestAnimationFrame(()=>{
+      const svg=document.getElementById('gSvg');
+      const rect=canvas.getBoundingClientRect();
+      svg.innerHTML='';
+      const cNodes=canvas.querySelectorAll('.g-connector');
+      const tNodes=canvas.querySelectorAll('.g-target');
+      cNodes.forEach((cn,i)=>{
+        if(!tNodes[i])return;
+        const cr=cn.getBoundingClientRect(),tr=tNodes[i].getBoundingClientRect();
+        const x1=cr.right-rect.left,y1=cr.top+cr.height/2-rect.top;
+        const x2=tr.left-rect.left,y2=tr.top+tr.height/2-rect.top;
+        const cp=(x1+x2)/2;
+        const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+        p.setAttribute('d',`M${x1},${y1} C${cp},${y1} ${cp},${y2} ${x2},${y2}`);
+        p.setAttribute('class','g-edge'+(i===0?' lit':''));
+        p.setAttribute('stroke',i===0?'#6366f1':'#d4d4d8');
+        p.style.opacity=i===0?'.6':'.25';
+        svg.appendChild(p);
       });
     });
 
-    // Set initial path bar
-    const p = data.paths[0];
-    document.getElementById('pbRoute').textContent = `${p.from} \u2192 ${data.targets[0].title}, ${data.targets[0].company}`;
-    document.getElementById('pbVia').textContent = p.via;
-    document.getElementById('pbScore').innerHTML = `${p.score}<span class="path-bar-label">/100</span>`;
-
-    // Cycle paths
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % data.paths.length;
-      const p = data.paths[idx];
-      document.getElementById('pbRoute').textContent = `${p.from} \u2192 ${data.targets[idx].title}, ${data.targets[idx].company}`;
-      document.getElementById('pbVia').textContent = p.via;
-      document.getElementById('pbScore').innerHTML = `${p.score}<span class="path-bar-label">/100</span>`;
-
-      // Highlight corresponding edge
-      document.querySelectorAll('.edge-line').forEach((e, ei) => {
-        e.classList.toggle('highlight', ei === idx);
-        e.style.opacity = ei === idx ? '1' : '0.3';
+    // Cycle
+    let idx=0;
+    setInterval(()=>{
+      idx=(idx+1)%gData.paths.length;
+      const p=gData.paths[idx];
+      document.getElementById('gpRoute').textContent=`${p.from} \u2192 ${p.to}`;
+      document.getElementById('gpVia').textContent=p.via;
+      document.getElementById('gpScore').innerHTML=`${p.score}<small>/100</small>`;
+      document.querySelectorAll('.g-edge').forEach((e,ei)=>{
+        e.classList.toggle('lit',ei===idx);
+        e.setAttribute('stroke',ei===idx?'#6366f1':'#d4d4d8');
+        e.style.opacity=ei===idx?'.6':'.25';
       });
-    }, 3000);
+    },3500);
   }
 
-  // ===== VIEW SWITCHING =====
-  function switchView(view) {
-    document.getElementById('tabGraph').classList.toggle('active', view === 'graph');
-    document.getElementById('tabIntel').classList.toggle('active', view === 'intel');
-    document.getElementById('viewGraph').style.display = view === 'graph' ? 'block' : 'none';
-    document.getElementById('viewIntel').style.display = view === 'intel' ? 'block' : 'none';
-    if (view === 'graph') renderGraphView();
-  }
-
-  // ===== INIT =====
-  renderIntelTable();
+  renderGraph();
+  window.addEventListener('resize',renderGraph);
   </script>
 
 </body>
