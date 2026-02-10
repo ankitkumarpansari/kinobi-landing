@@ -6,219 +6,176 @@
   <title>Kinobi — GTM intelligence for AI agents</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
       --fg:#18181b;--fg2:#52525b;--fg3:#a1a1aa;--fg4:#d4d4d8;
       --bg:#fafafa;--white:#fff;
       --border:#f0f0f0;--border2:#e4e4e7;
-      --blue:#6366f1;--green:#10b981;--amber:#f59e0b;--rose:#f43f5e;
+      --green:#10b981;
       --mono:'JetBrains Mono',monospace;
       --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     }
     html{font-size:16px;-webkit-font-smoothing:antialiased}
     body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.6}
-    ::selection{background:#6366f120}
+    ::selection{background:#18181b10}
 
-    /* ── Nav ── */
-    nav{max-width:1060px;margin:0 auto;padding:28px 32px 0;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-size:16px;font-weight:600;letter-spacing:-.02em;color:var(--fg);text-decoration:none}
-    .nav-links{display:flex;align-items:center;gap:24px}
-    .nav-links a{font-size:14px;font-weight:400;color:var(--fg2);text-decoration:none;transition:color .2s}
-    .nav-links a:hover{color:var(--fg)}
-    .nav-cta{font-size:13px;font-weight:500;color:var(--white)!important;background:var(--fg);padding:8px 20px;border-radius:8px;transition:background .2s}
-    .nav-cta:hover{background:#27272a}
+    nav{max-width:980px;margin:0 auto;padding:28px 24px 0;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:15px;font-weight:500;letter-spacing:-.01em;color:var(--fg);text-decoration:none}
+    .nav-cta{font-size:13px;font-weight:400;color:var(--fg2);text-decoration:none;padding:7px 18px;border:1px solid var(--border2);border-radius:100px;transition:all .2s}
+    .nav-cta:hover{color:var(--fg);border-color:var(--fg3)}
 
-    /* ── Hero ── */
-    .hero{max-width:1060px;margin:0 auto;padding:100px 32px 48px;text-align:center}
-    .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);background:#eef2ff;padding:6px 16px;border-radius:100px;margin-bottom:32px}
-    .hero-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+    .hero{max-width:980px;margin:0 auto;padding:100px 24px 56px}
+    .hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;color:var(--fg3);margin-bottom:28px}
+    .hero-tag .dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-    .hero h1{font-size:clamp(2.4rem,5.5vw,3.8rem);font-weight:700;letter-spacing:-.04em;line-height:1.08;color:var(--fg);max-width:720px;margin:0 auto}
-    .hero h1 span{background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero-sub{font-size:18px;font-weight:400;color:var(--fg2);line-height:1.7;max-width:540px;margin:24px auto 0}
-    .hero-sub code{font-family:var(--mono);font-size:15px;font-weight:500;background:#f4f4f5;padding:2px 8px;border-radius:5px;color:var(--fg)}
-    .hero-actions{display:flex;gap:12px;margin-top:40px;justify-content:center;align-items:center;flex-wrap:wrap}
-    .btn{font-size:15px;font-weight:500;font-family:var(--sans);padding:12px 28px;border-radius:10px;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
-    .btn-primary{background:var(--fg);color:#fff}
-    .btn-primary:hover{background:#27272a}
-    .btn-outline{background:none;color:var(--fg);border:1.5px solid var(--border2)}
-    .btn-outline:hover{border-color:var(--fg3);color:var(--fg)}
+    .hero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:300;letter-spacing:-.035em;line-height:1.08;color:var(--fg);max-width:600px}
+    .hero h1 em{font-style:normal;font-weight:500}
+    .hero-p{font-size:17px;font-weight:300;color:var(--fg2);line-height:1.7;max-width:480px;margin-top:24px}
+    .hero-p code{font-family:var(--mono);font-size:14px;font-weight:400;color:var(--fg)}
+    .hero-actions{display:flex;gap:12px;margin-top:36px;align-items:center}
+    .btn{font-size:14px;font-weight:400;font-family:var(--sans);padding:10px 24px;border-radius:100px;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+    .btn-dark{background:var(--fg);color:#fff}
+    .btn-dark:hover{background:#27272a}
+    .btn-ghost{background:none;color:var(--fg2);border:1px solid var(--border2);font-size:14px;padding:10px 24px;border-radius:100px}
+    .btn-ghost:hover{border-color:var(--fg3);color:var(--fg)}
 
-    /* ── CLI Tagline ── */
-    .cli-tag{max-width:1060px;margin:0 auto;padding:0 32px;text-align:center}
-    .cli-tag p{font-family:var(--mono);font-size:14px;color:var(--fg3);font-weight:400}
-    .cli-tag p span{color:var(--fg2)}
-
-    /* ── Terminal (small fonts — app screen) ── */
-    .terminal-wrap{max-width:1060px;margin:0 auto;padding:24px 32px 0}
-    .terminal{background:#09090b;border-radius:12px;padding:24px 28px;font-family:var(--mono);font-size:12px;line-height:2;color:#a1a1aa;overflow-x:auto;border:1px solid #27272a;position:relative}
-    .terminal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#6366f140,transparent)}
+    /* Terminal (small — screen) */
+    .terminal-wrap{max-width:980px;margin:0 auto;padding:0 24px 80px}
+    .terminal{background:#09090b;border-radius:10px;padding:22px 24px;font-family:var(--mono);font-size:11.5px;line-height:2;color:#a1a1aa;overflow-x:auto;border:1px solid #27272a}
     .terminal .cm{color:#3f3f46}
     .terminal .pr{color:var(--green)}
-    .terminal .fl{color:var(--blue)}
+    .terminal .fl{color:#71717a}
     .terminal .st{color:#fbbf24}
-    .terminal .re{color:#71717a}
+    .terminal .re{color:#52525b}
     .terminal .hi{color:#e4e4e7}
     .terminal .dim{color:#27272a}
-    .t-block{margin-top:4px}
     .t-sep{border:none;border-top:1px solid #1a1a1e;margin:8px 0}
 
-    /* ── Agent Highlight Section ── */
-    .agent-section{max-width:1060px;margin:0 auto;padding:96px 32px 0}
-    .agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:40px}
-    .agent-text h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.15}
-    .agent-text h2 span{color:var(--blue)}
-    .agent-text p{font-size:16px;font-weight:400;color:var(--fg2);line-height:1.75;margin-top:16px;max-width:440px}
-    .agent-features{display:flex;flex-direction:column;gap:20px;margin-top:32px}
-    .af{display:flex;gap:14px;align-items:flex-start}
-    .af-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-    .af-icon.cli{background:#eef2ff;color:var(--blue)}
-    .af-icon.json{background:#ecfdf5;color:var(--green)}
-    .af-icon.mcp{background:#fef3c7;color:var(--amber)}
-    .af h4{font-size:15px;font-weight:600;margin-bottom:2px}
-    .af p{font-size:14px;color:var(--fg2);font-weight:400;line-height:1.6}
+    /* Agent section */
+    .agent-section{max-width:980px;margin:0 auto;padding:0 24px 80px}
+    .agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+    .agent-text h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:300;letter-spacing:-.025em;line-height:1.15;max-width:380px}
+    .agent-text h2 strong{font-weight:500}
+    .agent-text>p{font-size:15px;font-weight:300;color:var(--fg2);line-height:1.7;max-width:380px;margin-top:14px}
+    .af-list{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+    .af{display:flex;gap:12px;align-items:flex-start}
+    .af-dot{width:4px;height:4px;border-radius:50%;background:var(--fg4);margin-top:7px;flex-shrink:0}
+    .af h4{font-size:14px;font-weight:500;margin-bottom:1px}
+    .af p{font-size:13px;color:var(--fg2);font-weight:300;line-height:1.55}
 
-    /* Agent terminal (small — screen) */
-    .agent-terminal{background:#09090b;border-radius:12px;padding:20px 22px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a1a1aa;border:1px solid #27272a;overflow-x:auto}
+    .agent-terminal{background:#09090b;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a1a1aa;border:1px solid #27272a;overflow-x:auto}
     .agent-terminal .cm{color:#3f3f46}
     .agent-terminal .pr{color:var(--green)}
-    .agent-terminal .fl{color:var(--blue)}
-    .agent-terminal .st{color:#fbbf24}
-    .agent-terminal .re{color:#71717a}
+    .agent-terminal .fl{color:#71717a}
+    .agent-terminal .re{color:#52525b}
     .agent-terminal .hi{color:#e4e4e7}
-    .agent-terminal .json-key{color:#93c5fd}
-    .agent-terminal .json-str{color:#86efac}
-    .agent-terminal .json-num{color:#fbbf24}
 
-    /* ── Section headings (normal readable size) ── */
-    section{max-width:1060px;margin:0 auto;padding:96px 32px}
-    .s-label{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
-    h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;max-width:520px}
-    .s-desc{font-size:16px;font-weight:400;color:var(--fg2);line-height:1.75;max-width:460px;margin-top:16px}
+    /* Sections */
+    section{max-width:980px;margin:0 auto;padding:80px 24px}
+    .s-label{font-size:11px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:14px}
+    h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:300;letter-spacing:-.025em;line-height:1.15;max-width:480px}
+    h2 strong{font-weight:500}
+    .s-desc{font-size:15px;font-weight:300;color:var(--fg2);line-height:1.7;max-width:440px;margin-top:14px}
 
-    /* ── Screens: Intelligence Table (small fonts — app viz) ── */
-    .screen-section{max-width:1060px;margin:0 auto;padding:0 32px 96px}
-    .screen-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px}
-    .screen-header h2{margin:0}
-    .screen-header .s-desc{margin-top:8px}
+    /* Screens (small fonts) */
+    .screen-section{max-width:980px;margin:0 auto;padding:0 24px 80px}
+    .screen-intro{margin-bottom:28px}
+    .screen-intro .s-desc{margin-top:10px}
 
-    .intel-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 4px}
-    .intel-tabs{display:flex;gap:0}
-    .intel-tab{font-size:10px;font-weight:400;letter-spacing:.04em;padding:4px 12px;color:var(--fg3);cursor:pointer;border:1px solid var(--border2);background:var(--white);transition:all .15s;font-family:var(--sans)}
+    .intel-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding:0 2px}
+    .intel-tabs{display:flex}
+    .intel-tab{font-size:9.5px;font-weight:400;letter-spacing:.04em;padding:4px 11px;color:var(--fg3);cursor:pointer;border:1px solid var(--border2);background:var(--white);transition:all .15s;font-family:var(--sans)}
     .intel-tab:first-child{border-radius:5px 0 0 5px}
     .intel-tab:last-child{border-radius:0 5px 5px 0}
     .intel-tab:not(:first-child){border-left:none}
     .intel-tab.active{background:var(--fg);color:#fff;border-color:var(--fg)}
-    .intel-count{font-size:10px;color:var(--fg3);font-weight:300}
+    .intel-count{font-size:9.5px;color:var(--fg3);font-weight:300}
 
     .table-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white)}
     .t-head{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 14px;background:#fafafa;border-bottom:1px solid var(--border)}
-    .t-head span{font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:8px 0}
+    .t-head span{font-size:9px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:8px 0}
     .t-row{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 14px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
     .t-row:last-child{border-bottom:none}
     .t-row:hover{background:#fafaff}
     .t-row.active{background:#f5f3ff}
-
     .t-company{padding:8px 0}
-    .t-name{font-size:11px;font-weight:500;color:var(--fg);letter-spacing:-.01em}
+    .t-name{font-size:11px;font-weight:500;color:var(--fg)}
     .t-domain{font-size:9px;font-weight:300;color:var(--fg3);margin-top:1px}
-    .t-cust{font-size:7.5px;font-weight:600;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:#ede9fe;color:#7c3aed;margin-left:5px;text-transform:uppercase}
-
+    .t-cust{font-size:7.5px;font-weight:500;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:#f4f4f5;color:var(--fg3);margin-left:5px;text-transform:uppercase}
     .t-industry{font-size:10px;font-weight:300;color:var(--fg2);padding:8px 0}
-    .t-tool{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:400;padding:2px 7px;border-radius:100px;background:#eef2ff;color:#4f46e5}
+    .t-tool{display:inline-flex;font-size:9px;font-weight:400;padding:2px 7px;border-radius:100px;background:#f4f4f5;color:var(--fg2)}
     .t-tool-more{font-size:8px;color:var(--fg3);margin-left:3px;font-weight:300}
     .t-num{font-size:10px;font-weight:400;color:var(--fg2);text-align:center;padding:8px 0;font-variant-numeric:tabular-nums}
     .t-num.strong{font-weight:500;color:var(--fg)}
-
     .t-score{display:flex;align-items:center;gap:5px;padding:8px 0}
     .t-bar{width:40px;height:3px;border-radius:2px;background:#f4f4f5;overflow:hidden}
-    .t-bar-fill{height:100%;border-radius:2px}
-    .t-bar-fill.hi{background:var(--green)}
-    .t-bar-fill.md{background:var(--amber)}
-    .t-bar-fill.lo{background:var(--fg4)}
+    .t-bar-fill{height:100%;border-radius:2px;background:var(--fg4)}
+    .t-bar-fill.hi{background:var(--fg2)}
+    .t-bar-fill.md{background:var(--fg3)}
     .t-score-val{font-size:9px;font-weight:400;color:var(--fg2);font-variant-numeric:tabular-nums;min-width:16px}
+    .t-data{font-size:8px;font-weight:400;padding:2px 6px;border-radius:100px;text-align:center;background:#f4f4f5;color:var(--fg3)}
 
-    .t-data{font-size:8px;font-weight:500;padding:2px 6px;border-radius:100px;text-align:center}
-    .t-data.complete{background:#ecfdf5;color:#059669}
-    .t-data.partial{background:#fffbeb;color:#d97706}
-    .t-data.stub{background:#f4f4f5;color:#a1a1aa}
-
-    /* ── Screens: Graph (small fonts — app viz) ── */
+    /* Graph */
     .graph-canvas{position:relative;border:1px solid var(--border);border-radius:10px;background:var(--white);min-height:420px;overflow:hidden}
-    .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid;font-size:10px;min-width:155px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.03)}
-    .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px)}
-    .g-connector{border-color:#e0e7ff;background:#fafafe}
-    .g-target{border-color:#ede9fe}
-    .g-badge{font-size:7.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:1.5px 5px;border-radius:100px;display:inline-flex;align-items:center;gap:3px}
-    .g-badge.board{background:#dbeafe;color:#3b82f6}
-    .g-badge.investor{background:#ecfdf5;color:#10b981}
-    .g-badge.team{background:#fef3c7;color:#d97706}
-    .g-badge.dept{background:#f4f4f5;color:#71717a}
-    .g-name{font-size:11px;font-weight:500;color:var(--fg);margin:3px 0 1px;letter-spacing:-.01em}
+    .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid var(--border2);font-size:10px;min-width:155px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.02)}
+    .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-1px)}
+    .g-badge{font-size:7.5px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;padding:1.5px 5px;border-radius:100px;background:#f4f4f5;color:var(--fg3);display:inline-flex}
+    .g-name{font-size:11px;font-weight:500;color:var(--fg);margin:3px 0 1px}
     .g-title{font-size:9px;font-weight:300;color:var(--fg3)}
     .g-reach{font-size:8px;font-weight:300;color:var(--fg3);margin-top:4px}
-    .g-reach em{font-style:normal;color:var(--green);font-weight:400}
+    .g-reach em{font-style:normal;color:var(--fg2);font-weight:400}
     .g-via{display:flex;align-items:center;gap:4px;margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:8px;font-weight:300;color:var(--fg3)}
     .g-via strong{font-weight:400;color:var(--fg2)}
-    .g-strength{font-size:7.5px;font-weight:400;padding:1px 5px;border-radius:100px}
-    .g-strength.strong{background:#ecfdf5;color:#059669}
-    .g-strength.medium{background:#fffbeb;color:#d97706}
-    .g-company-dot{width:4px;height:4px;border-radius:50%;display:inline-block}
+    .g-strength{font-size:7.5px;font-weight:400;padding:1px 5px;border-radius:100px;background:#f4f4f5;color:var(--fg3)}
+    .g-company-dot{width:4px;height:4px;border-radius:50%;background:var(--fg3);display:inline-block}
 
-    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:10px;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px)}
+    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:10px;box-shadow:0 4px 20px rgba(0,0,0,.03);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px)}
     .g-popover.show{opacity:1;transform:translateY(0)}
     .g-popover-route{font-weight:500;color:var(--fg);font-size:11px}
     .g-popover-via{font-size:9px;font-weight:300;color:var(--fg3)}
-    .g-popover-score{margin-left:auto;font-size:14px;font-weight:600;color:var(--fg);font-variant-numeric:tabular-nums}
+    .g-popover-score{margin-left:auto;font-size:14px;font-weight:500;color:var(--fg);font-variant-numeric:tabular-nums}
     .g-popover-score small{font-size:9px;font-weight:300;color:var(--fg3)}
-    .g-popover-btn{font-size:9px;font-weight:500;padding:5px 12px;border-radius:100px;border:1px solid var(--border2);background:none;color:var(--fg2);cursor:pointer;white-space:nowrap;font-family:var(--sans);transition:all .15s}
+    .g-popover-btn{font-size:9px;font-weight:400;padding:5px 12px;border-radius:100px;border:1px solid var(--border2);background:none;color:var(--fg2);cursor:pointer;white-space:nowrap;font-family:var(--sans);transition:all .15s}
     .g-popover-btn:hover{border-color:var(--fg3);color:var(--fg)}
 
     .g-edge{fill:none;stroke-width:1;transition:all .4s}
-    .g-edge.lit{stroke-width:1.5;filter:drop-shadow(0 0 4px rgba(99,102,241,.2))}
-    .g-edge-label{font-family:var(--mono);font-size:8px;fill:var(--fg3)}
+    .g-edge.lit{stroke-width:1.5}
 
-    /* ── Features Grid (normal readable fonts) ── */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:40px}
-    .grid-item{background:var(--white);padding:32px 28px}
-    .grid-item .num{font-size:12px;font-weight:300;color:var(--fg4);margin-bottom:12px;font-family:var(--mono)}
-    .grid-item h3{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
-    .grid-item p{font-size:14px;font-weight:400;color:var(--fg2);line-height:1.65}
+    /* Features */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:36px}
+    .grid-item{background:var(--white);padding:28px 24px}
+    .grid-item .num{font-size:11px;font-weight:300;color:var(--fg4);margin-bottom:10px;font-family:var(--mono)}
+    .grid-item h3{font-size:15px;font-weight:500;margin-bottom:5px}
+    .grid-item p{font-size:14px;font-weight:300;color:var(--fg2);line-height:1.6}
 
-    /* ── How it works (normal readable fonts) ── */
-    .steps{margin-top:40px}
-    .step{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--border)}
+    /* Steps */
+    .steps{margin-top:36px}
+    .step{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--border)}
     .step:last-child{border-bottom:none}
-    .step-n{font-size:14px;font-weight:300;color:var(--fg4);font-family:var(--mono)}
-    .step h3{font-size:17px;font-weight:600;margin-bottom:4px}
-    .step p{font-size:15px;font-weight:400;color:var(--fg2);line-height:1.65}
+    .step-n{font-size:12px;font-weight:300;color:var(--fg4);font-family:var(--mono)}
+    .step h3{font-size:16px;font-weight:500;margin-bottom:3px}
+    .step p{font-size:14px;font-weight:300;color:var(--fg2);line-height:1.6}
 
-    /* ── CTA ── */
-    .cta{text-align:center;padding:96px 32px}
-    .cta h2{max-width:none;margin:0 auto}
-    .cta .s-desc{max-width:420px;margin:16px auto 0}
-    .cta .hero-actions{justify-content:center;margin-top:32px}
-    .cta code{font-family:var(--mono);font-size:14px;font-weight:500;background:#09090b;color:var(--green);padding:8px 20px;border-radius:8px;display:inline-block;margin-top:24px}
+    /* CTA */
+    .cta{padding:96px 24px}
+    .cta h2{max-width:480px}
+    .cta .s-desc{max-width:400px;margin-top:14px}
+    .cta .hero-actions{margin-top:28px}
+    .cta code{font-family:var(--mono);font-size:13px;font-weight:400;color:var(--fg3);margin-top:20px;display:block}
 
-    /* ── Footer ── */
-    footer{max-width:1060px;margin:0 auto;padding:28px 32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:400;color:var(--fg3);flex-wrap:wrap;gap:10px}
+    footer{max-width:980px;margin:0 auto;padding:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:300;color:var(--fg3);flex-wrap:wrap;gap:10px}
     footer a{color:var(--fg2);text-decoration:none;font-weight:400}
     footer a:hover{color:var(--fg)}
 
-    @media(max-width:900px){
-      .agent-grid{grid-template-columns:1fr}
-      .agent-terminal{margin-top:32px}
-    }
+    @media(max-width:900px){.agent-grid{grid-template-columns:1fr}}
     @media(max-width:768px){
       .t-head,.t-row{grid-template-columns:2fr 1fr 1fr .8fr}
       .t-head span:nth-child(n+5),.t-row>*:nth-child(n+5){display:none}
       .grid{grid-template-columns:1fr}
       .g-node{min-width:120px;padding:7px 9px}
       .g-name{font-size:10px}
-      .hero h1{font-size:2rem}
-      .nav-links a:not(.nav-cta){display:none}
     }
     @media(max-width:480px){
       .t-head,.t-row{grid-template-columns:1.5fr 1fr .8fr}
@@ -230,32 +187,21 @@
 
   <nav>
     <a href="/" class="logo">kinobi</a>
-    <div class="nav-links">
-      <a href="#cli">CLI</a>
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="mailto:ankitkumarpansari@gmail.com" class="nav-cta">Request Access</a>
-    </div>
+    <a href="mailto:ankitkumarpansari@gmail.com" class="nav-cta">Request Access</a>
   </nav>
 
-  <!-- Hero -->
   <div class="hero">
-    <div class="hero-badge"><span class="dot"></span> Now in early access</div>
-    <h1>GTM intelligence <span>your agent can use.</span></h1>
-    <p class="hero-sub">Kinobi is a CLI-first relationship intelligence layer. Pipe <code>kinobi</code> into your AI agent, your scripts, or Claude Code — and get warm paths to any account.</p>
+    <div class="hero-tag"><span class="dot"></span> Early access</div>
+    <h1>GTM intelligence <em>your agent can use.</em></h1>
+    <p class="hero-p">Kinobi is a CLI-first relationship intelligence layer. Pipe <code>kinobi</code> into Claude Code, your scripts, or any MCP client — and get warm paths to any account.</p>
     <div class="hero-actions">
-      <a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-primary">Get early access</a>
-      <a href="#cli" class="btn btn-outline">See the CLI</a>
+      <a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-dark">Get early access</a>
+      <a href="#how" class="btn btn-ghost">How it works</a>
     </div>
   </div>
 
-  <!-- CLI install one-liner -->
-  <div class="cli-tag">
-    <p>$ <span>brew install kinobi</span></p>
-  </div>
-
-  <!-- Terminal Hero (small monospace — this is the app screen) -->
-  <div class="terminal-wrap" id="cli">
+  <!-- Terminal -->
+  <div class="terminal-wrap">
     <div class="terminal">
       <div><span class="cm"># search warm paths to any company</span></div>
       <div><span class="pr">$</span> <span class="hi">kinobi search</span> <span class="fl">--company</span> <span class="st">"Ramp"</span> <span class="fl">--min-score</span> <span class="st">70</span> <span class="fl">--json</span></div>
@@ -263,99 +209,65 @@
       <div><span class="re">Found 4 warm paths to Ramp (ramp.com)</span></div>
       <br/>
       <div><span class="re">  1.</span> <span class="hi">Sarah Chen</span> <span class="re">(Board, Kleiner Perkins)</span></div>
-      <div><span class="re">     &rarr; shared board seat at Plaid &mdash; score:</span> <span class="pr">94</span></div>
+      <div><span class="re">     → shared board seat at Plaid — score:</span> <span class="pr">94</span></div>
       <div><span class="re">  2.</span> <span class="hi">David Kim</span> <span class="re">(Investor, General Catalyst)</span></div>
-      <div><span class="re">     &rarr; Series B co-investor &mdash; score:</span> <span class="pr">87</span></div>
+      <div><span class="re">     → Series B co-investor — score:</span> <span class="pr">87</span></div>
       <div><span class="re">  3.</span> <span class="hi">Priya Rao</span> <span class="re">(VP Eng, your team)</span></div>
-      <div><span class="re">     &rarr; ex-Stripe &bull; 2yr overlap &mdash; score:</span> <span class="pr">82</span></div>
+      <div><span class="re">     → ex-Stripe · 2yr overlap — score:</span> <span class="pr">82</span></div>
       <div><span class="re">  4.</span> <span class="hi">James Liu</span> <span class="re">(Advisor)</span></div>
-      <div><span class="re">     &rarr; Stanford MBA 2018 &mdash; score:</span> <span class="pr">71</span></div>
-
+      <div><span class="re">     → Stanford MBA 2018 — score:</span> <span class="pr">71</span></div>
       <hr class="t-sep"/>
-
-      <div><span class="cm"># enrich a company and pipe to your agent</span></div>
+      <div><span class="cm"># pipe enrichment data to your agent</span></div>
       <div><span class="pr">$</span> <span class="hi">kinobi enrich</span> <span class="st">"brex.com"</span> <span class="fl">--json</span> <span class="dim">|</span> <span class="hi">claude</span> <span class="st">"draft an outreach plan"</span></div>
-      <br/>
-      <div><span class="re">{</span></div>
-      <div><span class="re">  "company": "Brex",</span></div>
-      <div><span class="re">  "cx_stack": ["Intercom", "Segment", "Snowflake"],</span></div>
-      <div><span class="re">  "warm_paths": 7,</span></div>
-      <div><span class="re">  "strongest_path": { "via": "Sarah Chen", "score": 89 },</span></div>
-      <div><span class="re">  "signals": ["Series D", "Expanding CX team", "Zendesk contract ending"]</span></div>
-      <div><span class="re">}</span></div>
-
       <hr class="t-sep"/>
-
-      <div><span class="cm"># works as an MCP server for Claude Code</span></div>
+      <div><span class="cm"># or run as an MCP server for Claude Code</span></div>
       <div><span class="pr">$</span> <span class="hi">kinobi mcp start</span></div>
-      <div><span class="re">MCP server running on stdio &mdash; tools: search, enrich, graph, intro</span></div>
+      <div><span class="re">MCP server running on stdio — tools: search, enrich, graph, intro</span></div>
     </div>
   </div>
 
-  <!-- Agent-Native Section -->
+  <!-- Built for agents -->
   <div class="agent-section">
     <div class="agent-grid">
       <div class="agent-text">
         <p class="s-label">Built for agents</p>
-        <h2>Your GTM data speaks <span>structured JSON.</span></h2>
-        <p>Every command returns machine-readable output. Pipe it to Claude Code, feed it to your scripts, or use it as an MCP tool — Kinobi was designed for AI agents from day one.</p>
-        <div class="agent-features">
-          <div class="af">
-            <div class="af-icon cli">&gt;_</div>
-            <div>
-              <h4>CLI-first</h4>
-              <p>Unix-native. Pipe-friendly. Composable with any workflow.</p>
-            </div>
-          </div>
-          <div class="af">
-            <div class="af-icon json">{}</div>
-            <div>
-              <h4>Structured output</h4>
-              <p>Every command supports <code style="font-size:12px;background:#f4f4f5;padding:1px 5px;border-radius:3px">--json</code> for machine-readable responses.</p>
-            </div>
-          </div>
-          <div class="af">
-            <div class="af-icon mcp">&#9671;</div>
-            <div>
-              <h4>MCP server</h4>
-              <p>Drop-in tool server for Claude Code, Cursor, and any MCP client.</p>
-            </div>
-          </div>
+        <h2>Your GTM data speaks <strong>structured JSON.</strong></h2>
+        <p>Every command returns machine-readable output. Pipe it to Claude Code, feed it to your scripts, or use Kinobi as an MCP tool.</p>
+        <div class="af-list">
+          <div class="af"><span class="af-dot"></span><div><h4>CLI-first</h4><p>Unix-native. Pipe-friendly. Composable with any workflow.</p></div></div>
+          <div class="af"><span class="af-dot"></span><div><h4>Structured output</h4><p>Every command supports <code style="font-family:var(--mono);font-size:12px">--json</code> for agent-readable responses.</p></div></div>
+          <div class="af"><span class="af-dot"></span><div><h4>MCP server</h4><p>Drop-in tool server for Claude Code, Cursor, and any MCP client.</p></div></div>
         </div>
       </div>
-      <div>
-        <div class="agent-terminal">
-          <div><span class="cm"># Claude Code using Kinobi as a tool</span></div>
-          <div><span class="pr">&gt;</span> <span class="hi">Find warm paths to Ramp and draft an intro email</span></div>
-          <div><span class="re">&nbsp;</span></div>
-          <div><span class="fl">Using tool:</span> <span class="hi">kinobi.search</span></div>
-          <div><span class="re">  company: "Ramp"</span></div>
-          <div><span class="re">  min_score: 70</span></div>
-          <div><span class="re">&nbsp;</span></div>
-          <div><span class="fl">Result:</span> <span class="re">4 warm paths found</span></div>
-          <div><span class="re">  Best path: Sarah Chen (score: 94)</span></div>
-          <div><span class="re">  Shared board seat at Plaid with Alex Rivera, VP CX</span></div>
-          <div><span class="re">&nbsp;</span></div>
-          <div><span class="fl">Using tool:</span> <span class="hi">kinobi.enrich</span></div>
-          <div><span class="re">  company: "ramp.com"</span></div>
-          <div><span class="re">&nbsp;</span></div>
-          <div><span class="fl">Drafting email:</span></div>
-          <div><span class="hi">Subject: Quick intro via Sarah Chen?</span></div>
-          <div><span class="re">Hi Alex — Sarah Chen mentioned you're</span></div>
-          <div><span class="re">rethinking the CX stack at Ramp...</span></div>
-        </div>
+      <div class="agent-terminal">
+        <div><span class="cm"># Claude Code using Kinobi as a tool</span></div>
+        <div><span class="pr">&gt;</span> <span class="hi">Find warm paths to Ramp and draft an intro</span></div>
+        <div>&nbsp;</div>
+        <div><span class="fl">Using tool:</span> <span class="hi">kinobi.search</span></div>
+        <div><span class="re">  company: "Ramp"</span></div>
+        <div><span class="re">  min_score: 70</span></div>
+        <div>&nbsp;</div>
+        <div><span class="fl">Result:</span> <span class="re">4 warm paths found</span></div>
+        <div><span class="re">  Best: Sarah Chen (score: 94)</span></div>
+        <div><span class="re">  Shared board at Plaid → Alex Rivera, VP CX</span></div>
+        <div>&nbsp;</div>
+        <div><span class="fl">Using tool:</span> <span class="hi">kinobi.enrich</span></div>
+        <div><span class="re">  company: "ramp.com"</span></div>
+        <div>&nbsp;</div>
+        <div><span class="fl">Drafting:</span></div>
+        <div><span class="hi">Subject: Quick intro via Sarah Chen?</span></div>
+        <div><span class="re">Hi Alex — Sarah mentioned you're rethinking</span></div>
+        <div><span class="re">the CX stack at Ramp...</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Pipeline Intelligence (small app viz) -->
-  <div class="screen-section" style="padding-top:96px">
-    <div class="screen-header">
-      <div>
-        <p class="s-label">Live data</p>
-        <h2>Pipeline intelligence, always enriched.</h2>
-        <p class="s-desc">Every company scored, every connection mapped. Your agent queries it — you close deals.</p>
-      </div>
+  <!-- Intelligence Table -->
+  <div class="screen-section">
+    <div class="screen-intro">
+      <p class="s-label">Pipeline intelligence</p>
+      <h2>Every company <strong>scored and enriched.</strong></h2>
+      <p class="s-desc">Your agent queries the graph. You close deals.</p>
     </div>
     <div class="intel-bar">
       <div class="intel-tabs">
@@ -366,29 +278,25 @@
       <span class="intel-count">127 companies</span>
     </div>
     <div class="table-wrap">
-      <div class="t-head">
-        <span>Company</span><span>Industry</span><span>CX Stack</span><span>Board</span><span>Paths</span><span>Strongest</span><span>Data</span>
-      </div>
+      <div class="t-head"><span>Company</span><span>Industry</span><span>CX Stack</span><span>Board</span><span>Paths</span><span>Strongest</span><span>Data</span></div>
       <div id="tableRows"></div>
     </div>
   </div>
 
-  <!-- Relationship Graph (small app viz) -->
+  <!-- Relationship Graph -->
   <div class="screen-section">
-    <div class="screen-header">
-      <div>
-        <p class="s-label">Relationship graph</p>
-        <h2>See every warm path, visually.</h2>
-        <p class="s-desc">Connectors on the left, targets on the right. Your agent finds the strongest paths automatically.</p>
-      </div>
+    <div class="screen-intro">
+      <p class="s-label">Relationship graph</p>
+      <h2>See every <strong>warm path.</strong></h2>
+      <p class="s-desc">Connectors on the left, targets on the right. Your agent finds the strongest path automatically.</p>
     </div>
     <div class="graph-canvas" id="graphCanvas">
       <svg id="gSvg" style="width:100%;height:100%;position:absolute;top:0;left:0;pointer-events:none"></svg>
       <div id="gNodes"></div>
       <div class="g-popover show" id="gPopover">
         <div>
-          <div class="g-popover-route" id="gpRoute">Sarah Chen &rarr; Alex Rivera, VP CX</div>
-          <div class="g-popover-via" id="gpVia">Shared board seat at Plaid &bull; 3yr overlap</div>
+          <div class="g-popover-route" id="gpRoute">Sarah Chen → Alex Rivera, VP CX</div>
+          <div class="g-popover-via" id="gpVia">Shared board seat at Plaid · 3yr overlap</div>
         </div>
         <span class="g-popover-score" id="gpScore">94<small>/100</small></span>
         <button class="g-popover-btn">Request intro</button>
@@ -399,41 +307,41 @@
   <!-- Features -->
   <section id="features">
     <p class="s-label">Capabilities</p>
-    <h2>Your network, structured and scored.</h2>
+    <h2>Your network, <strong>structured and scored.</strong></h2>
     <p class="s-desc">Kinobi ingests LinkedIn connections, board affiliations, investor networks, and alumni ties — then scores every path to every target.</p>
     <div class="grid">
-      <div class="grid-item"><p class="num">01</p><h3>Relationship graph</h3><p>Map connections between your team, investors, board, and advisors to decision makers at any company.</p></div>
-      <div class="grid-item"><p class="num">02</p><h3>Connection scoring</h3><p>Every path scored 0-100 based on shared experience, overlap duration, recency, and seniority.</p></div>
-      <div class="grid-item"><p class="num">03</p><h3>Board intelligence</h3><p>Automated board affiliation mapping, cross-company bridges, and executive network discovery.</p></div>
-      <div class="grid-item"><p class="num">04</p><h3>CLI + MCP native</h3><p>Works from your terminal. Pipe to agents. Run as an MCP server for Claude Code or Cursor.</p></div>
+      <div class="grid-item"><p class="num">01</p><h3>Relationship graph</h3><p>Map connections between your team, investors, board, and advisors to any decision maker.</p></div>
+      <div class="grid-item"><p class="num">02</p><h3>Connection scoring</h3><p>Every path scored 0–100 on shared experience, overlap duration, recency, and seniority.</p></div>
+      <div class="grid-item"><p class="num">03</p><h3>Board intelligence</h3><p>Automated board affiliation mapping, cross-company bridges, and executive networks.</p></div>
+      <div class="grid-item"><p class="num">04</p><h3>CLI + MCP native</h3><p>Works from your terminal. Pipe to agents. Run as an MCP server for Claude Code.</p></div>
       <div class="grid-item"><p class="num">05</p><h3>Company enrichment</h3><p>Tech stack, buying signals, org charts, and funding data — structured and updated daily.</p></div>
-      <div class="grid-item"><p class="num">06</p><h3>Warm intro workflows</h3><p>One-click intro requests through the strongest path. Track all the way to meeting booked.</p></div>
+      <div class="grid-item"><p class="num">06</p><h3>Warm intro workflows</h3><p>One-click intro requests through the strongest path. Track to meeting booked.</p></div>
     </div>
   </section>
 
   <!-- How it works -->
   <section id="how">
     <p class="s-label">How it works</p>
-    <h2>Install. Connect. Let your agent sell.</h2>
+    <h2>Install. Connect. <strong>Let your agent sell.</strong></h2>
     <p class="s-desc">Three commands to go from cold pipeline to warm intros.</p>
     <div class="steps">
-      <div class="step"><span class="step-n">01</span><div><h3>Install the CLI</h3><p>One command: <code style="font-family:var(--mono);font-size:13px;background:#f4f4f5;padding:2px 8px;border-radius:4px">brew install kinobi</code>. Authenticate with your API key. Done.</p></div></div>
-      <div class="step"><span class="step-n">02</span><div><h3>Connect your network</h3><p>Import LinkedIn connections, share your investor list, upload target accounts. Kinobi builds the relationship graph automatically.</p></div></div>
-      <div class="step"><span class="step-n">03</span><div><h3>Query from anywhere</h3><p>Use the CLI directly, pipe to Claude Code, or add Kinobi as an MCP tool. Your agent gets structured data about every warm path.</p></div></div>
-      <div class="step"><span class="step-n">04</span><div><h3>Close through warm paths</h3><p>Your agent drafts outreach through the strongest connections. You just approve and send.</p></div></div>
+      <div class="step"><span class="step-n">01</span><div><h3>Install the CLI</h3><p><code style="font-family:var(--mono);font-size:13px">brew install kinobi</code> — authenticate with your API key. Done.</p></div></div>
+      <div class="step"><span class="step-n">02</span><div><h3>Connect your network</h3><p>Import LinkedIn connections, share your investor list, upload target accounts. Kinobi builds the graph.</p></div></div>
+      <div class="step"><span class="step-n">03</span><div><h3>Query from anywhere</h3><p>Use the CLI, pipe to Claude Code, or add Kinobi as an MCP tool. Your agent gets structured data on every warm path.</p></div></div>
+      <div class="step"><span class="step-n">04</span><div><h3>Close through warm paths</h3><p>Your agent drafts outreach through the strongest connections. You approve and send.</p></div></div>
     </div>
   </section>
 
   <section class="cta">
-    <h2>Your pipeline has warm paths.<br/>Let your agent find them.</h2>
+    <h2>Your pipeline has warm paths. <strong>Let your agent find them.</strong></h2>
     <p class="s-desc">Kinobi turns your team's network into structured, queryable intelligence — built for the way agents work.</p>
-    <div class="hero-actions"><a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-primary">Get early access</a></div>
+    <div class="hero-actions"><a href="mailto:ankitkumarpansari@gmail.com" class="btn btn-dark">Get early access</a></div>
     <code>$ brew install kinobi && kinobi init</code>
   </section>
 
   <footer>
-    <span>&copy; 2026 Kinobi &mdash; Ankit Pansari</span>
-    <div style="display:flex;gap:20px">
+    <span>&copy; 2026 Kinobi — Ankit Pansari</span>
+    <div style="display:flex;gap:16px">
       <a href="mailto:ankitkumarpansari@gmail.com">ankitkumarpansari@gmail.com</a>
       <a href="https://github.com/ankitkumarpansari">GitHub</a>
       <a href="https://linkedin.com/in/ankitkumarpansari">LinkedIn</a>
@@ -442,17 +350,16 @@
 
   <script>
   const companies=[
-    {name:'Ramp',domain:'ramp.com',industry:'Fintech',tool:'Intercom',more:'+2',board:4,paths:6,score:94,data:'complete',cust:true,color:'#6366f1'},
-    {name:'Chime',domain:'chime.com',industry:'Fintech',tool:'Zendesk',more:'+1',board:7,paths:9,score:91,data:'complete',cust:false,color:'#10b981'},
-    {name:'Bilt Rewards',domain:'biltrewards.com',industry:'Fintech',tool:'Custom',more:'',board:3,paths:4,score:88,data:'partial',cust:false,color:'#8b5cf6'},
-    {name:'Brex',domain:'brex.com',industry:'Fintech',tool:'Intercom',more:'+3',board:5,paths:7,score:89,data:'complete',cust:true,color:'#06b6d4'},
-    {name:'Navan',domain:'navan.com',industry:'Travel',tool:'Salesforce',more:'+1',board:2,paths:3,score:76,data:'partial',cust:false,color:'#f59e0b'},
-    {name:'Duolingo',domain:'duolingo.com',industry:'EdTech',tool:'Zendesk',more:'+2',board:1,paths:2,score:72,data:'complete',cust:false,color:'#f43f5e'},
-    {name:'Wealthsimple',domain:'wealthsimple.com',industry:'Fintech',tool:'Intercom',more:'+1',board:2,paths:3,score:81,data:'partial',cust:false,color:'#64748b'},
-    {name:'Robinhood',domain:'robinhood.com',industry:'Fintech',tool:'Custom',more:'+2',board:3,paths:5,score:85,data:'complete',cust:false,color:'#78716c'},
+    {name:'Ramp',domain:'ramp.com',industry:'Fintech',tool:'Intercom',more:'+2',board:4,paths:6,score:94,data:'complete',cust:true},
+    {name:'Chime',domain:'chime.com',industry:'Fintech',tool:'Zendesk',more:'+1',board:7,paths:9,score:91,data:'complete',cust:false},
+    {name:'Bilt Rewards',domain:'biltrewards.com',industry:'Fintech',tool:'Custom',more:'',board:3,paths:4,score:88,data:'partial',cust:false},
+    {name:'Brex',domain:'brex.com',industry:'Fintech',tool:'Intercom',more:'+3',board:5,paths:7,score:89,data:'complete',cust:true},
+    {name:'Navan',domain:'navan.com',industry:'Travel',tool:'Salesforce',more:'+1',board:2,paths:3,score:76,data:'partial',cust:false},
+    {name:'Duolingo',domain:'duolingo.com',industry:'EdTech',tool:'Zendesk',more:'+2',board:1,paths:2,score:72,data:'complete',cust:false},
+    {name:'Wealthsimple',domain:'wealthsimple.com',industry:'Fintech',tool:'Intercom',more:'+1',board:2,paths:3,score:81,data:'partial',cust:false},
+    {name:'Robinhood',domain:'robinhood.com',industry:'Fintech',tool:'Custom',more:'+2',board:3,paths:5,score:85,data:'complete',cust:false},
   ];
 
-  // Table
   document.getElementById('tableRows').innerHTML=companies.map((c,i)=>{
     const sc=c.score>=75?'hi':c.score>=50?'md':'lo';
     return`<div class="t-row${i===0?' active':''}" onclick="document.querySelectorAll('.t-row').forEach(r=>r.classList.remove('active'));this.classList.add('active')">
@@ -462,26 +369,25 @@
       <div class="t-num${c.board?' strong':''}">${c.board}</div>
       <div class="t-num${c.paths?' strong':''}">${c.paths}</div>
       <div class="t-score"><div class="t-bar"><div class="t-bar-fill ${sc}" style="width:${c.score}%"></div></div><span class="t-score-val">${c.score}</span></div>
-      <div style="padding:8px 0;text-align:center"><span class="t-data ${c.data}">${c.data==='complete'?'Complete':c.data==='partial'?'Partial':'Stub'}</span></div>
+      <div style="padding:8px 0;text-align:center"><span class="t-data">${c.data==='complete'?'Complete':'Partial'}</span></div>
     </div>`;
   }).join('');
 
-  // Graph
   const gData={
     connectors:[
-      {name:'Sarah Chen',title:'Board Member',type:'board',firm:'Kleiner Perkins',reach:12,x:24,y:28},
-      {name:'David Kim',title:'Managing Director',type:'investor',firm:'General Catalyst',reach:8,x:24,y:168},
-      {name:'Priya Rao',title:'VP Engineering',type:'team',firm:'',reach:5,x:24,y:308},
+      {name:'Sarah Chen',title:'Board Member',firm:'Kleiner Perkins',reach:12,x:24,y:28},
+      {name:'David Kim',title:'Managing Director',firm:'General Catalyst',reach:8,x:24,y:168},
+      {name:'Priya Rao',title:'VP Engineering',firm:'',reach:5,x:24,y:308},
     ],
     targets:[
-      {name:'Alex Rivera',title:'VP Customer Experience',company:'Ramp',dept:'CX',via:'Sarah Chen',strength:'strong',x:0,y:20,color:'#6366f1'},
-      {name:'Sarah Kim',title:'Dir. Support Ops',company:'Ramp',dept:'Ops',via:'David Kim',strength:'strong',x:0,y:160,color:'#6366f1'},
-      {name:'James Wu',title:'Head of CX Eng',company:'Ramp',dept:'Eng',via:'Priya Rao',strength:'medium',x:0,y:300,color:'#6366f1'},
+      {name:'Alex Rivera',title:'VP Customer Experience',company:'Ramp',dept:'CX',via:'Sarah Chen',strength:'strong',x:0,y:20},
+      {name:'Sarah Kim',title:'Dir. Support Ops',company:'Ramp',dept:'Ops',via:'David Kim',strength:'strong',x:0,y:160},
+      {name:'James Wu',title:'Head of CX Eng',company:'Ramp',dept:'Eng',via:'Priya Rao',strength:'medium',x:0,y:300},
     ],
     paths:[
-      {from:'Sarah Chen',to:'Alex Rivera, VP CX',via:'Shared board seat at Plaid \u2022 3yr overlap',score:94},
-      {from:'David Kim',to:'Sarah Kim, Dir. Support',via:'Series B co-investor \u2022 GC portfolio',score:87},
-      {from:'Priya Rao',to:'James Wu, CX Eng',via:'ex-Stripe \u2022 2yr overlap \u2022 LinkedIn 1st',score:78},
+      {from:'Sarah Chen',to:'Alex Rivera, VP CX',via:'Shared board seat at Plaid · 3yr overlap',score:94},
+      {from:'David Kim',to:'Sarah Kim, Dir. Support',via:'Series B co-investor · GC portfolio',score:87},
+      {from:'Priya Rao',to:'James Wu, CX Eng',via:'ex-Stripe · 2yr overlap · LinkedIn 1st',score:78},
     ]
   };
 
@@ -490,14 +396,12 @@
     const w=canvas.offsetWidth;
     const nodes=document.getElementById('gNodes');
     const rightX=w-185;
-
     gData.targets.forEach(t=>t.x=rightX);
-
     nodes.innerHTML='';
     gData.connectors.forEach(c=>{
-      nodes.innerHTML+=`<div class="g-node g-connector" style="left:${c.x}px;top:${c.y}px">
+      nodes.innerHTML+=`<div class="g-node" style="left:${c.x}px;top:${c.y}px">
         <div style="display:flex;gap:4px;align-items:center">
-          <span class="g-badge ${c.type}">${c.type}</span>
+          <span class="g-badge">connector</span>
           ${c.firm?`<span style="font-size:8px;font-weight:300;color:var(--fg3)">${c.firm}</span>`:''}
         </div>
         <div class="g-name">${c.name}</div>
@@ -506,15 +410,15 @@
       </div>`;
     });
     gData.targets.forEach(t=>{
-      nodes.innerHTML+=`<div class="g-node g-target" style="left:${t.x}px;top:${t.y}px;border-color:${t.color}20">
+      nodes.innerHTML+=`<div class="g-node" style="left:${t.x}px;top:${t.y}px">
         <div style="display:flex;gap:4px;align-items:center">
-          <span class="g-company-dot" style="background:${t.color}"></span>
+          <span class="g-company-dot"></span>
           <span style="font-size:8px;font-weight:300;color:var(--fg3)">${t.company}</span>
-          <span class="g-badge dept">${t.dept}</span>
+          <span class="g-badge">${t.dept}</span>
         </div>
-        <div class="g-name" style="color:${t.color}">${t.name}</div>
+        <div class="g-name">${t.name}</div>
         <div class="g-title">${t.title}</div>
-        <div class="g-via">via <strong>${t.via}</strong> <span class="g-strength ${t.strength}">${t.strength}</span></div>
+        <div class="g-via">via <strong>${t.via}</strong> <span class="g-strength">${t.strength}</span></div>
       </div>`;
     });
 
@@ -522,19 +426,20 @@
       const svg=document.getElementById('gSvg');
       const rect=canvas.getBoundingClientRect();
       svg.innerHTML='';
-      const cNodes=canvas.querySelectorAll('.g-connector');
-      const tNodes=canvas.querySelectorAll('.g-target');
-      cNodes.forEach((cn,i)=>{
-        if(!tNodes[i])return;
-        const cr=cn.getBoundingClientRect(),tr=tNodes[i].getBoundingClientRect();
+      const cNodes=canvas.querySelectorAll('.g-node');
+      const connectorNodes=[cNodes[0],cNodes[1],cNodes[2]];
+      const targetNodes=[cNodes[3],cNodes[4],cNodes[5]];
+      connectorNodes.forEach((cn,i)=>{
+        if(!targetNodes[i])return;
+        const cr=cn.getBoundingClientRect(),tr=targetNodes[i].getBoundingClientRect();
         const x1=cr.right-rect.left,y1=cr.top+cr.height/2-rect.top;
         const x2=tr.left-rect.left,y2=tr.top+tr.height/2-rect.top;
         const cp=(x1+x2)/2;
         const p=document.createElementNS('http://www.w3.org/2000/svg','path');
         p.setAttribute('d',`M${x1},${y1} C${cp},${y1} ${cp},${y2} ${x2},${y2}`);
         p.setAttribute('class','g-edge'+(i===0?' lit':''));
-        p.setAttribute('stroke',i===0?'#6366f1':'#d4d4d8');
-        p.style.opacity=i===0?'.6':'.25';
+        p.setAttribute('stroke',i===0?'#52525b':'#e4e4e7');
+        p.style.opacity=i===0?'.5':'.4';
         svg.appendChild(p);
       });
     });
@@ -542,14 +447,14 @@
     let idx=0;
     setInterval(()=>{
       idx=(idx+1)%gData.paths.length;
-      const p=gData.paths[idx];
-      document.getElementById('gpRoute').textContent=`${p.from} \u2192 ${p.to}`;
-      document.getElementById('gpVia').textContent=p.via;
-      document.getElementById('gpScore').innerHTML=`${p.score}<small>/100</small>`;
+      const pa=gData.paths[idx];
+      document.getElementById('gpRoute').textContent=`${pa.from} → ${pa.to}`;
+      document.getElementById('gpVia').textContent=pa.via;
+      document.getElementById('gpScore').innerHTML=`${pa.score}<small>/100</small>`;
       document.querySelectorAll('.g-edge').forEach((e,ei)=>{
         e.classList.toggle('lit',ei===idx);
-        e.setAttribute('stroke',ei===idx?'#6366f1':'#d4d4d8');
-        e.style.opacity=ei===idx?'.6':'.25';
+        e.setAttribute('stroke',ei===idx?'#52525b':'#e4e4e7');
+        e.style.opacity=ei===idx?'.5':'.4';
       });
     },3500);
   }
