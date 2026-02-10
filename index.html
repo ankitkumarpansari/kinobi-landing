@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinobi — GTM data built for agents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --fg: #0a0a0a;
+      --fg-secondary: #525252;
+      --fg-tertiary: #a3a3a3;
+      --bg: #fafafa;
+      --bg-card: #ffffff;
+      --border: #e5e5e5;
+      --accent: #0a0a0a;
+      --accent-hover: #262626;
+      --green: #22c55e;
+      --green-bg: #f0fdf4;
+      --blue: #3b82f6;
+      --blue-bg: #eff6ff;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--fg);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* — Nav — */
+    nav {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--fg-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--fg);
+    }
+
+    /* — Hero — */
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--fg-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      margin-bottom: 32px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      color: var(--fg);
+      max-width: 720px;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--fg-secondary);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-top: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #fff;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 12px 24px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--fg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 24px;
+      text-decoration: none;
+      transition: border-color 0.15s, transform 0.1s;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--fg-tertiary);
+    }
+
+    /* — Terminal block — */
+    .terminal {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .terminal-window {
+      background: #0a0a0a;
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: #e5e5e5;
+      overflow-x: auto;
+    }
+
+    .terminal-window .comment {
+      color: #525252;
+    }
+
+    .terminal-window .prompt {
+      color: var(--green);
+    }
+
+    .terminal-window .flag {
+      color: var(--blue);
+    }
+
+    .terminal-window .string {
+      color: #fbbf24;
+    }
+
+    .terminal-window .result {
+      color: #a3a3a3;
+    }
+
+    /* — Section — */
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--fg-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      max-width: 600px;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--fg-secondary);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-top: 16px;
+    }
+
+    /* — Grid — */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .grid-item {
+      background: var(--bg-card);
+      padding: 32px 28px;
+    }
+
+    .grid-icon {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--fg-tertiary);
+      margin-bottom: 16px;
+    }
+
+    .grid-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .grid-item p {
+      font-size: 0.875rem;
+      color: var(--fg-secondary);
+      line-height: 1.6;
+    }
+
+    /* — How it works — */
+    .steps {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    .step-num {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--fg-tertiary);
+      padding-top: 2px;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--fg-secondary);
+      line-height: 1.6;
+    }
+
+    /* — Data table — */
+    .data-section {
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+
+    .data-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding: 14px 24px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--fg-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .data-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+      transition: background 0.1s;
+    }
+
+    .data-row:last-child {
+      border-bottom: none;
+    }
+
+    .data-row:hover {
+      background: var(--bg);
+    }
+
+    .data-company {
+      font-weight: 500;
+    }
+
+    .data-tool {
+      color: var(--fg-secondary);
+    }
+
+    .data-paths {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    .data-score {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .tag-green {
+      color: #15803d;
+      background: var(--green-bg);
+    }
+
+    .tag-blue {
+      color: #1d4ed8;
+      background: var(--blue-bg);
+    }
+
+    /* — CTA — */
+    .cta {
+      text-align: center;
+      padding: 120px 24px;
+    }
+
+    .cta h2 {
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    .cta .section-desc {
+      max-width: 480px;
+      margin: 16px auto 0;
+    }
+
+    .cta .hero-actions {
+      justify-content: center;
+    }
+
+    /* — Footer — */
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--fg-tertiary);
+    }
+
+    footer a {
+      color: var(--fg-secondary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--fg);
+    }
+
+    /* — Responsive — */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .data-header,
+      .data-row {
+        grid-template-columns: 1.5fr 1fr 0.8fr 0.8fr;
+        font-size: 0.8rem;
+        padding: 12px 16px;
+      }
+
+      .hero {
+        padding: 80px 24px 60px;
+      }
+
+      .step {
+        grid-template-columns: 36px 1fr;
+        gap: 16px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .data-header,
+      .data-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .data-header > :nth-child(3),
+      .data-header > :nth-child(4),
+      .data-row > :nth-child(3),
+      .data-row > :nth-child(4) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="/" class="logo">kinobi</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="mailto:ankitkumarpansari@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Now in early access
+    </div>
+    <h1>GTM data built for agents.</h1>
+    <p class="hero-sub">
+      Kinobi is the relationship intelligence layer for go-to-market teams.
+      We map warm paths between your network and your pipeline &mdash; so every
+      outreach starts with a connection, not a cold email.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary">
+        Request early access &rarr;
+      </a>
+      <a href="#how" class="btn-secondary">
+        See how it works
+      </a>
+    </div>
+  </div>
+
+  <!-- Terminal -->
+  <div class="terminal">
+    <div class="terminal-window">
+      <div><span class="comment"># find warm paths to any target company</span></div>
+      <div><span class="prompt">$</span> kinobi search <span class="flag">--company</span> <span class="string">"Ramp"</span> <span class="flag">--min-score</span> 70</div>
+      <br />
+      <div><span class="result">Found 4 warm paths to Ramp (ramp.com)</span></div>
+      <br />
+      <div><span class="result">  1. Sarah Chen (Board, Kleiner Perkins)</span></div>
+      <div><span class="result">     &rarr; via shared board seat at Plaid &mdash; score: 94</span></div>
+      <div><span class="result">  2. David Kim (Investor, General Catalyst)</span></div>
+      <div><span class="result">     &rarr; via Series B co-investor &mdash; score: 87</span></div>
+      <div><span class="result">  3. Priya Rao (VP Eng, your team)</span></div>
+      <div><span class="result">     &rarr; via LinkedIn 1st &bull; ex-Stripe overlap 2yr &mdash; score: 82</span></div>
+      <div><span class="result">  4. James Liu (Advisor)</span></div>
+      <div><span class="result">     &rarr; via Stanford MBA cohort 2018 &mdash; score: 71</span></div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section id="features">
+    <p class="section-label">What you get</p>
+    <h2>Your entire network, structured and scored.</h2>
+    <p class="section-desc">
+      Kinobi ingests your team's LinkedIn connections, board affiliations, investor
+      networks, and alumni ties. Then scores every path to every target account.
+    </p>
+
+    <div class="grid">
+      <div class="grid-item">
+        <p class="grid-icon">01</p>
+        <h3>Relationship graph</h3>
+        <p>Map every connection between your team, investors, board, and advisors
+           to decision makers at target companies.</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-icon">02</p>
+        <h3>Connection scoring</h3>
+        <p>Every path scored 0&ndash;100 based on shared experience, overlap duration,
+           recency, and seniority. No guesswork.</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-icon">03</p>
+        <h3>Board intelligence</h3>
+        <p>Automated mapping of board affiliations, cross-company bridges, and
+           executive networks from SEC filings and LinkedIn.</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-icon">04</p>
+        <h3>Warm intro workflows</h3>
+        <p>One-click intro requests through the strongest path. Track from
+           request to meeting booked.</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-icon">05</p>
+        <h3>Company intelligence</h3>
+        <p>Tech stack detection, CX tool research, buying signals, org charts,
+           and funding data &mdash; enriched daily.</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-icon">06</p>
+        <h3>Agent-native API</h3>
+        <p>Built for AI agents and workflows. Structured JSON, real-time webhooks,
+           and natural language queries over your GTM graph.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data preview -->
+  <section>
+    <p class="section-label">Live intelligence</p>
+    <h2>Every target account, every warm path.</h2>
+    <p class="section-desc">
+      A unified view of your pipeline with relationship intelligence layered on top.
+      See who you know, how strong the connection is, and the best path in.
+    </p>
+
+    <div class="data-section">
+      <div class="data-header">
+        <span>Company</span>
+        <span>CX Tool</span>
+        <span>Warm Paths</span>
+        <span>Top Score</span>
+      </div>
+      <div class="data-row">
+        <span class="data-company">Ramp</span>
+        <span class="data-tool">Intercom</span>
+        <span class="data-paths"><span class="tag tag-green">4 paths</span></span>
+        <span class="data-score">94</span>
+      </div>
+      <div class="data-row">
+        <span class="data-company">Chime</span>
+        <span class="data-tool">Zendesk</span>
+        <span class="data-paths"><span class="tag tag-green">7 paths</span></span>
+        <span class="data-score">91</span>
+      </div>
+      <div class="data-row">
+        <span class="data-company">Bilt Rewards</span>
+        <span class="data-tool">Custom</span>
+        <span class="data-paths"><span class="tag tag-green">3 paths</span></span>
+        <span class="data-score">88</span>
+      </div>
+      <div class="data-row">
+        <span class="data-company">Navan</span>
+        <span class="data-tool">Salesforce SC</span>
+        <span class="data-paths"><span class="tag tag-blue">2 paths</span></span>
+        <span class="data-score">76</span>
+      </div>
+      <div class="data-row">
+        <span class="data-company">Duolingo</span>
+        <span class="data-tool">Zendesk</span>
+        <span class="data-paths"><span class="tag tag-blue">1 path</span></span>
+        <span class="data-score">72</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how">
+    <p class="section-label">How it works</p>
+    <h2>From cold pipeline to warm paths in 48 hours.</h2>
+    <p class="section-desc">
+      Connect your network. We build the graph. You reach targets
+      through people who already know them.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div>
+          <h3>Connect your network</h3>
+          <p>Import your team's LinkedIn connections, share your investor list,
+             and upload your target account list. Takes 10 minutes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div>
+          <h3>We build the graph</h3>
+          <p>Kinobi crawls public sources to map board affiliations, shared experiences,
+             alumni networks, and investor ties. Every connection scored automatically.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div>
+          <h3>See every warm path</h3>
+          <p>For each target account, see exactly who in your network can make an introduction,
+             how they're connected, and how strong the path is.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <div>
+          <h3>Request intros, book meetings</h3>
+          <p>One click to draft an intro request through the strongest path.
+             Track status from request to meeting. Close the loop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Stop sending cold emails.<br />Start using warm paths.</h2>
+    <p class="section-desc">
+      Your team has thousands of connections. Kinobi turns them into pipeline.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:ankitkumarpansari@gmail.com" class="btn-primary">
+        Request early access &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span>&copy; 2026 Kinobi &mdash; Built by Ankit Pansari</span>
+    <div style="display:flex;gap:20px;">
+      <a href="mailto:ankitkumarpansari@gmail.com">ankitkumarpansari@gmail.com</a>
+      <a href="https://github.com/ankitkumarpansari">GitHub</a>
+      <a href="https://linkedin.com/in/ankitkumarpansari">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>
