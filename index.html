@@ -94,9 +94,9 @@
     .intel-count{font-size:9.5px;color:var(--fg3);font-weight:300}
 
     .table-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white)}
-    .t-head{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 14px;background:#fafafa;border-bottom:1px solid var(--border)}
+    .t-head{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;background:#fafafa;border-bottom:1px solid var(--border)}
     .t-head span{font-size:9px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:8px 0}
-    .t-row{display:grid;grid-template-columns:2.2fr 1fr 1.2fr .6fr .6fr .9fr .5fr;padding:0 14px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
+    .t-row{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
     .t-row:last-child{border-bottom:none}
     .t-row:hover{background:#fafaff}
     .t-row.active{background:#f5f3ff}
@@ -116,9 +116,11 @@
     .t-bar-fill.md{background:var(--fg3)}
     .t-score-val{font-size:9px;font-weight:400;color:var(--fg2);font-variant-numeric:tabular-nums;min-width:16px}
     .t-data{font-size:8px;font-weight:400;padding:2px 6px;border-radius:100px;text-align:center;background:#f4f4f5;color:var(--fg3)}
+    .t-signal{font-size:8px;font-weight:400;padding:1.5px 6px;border-radius:100px;background:#f4f4f5;color:var(--fg3);display:inline-block;margin:1px 2px 1px 0}
+    .t-funding{font-size:9.5px;font-weight:400;color:var(--fg2);padding:8px 0;font-variant-numeric:tabular-nums}
 
     /* Graph */
-    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:10px;background:var(--white);min-height:420px;overflow:hidden}
+    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:10px;background:var(--white);min-height:620px;overflow:hidden}
     .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid var(--border2);font-size:10px;min-width:155px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.02)}
     .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-1px)}
     .g-badge{font-size:7.5px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;padding:1.5px 5px;border-radius:100px;background:#f4f4f5;color:var(--fg3);display:inline-flex}
@@ -140,8 +142,12 @@
     .g-popover-btn{font-size:9px;font-weight:400;padding:5px 12px;border-radius:100px;border:1px solid var(--border2);background:none;color:var(--fg2);cursor:pointer;white-space:nowrap;font-family:var(--sans);transition:all .15s}
     .g-popover-btn:hover{border-color:var(--fg3);color:var(--fg)}
 
+    .g-mid{border-color:var(--border);background:#fafafa;min-width:120px;text-align:center}
+    .g-mid .g-name{font-size:10px}
+    .g-mid-sub{font-size:7.5px;font-weight:400;color:var(--fg3);letter-spacing:.03em;text-transform:uppercase;margin-top:2px}
     .g-edge{fill:none;stroke-width:1;transition:all .4s}
     .g-edge.lit{stroke-width:1.5}
+    .g-edge.secondary{stroke-dasharray:4 3}
 
     /* Features */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:36px}
@@ -173,6 +179,7 @@
     @media(max-width:768px){
       .t-head,.t-row{grid-template-columns:2fr 1fr 1fr .8fr}
       .t-head span:nth-child(n+5),.t-row>*:nth-child(n+5){display:none}
+      .graph-canvas{min-height:480px}
       .grid{grid-template-columns:1fr}
       .g-node{min-width:120px;padding:7px 9px}
       .g-name{font-size:10px}
@@ -275,10 +282,10 @@
         <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Customers</button>
         <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Prospects</button>
       </div>
-      <span class="intel-count">127 companies</span>
+      <span class="intel-count">243 companies</span>
     </div>
     <div class="table-wrap">
-      <div class="t-head"><span>Company</span><span>Industry</span><span>CX Stack</span><span>Board</span><span>Paths</span><span>Strongest</span><span>Data</span></div>
+      <div class="t-head"><span>Company</span><span>Industry</span><span>CX Stack</span><span>Signals</span><span>Board</span><span>Paths</span><span>Strongest</span><span>Data</span></div>
       <div id="tableRows"></div>
     </div>
   </div>
@@ -288,7 +295,7 @@
     <div class="screen-intro">
       <p class="s-label">Relationship graph</p>
       <h2>See every <strong>warm path.</strong></h2>
-      <p class="s-desc">Connectors on the left, targets on the right. Your agent finds the strongest path automatically.</p>
+      <p class="s-desc">5 connectors, 4 shared contexts, 7 targets — your agent finds the strongest path through the graph automatically.</p>
     </div>
     <div class="graph-canvas" id="graphCanvas">
       <svg id="gSvg" style="width:100%;height:100%;position:absolute;top:0;left:0;pointer-events:none"></svg>
@@ -350,22 +357,28 @@
 
   <script>
   const companies=[
-    {name:'Ramp',domain:'ramp.com',industry:'Fintech',tool:'Intercom',more:'+2',board:4,paths:6,score:94,data:'complete',cust:true},
-    {name:'Chime',domain:'chime.com',industry:'Fintech',tool:'Zendesk',more:'+1',board:7,paths:9,score:91,data:'complete',cust:false},
-    {name:'Bilt Rewards',domain:'biltrewards.com',industry:'Fintech',tool:'Custom',more:'',board:3,paths:4,score:88,data:'partial',cust:false},
-    {name:'Brex',domain:'brex.com',industry:'Fintech',tool:'Intercom',more:'+3',board:5,paths:7,score:89,data:'complete',cust:true},
-    {name:'Navan',domain:'navan.com',industry:'Travel',tool:'Salesforce',more:'+1',board:2,paths:3,score:76,data:'partial',cust:false},
-    {name:'Duolingo',domain:'duolingo.com',industry:'EdTech',tool:'Zendesk',more:'+2',board:1,paths:2,score:72,data:'complete',cust:false},
-    {name:'Wealthsimple',domain:'wealthsimple.com',industry:'Fintech',tool:'Intercom',more:'+1',board:2,paths:3,score:81,data:'partial',cust:false},
-    {name:'Robinhood',domain:'robinhood.com',industry:'Fintech',tool:'Custom',more:'+2',board:3,paths:5,score:85,data:'complete',cust:false},
+    {name:'Ramp',domain:'ramp.com',industry:'Fintech',tool:'Intercom',more:'+2',signals:['Series D','Hiring CX'],board:4,paths:6,score:94,data:'complete',cust:true},
+    {name:'Chime',domain:'chime.com',industry:'Fintech',tool:'Zendesk',more:'+1',signals:['IPO prep','New CFO'],board:7,paths:9,score:91,data:'complete',cust:false},
+    {name:'Brex',domain:'brex.com',industry:'Fintech',tool:'Intercom',more:'+3',signals:['Series D','ZD expiring'],board:5,paths:7,score:89,data:'complete',cust:true},
+    {name:'Bilt Rewards',domain:'biltrewards.com',industry:'Fintech',tool:'Custom',more:'',signals:['Series C'],board:3,paths:4,score:88,data:'partial',cust:false},
+    {name:'Robinhood',domain:'robinhood.com',industry:'Fintech',tool:'Custom',more:'+2',signals:['Reorg','Hiring VP'],board:3,paths:5,score:85,data:'complete',cust:false},
+    {name:'Wealthsimple',domain:'wealthsimple.com',industry:'Fintech',tool:'Intercom',more:'+1',signals:['Expanding US'],board:2,paths:3,score:81,data:'partial',cust:false},
+    {name:'Navan',domain:'navan.com',industry:'Travel',tool:'Salesforce',more:'+1',signals:['Series G','New CRO'],board:2,paths:3,score:76,data:'partial',cust:false},
+    {name:'Duolingo',domain:'duolingo.com',industry:'EdTech',tool:'Zendesk',more:'+2',signals:['Earnings beat'],board:1,paths:2,score:72,data:'complete',cust:false},
+    {name:'Stripe',domain:'stripe.com',industry:'Fintech',tool:'Custom',more:'+4',signals:['IPO filed','Hiring CX'],board:6,paths:11,score:96,data:'complete',cust:false},
+    {name:'Plaid',domain:'plaid.com',industry:'Fintech',tool:'Intercom',more:'+1',signals:['Series D','Layoffs'],board:4,paths:5,score:83,data:'complete',cust:false},
+    {name:'Rippling',domain:'rippling.com',industry:'HR Tech',tool:'Intercom',more:'+2',signals:['Series F','Hiring'],board:3,paths:4,score:79,data:'partial',cust:false},
+    {name:'Figma',domain:'figma.com',industry:'Design',tool:'Zendesk',more:'+1',signals:['Post-acq','New VP CX'],board:2,paths:3,score:74,data:'complete',cust:false},
   ];
 
   document.getElementById('tableRows').innerHTML=companies.map((c,i)=>{
     const sc=c.score>=75?'hi':c.score>=50?'md':'lo';
+    const sigs=c.signals.map(s=>`<span class="t-signal">${s}</span>`).join('');
     return`<div class="t-row${i===0?' active':''}" onclick="document.querySelectorAll('.t-row').forEach(r=>r.classList.remove('active'));this.classList.add('active')">
       <div class="t-company"><div class="t-name">${c.name}${c.cust?'<span class=t-cust>customer</span>':''}</div><div class="t-domain">${c.domain}</div></div>
       <div class="t-industry">${c.industry}</div>
       <div style="padding:8px 0"><span class="t-tool">${c.tool}</span>${c.more?'<span class=t-tool-more>'+c.more+'</span>':''}</div>
+      <div style="padding:6px 0;line-height:1.8">${sigs}</div>
       <div class="t-num${c.board?' strong':''}">${c.board}</div>
       <div class="t-num${c.paths?' strong':''}">${c.paths}</div>
       <div class="t-score"><div class="t-bar"><div class="t-bar-fill ${sc}" style="width:${c.score}%"></div></div><span class="t-score-val">${c.score}</span></div>
@@ -373,21 +386,43 @@
     </div>`;
   }).join('');
 
+  // ── Rich relationship graph ──
   const gData={
     connectors:[
-      {name:'Sarah Chen',title:'Board Member',firm:'Kleiner Perkins',reach:12,x:24,y:28},
-      {name:'David Kim',title:'Managing Director',firm:'General Catalyst',reach:8,x:24,y:168},
-      {name:'Priya Rao',title:'VP Engineering',firm:'',reach:5,x:24,y:308},
+      {name:'Sarah Chen',title:'Board Member',badge:'board',firm:'Kleiner Perkins',reach:14,x:20,y:20},
+      {name:'David Kim',title:'Managing Director',badge:'investor',firm:'General Catalyst',reach:9,x:20,y:150},
+      {name:'Priya Rao',title:'VP Engineering',badge:'team',firm:'Your team',reach:6,x:20,y:280},
+      {name:'Marcus Johnson',title:'Operating Partner',badge:'investor',firm:'a16z',reach:11,x:20,y:410},
+      {name:'Lisa Park',title:'Board Observer',badge:'board',firm:'Sequoia',reach:7,x:20,y:540},
+    ],
+    midNodes:[
+      {name:'Plaid',sub:'shared board',x:0,y:55},
+      {name:'Stripe',sub:'co-investor',x:0,y:215},
+      {name:'Stanford GSB',sub:'alumni \'18',x:0,y:345},
+      {name:'YC W19',sub:'batch mates',x:0,y:475},
     ],
     targets:[
-      {name:'Alex Rivera',title:'VP Customer Experience',company:'Ramp',dept:'CX',via:'Sarah Chen',strength:'strong',x:0,y:20},
-      {name:'Sarah Kim',title:'Dir. Support Ops',company:'Ramp',dept:'Ops',via:'David Kim',strength:'strong',x:0,y:160},
-      {name:'James Wu',title:'Head of CX Eng',company:'Ramp',dept:'Eng',via:'Priya Rao',strength:'medium',x:0,y:300},
+      {name:'Alex Rivera',title:'VP Customer Experience',company:'Ramp',dept:'CX',via:'Sarah Chen',strength:'strong',x:0,y:10},
+      {name:'Nina Patel',title:'Chief of Staff',company:'Ramp',dept:'Exec',via:'Sarah Chen',strength:'strong',x:0,y:100},
+      {name:'Sarah Kim',title:'Dir. Support Ops',company:'Ramp',dept:'Ops',via:'David Kim',strength:'strong',x:0,y:190},
+      {name:'James Wu',title:'Head of CX Eng',company:'Ramp',dept:'Eng',via:'Priya Rao',strength:'medium',x:0,y:280},
+      {name:'Tom Zhang',title:'VP Product',company:'Ramp',dept:'Product',via:'Marcus Johnson',strength:'strong',x:0,y:370},
+      {name:'Rachel Green',title:'Dir. Partnerships',company:'Ramp',dept:'BD',via:'Lisa Park',strength:'medium',x:0,y:460},
+      {name:'Kevin Li',title:'CTO',company:'Ramp',dept:'Eng',via:'Marcus Johnson',strength:'medium',x:0,y:550},
+    ],
+    // Each edge: [connectorIdx, targetIdx, primary?, midIdx?]
+    edges:[
+      [0,0,true,0],[0,1,true,null],[1,2,true,1],[2,3,true,null],[3,4,true,3],[4,5,true,null],[3,6,false,null],
+      [0,2,false,null],[1,3,false,1],[2,4,false,2],[4,6,false,null],
     ],
     paths:[
       {from:'Sarah Chen',to:'Alex Rivera, VP CX',via:'Shared board seat at Plaid · 3yr overlap',score:94},
+      {from:'Sarah Chen',to:'Nina Patel, Chief of Staff',via:'Kleiner portfolio event · warm intro',score:91},
       {from:'David Kim',to:'Sarah Kim, Dir. Support',via:'Series B co-investor · GC portfolio',score:87},
       {from:'Priya Rao',to:'James Wu, CX Eng',via:'ex-Stripe · 2yr overlap · LinkedIn 1st',score:78},
+      {from:'Marcus Johnson',to:'Tom Zhang, VP Product',via:'YC W19 batch · co-founded hackathon',score:85},
+      {from:'Lisa Park',to:'Rachel Green, Dir. BD',via:'Sequoia Scouts network · warm ref',score:73},
+      {from:'Marcus Johnson',to:'Kevin Li, CTO',via:'a16z portfolio CTO dinners · 2yr',score:80},
     ]
   };
 
@@ -395,13 +430,19 @@
     const canvas=document.getElementById('graphCanvas');
     const w=canvas.offsetWidth;
     const nodes=document.getElementById('gNodes');
-    const rightX=w-185;
+    const midX=Math.floor(w/2)-60;
+    const rightX=w-180;
+
+    gData.midNodes.forEach(m=>m.x=midX);
     gData.targets.forEach(t=>t.x=rightX);
+
     nodes.innerHTML='';
+
+    // Connectors (left)
     gData.connectors.forEach(c=>{
       nodes.innerHTML+=`<div class="g-node" style="left:${c.x}px;top:${c.y}px">
         <div style="display:flex;gap:4px;align-items:center">
-          <span class="g-badge">connector</span>
+          <span class="g-badge">${c.badge}</span>
           ${c.firm?`<span style="font-size:8px;font-weight:300;color:var(--fg3)">${c.firm}</span>`:''}
         </div>
         <div class="g-name">${c.name}</div>
@@ -409,6 +450,16 @@
         <div class="g-reach">Can reach <em>${c.reach}</em> people</div>
       </div>`;
     });
+
+    // Mid nodes (center)
+    gData.midNodes.forEach(m=>{
+      nodes.innerHTML+=`<div class="g-node g-mid" style="left:${m.x}px;top:${m.y}px">
+        <div class="g-name">${m.name}</div>
+        <div class="g-mid-sub">${m.sub}</div>
+      </div>`;
+    });
+
+    // Targets (right)
     gData.targets.forEach(t=>{
       nodes.innerHTML+=`<div class="g-node" style="left:${t.x}px;top:${t.y}px">
         <div style="display:flex;gap:4px;align-items:center">
@@ -422,28 +473,68 @@
       </div>`;
     });
 
+    // Draw edges
     requestAnimationFrame(()=>{
       const svg=document.getElementById('gSvg');
       const rect=canvas.getBoundingClientRect();
       svg.innerHTML='';
-      const cNodes=canvas.querySelectorAll('.g-node');
-      const connectorNodes=[cNodes[0],cNodes[1],cNodes[2]];
-      const targetNodes=[cNodes[3],cNodes[4],cNodes[5]];
-      connectorNodes.forEach((cn,i)=>{
-        if(!targetNodes[i])return;
-        const cr=cn.getBoundingClientRect(),tr=targetNodes[i].getBoundingClientRect();
-        const x1=cr.right-rect.left,y1=cr.top+cr.height/2-rect.top;
-        const x2=tr.left-rect.left,y2=tr.top+tr.height/2-rect.top;
-        const cp=(x1+x2)/2;
-        const p=document.createElementNS('http://www.w3.org/2000/svg','path');
-        p.setAttribute('d',`M${x1},${y1} C${cp},${y1} ${cp},${y2} ${x2},${y2}`);
-        p.setAttribute('class','g-edge'+(i===0?' lit':''));
-        p.setAttribute('stroke',i===0?'#52525b':'#e4e4e7');
-        p.style.opacity=i===0?'.5':'.4';
-        svg.appendChild(p);
+
+      const allNodes=canvas.querySelectorAll('.g-node');
+      const cCount=gData.connectors.length;
+      const mCount=gData.midNodes.length;
+
+      function nodeCenter(n,side){
+        const r=n.getBoundingClientRect();
+        if(side==='right') return {x:r.right-rect.left,y:r.top+r.height/2-rect.top};
+        return {x:r.left-rect.left,y:r.top+r.height/2-rect.top};
+      }
+
+      gData.edges.forEach((e,ei)=>{
+        const cIdx=e[0], tIdx=e[1], primary=e[2], midIdx=e[3];
+        const cNode=allNodes[cIdx];
+        const tNode=allNodes[cCount+mCount+tIdx];
+        if(!cNode||!tNode)return;
+
+        if(midIdx!==null && midIdx!==undefined){
+          const mNode=allNodes[cCount+midIdx];
+          if(!mNode)return;
+          const p1=nodeCenter(cNode,'right');
+          const p2l=nodeCenter(mNode,'left');
+          const p2r=nodeCenter(mNode,'right');
+          const p3=nodeCenter(tNode,'left');
+
+          // connector → mid
+          const path1=document.createElementNS('http://www.w3.org/2000/svg','path');
+          const cp1=(p1.x+p2l.x)/2;
+          path1.setAttribute('d',`M${p1.x},${p1.y} C${cp1},${p1.y} ${cp1},${p2l.y} ${p2l.x},${p2l.y}`);
+          path1.setAttribute('class','g-edge'+(ei===0?' lit':'')+(primary?'':' secondary'));
+          path1.setAttribute('stroke',ei===0?'#52525b':'#e4e4e7');
+          path1.style.opacity=ei===0?'.5':primary?'.3':'.15';
+          svg.appendChild(path1);
+
+          // mid → target
+          const path2=document.createElementNS('http://www.w3.org/2000/svg','path');
+          const cp2=(p2r.x+p3.x)/2;
+          path2.setAttribute('d',`M${p2r.x},${p2r.y} C${cp2},${p2r.y} ${cp2},${p3.y} ${p3.x},${p3.y}`);
+          path2.setAttribute('class','g-edge'+(ei===0?' lit':'')+(primary?'':' secondary'));
+          path2.setAttribute('stroke',ei===0?'#52525b':'#e4e4e7');
+          path2.style.opacity=ei===0?'.5':primary?'.3':'.15';
+          svg.appendChild(path2);
+        } else {
+          const p1=nodeCenter(cNode,'right');
+          const p3=nodeCenter(tNode,'left');
+          const cp=(p1.x+p3.x)/2;
+          const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+          path.setAttribute('d',`M${p1.x},${p1.y} C${cp},${p1.y} ${cp},${p3.y} ${p3.x},${p3.y}`);
+          path.setAttribute('class','g-edge'+(ei===0?' lit':'')+(primary?'':' secondary'));
+          path.setAttribute('stroke',ei===0?'#52525b':'#e4e4e7');
+          path.style.opacity=ei===0?'.5':primary?'.3':'.15';
+          svg.appendChild(path);
+        }
       });
     });
 
+    // Cycle through paths in popover
     let idx=0;
     setInterval(()=>{
       idx=(idx+1)%gData.paths.length;
@@ -451,16 +542,46 @@
       document.getElementById('gpRoute').textContent=`${pa.from} → ${pa.to}`;
       document.getElementById('gpVia').textContent=pa.via;
       document.getElementById('gpScore').innerHTML=`${pa.score}<small>/100</small>`;
-      document.querySelectorAll('.g-edge').forEach((e,ei)=>{
-        e.classList.toggle('lit',ei===idx);
-        e.setAttribute('stroke',ei===idx?'#52525b':'#e4e4e7');
-        e.style.opacity=ei===idx?'.5':'.4';
+
+      // Highlight primary edges for this path index
+      const edgeEls=document.querySelectorAll('.g-edge');
+      const primaryEdges=[];
+      gData.edges.forEach((e,ei)=>{if(e[2]){primaryEdges.push(ei)}});
+      // Map path idx to primary edge pairs
+      const pathToEdge=[0,1,2,3,4,5,6];
+      edgeEls.forEach((el,ei)=>{
+        const isPrimary=gData.edges[ei]&&gData.edges[ei][2];
+        const matchesPath=(ei===idx||(gData.edges[ei]&&gData.edges[ei][3]!==null&&Math.floor(ei/1)===idx));
+        el.classList.remove('lit');
+        el.setAttribute('stroke','#e4e4e7');
+        el.style.opacity=isPrimary?'.3':'.15';
+      });
+      // Light up edges that match this connector→target pair
+      const pa2=gData.paths[idx];
+      const cIdx=gData.connectors.findIndex(c=>c.name===pa2.from);
+      gData.edges.forEach((e,ei)=>{
+        if(e[0]===cIdx&&e[2]){
+          // Find both path segments for this edge
+          const segments=document.querySelectorAll('.g-edge');
+          let segIdx=0;
+          for(let i=0;i<ei;i++){segIdx+=gData.edges[i][3]!==null&&gData.edges[i][3]!==undefined?2:1;}
+          const count=e[3]!==null&&e[3]!==undefined?2:1;
+          for(let s=segIdx;s<segIdx+count&&s<segments.length;s++){
+            segments[s].classList.add('lit');
+            segments[s].setAttribute('stroke','#52525b');
+            segments[s].style.opacity='.5';
+          }
+        }
       });
     },3500);
   }
 
   renderGraph();
-  window.addEventListener('resize',renderGraph);
+  window.addEventListener('resize',()=>{
+    document.getElementById('gNodes').innerHTML='';
+    document.getElementById('gSvg').innerHTML='';
+    renderGraph();
+  });
   </script>
 
 </body>
