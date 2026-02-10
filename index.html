@@ -172,6 +172,45 @@
     .g-edge.lit{stroke-width:2;filter:drop-shadow(0 0 3px rgba(99,102,241,.25))}
     .g-edge.secondary{stroke-dasharray:4 3}
 
+    /* ── Techstack card ── */
+    .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .tech-card{border:1px solid var(--border);border-radius:10px;background:var(--white);padding:18px 20px;overflow:hidden}
+    .tech-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .tech-card-company{font-size:14px;font-weight:600;color:var(--fg)}
+    .tech-card-domain{font-size:10px;font-weight:300;color:var(--fg3)}
+    .tech-card-updated{font-size:8px;color:var(--fg3);font-weight:300}
+    .tech-cat{margin-bottom:12px}
+    .tech-cat:last-child{margin-bottom:0}
+    .tech-cat-label{font-size:8.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:5px}
+    .tech-pills{display:flex;flex-wrap:wrap;gap:4px}
+    .tech-pill{font-size:9px;font-weight:400;padding:3px 9px;border-radius:100px;border:1px solid var(--border2);color:var(--fg2);background:var(--white)}
+    .tech-pill.new{border-color:#a7f3d0;background:#ecfdf5;color:#059669}
+    .tech-pill.removed{border-color:#fecaca;background:#fef2f2;color:#dc2626;text-decoration:line-through}
+    .tech-change{display:flex;align-items:center;gap:6px;font-size:9px;color:var(--fg3);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+    .tech-change-arrow{color:#10b981;font-weight:500}
+
+    /* ── Jobs table ── */
+    .jobs-card{border:1px solid var(--border);border-radius:10px;background:var(--white);overflow:hidden}
+    .jobs-card-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border)}
+    .jobs-card-title{font-size:13px;font-weight:600;color:var(--fg)}
+    .jobs-card-count{font-size:10px;font-weight:400;color:var(--fg3)}
+    .jobs-velocity{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:500;padding:2px 8px;border-radius:100px;background:#ecfdf5;color:#059669;margin-left:8px}
+    .j-head{display:grid;grid-template-columns:2.5fr 1fr .8fr .8fr .6fr;padding:0 18px;background:#fafafa;border-bottom:1px solid var(--border)}
+    .j-head span{font-size:8.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:7px 0}
+    .j-row{display:grid;grid-template-columns:2.5fr 1fr .8fr .8fr .6fr;padding:0 18px;border-bottom:1px solid var(--border);align-items:center}
+    .j-row:last-child{border-bottom:none}
+    .j-title{font-size:10.5px;font-weight:500;color:var(--fg);padding:7px 0}
+    .j-dept{font-size:8.5px;font-weight:500;padding:2px 7px;border-radius:100px;display:inline-flex}
+    .j-dept.cx{background:#f3e8ff;color:#7c3aed}
+    .j-dept.eng{background:#cffafe;color:#0891b2}
+    .j-dept.sales{background:#ecfdf5;color:#059669}
+    .j-dept.product{background:#fef3c7;color:#d97706}
+    .j-dept.ops{background:#e0e7ff;color:#4f46e5}
+    .j-loc{font-size:9.5px;font-weight:300;color:var(--fg2);padding:7px 0}
+    .j-level{font-size:9px;font-weight:400;color:var(--fg3);padding:7px 0}
+    .j-posted{font-size:9px;font-weight:300;color:var(--fg3);padding:7px 0}
+    .j-posted.recent{color:#059669;font-weight:400}
+
     /* Features */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:36px}
     .grid-item{background:var(--white);padding:28px 24px}
@@ -198,7 +237,7 @@
     footer a{color:var(--fg2);text-decoration:none;font-weight:400}
     footer a:hover{color:var(--fg)}
 
-    @media(max-width:900px){.agent-grid{grid-template-columns:1fr}}
+    @media(max-width:900px){.agent-grid{grid-template-columns:1fr}.tech-grid{grid-template-columns:1fr}}
     @media(max-width:768px){
       .t-head,.t-row{grid-template-columns:2fr 1fr 1fr .8fr}
       .t-head span:nth-child(n+5),.t-row>*:nth-child(n+5){display:none}
@@ -247,12 +286,36 @@
       <div><span class="re">  4.</span> <span class="hi">James Liu</span> <span class="re">(Advisor)</span></div>
       <div><span class="re">     → Stanford MBA 2018 — score:</span> <span class="pr">71</span></div>
       <hr class="t-sep"/>
-      <div><span class="cm"># pipe enrichment data to your agent</span></div>
+      <div><span class="cm"># get full technographic profile</span></div>
+      <div><span class="pr">$</span> <span class="hi">kinobi techstack</span> <span class="st">"ramp.com"</span> <span class="fl">--json</span></div>
+      <br/>
+      <div><span class="re">{</span></div>
+      <div><span class="re">  "company": "Ramp",</span></div>
+      <div><span class="re">  "cx":      ["Intercom", "Segment", "Snowflake"],</span></div>
+      <div><span class="re">  "infra":   ["AWS", "Datadog", "PagerDuty"],</span></div>
+      <div><span class="re">  "sales":   ["Salesforce", "Outreach", "Gong"],</span></div>
+      <div><span class="re">  "hr":      ["Rippling", "Greenhouse"],</span></div>
+      <div><span class="re">  "changed": ["Zendesk → Intercom (Q3 2025)"]</span></div>
+      <div><span class="re">}</span></div>
+      <hr class="t-sep"/>
+      <div><span class="cm"># pull open roles and hiring velocity</span></div>
+      <div><span class="pr">$</span> <span class="hi">kinobi jobs</span> <span class="st">"ramp.com"</span> <span class="fl">--dept</span> <span class="st">"cx,eng"</span></div>
+      <br/>
+      <div><span class="re">18 open roles at Ramp (cx: 6, eng: 12)</span></div>
+      <br/>
+      <div><span class="re">  VP Customer Experience    CX    NYC     7d ago</span></div>
+      <div><span class="re">  Sr. Support Eng           CX    Remote  3d ago</span></div>
+      <div><span class="re">  CX Platform Lead          CX    NYC     1d ago</span></div>
+      <div><span class="re">  Staff Backend Engineer    Eng   SF      5d ago</span></div>
+      <div><span class="re">  ...</span></div>
+      <div><span class="re">  Hiring velocity: </span><span class="pr">+42%</span><span class="re"> (30d) — CX team tripled postings</span></div>
+      <hr class="t-sep"/>
+      <div><span class="cm"># pipe enrichment to your agent</span></div>
       <div><span class="pr">$</span> <span class="hi">kinobi enrich</span> <span class="st">"brex.com"</span> <span class="fl">--json</span> <span class="dim">|</span> <span class="hi">claude</span> <span class="st">"draft an outreach plan"</span></div>
       <hr class="t-sep"/>
       <div><span class="cm"># or run as an MCP server for Claude Code</span></div>
       <div><span class="pr">$</span> <span class="hi">kinobi mcp start</span></div>
-      <div><span class="re">MCP server running on stdio — tools: search, enrich, graph, intro</span></div>
+      <div><span class="re">MCP server running on stdio — tools: search, enrich, techstack, jobs, graph, intro</span></div>
     </div>
   </div>
 
@@ -281,13 +344,18 @@
         <div><span class="re">  Best: Sarah Chen (score: 94)</span></div>
         <div><span class="re">  Shared board at Plaid → Alex Rivera, VP CX</span></div>
         <div>&nbsp;</div>
-        <div><span class="fl">Using tool:</span> <span class="hi">kinobi.enrich</span></div>
-        <div><span class="re">  company: "ramp.com"</span></div>
+        <div><span class="fl">Using tool:</span> <span class="hi">kinobi.techstack</span></div>
+        <div><span class="re">  Ramp: Intercom, Segment, Snowflake</span></div>
+        <div><span class="re">  Changed: Zendesk → Intercom (Q3 '25)</span></div>
+        <div>&nbsp;</div>
+        <div><span class="fl">Using tool:</span> <span class="hi">kinobi.jobs</span></div>
+        <div><span class="re">  47 open roles · CX hiring +42%</span></div>
+        <div><span class="re">  VP Customer Experience posted 1d ago</span></div>
         <div>&nbsp;</div>
         <div><span class="fl">Drafting:</span></div>
         <div><span class="hi">Subject: Quick intro via Sarah Chen?</span></div>
-        <div><span class="re">Hi Alex — Sarah mentioned you're rethinking</span></div>
-        <div><span class="re">the CX stack at Ramp...</span></div>
+        <div><span class="re">Hi Alex — I noticed Ramp just migrated to</span></div>
+        <div><span class="re">Intercom and is hiring a VP CX...</span></div>
       </div>
     </div>
   </div>
@@ -334,6 +402,146 @@
     </div>
   </div>
 
+  <!-- Technographic Intelligence -->
+  <div class="screen-section">
+    <div class="screen-intro">
+      <p class="s-label">Technographic intelligence</p>
+      <h2>Know what they use <strong>before you call.</strong></h2>
+      <p class="s-desc">Full tech stack by category — with change detection. Your agent knows when a competitor's contract expires.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-head">
+          <div><span class="tech-card-company">Ramp</span> <span class="tech-card-domain">ramp.com</span></div>
+          <span class="tech-card-updated">Updated 2d ago</span>
+        </div>
+        <div class="tech-cat">
+          <div class="tech-cat-label">Customer Experience</div>
+          <div class="tech-pills">
+            <span class="tech-pill new">Intercom</span>
+            <span class="tech-pill">Segment</span>
+            <span class="tech-pill">Snowflake</span>
+            <span class="tech-pill removed">Zendesk</span>
+          </div>
+        </div>
+        <div class="tech-cat">
+          <div class="tech-cat-label">Infrastructure</div>
+          <div class="tech-pills">
+            <span class="tech-pill">AWS</span>
+            <span class="tech-pill">Datadog</span>
+            <span class="tech-pill">PagerDuty</span>
+            <span class="tech-pill">Terraform</span>
+          </div>
+        </div>
+        <div class="tech-cat">
+          <div class="tech-cat-label">Sales & Marketing</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Salesforce</span>
+            <span class="tech-pill">Outreach</span>
+            <span class="tech-pill">Gong</span>
+            <span class="tech-pill new">6sense</span>
+          </div>
+        </div>
+        <div class="tech-cat">
+          <div class="tech-cat-label">HR & Operations</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Rippling</span>
+            <span class="tech-pill">Greenhouse</span>
+            <span class="tech-pill">Notion</span>
+          </div>
+        </div>
+        <div class="tech-change"><span class="tech-change-arrow">→</span> Zendesk → Intercom migration (Q3 2025) · 6sense added (Q4 2025)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-card-head">
+          <div><span class="tech-card-company">Brex</span> <span class="tech-card-domain">brex.com</span></div>
+          <span class="tech-card-updated">Updated 5d ago</span>
+        </div>
+        <div class="tech-cat">
+          <div class="tech-cat-label">Customer Experience</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Intercom</span>
+            <span class="tech-pill">Segment</span>
+            <span class="tech-pill">Amplitude</span>
+            <span class="tech-pill">Looker</span>
+          </div>
+        </div>
+        <div class="tech-cat">
+          <div class="tech-cat-label">Infrastructure</div>
+          <div class="tech-pills">
+            <span class="tech-pill">AWS</span>
+            <span class="tech-pill">Kubernetes</span>
+            <span class="tech-pill">Datadog</span>
+            <span class="tech-pill new">Chronosphere</span>
+          </div>
+        </div>
+        <div class="tech-cat">
+          <div class="tech-cat-label">Sales & Marketing</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Salesforce</span>
+            <span class="tech-pill">Marketo</span>
+            <span class="tech-pill removed">Outreach</span>
+            <span class="tech-pill new">Apollo</span>
+          </div>
+        </div>
+        <div class="tech-cat">
+          <div class="tech-cat-label">HR & Operations</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Workday</span>
+            <span class="tech-pill">Lever</span>
+            <span class="tech-pill">Confluence</span>
+          </div>
+        </div>
+        <div class="tech-change"><span class="tech-change-arrow">→</span> Outreach → Apollo switch (Q1 2026) · Chronosphere added (Q4 2025)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Job Intelligence -->
+  <div class="screen-section">
+    <div class="screen-intro">
+      <p class="s-label">Job intelligence</p>
+      <h2>Hiring signals tell you <strong>when to strike.</strong></h2>
+      <p class="s-desc">Track open roles, hiring velocity, and department growth. Your agent uses this to time outreach perfectly.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="jobs-card">
+        <div class="jobs-card-head">
+          <div>
+            <span class="jobs-card-title">Ramp</span>
+            <span class="jobs-card-count"> · 47 open roles</span>
+            <span class="jobs-velocity">↑ 42% (30d)</span>
+          </div>
+        </div>
+        <div class="j-head"><span>Role</span><span>Dept</span><span>Level</span><span>Location</span><span>Posted</span></div>
+        <div class="j-row"><div class="j-title">VP Customer Experience</div><span class="j-dept cx">CX</span><div class="j-level">VP</div><div class="j-loc">New York</div><div class="j-posted recent">1d</div></div>
+        <div class="j-row"><div class="j-title">Sr. Support Engineer</div><span class="j-dept cx">CX</span><div class="j-level">Senior</div><div class="j-loc">Remote</div><div class="j-posted recent">3d</div></div>
+        <div class="j-row"><div class="j-title">CX Platform Lead</div><span class="j-dept cx">CX</span><div class="j-level">Lead</div><div class="j-loc">New York</div><div class="j-posted recent">5d</div></div>
+        <div class="j-row"><div class="j-title">Staff Backend Engineer</div><span class="j-dept eng">Eng</span><div class="j-level">Staff</div><div class="j-loc">San Francisco</div><div class="j-posted">7d</div></div>
+        <div class="j-row"><div class="j-title">Product Manager, CX Tools</div><span class="j-dept product">Product</span><div class="j-level">Senior</div><div class="j-loc">New York</div><div class="j-posted">10d</div></div>
+        <div class="j-row"><div class="j-title">Sr. Data Analyst</div><span class="j-dept eng">Eng</span><div class="j-level">Senior</div><div class="j-loc">Remote</div><div class="j-posted">12d</div></div>
+        <div class="j-row"><div class="j-title">Enterprise AE</div><span class="j-dept sales">Sales</span><div class="j-level">Senior</div><div class="j-loc">New York</div><div class="j-posted">14d</div></div>
+      </div>
+      <div class="jobs-card">
+        <div class="jobs-card-head">
+          <div>
+            <span class="jobs-card-title">Stripe</span>
+            <span class="jobs-card-count"> · 112 open roles</span>
+            <span class="jobs-velocity">↑ 67% (30d)</span>
+          </div>
+        </div>
+        <div class="j-head"><span>Role</span><span>Dept</span><span>Level</span><span>Location</span><span>Posted</span></div>
+        <div class="j-row"><div class="j-title">Head of CX Engineering</div><span class="j-dept cx">CX</span><div class="j-level">Director</div><div class="j-loc">San Francisco</div><div class="j-posted recent">2d</div></div>
+        <div class="j-row"><div class="j-title">CX Data Scientist</div><span class="j-dept cx">CX</span><div class="j-level">Senior</div><div class="j-loc">Remote</div><div class="j-posted recent">4d</div></div>
+        <div class="j-row"><div class="j-title">Sr. Solutions Engineer</div><span class="j-dept sales">Sales</span><div class="j-level">Senior</div><div class="j-loc">New York</div><div class="j-posted">6d</div></div>
+        <div class="j-row"><div class="j-title">Platform Engineer</div><span class="j-dept eng">Eng</span><div class="j-level">Senior</div><div class="j-loc">Seattle</div><div class="j-posted">8d</div></div>
+        <div class="j-row"><div class="j-title">Revenue Operations Lead</div><span class="j-dept ops">Ops</span><div class="j-level">Lead</div><div class="j-loc">San Francisco</div><div class="j-posted">11d</div></div>
+        <div class="j-row"><div class="j-title">Product Manager, Billing</div><span class="j-dept product">Product</span><div class="j-level">Senior</div><div class="j-loc">Remote</div><div class="j-posted">13d</div></div>
+        <div class="j-row"><div class="j-title">Enterprise Account Exec</div><span class="j-dept sales">Sales</span><div class="j-level">Senior</div><div class="j-loc">New York</div><div class="j-posted">15d</div></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Features -->
   <section id="features">
     <p class="s-label">Capabilities</p>
@@ -344,8 +552,8 @@
       <div class="grid-item"><p class="num">02</p><h3>Connection scoring</h3><p>Every path scored 0–100 on shared experience, overlap duration, recency, and seniority.</p></div>
       <div class="grid-item"><p class="num">03</p><h3>Board intelligence</h3><p>Automated board affiliation mapping, cross-company bridges, and executive networks.</p></div>
       <div class="grid-item"><p class="num">04</p><h3>CLI + MCP native</h3><p>Works from your terminal. Pipe to agents. Run as an MCP server for Claude Code.</p></div>
-      <div class="grid-item"><p class="num">05</p><h3>Company enrichment</h3><p>Tech stack, buying signals, org charts, and funding data — structured and updated daily.</p></div>
-      <div class="grid-item"><p class="num">06</p><h3>Warm intro workflows</h3><p>One-click intro requests through the strongest path. Track to meeting booked.</p></div>
+      <div class="grid-item"><p class="num">05</p><h3>Technographic data</h3><p>Full tech stack by category with change detection. Know when a competitor's contract expires.</p></div>
+      <div class="grid-item"><p class="num">06</p><h3>Job intelligence</h3><p>Open roles, hiring velocity, department growth. Time your outreach to hiring surges.</p></div>
     </div>
   </section>
 
