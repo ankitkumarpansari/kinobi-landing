@@ -93,12 +93,14 @@
     .tab-dot.dot-search{background:#10b981}
     .tab-dot.dot-tech{background:#93c5fd}
     .tab-dot.dot-jobs{background:#fbbf24}
+    .tab-dot.dot-graph{background:#818cf8}
     .tab-dot.dot-mcp{background:#c4b5fd}
     .tab-progress{position:absolute;bottom:0;left:0;height:2px;width:0;border-radius:0 1px 1px 0;opacity:0;transition:opacity .15s}
     .terminal-tab.active .tab-progress{opacity:1;animation:tabFill 4s linear forwards}
     .tab-progress.tp-search{background:#10b981}
     .tab-progress.tp-tech{background:#93c5fd}
     .tab-progress.tp-jobs{background:#fbbf24}
+    .tab-progress.tp-graph{background:#818cf8}
     .tab-progress.tp-mcp{background:#c4b5fd}
     @keyframes tabFill{0%{width:0}100%{width:100%}}
 
@@ -375,7 +377,7 @@
   <!-- Terminal -->
   <div class="terminal-bg">
   <div class="terminal-header">
-    <h2>Five APIs. <strong>One CLI.</strong></h2>
+    <h2>five APIs. <strong>one CLI.</strong></h2>
     <p>Every endpoint returns structured JSON. Pipe it anywhere.</p>
   </div>
   <div class="terminal-wrap">
@@ -383,77 +385,91 @@
       <button class="terminal-tab active" onclick="switchTab(0)"><span class="tab-dot dot-search"></span>Search<span class="tab-progress tp-search"></span></button>
       <button class="terminal-tab" onclick="switchTab(1)"><span class="tab-dot dot-tech"></span>Enrich<span class="tab-progress tp-tech"></span></button>
       <button class="terminal-tab" onclick="switchTab(2)"><span class="tab-dot dot-jobs"></span>Signals<span class="tab-progress tp-jobs"></span></button>
-      <button class="terminal-tab" onclick="switchTab(3)"><span class="tab-dot dot-mcp"></span>MCP<span class="tab-progress tp-mcp"></span></button>
+      <button class="terminal-tab" onclick="switchTab(3)"><span class="tab-dot dot-graph"></span>Graph<span class="tab-progress tp-graph"></span></button>
+      <button class="terminal-tab" onclick="switchTab(4)"><span class="tab-dot dot-mcp"></span>MCP<span class="tab-progress tp-mcp"></span></button>
     </div>
     <div class="terminal" id="term">
-      <!-- Tab 0: search -->
+      <!-- Tab 0: search — Stripe -->
       <div class="term-pane" data-tab="0">
         <div class="t-block"><span class="cm"># search warm paths to any company</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi search</span> <span class="fl">--company</span> <span class="st">"Ramp"</span> <span class="fl">--min-score</span> <span class="st">70</span> <span class="fl">--json</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi search</span> <span class="fl">--company</span> <span class="st">"Stripe"</span> <span class="fl">--min-score</span> <span class="st">70</span> <span class="fl">--json</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="re">Found </span><span class="hi">4 warm paths</span><span class="re"> to Ramp (ramp.com)</span></div>
+        <div class="t-block"><span class="re">Found </span><span class="hi">6 warm paths</span><span class="re"> to Stripe (stripe.com)</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="label">  1.</span> <span class="hi">Sarah Chen</span> <span class="re">(Board, Kleiner Perkins)</span></div>
-        <div class="t-block"><span class="re">     → shared board seat at Plaid — score:</span> <span class="score-hi">94</span></div>
-        <div class="t-block"><span class="label">  2.</span> <span class="hi">David Kim</span> <span class="re">(Investor, General Catalyst)</span></div>
-        <div class="t-block"><span class="re">     → Series B co-investor — score:</span> <span class="score-hi">87</span></div>
-        <div class="t-block"><span class="label">  3.</span> <span class="hi">Priya Rao</span> <span class="re">(VP Eng, your team)</span></div>
-        <div class="t-block"><span class="re">     → ex-Stripe · 2yr overlap — score:</span> <span class="score-md">82</span></div>
+        <div class="t-block"><span class="label">  1.</span> <span class="hi">Priya Rao</span> <span class="re">(VP Eng, your team)</span></div>
+        <div class="t-block"><span class="re">     → ex-Stripe · 4yr tenure — score:</span> <span class="score-hi">96</span></div>
+        <div class="t-block"><span class="label">  2.</span> <span class="hi">Marcus Johnson</span> <span class="re">(Operating Partner, a16z)</span></div>
+        <div class="t-block"><span class="re">     → a16z portfolio CTO dinners — score:</span> <span class="score-hi">91</span></div>
+        <div class="t-block"><span class="label">  3.</span> <span class="hi">Sarah Chen</span> <span class="re">(Board, Kleiner Perkins)</span></div>
+        <div class="t-block"><span class="re">     → KP portfolio overlap — score:</span> <span class="score-hi">85</span></div>
         <div class="t-block"><span class="label">  4.</span> <span class="hi">James Liu</span> <span class="re">(Advisor)</span></div>
-        <div class="t-block"><span class="re">     → Stanford MBA 2018 — score:</span> <span class="score-md">71</span></div>
+        <div class="t-block"><span class="re">     → Stanford CS 2016 cohort — score:</span> <span class="score-md">73</span></div>
       </div>
-      <!-- Tab 1: enrich -->
+      <!-- Tab 1: enrich — Figma -->
       <div class="term-pane" data-tab="1" style="display:none">
         <div class="t-block"><span class="cm"># get full technographic profile</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi enrich</span> <span class="st">"ramp.com"</span> <span class="fl">--json</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi enrich</span> <span class="st">"figma.com"</span> <span class="fl">--json</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="jb">{</span></div>
-        <div class="t-block">  <span class="jk">"company"</span><span class="jb">:</span> <span class="js">"Ramp"</span><span class="jb">,</span></div>
-        <div class="t-block">  <span class="jk">"cx"</span><span class="jb">:</span>      <span class="jb">[</span><span class="js">"Intercom"</span><span class="jb">,</span> <span class="js">"Segment"</span><span class="jb">,</span> <span class="js">"Snowflake"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"infra"</span><span class="jb">:</span>   <span class="jb">[</span><span class="js">"AWS"</span><span class="jb">,</span> <span class="js">"Datadog"</span><span class="jb">,</span> <span class="js">"PagerDuty"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"sales"</span><span class="jb">:</span>   <span class="jb">[</span><span class="js">"Salesforce"</span><span class="jb">,</span> <span class="js">"Outreach"</span><span class="jb">,</span> <span class="js">"Gong"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"hr"</span><span class="jb">:</span>      <span class="jb">[</span><span class="js">"Rippling"</span><span class="jb">,</span> <span class="js">"Greenhouse"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"changed"</span><span class="jb">:</span> <span class="jb">[</span><span class="warn">"Zendesk → Intercom (Q3 2025)"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"confidence"</span><span class="jb">:</span> <span class="jn">0.94</span></div>
+        <div class="t-block">  <span class="jk">"company"</span><span class="jb">:</span> <span class="js">"Figma"</span><span class="jb">,</span></div>
+        <div class="t-block">  <span class="jk">"cx"</span><span class="jb">:</span>      <span class="jb">[</span><span class="js">"Zendesk"</span><span class="jb">,</span> <span class="js">"Amplitude"</span><span class="jb">,</span> <span class="js">"Segment"</span><span class="jb">],</span></div>
+        <div class="t-block">  <span class="jk">"infra"</span><span class="jb">:</span>   <span class="jb">[</span><span class="js">"GCP"</span><span class="jb">,</span> <span class="js">"Kubernetes"</span><span class="jb">,</span> <span class="js">"Datadog"</span><span class="jb">],</span></div>
+        <div class="t-block">  <span class="jk">"sales"</span><span class="jb">:</span>   <span class="jb">[</span><span class="js">"Salesforce"</span><span class="jb">,</span> <span class="js">"Gong"</span><span class="jb">,</span> <span class="js">"Outreach"</span><span class="jb">],</span></div>
+        <div class="t-block">  <span class="jk">"design"</span><span class="jb">:</span>  <span class="jb">[</span><span class="js">"Storybook"</span><span class="jb">,</span> <span class="js">"Chromatic"</span><span class="jb">,</span> <span class="js">"LaunchDarkly"</span><span class="jb">],</span></div>
+        <div class="t-block">  <span class="jk">"changed"</span><span class="jb">:</span> <span class="jb">[</span><span class="warn">"Pendo → Amplitude (Q1 2026)"</span><span class="jb">],</span></div>
+        <div class="t-block">  <span class="jk">"confidence"</span><span class="jb">:</span> <span class="jn">0.91</span></div>
         <div class="t-block"><span class="jb">}</span></div>
       </div>
-      <!-- Tab 2: signals -->
+      <!-- Tab 2: signals — Rippling -->
       <div class="term-pane" data-tab="2" style="display:none">
         <div class="t-block"><span class="cm"># pull open roles and hiring velocity</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi signals</span> <span class="st">"ramp.com"</span> <span class="fl">--dept</span> <span class="st">"cx,eng"</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi signals</span> <span class="st">"rippling.com"</span> <span class="fl">--dept</span> <span class="st">"eng,sales"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="hi">18 open roles</span><span class="re"> at Ramp </span><span class="label">(cx: 6, eng: 12)</span></div>
+        <div class="t-block"><span class="hi">32 open roles</span><span class="re"> at Rippling </span><span class="label">(eng: 18, sales: 14)</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="label">  ROLE                        DEPT  LOC     POSTED</span></div>
-        <div class="t-block"><span class="hi">  VP Customer Experience</span><span class="re">      </span><span class="js">CX</span><span class="re">    NYC     </span><span class="vel">1d ago</span></div>
-        <div class="t-block"><span class="hi">  Sr. Support Eng</span><span class="re">             </span><span class="js">CX</span><span class="re">    Remote  </span><span class="vel">3d ago</span></div>
-        <div class="t-block"><span class="hi">  CX Platform Lead</span><span class="re">            </span><span class="js">CX</span><span class="re">    NYC     </span><span class="re">5d ago</span></div>
-        <div class="t-block"><span class="hi">  Staff Backend Engineer</span><span class="re">      </span><span class="jk">Eng</span><span class="re">   SF      </span><span class="re">7d ago</span></div>
-        <div class="t-block"><span class="hi">  Sr. Data Analyst</span><span class="re">            </span><span class="jk">Eng</span><span class="re">   Remote  </span><span class="re">10d ago</span></div>
+        <div class="t-block"><span class="label">  ROLE                        DEPT   LOC     POSTED</span></div>
+        <div class="t-block"><span class="hi">  Head of Platform Eng</span><span class="re">        </span><span class="jk">Eng</span><span class="re">    SF      </span><span class="vel">2d ago</span></div>
+        <div class="t-block"><span class="hi">  Sr. Security Engineer</span><span class="re">       </span><span class="jk">Eng</span><span class="re">    Remote  </span><span class="vel">3d ago</span></div>
+        <div class="t-block"><span class="hi">  Enterprise AE, Mid-Market</span><span class="re">   </span><span class="js">Sales</span><span class="re">  NYC     </span><span class="vel">4d ago</span></div>
+        <div class="t-block"><span class="hi">  Solutions Architect</span><span class="re">         </span><span class="js">Sales</span><span class="re">  SF      </span><span class="re">6d ago</span></div>
+        <div class="t-block"><span class="hi">  Staff Fullstack Engineer</span><span class="re">    </span><span class="jk">Eng</span><span class="re">    Remote  </span><span class="re">8d ago</span></div>
         <div class="t-block"><span class="label">  ...</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="re">  Hiring velocity: </span><span class="vel">↑ 42%</span><span class="re"> (30d) — CX team </span><span class="vel">tripled</span><span class="re"> postings</span></div>
+        <div class="t-block"><span class="re">  Hiring velocity: </span><span class="vel">↑ 58%</span><span class="re"> (30d) — Sales team </span><span class="vel">doubled</span><span class="re"> postings</span></div>
       </div>
-      <!-- Tab 3: mcp -->
+      <!-- Tab 3: graph — Plaid -->
       <div class="term-pane" data-tab="3" style="display:none">
-        <div class="t-block"><span class="cm"># pipe enrichment to your agent</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi enrich</span> <span class="st">"brex.com"</span> <span class="fl">--json</span> <span class="dim">|</span> <span class="hi">claude</span> <span class="st">"draft an outreach plan"</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="cm"># trace the connection path to a decision maker</span></div>
+        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi graph</span> <span class="fl">--to</span> <span class="st">"Nina Patel"</span> <span class="fl">--company</span> <span class="st">"Plaid"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="jb">{</span></div>
-        <div class="t-block">  <span class="jk">"company"</span><span class="jb">:</span> <span class="js">"Brex"</span><span class="jb">,</span></div>
-        <div class="t-block">  <span class="jk">"warm_paths"</span><span class="jb">:</span> <span class="jn">7</span><span class="jb">,</span></div>
-        <div class="t-block">  <span class="jk">"strongest"</span><span class="jb">:</span> <span class="jb">{</span> <span class="jk">"via"</span><span class="jb">:</span> <span class="js">"Sarah Chen"</span><span class="jb">,</span> <span class="jk">"score"</span><span class="jb">:</span> <span class="jn">89</span> <span class="jb">},</span></div>
-        <div class="t-block">  <span class="jk">"cx_stack"</span><span class="jb">:</span> <span class="jb">[</span><span class="js">"Intercom"</span><span class="jb">,</span> <span class="js">"Segment"</span><span class="jb">,</span> <span class="js">"Amplitude"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"signals"</span><span class="jb">:</span> <span class="jb">[</span><span class="js">"Series D"</span><span class="jb">,</span> <span class="warn">"Zendesk contract expiring"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"open_roles"</span><span class="jb">:</span> <span class="jn">23</span><span class="jb">,</span></div>
-        <div class="t-block">  <span class="jk">"hiring_velocity"</span><span class="jb">:</span> <span class="js">"+31%"</span></div>
-        <div class="t-block"><span class="jb">}</span></div>
+        <div class="t-block"><span class="re">Path to </span><span class="hi">Nina Patel</span><span class="re"> (Head of Ops, Plaid) — score:</span> <span class="score-hi">91</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><hr class="t-sep"/></div>
-        <div class="t-block"><span class="cm"># or run as an MCP server for Claude Code</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi mcp start</span></div>
+        <div class="t-block"><span class="hi">  you</span><span class="re"> ──→ </span><span class="hi">David Kim</span><span class="re"> ──→ </span><span class="jk">Series B</span><span class="re"> ──→ </span><span class="hi">Nina Patel</span></div>
+        <div class="t-block"><span class="re">       investor        co-invested    Head of Ops</span></div>
+        <div class="t-block"><span class="re">       General Catalyst 2020          Plaid</span></div>
+        <div class="t-block"><br/></div>
+        <div class="t-block"><span class="label">  Hops:</span> <span class="hi">2</span>  <span class="label">Strength:</span> <span class="score-hi">strong</span>  <span class="label">Contexts:</span> <span class="hi">2</span></div>
+        <div class="t-block"><br/></div>
+        <div class="t-block"><span class="re">  Shared contexts:</span></div>
+        <div class="t-block"><span class="re">    • Series B co-investment (2020)</span></div>
+        <div class="t-block"><span class="re">    • GC portfolio summit · annual</span></div>
+      </div>
+      <!-- Tab 4: mcp -->
+      <div class="term-pane" data-tab="4" style="display:none">
+        <div class="t-block"><span class="cm"># start as MCP server for Claude Code</span></div>
+        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi mcp start</span><span class="cursor"></span></div>
         <div class="t-block"><span class="re">MCP server running on stdio</span></div>
-        <div class="t-block"><span class="label">  tools:</span> <span class="hi">search</span> <span class="hi">enrich</span> <span class="hi">signals</span> <span class="hi">graph</span> <span class="hi">intro</span></div>
+        <div class="t-block"><span class="label">  tools:</span> <span class="hi">search</span>  <span class="hi">enrich</span>  <span class="hi">signals</span>  <span class="hi">graph</span>  <span class="hi">intro</span></div>
+        <div class="t-block"><br/></div>
+        <div class="t-block"><span class="cm"># your agent auto-discovers all tools</span></div>
+        <div class="t-block"><span class="pr">&gt;</span> <span class="hi">Research Ramp and draft an intro via the strongest path</span></div>
+        <div class="t-block"><br/></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.search</span><span class="re">   4 warm paths found</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.enrich</span><span class="re">   Intercom, Segment, Snowflake</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.signals</span><span class="re">  47 open roles · CX hiring </span><span class="vel">+42%</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.graph</span><span class="re">    Sarah Chen → Alex Rivera (score: </span><span class="score-hi">94</span><span class="re">)</span></div>
+        <div class="t-block"><br/></div>
+        <div class="t-block"><span class="draft">Drafting intro via Sarah Chen...</span></div>
       </div>
     </div>
   </div>
