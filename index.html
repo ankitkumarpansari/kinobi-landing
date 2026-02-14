@@ -17,7 +17,7 @@
   <link rel="canonical" href="https://kinobi.so" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
@@ -26,7 +26,7 @@
       --border:#1e1e22;--border2:#27272a;
       --green:#10b981;
       --accent:#ea580c;--accent-muted:#ea580c;--accent-light:#fb923c;--accent-tint:#fdba74;--accent-btn:#c2410c;--accent-btn-hover:#ea580c;
-      --mono:'JetBrains Mono',monospace;
+      --mono:'Menlo',monospace;
       --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     }
     html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
@@ -67,28 +67,35 @@
 
     /* Terminal (small — screen) */
     .terminal-wrap{padding:0 0 16px}
-    .terminal{background:#09090b;border-radius:10px;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#a8977a;overflow-x:auto;border:1px solid #27272a;position:relative}
-    .terminal .cm{color:#7a6f5a}
-    .terminal .pr{color:#ea580c;font-weight:500}
-    .terminal .fl{color:#7a6f5a;font-weight:400}
-    .terminal .st{color:#fbbf24;font-weight:500}
-    .terminal .re{color:#7a6f5a}
-    .terminal .hi{color:#fef3c7;font-weight:500}
+    .terminal-chrome{border-radius:10px;border:1px solid #27272a;overflow:hidden}
+    .terminal-titlebar{background:#1e1e22;padding:10px 14px;display:flex;align-items:center;gap:7px}
+    .terminal-dot{width:10px;height:10px;border-radius:50%}
+    .terminal-dot.red{background:#ff5f57}
+    .terminal-dot.yellow{background:#febc2e}
+    .terminal-dot.green{background:#28c840}
+    .terminal{background:#0d0d0f;border-radius:0;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#787882;overflow-x:auto;border:none;position:relative}
+    .terminal .cm{color:#b4b4c3}
+    .terminal .pr{color:#fb7185;font-weight:500}
+    .terminal .fl{color:#787882;font-weight:400}
+    .terminal .st{color:#facc15;font-weight:500}
+    .terminal .re{color:#787882}
+    .terminal .hi{color:#e6e6e6;font-weight:500}
+    .terminal .kb{color:#e6e6e6;font-weight:700}
     .terminal .dim{color:#27272a}
-    .terminal .jk{color:#93c5fd;font-weight:500}
-    .terminal .js{color:#86efac}
-    .terminal .jn{color:#fbbf24;font-weight:500}
-    .terminal .jb{color:#a8977a}
+    .terminal .jk{color:#60a5fa;font-weight:500}
+    .terminal .js{color:#34d399}
+    .terminal .jn{color:#facc15;font-weight:500}
+    .terminal .jb{color:#787882}
     .terminal .score-hi{color:#34d399;font-weight:500}
-    .terminal .score-md{color:#fbbf24;font-weight:500}
+    .terminal .score-md{color:#facc15;font-weight:500}
     .terminal .vel{color:#34d399;font-weight:500}
-    .terminal .warn{color:#ea580c}
-    .terminal .label{color:#7a6f5a;font-weight:400}
+    .terminal .warn{color:#fb7185}
+    .terminal .label{color:#787882;font-weight:400}
     .t-sep{border:none;border-top:1px solid #1a1a1e;margin:8px 0}
     /* Animation */
     .t-block{opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease}
     .t-block.visible{opacity:1;transform:translateY(0)}
-    .cursor{display:none;width:7px;height:14px;background:#fef3c7;animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px}
+    .cursor{display:none;width:7px;height:14px;background:#e6e6e6;animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
     @keyframes wink{0%,90%,100%{opacity:1}93%,97%{opacity:0}}
     .terminal-tabs{display:flex;gap:8px;margin-bottom:18px}
@@ -103,7 +110,7 @@
     .tab-dot.dot-graph{background:#818cf8}
     .tab-dot.dot-mcp{background:#c4b5fd}
     .tab-progress{position:absolute;bottom:0;left:0;height:2px;width:0;border-radius:0 1px 1px 0;opacity:0;transition:opacity .15s}
-    .terminal-tab.active .tab-progress{opacity:1;animation:tabFill 4s linear forwards}
+    .terminal-tab.active .tab-progress{opacity:1;animation:tabFill 5s linear forwards}
     .tab-progress.tp-search{background:#10b981}
     .tab-progress.tp-tech{background:#93c5fd}
     .tab-progress.tp-jobs{background:#fbbf24}
@@ -392,6 +399,8 @@
       .t-head,.t-row{grid-template-columns:1.5fr 1fr .8fr}
       .t-head span:nth-child(n+4),.t-row>*:nth-child(n+4){display:none}
       .terminal-tab{font-size:9px;padding:5px 10px}
+      .terminal-titlebar{padding:8px 12px}
+      .terminal-dot{width:8px;height:8px}
       .terminal{padding:12px 10px;font-size:9.5px}
       .agent-terminal{padding:12px 10px;font-size:9.5px;min-height:180px}
       .j-head,.j-row{grid-template-columns:2fr 1fr .8fr}
@@ -451,42 +460,51 @@
       <button class="terminal-tab" onclick="switchTab(3)"><span class="tab-dot dot-graph"></span>Graph<span class="tab-progress tp-graph"></span></button>
       <button class="terminal-tab" onclick="switchTab(4)"><span class="tab-dot dot-mcp"></span>Agent<span class="tab-progress tp-mcp"></span></button>
     </div>
+    <div class="terminal-chrome">
+    <div class="terminal-titlebar">
+      <span class="terminal-dot red"></span>
+      <span class="terminal-dot yellow"></span>
+      <span class="terminal-dot green"></span>
+    </div>
     <div class="terminal" id="term">
       <!-- Tab 0: search -->
       <div class="term-pane" data-tab="0">
         <div class="t-block"><span class="cm"># find warm paths into any target account</span></div>
-        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi search</span> <span class="st">"B+ fintech, hiring CX, Zendesk"</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">木</span> <span class="kb">kinobi</span> <span class="hi">search</span> <span class="st">"B+ fintech, hiring CX, Zendesk"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="vel">  ✓</span> <span class="re">1,095 pipeline companies indexed · </span><span class="score-hi">98.7% accuracy</span></div>
         <div class="t-block"><span class="vel">  ✓</span> <span class="hi">12 matched</span><span class="re"> · </span><span class="hi">47 warm paths</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="label">  [1]</span> <span class="hi">Ramp</span><span class="re">      D · Intercom · Q3  · </span><span class="vel">4 paths</span></div>
-        <div class="t-block"><span class="label">  [2]</span> <span class="hi">Brex</span><span class="re">      D · Zendesk  · up  · </span><span class="vel">3 paths</span></div>
-        <div class="t-block"><span class="label">  [3]</span> <span class="hi">Chime</span><span class="re">     IPO · ZD · migrate · </span><span class="vel">7 paths</span></div>
-        <div class="t-block"><span class="label">  [4]</span> <span class="hi">Mercury</span><span class="re">   C · Custom · VP    · </span><span class="vel">2 paths</span></div>
+        <div class="t-block"><span class="label">  [1]</span> <span class="kb">Ramp</span><span class="re">      D · Intercom · Q3  · </span><span class="vel">4 paths</span></div>
+        <div class="t-block"><span class="label">  [2]</span> <span class="kb">Brex</span><span class="re">      D · Zendesk  · up  · </span><span class="vel">3 paths</span></div>
+        <div class="t-block"><span class="label">  [3]</span> <span class="kb">Chime</span><span class="re">     IPO · ZD · migrate · </span><span class="vel">7 paths</span></div>
+        <div class="t-block"><span class="label">  [4]</span> <span class="kb">Mercury</span><span class="re">   C · Custom · VP    · </span><span class="vel">2 paths</span></div>
         <div class="t-block"><span class="re">  ... 8 more</span></div>
       </div>
       <!-- Tab 1: enrich -->
       <div class="term-pane" data-tab="1" style="display:none">
         <div class="t-block"><span class="cm"># full company intelligence in one call</span></div>
-        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi enrich</span> <span class="st">ramp.com</span> <span class="fl">--depth full</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">木</span> <span class="kb">kinobi</span> <span class="hi">enrich</span> <span class="st">ramp.com</span> <span class="fl">--depth full</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="label">  company:</span>   <span class="hi">Ramp</span></div>
-        <div class="t-block"><span class="label">  valuation:</span> <span class="warn">$32B</span><span class="re"> (Nov 2025)</span></div>
-        <div class="t-block"><span class="label">  raised:</span>    <span class="hi">$2.3B total</span></div>
-        <div class="t-block"><span class="label">  employees:</span> <span class="hi">3,700+</span> <span class="vel">(3x YoY)</span></div>
-        <div class="t-block"><span class="label">  revenue:</span>   <span class="st">$1B+ ARR</span></div>
-        <div class="t-block"><span class="label">  stack:</span>     <span class="jk">Cohere.io</span><span class="re">, </span><span class="jk">Snowflake</span><span class="re">, </span><span class="jk">dbt</span></div>
-        <div class="t-block"><span class="label">  signal:</span>    <span class="st">"CX Ops"</span><span class="re"> posted </span><span class="vel">5d ago</span></div>
+        <div class="t-block"><span class="re">  ┌──────────────────────────────────────────────┐</span></div>
+        <div class="t-block"><span class="re">  │</span> <span class="label">company</span>     <span class="kb">Ramp</span><span class="re">                              │</span></div>
+        <div class="t-block"><span class="re">  │</span> <span class="label">valuation</span>   <span class="warn">$32B</span><span class="re"> (Nov 2025)                  │</span></div>
+        <div class="t-block"><span class="re">  │</span> <span class="label">raised</span>      <span class="hi">$2.3B total</span><span class="re">                     │</span></div>
+        <div class="t-block"><span class="re">  │</span> <span class="label">employees</span>   <span class="hi">3,700+</span> <span class="vel">(3x YoY)</span><span class="re">                │</span></div>
+        <div class="t-block"><span class="re">  │</span> <span class="label">revenue</span>     <span class="st">$1B+ ARR</span><span class="re">                        │</span></div>
+        <div class="t-block"><span class="re">  │</span> <span class="label">stack</span>       <span class="jk">Cohere.io</span><span class="re">, </span><span class="jk">Snowflake</span><span class="re">, </span><span class="jk">dbt</span><span class="re">       │</span></div>
+        <div class="t-block"><span class="re">  │</span> <span class="label">signal</span>      <span class="st">"CX Ops"</span><span class="re"> posted </span><span class="vel">5d ago</span><span class="re">          │</span></div>
+        <div class="t-block"><span class="re">  └──────────────────────────────────────────────┘</span></div>
       </div>
       <!-- Tab 2: signals — Rippling -->
       <div class="term-pane" data-tab="2" style="display:none">
         <div class="t-block"><span class="cm"># track hiring velocity and open roles</span></div>
-        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi signals</span> <span class="st">rippling.com</span> <span class="fl">--dept</span> <span class="st">"eng,sales"</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">木</span> <span class="kb">kinobi</span> <span class="hi">signals</span> <span class="st">rippling.com</span> <span class="fl">--dept</span> <span class="st">"eng,sales"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="hi">32 open roles</span><span class="re"> at Rippling </span><span class="label">(eng: 18, sales: 14)</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="hi">32 open roles</span><span class="re"> at </span><span class="kb">Rippling</span><span class="re"> </span><span class="label">(eng: 18, sales: 14)</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="label">  ROLE                        DEPT   LOC     POSTED</span></div>
+        <div class="t-block"><span class="hi">  ROLE                        DEPT   LOC     POSTED</span></div>
+        <div class="t-block"><span class="re">  ─────────────────────────────────────────────────</span></div>
         <div class="t-block"><span class="hi">  Head of Platform Eng</span><span class="re">        </span><span class="jk">Eng</span><span class="re">    SF      </span><span class="vel">2d ago</span></div>
         <div class="t-block"><span class="hi">  Sr. Security Engineer</span><span class="re">       </span><span class="jk">Eng</span><span class="re">    Remote  </span><span class="vel">3d ago</span></div>
         <div class="t-block"><span class="hi">  Enterprise AE, Mid-Market</span><span class="re">   </span><span class="js">Sales</span><span class="re">  NYC     </span><span class="vel">4d ago</span></div>
@@ -499,36 +517,36 @@
       <!-- Tab 3: graph — Plaid -->
       <div class="term-pane" data-tab="3" style="display:none">
         <div class="t-block"><span class="cm"># trace the path to any decision maker</span></div>
-        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi graph</span> <span class="fl">--to</span> <span class="st">"Nina Patel"</span> <span class="fl">--company</span> <span class="st">"Plaid"</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="pr">木</span> <span class="kb">kinobi</span> <span class="hi">graph</span> <span class="fl">--to</span> <span class="st">"Nina Patel"</span> <span class="fl">--company</span> <span class="st">"Plaid"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="re">Path to </span><span class="hi">Nina Patel</span><span class="re"> (Head of Ops, Plaid) — score:</span> <span class="score-hi">91</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="re">Path to </span><span class="kb">Nina Patel</span><span class="re"> (Head of Ops, Plaid) — score:</span> <span class="score-md">91</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="hi">  you</span><span class="re"> ──→ </span><span class="hi">David Kim</span><span class="re"> ──→ </span><span class="jk">Series B</span><span class="re"> ──→ </span><span class="hi">Nina Patel</span></div>
+        <div class="t-block"><span class="hi">  you</span><span class="re"> ──→ </span><span class="kb">David Kim</span><span class="re"> ──→ </span><span class="jk">Series B</span><span class="re"> ──→ </span><span class="kb">Nina Patel</span></div>
         <div class="t-block"><span class="re">       investor        co-invested    Head of Ops</span></div>
         <div class="t-block"><span class="re">       General Catalyst 2020          Plaid</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="label">  Hops:</span> <span class="hi">2</span>  <span class="label">Strength:</span> <span class="score-hi">strong</span>  <span class="label">Contexts:</span> <span class="hi">2</span></div>
+        <div class="t-block"><span class="label">  Hops:</span> <span class="score-md">2</span>  <span class="label">Strength:</span> <span class="score-hi">strong</span>  <span class="label">Contexts:</span> <span class="score-md">2</span></div>
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="re">  Shared contexts:</span></div>
-        <div class="t-block"><span class="re">    • Series B co-investment (2020)</span></div>
-        <div class="t-block"><span class="re">    • GC portfolio summit · annual</span></div>
+        <div class="t-block"><span class="re">    </span><span class="vel">*</span><span class="re"> Series B co-investment (2020)</span></div>
+        <div class="t-block"><span class="re">    </span><span class="vel">*</span><span class="re"> GC portfolio summit · annual</span></div>
       </div>
       <!-- Tab 4: agent -->
       <div class="term-pane" data-tab="4" style="display:none">
         <div class="t-block"><span class="cm"># let your agent reason over the full graph</span></div>
-        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi agent</span> <span class="st">"analyze ramp, draft approach"</span></div>
+        <div class="t-block"><span class="pr">木</span> <span class="kb">kinobi</span> <span class="hi">agent</span> <span class="st">"analyze ramp, draft approach"</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.search</span><span class="re">   12 matched · 47 warm paths</span></div>
-        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.enrich</span><span class="re">   $32B · 3,700+ employees</span></div>
-        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.signals</span><span class="re">  CX scaling · 6 open roles</span></div>
-        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.graph</span><span class="re">    You → Sarah Chen → Eric Atiyeh</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="hi">kinobi.search</span><span class="re">   12 matched · 47 warm paths</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="hi">kinobi.enrich</span><span class="re">   $32B · 3,700+ employees</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="hi">kinobi.signals</span><span class="re">  CX scaling · 6 open roles</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="hi">kinobi.graph</span><span class="re">    You → Sarah Chen → Eric Atiyeh</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="re">  ┌─ </span><span class="draft">agent reasoning</span><span class="re"> ────────────────────────────────┐</span></div>
-        <div class="t-block"><span class="re">  │ </span><span class="vel">→</span><span class="re"> CX scaling (+18% YoY)                       │</span></div>
-        <div class="t-block"><span class="re">  │ </span><span class="vel">→</span><span class="re"> Intercom renewal Q3                         │</span></div>
-        <div class="t-block"><span class="re">  │ </span><span class="vel">→</span><span class="re"> Torres → CTO Atiyeh                         │</span></div>
+        <div class="t-block"><span class="re">  ┌─ </span><span class="warn">agent reasoning</span><span class="re"> ────────────────────────────────┐</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="vel">*</span><span class="re"> CX scaling (+18% YoY)                       │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="vel">*</span><span class="re"> Intercom renewal Q3                         │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="vel">*</span><span class="re"> Torres → CTO Atiyeh                         │</span></div>
         <div class="t-block"><span class="re">  │                                                  │</span></div>
-        <div class="t-block"><span class="re">  │ </span><span class="draft">rec:</span><span class="hi"> intro via Sarah Chen. Timing optimal.</span><span class="re">  │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="warn">rec:</span><span class="hi"> intro via Sarah Chen. Timing optimal.</span><span class="re">  │</span></div>
         <div class="t-block"><span class="re">  └──────────────────────────────────────────────────┘</span></div>
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="re">  ┌─ </span><span class="vel">warm path</span><span class="re"> ───────────────────────────────────┐</span></div>
@@ -540,6 +558,7 @@
         <div class="t-block"><span class="re">  │    strength: </span><span class="warn">████████</span><span class="re">░░  </span><span class="hi">82%</span><span class="re">   hops: </span><span class="hi">2</span><span class="re">         │</span></div>
         <div class="t-block"><span class="re">  └──────────────────────────────────────────────────┘</span><span class="cursor"></span></div>
       </div>
+    </div>
     </div>
   </div>
   </div>
@@ -1111,13 +1130,35 @@
     renderGraph();
   });
 
-  // ── Terminal tab switching + animation ──
+  // ── Terminal tab switching + typing animation ──
   const termPanes=document.querySelectorAll('.term-pane');
   const termTabs=document.querySelectorAll('.terminal-tab');
   let autoTabTimer=null;
   let currentTab=0;
+  let typeTimer=null;
+
+  // Pre-compute typing data for each pane's command line
+  const paneTypeData=[];
+  termPanes.forEach(pane=>{
+    const cmdBlock=pane.querySelectorAll('.t-block')[1];
+    if(!cmdBlock){paneTypeData.push(null);return;}
+    const originalHTML=cmdBlock.innerHTML;
+    const chars=[];
+    let started=false;
+    Array.from(cmdBlock.childNodes).forEach(node=>{
+      if(node.nodeType===1&&node.classList.contains('pr')){started=true;return;}
+      if(!started)return;
+      if(node.nodeType===1&&node.classList.contains('cursor'))return;
+      const cls=node.nodeType===1?node.className:'';
+      const text=node.textContent;
+      for(let i=0;i<text.length;i++) chars.push({char:text[i],cls});
+    });
+    paneTypeData.push({cmdBlock,chars,originalHTML});
+  });
 
   function switchTab(idx){
+    if(typeTimer){clearInterval(typeTimer);typeTimer=null;}
+
     // Reset progress bars — force reflow to restart animation
     termTabs.forEach(t=>{
       t.classList.remove('active');
@@ -1134,21 +1175,63 @@
     termPanes[idx].style.display='block';
     currentTab=idx;
 
-    // Animate lines sequentially
-    const blocks=termPanes[idx].querySelectorAll('.t-block');
-    blocks.forEach((b,i)=>{
-      setTimeout(()=>b.classList.add('visible'), 60*i);
-    });
-
-    // Hide all cursors, show only active pane's cursor
+    // Hide all cursors
     document.querySelectorAll('.term-pane .cursor').forEach(c=>c.style.display='none');
-    const activeCursor=termPanes[idx].querySelector('.cursor');
-    if(activeCursor){
-      const totalDelay=60*blocks.length+200;
-      setTimeout(()=>{activeCursor.style.display='inline-block'},totalDelay);
+
+    const blocks=termPanes[idx].querySelectorAll('.t-block');
+    const data=paneTypeData[idx];
+
+    // Show comment line immediately
+    blocks[0].classList.add('visible');
+
+    if(data){
+      const{cmdBlock,chars,originalHTML}=data;
+      // Set command line to just prompt + blinking cursor
+      cmdBlock.innerHTML='<span class="pr">木</span><span class="cursor" style="display:inline-block"></span>';
+
+      setTimeout(()=>{
+        cmdBlock.classList.add('visible');
+        let ci=0;
+        const cur=cmdBlock.querySelector('.cursor');
+
+        typeTimer=setInterval(()=>{
+          if(ci>=chars.length){
+            clearInterval(typeTimer);typeTimer=null;
+            // Restore original HTML (puts cursor back in correct position)
+            cmdBlock.innerHTML=originalHTML;
+            // Stagger response lines
+            const resp=Array.from(blocks).slice(2);
+            resp.forEach((b,i)=>setTimeout(()=>b.classList.add('visible'),60*i));
+            // Show final cursor after response loads
+            const delay=60*resp.length+200;
+            setTimeout(()=>{
+              const ac=termPanes[idx].querySelector('.cursor');
+              if(ac) ac.style.display='inline-block';
+            },delay);
+            return;
+          }
+          const{char,cls}=chars[ci];
+          if(cls){
+            const prev=cur.previousSibling;
+            if(prev&&prev.nodeType===1&&prev.className===cls){
+              prev.textContent+=char;
+            }else{
+              const s=document.createElement('span');
+              s.className=cls;s.textContent=char;
+              cmdBlock.insertBefore(s,cur);
+            }
+          }else{
+            const prev=cur.previousSibling;
+            if(prev&&prev.nodeType===3){prev.textContent+=char;}
+            else{cmdBlock.insertBefore(document.createTextNode(char),cur);}
+          }
+          ci++;
+        },35);
+      },200);
+    }else{
+      blocks.forEach((b,i)=>setTimeout(()=>b.classList.add('visible'),60*i));
     }
 
-    // Reset auto-cycle timer
     resetAutoTab();
   }
 
@@ -1157,7 +1240,7 @@
     autoTabTimer=setInterval(()=>{
       const next=(currentTab+1)%termPanes.length;
       switchTab(next);
-    },4000);
+    },5000);
   }
 
   // Initial animation for tab 0
