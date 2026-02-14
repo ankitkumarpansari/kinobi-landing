@@ -1,0 +1,8 @@
+#!/bin/bash
+DIR="/Users/ankitpansari/Desktop/kinobi-landing/demo-scripts"
+case "$1" in
+  search)  bash "$DIR/search.sh" ;;
+  enrich)  bash "$DIR/enrich.sh" ;;
+  agent)   bash "$DIR/agent.sh" ;;
+  *)       echo "unknown command: $1" ;;
+esac
