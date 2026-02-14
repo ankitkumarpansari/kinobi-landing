@@ -193,6 +193,7 @@
     .t-row:last-child{border-bottom:none}
     .t-row:hover{background:#161618}
     .t-row.active{background:#1a1a2e}
+    #tableRows{transition:opacity .12s}
     .t-company{padding:8px 0}
     .t-name{font-size:11px;font-weight:500;color:var(--fg)}
     .t-domain{font-size:9px;font-weight:300;color:var(--fg3);margin-top:1px}
@@ -554,11 +555,11 @@
     </div>
     <div class="intel-bar">
       <div class="intel-tabs">
-        <button class="intel-tab active" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">All</button>
-        <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Customers</button>
-        <button class="intel-tab" onclick="this.parentElement.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active')">Prospects</button>
+        <button class="intel-tab active" onclick="filterTable('all',this)">All</button>
+        <button class="intel-tab" onclick="filterTable('customers',this)">Customers</button>
+        <button class="intel-tab" onclick="filterTable('prospects',this)">Prospects</button>
       </div>
-      <span class="intel-count">243 companies</span>
+      <span class="intel-count">12 companies</span>
     </div>
     <div class="table-wrap">
       <div class="t-head"><span>Company</span><span>Industry</span><span>CX Stack</span><span>Signals</span><span>Board</span><span>Paths</span><span>Strongest</span><span>Data</span></div>
@@ -887,20 +888,39 @@
     {name:'Duolingo',domain:'duolingo.com',industry:'EdTech',tool:'Zendesk',more:'+2',signals:['Earnings beat'],board:1,paths:2,score:72,data:'complete',cust:false},
   ];
 
-  document.getElementById('tableRows').innerHTML=companies.map((c,i)=>{
-    const sc=c.score>=75?'hi':c.score>=50?'md':'lo';
-    const sigs=c.signals.map(s=>`<span class="t-signal ${sigType(s)}">${s}</span>`).join('');
-    return`<div class="t-row${i===0?' active':''}" onclick="document.querySelectorAll('.t-row').forEach(r=>r.classList.remove('active'));this.classList.add('active')">
-      <div class="t-company"><div class="t-name">${c.name}${c.cust?'<span class=t-cust>customer</span>':''}</div><div class="t-domain">${c.domain}</div></div>
-      <div class="t-industry">${c.industry}</div>
-      <div style="padding:8px 0"><span class="t-tool">${c.tool}</span>${c.more?'<span class=t-tool-more>'+c.more+'</span>':''}</div>
-      <div style="padding:6px 0;line-height:1.8">${sigs}</div>
-      <div class="t-num${c.board?' strong':''}">${c.board}</div>
-      <div class="t-num${c.paths?' strong':''}">${c.paths}</div>
-      <div class="t-score"><div class="t-bar"><div class="t-bar-fill ${sc}" style="width:${c.score}%"></div></div><span class="t-score-val">${c.score}</span></div>
-      <div style="padding:8px 0;text-align:center"><span class="t-data ${c.data}">${c.data==='complete'?'Complete':'Partial'}</span></div>
-    </div>`;
-  }).join('');
+  function renderTable(filter='all'){
+    const filtered=filter==='all'?companies
+      :filter==='customers'?companies.filter(c=>c.cust)
+      :companies.filter(c=>!c.cust);
+    document.querySelector('.intel-count').textContent=filtered.length+' companies';
+    const rows=document.getElementById('tableRows');
+    rows.style.opacity='0';
+    setTimeout(()=>{
+      rows.innerHTML=filtered.map((c,i)=>{
+        const sc=c.score>=75?'hi':c.score>=50?'md':'lo';
+        const sigs=c.signals.map(s=>`<span class="t-signal ${sigType(s)}">${s}</span>`).join('');
+        return`<div class="t-row${i===0?' active':''}" onclick="document.querySelectorAll('.t-row').forEach(r=>r.classList.remove('active'));this.classList.add('active')">
+          <div class="t-company"><div class="t-name">${c.name}${c.cust?'<span class=t-cust>customer</span>':''}</div><div class="t-domain">${c.domain}</div></div>
+          <div class="t-industry">${c.industry}</div>
+          <div style="padding:8px 0"><span class="t-tool">${c.tool}</span>${c.more?'<span class=t-tool-more>'+c.more+'</span>':''}</div>
+          <div style="padding:6px 0;line-height:1.8">${sigs}</div>
+          <div class="t-num${c.board?' strong':''}">${c.board}</div>
+          <div class="t-num${c.paths?' strong':''}">${c.paths}</div>
+          <div class="t-score"><div class="t-bar"><div class="t-bar-fill ${sc}" style="width:${c.score}%"></div></div><span class="t-score-val">${c.score}</span></div>
+          <div style="padding:8px 0;text-align:center"><span class="t-data ${c.data}">${c.data==='complete'?'Complete':'Partial'}</span></div>
+        </div>`;
+      }).join('');
+      rows.style.opacity='1';
+    },120);
+  }
+
+  function filterTable(filter,btn){
+    document.querySelectorAll('.intel-tab').forEach(t=>t.classList.remove('active'));
+    btn.classList.add('active');
+    renderTable(filter);
+  }
+
+  renderTable();
 
   // ── Rich relationship graph ──
   const gData={
