@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kinobi — GTM intelligence for AI agents</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ea580c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='22' fill='%23fef3c7'%3Ek%3C/text%3E%3C/svg%3E" />
   <link rel="canonical" href="https://kinobi.so" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,82 +12,74 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --fg:#18181b;--fg2:#52525b;--fg3:#a1a1aa;--fg4:#d4d4d8;
-      --bg:#fafafa;--white:#fff;
-      --border:#f0f0f0;--border2:#e4e4e7;
+      --fg:#fef3c7;--fg2:#d4c9a8;--fg3:#8a7f6a;--fg4:#4a4538;
+      --bg:#09090b;--white:#111113;
+      --border:#1e1e22;--border2:#27272a;
       --green:#10b981;
+      --accent:#ea580c;--accent-muted:#ea580c;--accent-light:#fb923c;--accent-tint:#fdba74;--accent-btn:#c2410c;--accent-btn-hover:#ea580c;
       --mono:'JetBrains Mono',monospace;
       --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     }
     html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
     body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.6}
-    ::selection{background:#18181b10}
+    ::selection{background:rgba(251,146,60,.3)}
 
     nav{max-width:1120px;margin:0 auto;padding:16px 40px 0;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--fg);text-decoration:none}
-    .nav-cta{font-size:13px;font-weight:400;color:var(--fg2);text-decoration:none;padding:7px 18px;border:1px solid var(--border2);border-radius:100px;transition:all .2s}
-    .nav-cta:hover{color:var(--fg);border-color:var(--fg3)}
+    .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fef3c7;text-decoration:none}
+    .nav-cta{font-size:13px;font-weight:400;color:#fff;text-decoration:none;padding:7px 18px;border:1px solid var(--accent-muted);border-radius:100px;transition:all .2s;background:var(--accent-muted)}
+    .nav-cta:hover{background:var(--accent-btn-hover);border-color:var(--accent-btn-hover)}
     .nav-links{display:flex;align-items:center;gap:24px}
     .nav-link{font-size:13px;font-weight:400;color:var(--fg2);text-decoration:none;transition:color .2s}
     .nav-link:hover{color:var(--fg)}
     .nav-dropdown{position:relative}
-    .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;padding:8px 0;background:var(--white);border:1px solid var(--border2);border-radius:8px;min-width:160px;box-shadow:0 4px 16px rgba(0,0,0,.05);z-index:10;margin-top:8px}
+    .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;padding:8px 0;background:var(--white);border:1px solid var(--border2);border-radius:8px;min-width:160px;box-shadow:0 4px 16px rgba(0,0,0,.3);z-index:10;margin-top:8px}
     .nav-dropdown:hover .nav-dropdown-menu{display:block}
     .nav-dropdown-menu a{display:block;font-size:12px;font-weight:400;color:var(--fg2);text-decoration:none;padding:6px 16px;transition:all .15s}
-    .nav-dropdown-menu a:hover{color:var(--fg);background:#f8f8fa}
+    .nav-dropdown-menu a:hover{color:var(--fg);background:#1a1a1e}
 
-    .hero{max-width:1120px;margin:0 auto;padding:clamp(48px,6vh,80px) 40px clamp(28px,3.5vh,44px)}
-    .hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:14px}
-    .hero-tag .dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-    .hero h1{font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:500;letter-spacing:-.025em;line-height:1.2;color:var(--fg);max-width:500px}
+    .hero{max-width:1120px;margin:0 auto;padding:clamp(48px,6vh,80px) 40px clamp(20px,2.5vh,32px)}
+    .hero h1{font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:400;letter-spacing:-.02em;line-height:1.25;color:var(--fg);max-width:480px}
     .hero h1 em{font-style:normal;font-weight:600}
-    .hero-p{font-size:13px;font-weight:400;color:var(--fg2);line-height:1.6;max-width:420px;margin-top:10px}
+    .hero-p{font-size:12.5px;font-weight:400;color:var(--fg2);line-height:1.65;max-width:400px;margin-top:10px}
     .hero-p code{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--fg)}
-    .hero-actions{display:flex;gap:12px;margin-top:20px;align-items:center}
-    .btn{font-size:13px;font-weight:500;font-family:var(--sans);padding:9px 22px;border-radius:100px;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
-    .btn-dark{background:var(--fg);color:#fff}
-    .btn-dark:hover{background:#27272a}
-    .btn-ghost{background:none;color:var(--fg2);border:1px solid var(--border2);font-size:13px;padding:9px 22px;border-radius:100px}
-    .btn-ghost:hover{border-color:var(--fg3);color:var(--fg)}
-
-    /* Trust bar */
-    .trust-bar{max-width:1120px;margin:0 auto;padding:0 40px 40px;display:flex;align-items:center;justify-content:center;gap:24px;font-size:12px;font-weight:400;color:var(--fg3)}
-    .trust-sep{width:1px;height:12px;background:var(--border2)}
-
-    /* Terminal header */
-    .terminal-header{text-align:center;margin-bottom:24px}
-    .terminal-header h2{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:500;letter-spacing:-.025em;margin:0 auto;max-width:100%}
-    .terminal-header h2 strong{font-weight:600}
-    .terminal-header p{font-size:13px;font-weight:400;color:var(--fg2);margin-top:6px}
+    .install-pill{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:8px 14px;background:rgba(0,0,0,.25);border:1px solid rgba(254,243,199,.15);border-radius:8px;cursor:pointer;transition:all .2s;position:relative}
+    .install-pill:hover{background:rgba(0,0,0,.35);border-color:rgba(254,243,199,.25)}
+    .install-pill code{font-family:var(--mono);font-size:12px;font-weight:400;color:rgba(254,243,199,.8);letter-spacing:.01em}
+    .install-copy{color:rgba(254,243,199,.4);display:flex;transition:color .2s}
+    .install-pill:hover .install-copy{color:rgba(254,243,199,.7)}
+    .install-copied{font-size:10px;font-weight:500;color:#fef3c7;opacity:0;transition:opacity .2s;font-family:var(--sans);margin-left:4px;white-space:nowrap}
+    .btn{font-size:11px;font-weight:500;font-family:var(--sans);padding:7px 16px;border-radius:100px;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+    .btn-dark{background:var(--accent-muted);color:#fff}
+    .btn-dark:hover{background:var(--accent-btn-hover)}
 
     /* Terminal (small — screen) */
     .terminal-wrap{padding:0 0 16px}
-    .terminal{background:#09090b;border-radius:10px;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#a1a1aa;overflow-x:auto;border:1px solid #27272a;position:relative;min-height:290px}
-    .terminal .cm{color:#3f3f46}
-    .terminal .pr{color:var(--green);font-weight:500}
-    .terminal .fl{color:#71717a;font-weight:400}
+    .terminal{background:#09090b;border-radius:10px;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#a8977a;overflow-x:auto;border:1px solid #27272a;position:relative}
+    .terminal .cm{color:#7a6f5a}
+    .terminal .pr{color:#ea580c;font-weight:500}
+    .terminal .fl{color:#7a6f5a;font-weight:400}
     .terminal .st{color:#fbbf24;font-weight:500}
-    .terminal .re{color:#52525b}
-    .terminal .hi{color:#e4e4e7;font-weight:500}
+    .terminal .re{color:#7a6f5a}
+    .terminal .hi{color:#fef3c7;font-weight:500}
     .terminal .dim{color:#27272a}
     .terminal .jk{color:#93c5fd;font-weight:500}
     .terminal .js{color:#86efac}
     .terminal .jn{color:#fbbf24;font-weight:500}
-    .terminal .jb{color:#a1a1aa}
+    .terminal .jb{color:#a8977a}
     .terminal .score-hi{color:#34d399;font-weight:500}
     .terminal .score-md{color:#fbbf24;font-weight:500}
     .terminal .vel{color:#34d399;font-weight:500}
-    .terminal .warn{color:#f87171}
-    .terminal .label{color:#71717a;font-weight:400}
+    .terminal .warn{color:#ea580c}
+    .terminal .label{color:#7a6f5a;font-weight:400}
     .t-sep{border:none;border-top:1px solid #1a1a1e;margin:8px 0}
     /* Animation */
     .t-block{opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease}
     .t-block.visible{opacity:1;transform:translateY(0)}
-    .cursor{display:none;width:7px;height:14px;background:#e4e4e7;animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px}
+    .cursor{display:none;width:7px;height:14px;background:#fef3c7;animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    @keyframes wink{0%,90%,100%{opacity:1}93%,97%{opacity:0}}
     .terminal-tabs{display:flex;gap:8px;margin-bottom:18px}
-    .terminal-tab{font-size:10.5px;font-weight:400;letter-spacing:.02em;padding:6px 16px;color:#52525b;cursor:pointer;border:1px solid #27272a;background:#09090b;font-family:var(--mono);transition:all .2s;border-radius:6px;display:flex;align-items:center;gap:6px;position:relative;overflow:hidden}
+    .terminal-tab{font-size:11px;font-weight:400;letter-spacing:.03em;padding:7px 18px;color:#52525b;cursor:pointer;border:1px solid #27272a;background:#09090b;font-family:var(--mono);transition:all .2s;border-radius:6px;display:flex;align-items:center;gap:6px;position:relative;overflow:hidden}
     .terminal-tab .tab-dot{width:6px;height:6px;border-radius:50%;opacity:.4;transition:opacity .2s;flex-shrink:0}
     .terminal-tab.active .tab-dot{opacity:1}
     .terminal-tab:hover{border-color:#3f3f46;color:#a1a1aa}
@@ -105,27 +98,56 @@
     .tab-progress.tp-mcp{background:#c4b5fd}
     @keyframes tabFill{0%{width:0}100%{width:100%}}
 
-    /* Agent section */
-    .agent-section{max-width:1120px;margin:0 auto;padding:0 40px 80px}
-    .agent-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
-    .agent-text h2{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:400;letter-spacing:-.025em;line-height:1.15;max-width:400px}
-    .agent-text h2 strong{font-weight:600}
-    .agent-text>p{font-size:14px;font-weight:400;color:var(--fg2);line-height:1.7;max-width:400px;margin-top:14px}
-    .af-list{display:flex;flex-direction:column;gap:18px;margin-top:28px}
-    .af{display:flex;gap:12px;align-items:flex-start}
-    .af-dot{width:4px;height:4px;border-radius:50%;background:var(--fg4);margin-top:8px;flex-shrink:0}
-    .af h4{font-size:13px;font-weight:600;margin-bottom:2px}
-    .af p{font-size:13px;color:var(--fg2);font-weight:400;line-height:1.6}
+    /* Hero zone — rose background */
+    .hero-zone{background:var(--accent-muted);padding-bottom:0}
+    .hero-zone-fade{height:80px;background:linear-gradient(to bottom,var(--accent-muted),var(--bg))}
+    .hero-zone .logo{color:#fef3c7}
+    .hero-zone .nav-cta{background:transparent;border-color:rgba(254,243,199,.4);color:#fef3c7}
+    .hero-zone .nav-cta:hover{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.6)}
+    .hero-zone .hero h1{color:#fef3c7}
+    .hero-zone .hero h1 em{color:#fef3c7}
+    .hero-zone .hero-p{color:rgba(254,243,199,.7)}
+    .hero-zone .hero-p code{color:#fef3c7}
+    .hero-zone .waitlist-input{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.25);color:#fef3c7}
+    .hero-zone .waitlist-input::placeholder{color:rgba(254,243,199,.45)}
+    .hero-zone .waitlist-input:focus{border-color:rgba(254,243,199,.5)}
+    .hero-zone .btn-dark{background:#fef3c7;color:var(--accent-btn)}
+    .hero-zone .btn-dark:hover{background:rgba(254,243,199,.85)}
+    .hero-zone .waitlist-msg{color:rgba(254,243,199,.75)}
+    .hero-zone .terminal-tab{background:#09090b;border-color:#3f3f46;color:#71717a}
+    .hero-zone .terminal-tab:hover{border-color:#52525b;color:#a1a1aa}
+    .hero-zone .terminal-tab.active{background:#1a1a1e;color:#e4e4e7;border-color:#52525b}
 
-    .agent-terminal{background:#09090b;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a1a1aa;border:1px solid #27272a;overflow-x:auto;min-height:280px}
+    /* CTA zone — orange bookend */
+    .cta-zone{background:var(--accent-muted)}
+    .cta-zone .statement-line{background:rgba(254,243,199,.2)}
+    .cta-zone h2{color:#fef3c7}
+    .cta-zone h2 strong{color:#fef3c7}
+    .cta-zone .s-desc{color:rgba(254,243,199,.7)}
+    .cta-zone .waitlist-input{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.25);color:#fef3c7}
+    .cta-zone .waitlist-input::placeholder{color:rgba(254,243,199,.45)}
+    .cta-zone .waitlist-input:focus{border-color:rgba(254,243,199,.5)}
+    .cta-zone .btn-dark{background:#fef3c7;color:var(--accent-btn)}
+    .cta-zone .btn-dark:hover{background:rgba(254,243,199,.85)}
+    .cta-zone .waitlist-msg{color:rgba(254,243,199,.75)}
+    .cta-zone code{color:rgba(254,243,199,.4)}
+
+    /* Waitlist form */
+    .waitlist-form{display:flex;gap:8px;margin-top:20px;align-items:center}
+    .waitlist-input{font-size:13px;font-family:var(--sans);padding:8px 16px;border-radius:100px;border:1px solid var(--border2);background:var(--white);color:var(--fg);outline:none;width:240px;transition:border-color .2s}
+    .waitlist-input:focus{border-color:var(--accent-muted)}
+    .waitlist-input::placeholder{color:var(--fg3)}
+    .waitlist-msg{font-size:11px;color:var(--accent-muted);margin-top:8px;min-height:16px}
+
+    .agent-terminal{background:#09090b;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a8977a;border:1px solid #27272a;overflow-x:auto;min-height:280px}
     .at-block{opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease}
     .at-block.visible{opacity:1;transform:translateY(0)}
-    .agent-terminal .cm{color:#3f3f46}
+    .agent-terminal .cm{color:#7a6f5a}
     .agent-terminal .pr{color:var(--green);font-weight:500}
-    .agent-terminal .fl{color:#71717a}
+    .agent-terminal .fl{color:#7a6f5a}
     .agent-terminal .tool{color:#93c5fd;font-weight:500}
-    .agent-terminal .re{color:#52525b}
-    .agent-terminal .hi{color:#e4e4e7;font-weight:500}
+    .agent-terminal .re{color:#7a6f5a}
+    .agent-terminal .hi{color:#fef3c7;font-weight:500}
     .agent-terminal .val{color:#86efac}
     .agent-terminal .num{color:#fbbf24;font-weight:500}
     .agent-terminal .warn{color:#f87171}
@@ -134,15 +156,16 @@
 
     /* Sections */
     section{max-width:1120px;margin:0 auto;padding:80px 40px}
-    .s-label{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:14px}
-    h2{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:400;letter-spacing:-.025em;line-height:1.18;max-width:500px}
+    .s-label{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-light);background:rgba(234,88,12,.15);padding:4px 10px;border-radius:100px;margin-bottom:14px}
+    h2{font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:400;letter-spacing:-.025em;line-height:1.2;max-width:500px}
     h2 strong{font-weight:600}
     .s-desc{font-size:14px;font-weight:400;color:var(--fg2);line-height:1.7;max-width:460px;margin-top:14px}
 
     /* Screens (small fonts) — full-bleed wider */
-    .screen-section{max-width:1120px;margin:0 auto;padding:0 40px 80px}
+    .screen-section{max-width:1120px;margin:0 auto;padding:0 40px 80px;border-bottom:1px solid var(--border)}
     .screen-intro{margin-bottom:28px}
     .screen-intro .s-desc{margin-top:10px}
+    .screen-section .agent-terminal{margin-top:0}
 
     .intel-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding:0 2px}
     .intel-tabs{display:flex}
@@ -150,69 +173,69 @@
     .intel-tab:first-child{border-radius:5px 0 0 5px}
     .intel-tab:last-child{border-radius:0 5px 5px 0}
     .intel-tab:not(:first-child){border-left:none}
-    .intel-tab.active{background:#6366f1;color:#fff;border-color:#6366f1}
+    .intel-tab.active{background:var(--accent-muted);color:#fff;border-color:var(--accent-muted)}
     .intel-count{font-size:9.5px;color:var(--fg3);font-weight:300}
 
     .table-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white)}
-    .t-head{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;background:#fafafa;border-bottom:1px solid var(--border)}
+    .t-head{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;background:#0e0e11;border-bottom:1px solid var(--border)}
     .t-head span{font-size:9px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:8px 0}
     .t-row{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
     .t-row:last-child{border-bottom:none}
-    .t-row:hover{background:#fafaff}
-    .t-row.active{background:#f5f3ff}
+    .t-row:hover{background:#161618}
+    .t-row.active{background:#1a1a2e}
     .t-company{padding:8px 0}
     .t-name{font-size:11px;font-weight:500;color:var(--fg)}
     .t-domain{font-size:9px;font-weight:300;color:var(--fg3);margin-top:1px}
-    .t-cust{font-size:7.5px;font-weight:500;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:#ede9fe;color:#7c3aed;margin-left:5px;text-transform:uppercase}
+    .t-cust{font-size:7.5px;font-weight:500;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:#2d2640;color:#a78bfa;margin-left:5px;text-transform:uppercase}
     .t-industry{font-size:10px;font-weight:300;color:var(--fg2);padding:8px 0}
-    .t-tool{display:inline-flex;font-size:9px;font-weight:400;padding:2px 7px;border-radius:100px;background:#eef2ff;color:#4f46e5}
+    .t-tool{display:inline-flex;font-size:9px;font-weight:400;padding:2px 7px;border-radius:100px;background:#1e1e3a;color:#818cf8}
     .t-tool-more{font-size:8px;color:var(--fg3);margin-left:3px;font-weight:300}
     .t-num{font-size:10px;font-weight:400;color:var(--fg2);text-align:center;padding:8px 0;font-variant-numeric:tabular-nums}
     .t-num.strong{font-weight:500;color:var(--fg)}
     .t-score{display:flex;align-items:center;gap:5px;padding:8px 0}
-    .t-bar{width:40px;height:3px;border-radius:2px;background:#f4f4f5;overflow:hidden}
+    .t-bar{width:40px;height:3px;border-radius:2px;background:#27272a;overflow:hidden}
     .t-bar-fill{height:100%;border-radius:2px;background:var(--fg4)}
     .t-bar-fill.hi{background:#10b981}
     .t-bar-fill.md{background:#f59e0b}
     .t-score-val{font-size:9px;font-weight:400;color:var(--fg2);font-variant-numeric:tabular-nums;min-width:16px}
     .t-data{font-size:8px;font-weight:500;padding:2px 6px;border-radius:100px;text-align:center}
-    .t-data.complete{background:#ecfdf5;color:#059669}
-    .t-data.partial{background:#fffbeb;color:#d97706}
+    .t-data.complete{background:#0f2922;color:#34d399}
+    .t-data.partial{background:#2c2210;color:#fbbf24}
     .t-signal{font-size:8px;font-weight:400;padding:1.5px 6px;border-radius:100px;display:inline-block;margin:1px 2px 1px 0}
-    .t-signal.hiring{background:#dbeafe;color:#2563eb}
-    .t-signal.funding{background:#ecfdf5;color:#059669}
-    .t-signal.risk{background:#fef2f2;color:#dc2626}
-    .t-signal.change{background:#fef3c7;color:#d97706}
-    .t-signal.neutral{background:#f3e8ff;color:#7c3aed}
+    .t-signal.hiring{background:#1a2744;color:#60a5fa}
+    .t-signal.funding{background:#0f2922;color:#34d399}
+    .t-signal.risk{background:#2c1515;color:#f87171}
+    .t-signal.change{background:#2c2210;color:#fbbf24}
+    .t-signal.neutral{background:#2d2640;color:#a78bfa}
     .t-funding{font-size:9.5px;font-weight:400;color:var(--fg2);padding:8px 0;font-variant-numeric:tabular-nums}
 
     /* Graph */
     .graph-canvas{position:relative;border:1px solid var(--border);border-radius:12px;background:var(--white);min-height:700px;overflow:hidden}
-    .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid var(--border2);font-size:10px;min-width:155px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.02)}
-    .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-1px)}
+    .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid var(--border2);font-size:10px;min-width:155px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+    .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.4);transform:translateY(-1px)}
     .g-badge{font-size:7.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:1.5px 5px;border-radius:100px;display:inline-flex}
-    .g-badge.board{background:#dbeafe;color:#3b82f6}
-    .g-badge.investor{background:#ecfdf5;color:#10b981}
-    .g-badge.team{background:#fef3c7;color:#d97706}
-    .g-badge.cx{background:#f3e8ff;color:#7c3aed}
-    .g-badge.exec{background:#fce7f3;color:#db2777}
-    .g-badge.ops{background:#e0e7ff;color:#4f46e5}
-    .g-badge.eng{background:#cffafe;color:#0891b2}
-    .g-badge.product{background:#fef3c7;color:#d97706}
-    .g-badge.bd{background:#ecfdf5;color:#059669}
-    .g-badge.context{background:#f4f4f5;color:var(--fg3)}
+    .g-badge.board{background:#1a2744;color:#60a5fa}
+    .g-badge.investor{background:#0f2922;color:#34d399}
+    .g-badge.team{background:#2c2210;color:#fbbf24}
+    .g-badge.cx{background:#2d2640;color:#a78bfa}
+    .g-badge.exec{background:#2c1525;color:#f472b6}
+    .g-badge.ops{background:#1e1e3a;color:#818cf8}
+    .g-badge.eng{background:#0d2c33;color:#67e8f9}
+    .g-badge.product{background:#2c2210;color:#fbbf24}
+    .g-badge.bd{background:#0f2922;color:#34d399}
+    .g-badge.context{background:#1e1e22;color:var(--fg3)}
     .g-name{font-size:11px;font-weight:500;color:var(--fg);margin:3px 0 1px}
     .g-title{font-size:9px;font-weight:300;color:var(--fg3)}
     .g-reach{font-size:8px;font-weight:300;color:var(--fg3);margin-top:4px}
-    .g-reach em{font-style:normal;color:#10b981;font-weight:400}
+    .g-reach em{font-style:normal;color:#34d399;font-weight:400}
     .g-via{display:flex;align-items:center;gap:4px;margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:8px;font-weight:300;color:var(--fg3)}
     .g-via strong{font-weight:400;color:var(--fg2)}
     .g-strength{font-size:7.5px;font-weight:500;padding:1px 5px;border-radius:100px}
-    .g-strength.strong{background:#ecfdf5;color:#059669}
-    .g-strength.medium{background:#fffbeb;color:#d97706}
-    .g-company-dot{width:5px;height:5px;border-radius:50%;background:#6366f1;display:inline-block}
+    .g-strength.strong{background:#0f2922;color:#34d399}
+    .g-strength.medium{background:#2c2210;color:#fbbf24}
+    .g-company-dot{width:5px;height:5px;border-radius:50%;background:#ea580c;display:inline-block}
 
-    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:10px;box-shadow:0 4px 20px rgba(0,0,0,.03);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px)}
+    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:10px;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px)}
     .g-popover.show{opacity:1;transform:translateY(0)}
     .g-popover-route{font-weight:500;color:var(--fg);font-size:11px}
     .g-popover-via{font-size:9px;font-weight:300;color:var(--fg3)}
@@ -221,15 +244,15 @@
     .g-popover-btn{font-size:9px;font-weight:400;padding:5px 12px;border-radius:100px;border:1px solid var(--border2);background:none;color:var(--fg2);cursor:pointer;white-space:nowrap;font-family:var(--sans);transition:all .15s}
     .g-popover-btn:hover{border-color:var(--fg3);color:var(--fg)}
 
-    .g-connector-board{border-color:#bfdbfe;background:#fafbff}
-    .g-connector-investor{border-color:#a7f3d0;background:#f9fefb}
-    .g-connector-team{border-color:#fde68a;background:#fffefb}
-    .g-target-node{border-color:#e0e7ff;background:#fafaff}
-    .g-mid{border-color:#e5e7eb;background:#f9fafb;min-width:120px;text-align:center}
+    .g-connector-board{border-color:#1a2744;background:#0f1520}
+    .g-connector-investor{border-color:#166534;background:#0f1a15}
+    .g-connector-team{border-color:#854d0e;background:#1a1510}
+    .g-target-node{border-color:#1e1e3a;background:#0f0f1a}
+    .g-mid{border-color:#27272a;background:#111113;min-width:120px;text-align:center}
     .g-mid .g-name{font-size:10px}
     .g-mid-sub{font-size:7.5px;font-weight:400;color:var(--fg3);letter-spacing:.03em;text-transform:uppercase;margin-top:2px}
     .g-edge{fill:none;stroke-width:1;transition:all .4s}
-    .g-edge.lit{stroke-width:2;filter:drop-shadow(0 0 3px rgba(99,102,241,.25))}
+    .g-edge.lit{stroke-width:2;filter:drop-shadow(0 0 3px rgba(234,88,12,.3))}
     .g-edge.secondary{stroke-dasharray:4 3}
 
     /* ── Techstack card ── */
@@ -244,8 +267,8 @@
     .tech-cat-label{font-size:8.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:5px}
     .tech-pills{display:flex;flex-wrap:wrap;gap:4px}
     .tech-pill{font-size:9px;font-weight:400;padding:3px 9px;border-radius:100px;border:1px solid var(--border2);color:var(--fg2);background:var(--white)}
-    .tech-pill.new{border-color:#a7f3d0;background:#ecfdf5;color:#059669}
-    .tech-pill.removed{border-color:#fecaca;background:#fef2f2;color:#dc2626;text-decoration:line-through}
+    .tech-pill.new{border-color:#166534;background:#0f2922;color:#34d399}
+    .tech-pill.removed{border-color:#7f1d1d;background:#2c1515;color:#f87171;text-decoration:line-through}
     .tech-change{display:flex;align-items:center;gap:6px;font-size:9px;color:var(--fg3);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
     .tech-change-arrow{color:#10b981;font-weight:500}
 
@@ -254,61 +277,59 @@
     .jobs-card-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border)}
     .jobs-card-title{font-size:13px;font-weight:600;color:var(--fg)}
     .jobs-card-count{font-size:10px;font-weight:400;color:var(--fg3)}
-    .jobs-velocity{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:500;padding:2px 8px;border-radius:100px;background:#ecfdf5;color:#059669;margin-left:8px}
-    .j-head{display:grid;grid-template-columns:2.5fr 1fr .8fr .8fr .6fr;padding:0 18px;background:#fafafa;border-bottom:1px solid var(--border)}
+    .jobs-velocity{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:500;padding:2px 8px;border-radius:100px;background:#0f2922;color:#34d399;margin-left:8px}
+    .j-head{display:grid;grid-template-columns:2.5fr 1fr .8fr .8fr .6fr;padding:0 18px;background:#0e0e11;border-bottom:1px solid var(--border)}
     .j-head span{font-size:8.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:7px 0}
     .j-row{display:grid;grid-template-columns:2.5fr 1fr .8fr .8fr .6fr;padding:0 18px;border-bottom:1px solid var(--border);align-items:center}
     .j-row:last-child{border-bottom:none}
     .j-title{font-size:10.5px;font-weight:500;color:var(--fg);padding:7px 0}
     .j-dept{font-size:8.5px;font-weight:500;padding:2px 7px;border-radius:100px;display:inline-flex}
-    .j-dept.cx{background:#f3e8ff;color:#7c3aed}
-    .j-dept.eng{background:#cffafe;color:#0891b2}
-    .j-dept.sales{background:#ecfdf5;color:#059669}
-    .j-dept.product{background:#fef3c7;color:#d97706}
-    .j-dept.ops{background:#e0e7ff;color:#4f46e5}
+    .j-dept.cx{background:#2d2640;color:#a78bfa}
+    .j-dept.eng{background:#0d2c33;color:#67e8f9}
+    .j-dept.sales{background:#0f2922;color:#34d399}
+    .j-dept.product{background:#2c2210;color:#fbbf24}
+    .j-dept.ops{background:#1e1e3a;color:#818cf8}
     .j-loc{font-size:9.5px;font-weight:300;color:var(--fg2);padding:7px 0}
     .j-level{font-size:9px;font-weight:400;color:var(--fg3);padding:7px 0}
     .j-posted{font-size:9px;font-weight:300;color:var(--fg3);padding:7px 0}
-    .j-posted.recent{color:#059669;font-weight:400}
+    .j-posted.recent{color:#34d399;font-weight:400}
 
     /* Features */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:36px}
-    .grid-item{background:var(--white);padding:28px 24px}
-    .grid-item .num{font-size:12px;font-weight:300;color:var(--fg4);margin-bottom:10px;font-family:var(--mono)}
-    .grid-item h3{font-size:14px;font-weight:600;margin-bottom:6px}
-    .grid-item p{font-size:13px;font-weight:400;color:var(--fg2);line-height:1.65}
-
-    /* Steps */
-    .steps{margin-top:36px}
-    .step{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--border)}
-    .step:last-child{border-bottom:none}
-    .step-n{font-size:13px;font-weight:300;color:var(--fg4);font-family:var(--mono)}
-    .step h3{font-size:15px;font-weight:600;margin-bottom:4px}
-    .step p{font-size:13px;font-weight:400;color:var(--fg2);line-height:1.65}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+    .grid-item{background:var(--white);padding:24px;border-radius:12px;border:1px solid var(--border);transition:all .25s;position:relative;overflow:hidden}
+    .grid-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:.6;transition:opacity .25s}
+    .grid-item:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+    .grid-item:hover::before{opacity:1}
+    .grid-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:15px}
+    .grid-item h3{font-size:13px;font-weight:600;margin-bottom:5px}
+    .grid-item p{font-size:12px;font-weight:400;color:var(--fg3);line-height:1.6}
+    .gi-search .grid-icon{background:#0f2922;color:#34d399}
+    .gi-search::before{background:#34d399}
+    .gi-graph .grid-icon{background:#1e1e3a;color:#818cf8}
+    .gi-graph::before{background:#818cf8}
+    .gi-enrich .grid-icon{background:#1a2744;color:#60a5fa}
+    .gi-enrich::before{background:#60a5fa}
+    .gi-signals .grid-icon{background:#2c2210;color:#fbbf24}
+    .gi-signals::before{background:#fbbf24}
+    .gi-mcp .grid-icon{background:#2d2640;color:#c4b5fd}
+    .gi-mcp::before{background:#c4b5fd}
+    .gi-json .grid-icon{background:rgba(234,88,12,.15);color:#ea580c}
+    .gi-json::before{background:#ea580c}
 
     /* CTA */
-    .cta{padding:96px 24px}
-    .cta h2{max-width:480px}
-    .cta .s-desc{max-width:400px;margin-top:14px}
-    .cta .hero-actions{margin-top:28px}
+    .cta{padding:96px 24px;text-align:center}
+    .cta h2{max-width:480px;margin:0 auto}
+    .cta .s-desc{max-width:400px;margin:14px auto 0}
     .cta code{font-family:var(--mono);font-size:13px;font-weight:400;color:var(--fg3);margin-top:20px;display:block}
+    .cta-statement{font-family:var(--mono);font-size:14px;font-weight:400;letter-spacing:.02em;color:rgba(254,243,199,.85);margin-bottom:16px}
+    .cta-wink{display:inline-block;animation:wink 3s ease-in-out infinite;color:#fef3c7}
 
-    footer{max-width:1120px;margin:0 auto;padding:24px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:400;color:var(--fg3);flex-wrap:wrap;gap:10px}
-    footer a{color:var(--fg2);text-decoration:none;font-weight:400}
-    footer a:hover{color:var(--fg)}
+    footer{max-width:1120px;margin:0 auto;padding:32px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:400;color:var(--fg3);flex-wrap:wrap;gap:10px}
+    footer a{color:var(--fg3);text-decoration:none;font-weight:400;transition:color .2s}
+    footer a:hover{color:var(--accent-light)}
 
-    /* Statement divider */
-    .statement{max-width:1120px;margin:0 auto;padding:72px 40px;text-align:center}
-    .statement h2{font-size:clamp(1.2rem,2.2vw,1.7rem);font-weight:400;letter-spacing:-.025em;line-height:1.3;color:var(--fg3);max-width:100%;margin:0 auto}
-    .statement h2 strong{font-weight:600;color:var(--fg)}
-    .statement-line{width:40px;height:1px;background:var(--border2);margin:0 auto 20px}
-    .footer-tagline{font-size:11px;letter-spacing:.06em;color:var(--fg4);font-weight:400}
-
-    /* Vision */
-    .vision{max-width:1120px;margin:0 auto;padding:72px 40px;text-align:center}
-    .vision h2{font-size:clamp(1.2rem,2.2vw,1.7rem);font-weight:500;letter-spacing:-.025em;line-height:1.3;max-width:100%;margin:0 auto}
-    .vision h2 strong{font-weight:600;color:var(--fg)}
-    .vision-text{font-size:14px;font-weight:400;color:var(--fg2);line-height:1.7;max-width:560px;margin:20px auto 0;text-align:left}
+    .statement-line{width:40px;height:1px;background:var(--accent-muted);opacity:.3;margin:0 auto 20px}
+    .footer-tagline{font-size:10px;letter-spacing:.08em;color:var(--fg4);font-weight:400;text-transform:uppercase}
 
     /* Scroll-reveal animations */
     .reveal-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
@@ -324,33 +345,23 @@
     /* Terminal atmospheric background */
     .terminal-bg{
       position:relative;max-width:100%;margin:0 auto;
-      padding:24px 64px 56px;
+      padding:8px 64px 56px;
       overflow:hidden;
     }
-    .terminal-bg::before{
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse 80% 50% at 50% 40%, rgba(99,102,241,0.03) 0%, transparent 70%),
-                 radial-gradient(circle at 20% 80%, rgba(16,185,129,0.02) 0%, transparent 50%);
-      pointer-events:none;z-index:0;
-    }
-    .terminal-bg::after{
-      content:'';position:absolute;inset:0;
-      background:linear-gradient(to bottom,var(--bg) 0%,transparent 15%,transparent 75%,var(--bg) 100%),
-                 linear-gradient(to right,var(--bg) 0%,transparent 10%,transparent 90%,var(--bg) 100%);
-      pointer-events:none;z-index:0;
-    }
-    .terminal-bg>*{position:relative;z-index:1;max-width:1120px;margin-left:auto;margin-right:auto}
+    .terminal-bg>*{max-width:1120px;margin-left:auto;margin-right:auto}
 
-    @media(max-width:960px){.agent-grid{grid-template-columns:1fr}.tech-grid{grid-template-columns:1fr}}
+    @media(max-width:960px){.tech-grid{grid-template-columns:1fr}}
     @media(max-width:768px){
       .t-head,.t-row{grid-template-columns:2fr 1fr 1fr .8fr}
       .t-head span:nth-child(n+5),.t-row>*:nth-child(n+5){display:none}
       .graph-canvas{min-height:480px}
-      .grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
       .g-node{min-width:120px;padding:7px 9px}
       .g-name{font-size:10px}
       .nav-links{display:none}
-      .trust-bar{flex-direction:column;gap:8px}
+      .terminal-bg{padding-left:20px;padding-right:20px}
+      .waitlist-form{flex-direction:column;align-items:stretch}
+      .waitlist-input{width:100%}
     }
     @media(max-width:480px){
       .t-head,.t-row{grid-template-columns:1.5fr 1fr .8fr}
@@ -360,71 +371,69 @@
 </head>
 <body>
 
+  <div class="hero-zone">
   <nav>
     <a href="/" class="logo">kinobi</a>
-    <a href="#mcpServer" class="nav-cta" style="background:var(--fg);color:#fff;border-color:var(--fg)">Start Building</a>
+    <a href="#" class="nav-cta" onclick="document.querySelector('.waitlist-input').focus();return false;">Join Waitlist</a>
   </nav>
 
   <div class="hero">
-    <div class="hero-tag"><span class="dot"></span> A GTM API purpose-built for AI agents</div>
     <h1>The highest-accuracy GTM intelligence <em>for your AI.</em></h1>
     <p class="hero-p">Warm paths, technographics, hiring signals, and relationship graphs — structured JSON for Claude Code, your scripts, or any MCP client.</p>
-    <div class="hero-actions">
-      <a href="#mcpServer" class="btn btn-dark">Start building</a>
-      <a href="#how" class="btn btn-ghost">How it works →</a>
+    <form class="waitlist-form" onsubmit="return handleWaitlist(event)">
+      <input type="email" class="waitlist-input" placeholder="you@company.com" required />
+      <button type="submit" class="btn btn-dark">Join Waitlist</button>
+    </form>
+    <p class="waitlist-msg" id="waitlistMsg"></p>
+    <div class="install-pill" onclick="navigator.clipboard.writeText('pip install kinobi');this.querySelector('.install-copied').style.opacity='1';setTimeout(()=>this.querySelector('.install-copied').style.opacity='0',1500)">
+      <code>$ pip install kinobi</code>
+      <span class="install-copy" title="Copy to clipboard"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></span>
+      <span class="install-copied">Copied!</span>
     </div>
   </div>
 
   <!-- Terminal -->
   <div class="terminal-bg">
-  <div class="terminal-header">
-    <h2>Five APIs. <strong>One CLI.</strong></h2>
-    <p>Every endpoint returns structured JSON. Pipe it anywhere.</p>
-  </div>
   <div class="terminal-wrap">
     <div class="terminal-tabs">
       <button class="terminal-tab active" onclick="switchTab(0)"><span class="tab-dot dot-search"></span>Search<span class="tab-progress tp-search"></span></button>
       <button class="terminal-tab" onclick="switchTab(1)"><span class="tab-dot dot-tech"></span>Enrich<span class="tab-progress tp-tech"></span></button>
       <button class="terminal-tab" onclick="switchTab(2)"><span class="tab-dot dot-jobs"></span>Signals<span class="tab-progress tp-jobs"></span></button>
       <button class="terminal-tab" onclick="switchTab(3)"><span class="tab-dot dot-graph"></span>Graph<span class="tab-progress tp-graph"></span></button>
-      <button class="terminal-tab" onclick="switchTab(4)"><span class="tab-dot dot-mcp"></span>MCP<span class="tab-progress tp-mcp"></span></button>
+      <button class="terminal-tab" onclick="switchTab(4)"><span class="tab-dot dot-mcp"></span>Agent<span class="tab-progress tp-mcp"></span></button>
     </div>
     <div class="terminal" id="term">
-      <!-- Tab 0: search — Stripe -->
+      <!-- Tab 0: search -->
       <div class="term-pane" data-tab="0">
-        <div class="t-block"><span class="cm"># search warm paths to any company</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi search</span> <span class="fl">--company</span> <span class="st">"Stripe"</span> <span class="fl">--min-score</span> <span class="st">70</span> <span class="fl">--json</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="cm"># find warm paths into any target account</span></div>
+        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi search</span> <span class="st">"B+ fintech, hiring CX, Zendesk"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="re">Found </span><span class="hi">6 warm paths</span><span class="re"> to Stripe (stripe.com)</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="re">1,095 pipeline companies indexed · </span><span class="score-hi">98.7% accuracy</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="hi">12 matched</span><span class="re"> · </span><span class="hi">47 warm paths</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="label">  1.</span> <span class="hi">Priya Rao</span> <span class="re">(VP Eng, your team)</span></div>
-        <div class="t-block"><span class="re">     → ex-Stripe · 4yr tenure — score:</span> <span class="score-hi">96</span></div>
-        <div class="t-block"><span class="label">  2.</span> <span class="hi">Marcus Johnson</span> <span class="re">(Operating Partner, a16z)</span></div>
-        <div class="t-block"><span class="re">     → a16z portfolio CTO dinners — score:</span> <span class="score-hi">91</span></div>
-        <div class="t-block"><span class="label">  3.</span> <span class="hi">Sarah Chen</span> <span class="re">(Board, Kleiner Perkins)</span></div>
-        <div class="t-block"><span class="re">     → KP portfolio overlap — score:</span> <span class="score-hi">85</span></div>
-        <div class="t-block"><span class="label">  4.</span> <span class="hi">James Liu</span> <span class="re">(Advisor)</span></div>
-        <div class="t-block"><span class="re">     → Stanford CS 2016 cohort — score:</span> <span class="score-md">73</span></div>
+        <div class="t-block"><span class="label">  [1]</span> <span class="hi">Ramp</span><span class="re">      D · Intercom · Q3  · </span><span class="vel">4 paths</span></div>
+        <div class="t-block"><span class="label">  [2]</span> <span class="hi">Brex</span><span class="re">      D · Zendesk  · up  · </span><span class="vel">3 paths</span></div>
+        <div class="t-block"><span class="label">  [3]</span> <span class="hi">Chime</span><span class="re">     IPO · ZD · migrate · </span><span class="vel">7 paths</span></div>
+        <div class="t-block"><span class="label">  [4]</span> <span class="hi">Mercury</span><span class="re">   C · Custom · VP    · </span><span class="vel">2 paths</span></div>
+        <div class="t-block"><span class="re">  ... 8 more</span></div>
       </div>
-      <!-- Tab 1: enrich — Figma -->
+      <!-- Tab 1: enrich -->
       <div class="term-pane" data-tab="1" style="display:none">
-        <div class="t-block"><span class="cm"># get full technographic profile</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi enrich</span> <span class="st">"figma.com"</span> <span class="fl">--json</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="cm"># full company intelligence in one call</span></div>
+        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi enrich</span> <span class="st">ramp.com</span> <span class="fl">--depth full</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="jb">{</span></div>
-        <div class="t-block">  <span class="jk">"company"</span><span class="jb">:</span> <span class="js">"Figma"</span><span class="jb">,</span></div>
-        <div class="t-block">  <span class="jk">"cx"</span><span class="jb">:</span>      <span class="jb">[</span><span class="js">"Zendesk"</span><span class="jb">,</span> <span class="js">"Amplitude"</span><span class="jb">,</span> <span class="js">"Segment"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"infra"</span><span class="jb">:</span>   <span class="jb">[</span><span class="js">"GCP"</span><span class="jb">,</span> <span class="js">"Kubernetes"</span><span class="jb">,</span> <span class="js">"Datadog"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"sales"</span><span class="jb">:</span>   <span class="jb">[</span><span class="js">"Salesforce"</span><span class="jb">,</span> <span class="js">"Gong"</span><span class="jb">,</span> <span class="js">"Outreach"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"design"</span><span class="jb">:</span>  <span class="jb">[</span><span class="js">"Storybook"</span><span class="jb">,</span> <span class="js">"Chromatic"</span><span class="jb">,</span> <span class="js">"LaunchDarkly"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"changed"</span><span class="jb">:</span> <span class="jb">[</span><span class="warn">"Pendo → Amplitude (Q1 2026)"</span><span class="jb">],</span></div>
-        <div class="t-block">  <span class="jk">"confidence"</span><span class="jb">:</span> <span class="jn">0.91</span></div>
-        <div class="t-block"><span class="jb">}</span></div>
+        <div class="t-block"><span class="label">  company:</span>   <span class="hi">Ramp</span></div>
+        <div class="t-block"><span class="label">  valuation:</span> <span class="warn">$32B</span><span class="re"> (Nov 2025)</span></div>
+        <div class="t-block"><span class="label">  raised:</span>    <span class="hi">$2.3B total</span></div>
+        <div class="t-block"><span class="label">  employees:</span> <span class="hi">3,700+</span> <span class="vel">(3x YoY)</span></div>
+        <div class="t-block"><span class="label">  revenue:</span>   <span class="st">$1B+ ARR</span></div>
+        <div class="t-block"><span class="label">  stack:</span>     <span class="jk">Cohere.io</span><span class="re">, </span><span class="jk">Snowflake</span><span class="re">, </span><span class="jk">dbt</span></div>
+        <div class="t-block"><span class="label">  signal:</span>    <span class="st">"CX Ops"</span><span class="re"> posted </span><span class="vel">5d ago</span></div>
       </div>
       <!-- Tab 2: signals — Rippling -->
       <div class="term-pane" data-tab="2" style="display:none">
-        <div class="t-block"><span class="cm"># pull open roles and hiring velocity</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi signals</span> <span class="st">"rippling.com"</span> <span class="fl">--dept</span> <span class="st">"eng,sales"</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="cm"># track hiring velocity and open roles</span></div>
+        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi signals</span> <span class="st">rippling.com</span> <span class="fl">--dept</span> <span class="st">"eng,sales"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="hi">32 open roles</span><span class="re"> at Rippling </span><span class="label">(eng: 18, sales: 14)</span></div>
         <div class="t-block"><br/></div>
@@ -440,8 +449,8 @@
       </div>
       <!-- Tab 3: graph — Plaid -->
       <div class="term-pane" data-tab="3" style="display:none">
-        <div class="t-block"><span class="cm"># trace the connection path to a decision maker</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi graph</span> <span class="fl">--to</span> <span class="st">"Nina Patel"</span> <span class="fl">--company</span> <span class="st">"Plaid"</span><span class="cursor"></span></div>
+        <div class="t-block"><span class="cm"># trace the path to any decision maker</span></div>
+        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi graph</span> <span class="fl">--to</span> <span class="st">"Nina Patel"</span> <span class="fl">--company</span> <span class="st">"Plaid"</span><span class="cursor"></span></div>
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="re">Path to </span><span class="hi">Nina Patel</span><span class="re"> (Head of Ops, Plaid) — score:</span> <span class="score-hi">91</span></div>
         <div class="t-block"><br/></div>
@@ -455,26 +464,38 @@
         <div class="t-block"><span class="re">    • Series B co-investment (2020)</span></div>
         <div class="t-block"><span class="re">    • GC portfolio summit · annual</span></div>
       </div>
-      <!-- Tab 4: mcp -->
+      <!-- Tab 4: agent -->
       <div class="term-pane" data-tab="4" style="display:none">
-        <div class="t-block"><span class="cm"># start as MCP server for Claude Code</span></div>
-        <div class="t-block"><span class="pr">$</span> <span class="hi">kinobi mcp start</span><span class="cursor"></span></div>
-        <div class="t-block"><span class="re">MCP server running on stdio</span></div>
-        <div class="t-block"><span class="label">  tools:</span> <span class="hi">search</span>  <span class="hi">enrich</span>  <span class="hi">signals</span>  <span class="hi">graph</span>  <span class="hi">intro</span></div>
+        <div class="t-block"><span class="cm"># let your agent reason over the full graph</span></div>
+        <div class="t-block"><span class="pr">→</span> <span class="hi">kinobi agent</span> <span class="st">"analyze ramp, draft approach"</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="cm"># your agent auto-discovers all tools</span></div>
-        <div class="t-block"><span class="pr">&gt;</span> <span class="hi">Research Ramp and draft an intro via the strongest path</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.search</span><span class="re">   12 matched · 47 warm paths</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.enrich</span><span class="re">   $32B · 3,700+ employees</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.signals</span><span class="re">  CX scaling · 6 open roles</span></div>
+        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.graph</span><span class="re">    You → Sarah Chen → Eric Atiyeh</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.search</span><span class="re">   4 warm paths found</span></div>
-        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.enrich</span><span class="re">   Intercom, Segment, Snowflake</span></div>
-        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.signals</span><span class="re">  47 open roles · CX hiring </span><span class="vel">+42%</span></div>
-        <div class="t-block"><span class="vel">  ✓</span> <span class="fl">kinobi.graph</span><span class="re">    Sarah Chen → Alex Rivera (score: </span><span class="score-hi">94</span><span class="re">)</span></div>
+        <div class="t-block"><span class="re">  ┌─ </span><span class="draft">agent reasoning</span><span class="re"> ────────────────────────────────┐</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="vel">→</span><span class="re"> CX scaling (+18% YoY)                       │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="vel">→</span><span class="re"> Intercom renewal Q3                         │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="vel">→</span><span class="re"> Torres → CTO Atiyeh                         │</span></div>
+        <div class="t-block"><span class="re">  │                                                  │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="draft">rec:</span><span class="hi"> intro via Sarah Chen. Timing optimal.</span><span class="re">  │</span></div>
+        <div class="t-block"><span class="re">  └──────────────────────────────────────────────────┘</span></div>
         <div class="t-block"><br/></div>
-        <div class="t-block"><span class="draft">Drafting intro via Sarah Chen...</span></div>
+        <div class="t-block"><span class="re">  ┌─ </span><span class="vel">warm path</span><span class="re"> ───────────────────────────────────┐</span></div>
+        <div class="t-block"><span class="re">  │                                                  │</span></div>
+        <div class="t-block"><span class="re">  │    </span><span class="warn">You</span><span class="re">  ─────→  </span><span class="hi">Sarah Chen</span><span class="re">  ─────→  </span><span class="hi">Eric Atiyeh</span><span class="re">│</span></div>
+        <div class="t-block"><span class="re">  │               ex-Stripe              CTO, Ramp  │</span></div>
+        <div class="t-block"><span class="re">  │               2019-2021              decision    │</span></div>
+        <div class="t-block"><span class="re">  │                                                  │</span></div>
+        <div class="t-block"><span class="re">  │    strength: </span><span class="warn">████████</span><span class="re">░░  </span><span class="hi">82%</span><span class="re">   hops: </span><span class="hi">2</span><span class="re">         │</span></div>
+        <div class="t-block"><span class="re">  └──────────────────────────────────────────────────┘</span><span class="cursor"></span></div>
       </div>
     </div>
   </div>
   </div>
+  </div>
+  <div class="hero-zone-fade"></div>
 
   <!-- Intelligence Table -->
   <div class="screen-section" id="pipelineSection">
@@ -498,20 +519,13 @@
   </div>
 
   <!-- Search API -->
-  <div class="agent-section" id="searchApi">
-    <div class="agent-grid">
-      <div class="agent-text">
-        <p class="s-label">Search API</p>
-        <h2>Your GTM data speaks <strong>structured JSON.</strong></h2>
-        <p>Every command returns machine-readable output. Pipe it to Claude Code, feed it to your scripts, or use Kinobi as an MCP tool.</p>
-        <div class="af-list">
-          <div class="af"><span class="af-dot"></span><div><h4>CLI-first</h4><p>Unix-native. Pipe-friendly. Composable with any workflow.</p></div></div>
-          <div class="af"><span class="af-dot"></span><div><h4>Structured output</h4><p>Every command supports <code style="font-family:var(--mono);font-size:12px">--json</code> for agent-readable responses.</p></div></div>
-          <div class="af"><span class="af-dot"></span><div><h4>Warm path scoring</h4><p>Every path scored 0–100 on shared experience, overlap duration, and recency.</p></div></div>
-        </div>
-        <div style="margin-top:24px"><a href="#" class="btn btn-ghost">Find warm paths →</a></div>
-      </div>
-      <div class="agent-terminal" id="agentTerm">
+  <div class="screen-section" id="searchApi">
+    <div class="screen-intro reveal-up">
+      <p class="s-label">Search API</p>
+      <h2>Your GTM data speaks <strong>structured JSON.</strong></h2>
+      <p class="s-desc">Every command returns machine-readable output. Pipe it to Claude Code, feed it to your scripts, or use Kinobi as an MCP tool.</p>
+    </div>
+    <div class="agent-terminal" id="agentTerm">
         <div class="at-block"><span class="cm"># Claude Code using Kinobi as a tool</span></div>
         <div class="at-block"><span class="pr">&gt;</span> <span class="hi">Find warm paths to Ramp and draft an intro</span></div>
         <div class="at-block">&nbsp;</div>
@@ -536,7 +550,6 @@
         <div class="at-block"><span class="re">Hi Alex — I noticed Ramp just migrated to</span></div>
         <div class="at-block"><span class="re">Intercom and is hiring a VP CX...</span><span class="cursor"></span></div>
       </div>
-    </div>
   </div>
 
   <!-- Enrich API -->
@@ -632,7 +645,6 @@
         <div class="tech-change"><span class="tech-change-arrow">→</span> Outreach → Apollo switch (Q1 2026) · Chronosphere added (Q4 2025)</div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:28px"><a href="#" class="btn btn-ghost">Enrich a company →</a></div>
   </div>
 
   <!-- Signals API -->
@@ -678,7 +690,6 @@
         <div class="j-row"><div class="j-title">Enterprise Account Exec</div><span class="j-dept sales">Sales</span><div class="j-level">Senior</div><div class="j-loc">New York</div><div class="j-posted">15d</div></div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:28px"><a href="#" class="btn btn-ghost">Track buying signals →</a></div>
   </div>
 
   <!-- Graph API -->
@@ -700,24 +711,16 @@
         <button class="g-popover-btn">Request intro</button>
       </div>
     </div>
-    <div style="text-align:center;margin-top:28px"><a href="#" class="btn btn-ghost">Map your network →</a></div>
   </div>
 
   <!-- MCP Server -->
-  <div class="agent-section" id="mcpServer">
-    <div class="agent-grid">
-      <div class="agent-text">
-        <p class="s-label">MCP Server</p>
-        <h2>Drop-in intelligence for <strong>Claude Code, Cursor, and any MCP client.</strong></h2>
-        <p>Start the MCP server and your AI agent gets access to every Kinobi tool — search, enrich, signals, and graph — with zero integration work.</p>
-        <div class="af-list">
-          <div class="af"><span class="af-dot"></span><div><h4>Zero integration</h4><p>One command to start. Your agent discovers available tools automatically.</p></div></div>
-          <div class="af"><span class="af-dot"></span><div><h4>Works everywhere</h4><p>Claude Code, Cursor, Windsurf, and any MCP-compatible client.</p></div></div>
-          <div class="af"><span class="af-dot"></span><div><h4>Structured output</h4><p>Every tool returns typed JSON. No parsing, no guessing.</p></div></div>
-        </div>
-        <div style="margin-top:24px"><a href="#" class="btn btn-ghost">Connect your agent →</a></div>
-      </div>
-      <div class="agent-terminal" id="mcpTerm">
+  <div class="screen-section" id="mcpServer">
+    <div class="screen-intro reveal-up">
+      <p class="s-label">MCP Server</p>
+      <h2>Drop-in intelligence for <strong>Claude Code, Cursor, and any MCP client.</strong></h2>
+      <p class="s-desc">Start the MCP server and your AI agent gets access to every Kinobi tool — search, enrich, signals, and graph — with zero integration work.</p>
+    </div>
+    <div class="agent-terminal" id="mcpTerm">
         <div class="at-block"><span class="cm"># start the MCP server</span></div>
         <div class="at-block"><span class="pr">$</span> <span class="hi">kinobi mcp start</span></div>
         <div class="at-block"><span class="re">MCP server running on stdio</span></div>
@@ -735,7 +738,6 @@
         <div class="at-block">&nbsp;</div>
         <div class="at-block"><span class="draft">Drafting intro request to Sarah Chen...</span><span class="cursor"></span></div>
       </div>
-    </div>
   </div>
 
   <!-- Platform -->
@@ -744,48 +746,50 @@
     <h2>Everything your GTM agent <strong>needs.</strong></h2>
     <p class="s-desc">Kinobi ingests LinkedIn connections, board affiliations, investor networks, and alumni ties — then scores every path to every target.</p>
     <div class="grid">
-      <div class="grid-item"><p class="num">01</p><h3>Search API</h3><p>Find warm paths through your team's network to any decision maker at any company.</p></div>
-      <div class="grid-item"><p class="num">02</p><h3>Graph API</h3><p>Query the relationship graph. Every path scored 0–100 on shared context and recency.</p></div>
-      <div class="grid-item"><p class="num">03</p><h3>Enrich API</h3><p>Full tech stack by category with change detection. Know when a competitor's contract expires.</p></div>
-      <div class="grid-item"><p class="num">04</p><h3>Signals API</h3><p>Open roles, hiring velocity, department growth. Time your outreach to hiring surges.</p></div>
-      <div class="grid-item"><p class="num">05</p><h3>MCP Server</h3><p>Drop-in tool server for Claude Code, Cursor, and any MCP-compatible client.</p></div>
-      <div class="grid-item"><p class="num">06</p><h3>Structured JSON</h3><p>Every endpoint returns typed, machine-readable output. Pipe it anywhere.</p></div>
+      <div class="grid-item gi-search">
+        <div class="grid-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <h3>Search API</h3>
+        <p>Find warm paths through your team's network to any decision maker at any company.</p>
+      </div>
+      <div class="grid-item gi-graph">
+        <div class="grid-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v6M9 6h6l3 12"/></svg></div>
+        <h3>Graph API</h3>
+        <p>Query the relationship graph. Every path scored 0–100 on shared context and recency.</p>
+      </div>
+      <div class="grid-item gi-enrich">
+        <div class="grid-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Enrich API</h3>
+        <p>Full tech stack by category with change detection. Know when a competitor's contract expires.</p>
+      </div>
+      <div class="grid-item gi-signals">
+        <div class="grid-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h.01M7 20v-4M12 20v-8M17 20V8M22 20V4"/></svg></div>
+        <h3>Signals API</h3>
+        <p>Open roles, hiring velocity, department growth. Time your outreach to hiring surges.</p>
+      </div>
+      <div class="grid-item gi-mcp">
+        <div class="grid-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <h3>MCP Server</h3>
+        <p>Drop-in tool server for Claude Code, Cursor, and any MCP-compatible client.</p>
+      </div>
+      <div class="grid-item gi-json">
+        <div class="grid-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H7a2 2 0 00-2 2v5a2 2 0 01-2 2 2 2 0 012 2v5a2 2 0 002 2h1M16 3h1a2 2 0 012 2v5a2 2 0 002 2 2 2 0 00-2 2v5a2 2 0 01-2 2h-1"/></svg></div>
+        <h3>Structured JSON</h3>
+        <p>Every endpoint returns typed, machine-readable output. Pipe it anywhere.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Statement divider -->
-  <div class="statement reveal-up">
-    <div class="statement-line"></div>
-    <h2>Made for machines <strong>and humans alike.</strong></h2>
-  </div>
-
-  <!-- Vision -->
-  <div class="vision reveal-up" id="visionSection">
-    <div class="statement-line"></div>
-    <h2>Towards <strong>programmatic go-to-market.</strong></h2>
-    <p class="vision-text">Today's GTM tools were built for humans browsing dashboards. The next generation of sales is agent-driven — AI systems that research prospects, identify warm paths, and draft outreach autonomously. They need structured, queryable data, not point-and-click UIs. Kinobi is building the programmatic GTM layer that makes this possible.</p>
-    <div style="margin-top:28px"><a href="#mcpServer" class="btn btn-dark">Start building</a></div>
-  </div>
-
-  <!-- How it works -->
-  <section id="how">
-    <p class="s-label">How it works</p>
-    <h2>Three steps to <strong>programmatic GTM.</strong></h2>
-    <p class="s-desc">Three commands to go from cold pipeline to warm intros.</p>
-    <div class="steps">
-      <div class="step"><span class="step-n">01</span><div><h3>Install the CLI</h3><p><code style="font-family:var(--mono);font-size:12px">pip install kinobi</code> — authenticate with your API key. Done.</p></div></div>
-      <div class="step"><span class="step-n">02</span><div><h3>Connect your network</h3><p>Import LinkedIn connections, share your investor list, upload target accounts. Kinobi builds the graph.</p></div></div>
-      <div class="step"><span class="step-n">03</span><div><h3>Query from anywhere</h3><p>Use the CLI, pipe to Claude Code, or add Kinobi as an MCP tool. Your agent gets structured data on every warm path.</p></div></div>
-      <div class="step"><span class="step-n">04</span><div><h3>Deploy your GTM agent</h3><p>Your agent drafts outreach through the strongest connections. You approve and send.</p></div></div>
-    </div>
-  </section>
-
+  <div class="cta-zone">
   <section class="cta">
-    <h2>Start building <strong>programmatic GTM.</strong></h2>
-    <p class="s-desc">Kinobi turns your team's network into structured, queryable intelligence — built for the way agents work.</p>
-    <div class="hero-actions"><a href="#mcpServer" class="btn btn-dark">Start building</a></div>
-    <code>$ pip install kinobi && kinobi init</code>
+    <div class="statement-line"></div>
+    <p class="cta-statement">made for machines ... and humans <span class="cta-wink">;)</span></p>
+    <form class="waitlist-form" onsubmit="return handleWaitlist(event)" style="justify-content:center">
+      <input type="email" class="waitlist-input" placeholder="you@company.com" required />
+      <button type="submit" class="btn btn-dark">Join Waitlist</button>
+    </form>
+    <p class="waitlist-msg" id="waitlistMsg2"></p>
   </section>
+  </div>
 
   <footer>
     <span>&copy; 2026 <a href="https://kinobi.so" style="color:inherit;text-decoration:none">kinobi.so</a> — Ankit Pansari</span>
@@ -798,6 +802,17 @@
   </footer>
 
   <script>
+  // Waitlist handler
+  function handleWaitlist(e){
+    e.preventDefault();
+    const email=e.target.querySelector('input').value;
+    if(email){const list=JSON.parse(localStorage.getItem('kinobi_waitlist')||'[]');list.push({email,ts:Date.now()});localStorage.setItem('kinobi_waitlist',JSON.stringify(list))}
+    const msg=e.target.nextElementSibling;
+    if(msg) msg.textContent="You're on the list. We'll be in touch.";
+    e.target.querySelector('input').value='';
+    return false;
+  }
+
   // Signal type → CSS class mapping
   const sigType=s=>{
     if(/hiring|expand/i.test(s))return'hiring';
@@ -914,7 +929,7 @@
       nodes.innerHTML+=`<div class="g-node g-target-node" style="left:${t.x}px;top:${t.y}px">
         <div style="display:flex;gap:4px;align-items:center">
           <span class="g-company-dot"></span>
-          <span style="font-size:8px;font-weight:400;color:#6366f1">${t.company}</span>
+          <span style="font-size:8px;font-weight:400;color:#ea580c">${t.company}</span>
           <span class="g-badge ${t.dept}">${t.dept}</span>
         </div>
         <div class="g-name">${t.name}</div>
@@ -945,8 +960,8 @@
         const tNode=allNodes[cCount+mCount+tIdx];
         if(!cNode||!tNode)return;
 
-        const litColor='#6366f1';
-        const dimColor='#e4e4e7';
+        const litColor='#ea580c';
+        const dimColor='#3f3f46';
 
         if(midIdx!==null && midIdx!==undefined){
           const mNode=allNodes[cCount+midIdx];
@@ -998,7 +1013,7 @@
       const segs=document.querySelectorAll('.g-edge');
       segs.forEach(el=>{
         el.classList.remove('lit');
-        el.setAttribute('stroke','#e4e4e7');
+        el.setAttribute('stroke','#3f3f46');
         el.style.opacity=el.classList.contains('secondary')?'.15':'.3';
       });
 
@@ -1010,7 +1025,7 @@
         if(e[0]===cIdx&&e[2]){
           for(let s=segOffset;s<segOffset+count&&s<segs.length;s++){
             segs[s].classList.add('lit');
-            segs[s].setAttribute('stroke','#6366f1');
+            segs[s].setAttribute('stroke','#ea580c');
             segs[s].style.opacity='.6';
           }
         }
@@ -1078,13 +1093,17 @@
   // Initial animation for tab 0
   switchTab(0);
 
-  // ── Agent terminal scroll-triggered animation ──
+  // ── Search API scroll-triggered animation ──
+  const searchSection=document.getElementById('searchApi');
   const agentTerm=document.getElementById('agentTerm');
   let agentAnimated=false;
   const agentObs=new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting&&!agentAnimated){
         agentAnimated=true;
+        // Reveal section intro
+        const intro=searchSection.querySelector('.screen-intro');
+        if(intro) intro.classList.add('visible');
         const blocks=agentTerm.querySelectorAll('.at-block');
         blocks.forEach((b,i)=>{
           setTimeout(()=>b.classList.add('visible'), 80*i);
@@ -1097,8 +1116,8 @@
         agentObs.disconnect();
       }
     });
-  },{threshold:0.2});
-  agentObs.observe(agentTerm);
+  },{threshold:0.1});
+  agentObs.observe(searchSection);
 
   // ── Scroll-reveal for all visual sections ──
   function staggerReveal(selector, sectionId, delay=80){
@@ -1175,17 +1194,6 @@
   },{threshold:0.1});
   graphObs.observe(document.getElementById('graphApi'));
 
-  // Vision — simple reveal
-  const visionEl=document.getElementById('visionSection');
-  if(visionEl){
-    const visionObs=new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){visionEl.classList.add('visible');visionObs.disconnect();}
-      });
-    },{threshold:0.3});
-    visionObs.observe(visionEl);
-  }
-
   // Enrich cards — slide up with stagger
   staggerReveal('.reveal-up','enrichApi',150);
 
@@ -1193,13 +1201,17 @@
   staggerReveal('.reveal-up','signalsApi',150);
 
   // MCP terminal scroll-triggered animation
+  const mcpSection=document.getElementById('mcpServer');
   const mcpTerm=document.getElementById('mcpTerm');
-  if(mcpTerm){
+  if(mcpSection&&mcpTerm){
     let mcpAnimated=false;
     const mcpObs=new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting&&!mcpAnimated){
           mcpAnimated=true;
+          // Reveal section intro
+          const intro=mcpSection.querySelector('.screen-intro');
+          if(intro) intro.classList.add('visible');
           const blocks=mcpTerm.querySelectorAll('.at-block');
           blocks.forEach((b,i)=>{
             setTimeout(()=>b.classList.add('visible'), 80*i);
@@ -1211,8 +1223,8 @@
           mcpObs.disconnect();
         }
       });
-    },{threshold:0.2});
-    mcpObs.observe(mcpTerm);
+    },{threshold:0.1});
+    mcpObs.observe(mcpSection);
   }
   </script>
 
