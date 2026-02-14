@@ -17,7 +17,7 @@
   <link rel="canonical" href="https://kinobi.so" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Bricolage+Grotesque:wght@800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Bricolage+Grotesque:wght@800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
@@ -34,7 +34,7 @@
     ::selection{background:rgba(251,146,60,.3)}
 
     nav{max-width:1120px;margin:0 auto;padding:16px 40px 0;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fef3c7;text-decoration:none;display:inline-flex;align-items:center;gap:7px;--icon-box:#ea580c;--icon-border:#ea580c;--icon-stroke:#fef3c7}
+    .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fef3c7;text-decoration:none;display:inline-flex;align-items:center;gap:7px;--icon-box:#fef3c7;--icon-border:#fef3c7;--icon-stroke:#ea580c}
     .logo-icon{flex-shrink:0}
     .nav-waitlist{display:flex;gap:6px;align-items:center}
     .nav-waitlist-input{font-size:12px;font-family:var(--sans);padding:7px 14px;border-radius:100px;border:1px solid var(--border2);background:var(--white);color:var(--fg);outline:none;width:180px;transition:border-color .2s}
@@ -121,7 +121,7 @@
     /* Hero zone — rose background */
     .hero-zone{background:var(--accent-muted);padding-bottom:0}
     .hero-zone-fade{height:80px;background:linear-gradient(to bottom,var(--accent-muted),var(--bg))}
-    .hero-zone .logo{color:#fef3c7;--icon-box:rgba(254,243,199,.15);--icon-border:rgba(254,243,199,.3);--icon-stroke:#fef3c7}
+    .hero-zone .logo{color:#fef3c7;--icon-box:#fef3c7;--icon-border:#fef3c7;--icon-stroke:#ea580c}
     .hero-zone .nav-waitlist-input{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.25);color:#fef3c7}
     .hero-zone .nav-waitlist-input::placeholder{color:rgba(254,243,199,.45)}
     .hero-zone .nav-waitlist-input:focus{border-color:rgba(254,243,199,.5)}
@@ -148,6 +148,7 @@
     .cta-zone .btn-dark:hover{background:rgba(254,243,199,.85)}
     .cta-zone .waitlist-msg{color:rgba(254,243,199,.75)}
     .cta-zone code{color:rgba(254,243,199,.4)}
+    .cta-zone .cta-mark{--icon-box:#fef3c7;--icon-border:#fef3c7;--icon-stroke:#ea580c}
 
     /* Waitlist form */
     .waitlist-form{display:flex;gap:8px;margin-top:20px;align-items:center}
@@ -228,9 +229,13 @@
     .t-funding{font-size:9.5px;font-weight:400;color:var(--fg2);padding:8px 0;font-variant-numeric:tabular-nums}
 
     /* Graph */
-    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:12px;background:var(--white);min-height:700px;overflow:hidden}
-    .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid var(--border2);font-size:10px;min-width:155px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-    .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.4);transform:translateY(-1px)}
+    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:12px;background:var(--white);min-height:740px;overflow:hidden;padding-top:36px}
+    .g-col-labels{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:10px 20px;pointer-events:none;z-index:2}
+    .g-col-label{font-size:8.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);opacity:.6}
+    .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid var(--border2);font-size:10px;min-width:155px;transition:all .3s;box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default;z-index:1}
+    .g-node:hover{box-shadow:0 4px 16px rgba(0,0,0,.4);transform:translateY(-1px);z-index:3}
+    .g-node.g-active{border-color:#ea580c;box-shadow:0 0 0 1px #ea580c,0 4px 20px rgba(234,88,12,.15);z-index:2;animation:nodeGlow 2s ease-in-out infinite}
+    @keyframes nodeGlow{0%,100%{box-shadow:0 0 0 1px #ea580c,0 4px 20px rgba(234,88,12,.15)}50%{box-shadow:0 0 0 2px #ea580c,0 4px 24px rgba(234,88,12,.25)}}
     .g-badge{font-size:7.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:1.5px 5px;border-radius:100px;display:inline-flex}
     .g-badge.board{background:#1a2744;color:#60a5fa}
     .g-badge.investor{background:#0f2922;color:#34d399}
@@ -252,26 +257,35 @@
     .g-strength.strong{background:#0f2922;color:#34d399}
     .g-strength.medium{background:#2c2210;color:#fbbf24}
     .g-company-dot{width:5px;height:5px;border-radius:50%;background:#ea580c;display:inline-block}
+    .g-score-pill{position:absolute;top:7px;right:8px;font-size:8px;font-weight:600;padding:2px 6px;border-radius:100px;font-variant-numeric:tabular-nums;background:#0f2922;color:#34d399;opacity:.85}
+    .g-score-pill.med{background:#2c2210;color:#fbbf24}
 
-    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:10px;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px)}
+    .g-popover{position:absolute;bottom:14px;left:14px;right:14px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:10px;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:opacity .3s,transform .3s;opacity:0;transform:translateY(6px);z-index:5}
     .g-popover.show{opacity:1;transform:translateY(0)}
     .g-popover-route{font-weight:500;color:var(--fg);font-size:11px}
     .g-popover-via{font-size:9px;font-weight:300;color:var(--fg3)}
     .g-popover-score{margin-left:auto;font-size:14px;font-weight:500;color:var(--fg);font-variant-numeric:tabular-nums}
     .g-popover-score small{font-size:9px;font-weight:300;color:var(--fg3)}
+    .g-path-dots{display:flex;gap:4px;margin-left:8px}
+    .g-path-dot{width:5px;height:5px;border-radius:50%;background:var(--border2);cursor:pointer;transition:all .2s}
+    .g-path-dot.active{background:#ea580c}
+    .g-path-dot:hover{background:var(--fg3)}
     .g-popover-btn{font-size:9px;font-weight:400;padding:5px 12px;border-radius:100px;border:1px solid var(--border2);background:none;color:var(--fg2);cursor:pointer;white-space:nowrap;font-family:var(--sans);transition:all .15s}
     .g-popover-btn:hover{border-color:var(--fg3);color:var(--fg)}
 
     .g-connector-board{border-color:#1a2744;background:#0f1520}
     .g-connector-investor{border-color:#166534;background:#0f1a15}
     .g-connector-team{border-color:#854d0e;background:#1a1510}
-    .g-target-node{border-color:#1e1e3a;background:#0f0f1a}
-    .g-mid{border-color:#27272a;background:#111113;min-width:120px;text-align:center}
+    .g-target-node{border-color:#1e1e3a;background:#0f0f1a;position:relative}
+    .g-mid{border-color:#27272a;background:#111113;min-width:auto;width:100px;text-align:center;border-radius:50px;padding:10px 14px}
     .g-mid .g-name{font-size:10px}
+    .g-mid-icon{font-size:14px;line-height:1;margin-bottom:2px}
     .g-mid-sub{font-size:7.5px;font-weight:400;color:var(--fg3);letter-spacing:.03em;text-transform:uppercase;margin-top:2px}
-    .g-edge{fill:none;stroke-width:1;transition:all .4s}
-    .g-edge.lit{stroke-width:2;filter:drop-shadow(0 0 3px rgba(234,88,12,.3))}
-    .g-edge.secondary{stroke-dasharray:4 3}
+    .g-edge{fill:none;stroke-width:1;transition:stroke .4s,stroke-width .4s,opacity .4s,filter .4s}
+    .g-edge.lit{stroke-width:2;filter:drop-shadow(0 0 4px rgba(234,88,12,.3))}
+    .g-edge.secondary:not(.lit){stroke-dasharray:4 3}
+    .g-flow{fill:#ea580c;opacity:0;transition:opacity .3s}
+    .g-flow.show{opacity:.7}
 
     /* ── Techstack card ── */
     .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -339,7 +353,7 @@
     .cta h2{max-width:480px;margin:0 auto}
     .cta .s-desc{max-width:400px;margin:14px auto 0}
     .cta code{font-family:var(--mono);font-size:13px;font-weight:400;color:var(--fg3);margin-top:20px;display:block}
-    .cta-statement{font-family:var(--mono);font-size:14px;font-weight:400;letter-spacing:.02em;color:rgba(254,243,199,.85);margin-bottom:16px}
+    .cta-statement{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;font-style:normal;letter-spacing:.02em;color:rgba(254,243,199,.85);margin-bottom:16px}
     .cta-wink{display:inline-block;animation:wink 3s ease-in-out infinite;color:#fef3c7}
 
     footer{max-width:1120px;margin:0 auto;padding:32px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:400;color:var(--fg3);flex-wrap:wrap;gap:10px}
@@ -768,14 +782,20 @@
       <p class="s-desc">5 connectors, 4 shared contexts, 7 targets — your agent finds the strongest path through the graph automatically.</p>
     </div>
     <div class="graph-canvas" id="graphCanvas">
+      <div class="g-col-labels">
+        <span class="g-col-label">Your Network</span>
+        <span class="g-col-label">Shared Context</span>
+        <span class="g-col-label">Target Account &middot; Ramp</span>
+      </div>
       <svg id="gSvg" style="width:100%;height:100%;position:absolute;top:0;left:0;pointer-events:none"></svg>
       <div id="gNodes"></div>
       <div class="g-popover" id="gPopover">
         <div>
-          <div class="g-popover-route" id="gpRoute">Sarah Chen → Alex Rivera, VP CX</div>
-          <div class="g-popover-via" id="gpVia">Shared board seat at Plaid · 3yr overlap</div>
+          <div class="g-popover-route" id="gpRoute">Sarah Chen &rarr; Alex Rivera, VP CX</div>
+          <div class="g-popover-via" id="gpVia">Shared board seat at Plaid &middot; 3yr overlap</div>
         </div>
         <span class="g-popover-score" id="gpScore">94<small>/100</small></span>
+        <div class="g-path-dots" id="gpDots"></div>
         <button class="g-popover-btn">Request intro</button>
       </div>
     </div>
@@ -849,7 +869,7 @@
 
   <div class="cta-zone">
   <section class="cta">
-    <div class="cta-mark"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><line x1="16" y1="3" x2="16" y2="29" stroke="rgba(254,243,199,.25)" stroke-width="4" stroke-linecap="round"/><line x1="4" y1="13" x2="28" y2="13" stroke="rgba(254,243,199,.25)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="4" y2="29" stroke="rgba(254,243,199,.25)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="28" y2="29" stroke="rgba(254,243,199,.25)" stroke-width="4" stroke-linecap="round"/></svg></div>
+    <div class="cta-mark"><svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="var(--icon-box)" stroke="var(--icon-border)" stroke-width="1"/><line x1="16" y1="5" x2="16" y2="27" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="6" y1="13" x2="26" y2="13" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="6" y2="26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="26" y2="26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/></svg></div>
     <p class="cta-statement">made for machines ... and humans <span class="cta-wink">;)</span></p>
     <form class="waitlist-form" onsubmit="return handleWaitlist(event)" style="justify-content:center">
       <input type="email" class="waitlist-input" placeholder="you@company.com" required />
@@ -860,7 +880,7 @@
   </div>
 
   <footer>
-    <a href="/" class="footer-logo"><svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="currentColor"/><line x1="16" y1="5" x2="16" y2="27" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/><line x1="6" y1="13" x2="26" y2="13" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="6" y2="26" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="26" y2="26" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/></svg>kinobi</a>
+    <a href="/" class="footer-logo"><svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="var(--bg)" stroke="currentColor" stroke-width="1"/><line x1="16" y1="5" x2="16" y2="27" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><line x1="6" y1="13" x2="26" y2="13" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="6" y2="26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="26" y2="26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>kinobi</a>
     <span class="footer-tagline">towards programmatic go-to-market</span>
     <div style="display:flex;gap:16px">
       <a href="mailto:me@ankitpansari.com">me@ankitpansari.com</a>
@@ -944,57 +964,73 @@
   // ── Rich relationship graph ──
   const gData={
     connectors:[
-      {name:'Sarah Chen',title:'Board Member',badge:'board',firm:'Kleiner Perkins',reach:14,x:20,y:20,cls:'g-connector-board'},
-      {name:'David Kim',title:'Managing Director',badge:'investor',firm:'General Catalyst',reach:9,x:20,y:155,cls:'g-connector-investor'},
-      {name:'Priya Rao',title:'VP Engineering',badge:'team',firm:'Your team',reach:6,x:20,y:290,cls:'g-connector-team'},
-      {name:'Marcus Johnson',title:'Operating Partner',badge:'investor',firm:'a16z',reach:11,x:20,y:425,cls:'g-connector-investor'},
-      {name:'Lisa Park',title:'Board Observer',badge:'board',firm:'Sequoia',reach:7,x:20,y:560,cls:'g-connector-board'},
+      {name:'Sarah Chen',title:'Board Member',badge:'board',firm:'Kleiner Perkins',reach:14,cls:'g-connector-board'},
+      {name:'David Kim',title:'Managing Director',badge:'investor',firm:'General Catalyst',reach:9,cls:'g-connector-investor'},
+      {name:'Priya Rao',title:'VP Engineering',badge:'team',firm:'Your team',reach:6,cls:'g-connector-team'},
+      {name:'Marcus Johnson',title:'Operating Partner',badge:'investor',firm:'a16z',reach:11,cls:'g-connector-investor'},
+      {name:'Lisa Park',title:'Board Observer',badge:'board',firm:'Sequoia',reach:7,cls:'g-connector-board'},
     ],
     midNodes:[
-      {name:'Plaid',sub:'shared board',x:0,y:60},
-      {name:'Stripe',sub:'co-investor',x:0,y:225},
-      {name:'Stanford GSB',sub:'alumni \'18',x:0,y:360},
-      {name:'YC W19',sub:'batch mates',x:0,y:495},
+      {name:'Plaid',sub:'shared board',icon:'\u{1F3DB}'},
+      {name:'Stripe',sub:'co-investor',icon:'\u26A1'},
+      {name:'Stanford GSB',sub:'alumni \'18',icon:'\u{1F393}'},
+      {name:'YC W19',sub:'batch mates',icon:'\u{1F680}'},
     ],
     targets:[
-      {name:'Alex Rivera',title:'VP Customer Experience',company:'Ramp',dept:'cx',via:'Sarah Chen',strength:'strong',x:0,y:10},
-      {name:'Nina Patel',title:'Chief of Staff',company:'Ramp',dept:'exec',via:'Sarah Chen',strength:'strong',x:0,y:105},
-      {name:'Sarah Kim',title:'Dir. Support Ops',company:'Ramp',dept:'ops',via:'David Kim',strength:'strong',x:0,y:200},
-      {name:'James Wu',title:'Head of CX Eng',company:'Ramp',dept:'eng',via:'Priya Rao',strength:'medium',x:0,y:295},
-      {name:'Tom Zhang',title:'VP Product',company:'Ramp',dept:'product',via:'Marcus Johnson',strength:'strong',x:0,y:390},
-      {name:'Rachel Green',title:'Dir. Partnerships',company:'Ramp',dept:'bd',via:'Lisa Park',strength:'medium',x:0,y:485},
-      {name:'Kevin Li',title:'CTO',company:'Ramp',dept:'eng',via:'Marcus Johnson',strength:'medium',x:0,y:580},
+      {name:'Alex Rivera',title:'VP Customer Experience',company:'Ramp',dept:'cx',via:'Sarah Chen',strength:'strong',score:94},
+      {name:'Nina Patel',title:'Chief of Staff',company:'Ramp',dept:'exec',via:'Sarah Chen',strength:'strong',score:91},
+      {name:'Sarah Kim',title:'Dir. Support Ops',company:'Ramp',dept:'ops',via:'David Kim',strength:'strong',score:87},
+      {name:'James Wu',title:'Head of CX Eng',company:'Ramp',dept:'eng',via:'Priya Rao',strength:'medium',score:78},
+      {name:'Tom Zhang',title:'VP Product',company:'Ramp',dept:'product',via:'Marcus Johnson',strength:'strong',score:85},
+      {name:'Rachel Green',title:'Dir. Partnerships',company:'Ramp',dept:'bd',via:'Lisa Park',strength:'medium',score:73},
+      {name:'Kevin Li',title:'CTO',company:'Ramp',dept:'eng',via:'Marcus Johnson',strength:'medium',score:80},
     ],
+    // [connectorIdx, targetIdx, isPrimary, midNodeIdx]
     edges:[
       [0,0,true,0],[0,1,true,null],[1,2,true,1],[2,3,true,null],[3,4,true,3],[4,5,true,null],[3,6,false,null],
       [0,2,false,null],[1,3,false,1],[2,4,false,2],[4,6,false,null],
     ],
     paths:[
-      {from:'Sarah Chen',to:'Alex Rivera, VP CX',via:'Shared board seat at Plaid · 3yr overlap',score:94},
-      {from:'Sarah Chen',to:'Nina Patel, Chief of Staff',via:'Kleiner portfolio event · warm intro',score:91},
-      {from:'David Kim',to:'Sarah Kim, Dir. Support',via:'Series B co-investor · GC portfolio',score:87},
-      {from:'Marcus Johnson',to:'Tom Zhang, VP Product',via:'YC W19 batch · co-founded hackathon',score:85},
-      {from:'Marcus Johnson',to:'Kevin Li, CTO',via:'a16z portfolio CTO dinners · 2yr',score:80},
-      {from:'Priya Rao',to:'James Wu, CX Eng',via:'ex-Stripe · 2yr overlap · LinkedIn 1st',score:78},
-      {from:'Lisa Park',to:'Rachel Green, Dir. BD',via:'Sequoia Scouts network · warm ref',score:73},
+      {from:'Sarah Chen',to:'Alex Rivera, VP CX',via:'Shared board seat at Plaid \xb7 3yr overlap',score:94,edgeIndices:[0],cIdx:0,tIdx:0,mIdx:0},
+      {from:'Sarah Chen',to:'Nina Patel, Chief of Staff',via:'Kleiner portfolio event \xb7 warm intro',score:91,edgeIndices:[1],cIdx:0,tIdx:1,mIdx:null},
+      {from:'David Kim',to:'Sarah Kim, Dir. Support',via:'Series B co-investor \xb7 GC portfolio',score:87,edgeIndices:[2],cIdx:1,tIdx:2,mIdx:1},
+      {from:'Marcus Johnson',to:'Tom Zhang, VP Product',via:'YC W19 batch \xb7 co-founded hackathon',score:85,edgeIndices:[4],cIdx:3,tIdx:4,mIdx:3},
+      {from:'Marcus Johnson',to:'Kevin Li, CTO',via:'a16z portfolio CTO dinners \xb7 2yr',score:80,edgeIndices:[6],cIdx:3,tIdx:6,mIdx:null},
+      {from:'Priya Rao',to:'James Wu, CX Eng',via:'ex-Stripe \xb7 2yr overlap \xb7 LinkedIn 1st',score:78,edgeIndices:[3],cIdx:2,tIdx:3,mIdx:null},
+      {from:'Lisa Park',to:'Rachel Green, Dir. BD',via:'Sequoia Scouts network \xb7 warm ref',score:73,edgeIndices:[5],cIdx:4,tIdx:5,mIdx:null},
     ]
   };
+
+  let graphCycleTimer=null;
+  let graphPathIdx=0;
+  let graphPaused=false;
 
   function renderGraph(){
     const canvas=document.getElementById('graphCanvas');
     const w=canvas.offsetWidth;
-    const nodes=document.getElementById('gNodes');
-    const midX=Math.floor(w/2)-60;
+    const h=canvas.offsetHeight;
+    const nodesEl=document.getElementById('gNodes');
+    const svg=document.getElementById('gSvg');
+
+    // Layout
+    const leftX=20;
+    const midX=Math.floor(w/2)-50;
     const rightX=w-185;
+    const topPad=46;
+    const bottomPad=70;
+    const usableH=h-topPad-bottomPad;
 
-    gData.midNodes.forEach(m=>m.x=midX);
-    gData.targets.forEach(t=>t.x=rightX);
+    nodesEl.innerHTML='';
 
-    nodes.innerHTML='';
+    // Compute Y positions dynamically
+    const cGap=usableH/gData.connectors.length;
+    const mGap=usableH/gData.midNodes.length;
+    const tGap=usableH/gData.targets.length;
 
     // Connectors (left)
-    gData.connectors.forEach(c=>{
-      nodes.innerHTML+=`<div class="g-node ${c.cls}" style="left:${c.x}px;top:${c.y}px">
+    gData.connectors.forEach((c,i)=>{
+      const y=topPad+i*cGap+cGap/2-35;
+      nodesEl.innerHTML+=`<div class="g-node ${c.cls}" data-type="c" data-idx="${i}" style="left:${leftX}px;top:${y}px">
         <div style="display:flex;gap:4px;align-items:center">
           <span class="g-badge ${c.badge}">${c.badge}</span>
           ${c.firm?`<span style="font-size:8px;font-weight:300;color:var(--fg3)">${c.firm}</span>`:''}
@@ -1005,17 +1041,22 @@
       </div>`;
     });
 
-    // Mid nodes (center)
-    gData.midNodes.forEach(m=>{
-      nodes.innerHTML+=`<div class="g-node g-mid" style="left:${m.x}px;top:${m.y}px">
+    // Mid nodes (center) — pill shaped with icons
+    gData.midNodes.forEach((m,i)=>{
+      const y=topPad+i*mGap+mGap/2-28;
+      nodesEl.innerHTML+=`<div class="g-node g-mid" data-type="m" data-idx="${i}" style="left:${midX}px;top:${y}px">
+        <div class="g-mid-icon">${m.icon}</div>
         <div class="g-name">${m.name}</div>
         <div class="g-mid-sub">${m.sub}</div>
       </div>`;
     });
 
-    // Targets (right)
-    gData.targets.forEach(t=>{
-      nodes.innerHTML+=`<div class="g-node g-target-node" style="left:${t.x}px;top:${t.y}px">
+    // Targets (right) — with score pills
+    gData.targets.forEach((t,i)=>{
+      const y=topPad+i*tGap+tGap/2-35;
+      const scoreCls=t.score>=85?'':'med';
+      nodesEl.innerHTML+=`<div class="g-node g-target-node" data-type="t" data-idx="${i}" style="left:${rightX}px;top:${y}px">
+        <span class="g-score-pill ${scoreCls}">${t.score}</span>
         <div style="display:flex;gap:4px;align-items:center">
           <span class="g-company-dot"></span>
           <span style="font-size:8px;font-weight:400;color:#ea580c">${t.company}</span>
@@ -1029,7 +1070,6 @@
 
     // Draw edges
     requestAnimationFrame(()=>{
-      const svg=document.getElementById('gSvg');
       const rect=canvas.getBoundingClientRect();
       svg.innerHTML='';
 
@@ -1043,16 +1083,15 @@
         return {x:r.left-rect.left,y:r.top+r.height/2-rect.top};
       }
 
+      const dimColor='#3f3f46';
+
       gData.edges.forEach((e,ei)=>{
-        const cIdx=e[0], tIdx=e[1], primary=e[2], midIdx=e[3];
+        const cIdx=e[0],tIdx=e[1],primary=e[2],midIdx=e[3];
         const cNode=allNodes[cIdx];
         const tNode=allNodes[cCount+mCount+tIdx];
         if(!cNode||!tNode)return;
 
-        const litColor='#ea580c';
-        const dimColor='#3f3f46';
-
-        if(midIdx!==null && midIdx!==undefined){
+        if(midIdx!==null&&midIdx!==undefined){
           const mNode=allNodes[cCount+midIdx];
           if(!mNode)return;
           const p1=nodeCenter(cNode,'right');
@@ -1063,71 +1102,165 @@
           const path1=document.createElementNS('http://www.w3.org/2000/svg','path');
           const cp1=(p1.x+p2l.x)/2;
           path1.setAttribute('d',`M${p1.x},${p1.y} C${cp1},${p1.y} ${cp1},${p2l.y} ${p2l.x},${p2l.y}`);
-          path1.setAttribute('class','g-edge'+(ei===0?' lit':'')+(primary?'':' secondary'));
-          path1.setAttribute('stroke',ei===0?litColor:dimColor);
-          path1.style.opacity=ei===0?'.6':primary?'.3':'.15';
+          path1.setAttribute('class','g-edge'+(primary?'':' secondary'));
+          path1.setAttribute('stroke',dimColor);
+          path1.setAttribute('data-edge',ei);
+          path1.style.opacity=primary?'.3':'.15';
           svg.appendChild(path1);
 
           const path2=document.createElementNS('http://www.w3.org/2000/svg','path');
           const cp2=(p2r.x+p3.x)/2;
           path2.setAttribute('d',`M${p2r.x},${p2r.y} C${cp2},${p2r.y} ${cp2},${p3.y} ${p3.x},${p3.y}`);
-          path2.setAttribute('class','g-edge'+(ei===0?' lit':'')+(primary?'':' secondary'));
-          path2.setAttribute('stroke',ei===0?litColor:dimColor);
-          path2.style.opacity=ei===0?'.6':primary?'.3':'.15';
+          path2.setAttribute('class','g-edge'+(primary?'':' secondary'));
+          path2.setAttribute('stroke',dimColor);
+          path2.setAttribute('data-edge',ei);
+          path2.style.opacity=primary?'.3':'.15';
           svg.appendChild(path2);
-        } else {
+        }else{
           const p1=nodeCenter(cNode,'right');
           const p3=nodeCenter(tNode,'left');
           const cp=(p1.x+p3.x)/2;
           const path=document.createElementNS('http://www.w3.org/2000/svg','path');
           path.setAttribute('d',`M${p1.x},${p1.y} C${cp},${p1.y} ${cp},${p3.y} ${p3.x},${p3.y}`);
-          path.setAttribute('class','g-edge'+(ei===0?' lit':'')+(primary?'':' secondary'));
-          path.setAttribute('stroke',ei===0?litColor:dimColor);
-          path.style.opacity=ei===0?'.6':primary?'.3':'.15';
+          path.setAttribute('class','g-edge'+(primary?'':' secondary'));
+          path.setAttribute('stroke',dimColor);
+          path.setAttribute('data-edge',ei);
+          path.style.opacity=primary?'.3':'.15';
           svg.appendChild(path);
         }
       });
+
+      // Create flow particles for each path's edges
+      gData.paths.forEach((pa,pi)=>{
+        pa.edgeIndices.forEach(ei=>{
+          const segs=svg.querySelectorAll(`[data-edge="${ei}"]`);
+          segs.forEach((seg,si)=>{
+            const circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+            circle.setAttribute('r','2.5');
+            circle.setAttribute('class','g-flow');
+            circle.setAttribute('data-path',pi);
+            const anim=document.createElementNS('http://www.w3.org/2000/svg','animateMotion');
+            anim.setAttribute('dur',`${1.2+si*0.4}s`);
+            anim.setAttribute('repeatCount','indefinite');
+            anim.setAttribute('path',seg.getAttribute('d'));
+            circle.appendChild(anim);
+            svg.appendChild(circle);
+          });
+        });
+      });
+
+      // Render path dots
+      const dotsEl=document.getElementById('gpDots');
+      if(dotsEl){
+        dotsEl.innerHTML=gData.paths.map((_,i)=>`<span class="g-path-dot${i===0?' active':''}" data-pidx="${i}"></span>`).join('');
+        dotsEl.querySelectorAll('.g-path-dot').forEach(dot=>{
+          dot.addEventListener('click',()=>{
+            graphPathIdx=parseInt(dot.dataset.pidx);
+            highlightPath(graphPathIdx);
+          });
+        });
+      }
+
+      // Initial highlight
+      highlightPath(0);
     });
 
-    // Cycle popover
-    let idx=0;
-    setInterval(()=>{
-      idx=(idx+1)%gData.paths.length;
-      const pa=gData.paths[idx];
-      document.getElementById('gpRoute').textContent=`${pa.from} → ${pa.to}`;
-      document.getElementById('gpVia').textContent=pa.via;
-      document.getElementById('gpScore').innerHTML=`${pa.score}<small>/100</small>`;
-
-      // Reset all edges
-      const segs=document.querySelectorAll('.g-edge');
-      segs.forEach(el=>{
-        el.classList.remove('lit');
-        el.setAttribute('stroke','#3f3f46');
-        el.style.opacity=el.classList.contains('secondary')?'.15':'.3';
-      });
-
-      // Light edges for current path's connector
-      const cIdx=gData.connectors.findIndex(c=>c.name===pa.from);
-      let segOffset=0;
-      gData.edges.forEach((e,ei)=>{
-        const count=(e[3]!==null&&e[3]!==undefined)?2:1;
-        if(e[0]===cIdx&&e[2]){
-          for(let s=segOffset;s<segOffset+count&&s<segs.length;s++){
-            segs[s].classList.add('lit');
-            segs[s].setAttribute('stroke','#ea580c');
-            segs[s].style.opacity='.6';
+    // Hover interactivity on nodes
+    requestAnimationFrame(()=>{
+      canvas.querySelectorAll('.g-node').forEach(node=>{
+        node.addEventListener('mouseenter',()=>{
+          graphPaused=true;
+          const type=node.dataset.type;
+          const idx=parseInt(node.dataset.idx);
+          // Find best path involving this node
+          let foundPath=-1;
+          gData.paths.forEach((pa,pi)=>{
+            if(foundPath>=0)return;
+            if(type==='c'&&pa.cIdx===idx)foundPath=pi;
+            if(type==='t'&&pa.tIdx===idx)foundPath=pi;
+            if(type==='m'&&pa.mIdx===idx)foundPath=pi;
+          });
+          if(foundPath>=0){
+            graphPathIdx=foundPath;
+            highlightPath(foundPath);
           }
-        }
-        segOffset+=count;
+        });
+        node.addEventListener('mouseleave',()=>{
+          graphPaused=false;
+        });
       });
+    });
+
+    // Pause auto-cycle on canvas hover
+    canvas.addEventListener('mouseenter',()=>{graphPaused=true;});
+    canvas.addEventListener('mouseleave',()=>{graphPaused=false;});
+
+    // Auto-cycle
+    if(graphCycleTimer)clearInterval(graphCycleTimer);
+    graphCycleTimer=setInterval(()=>{
+      if(graphPaused)return;
+      graphPathIdx=(graphPathIdx+1)%gData.paths.length;
+      highlightPath(graphPathIdx);
     },3500);
   }
 
+  function highlightPath(idx){
+    const pa=gData.paths[idx];
+
+    // Update popover
+    document.getElementById('gpRoute').textContent=`${pa.from} \u2192 ${pa.to}`;
+    document.getElementById('gpVia').textContent=pa.via;
+    document.getElementById('gpScore').innerHTML=`${pa.score}<small>/100</small>`;
+
+    // Update path dots
+    document.querySelectorAll('.g-path-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+
+    // Reset all edges
+    document.querySelectorAll('.g-edge').forEach(el=>{
+      el.classList.remove('lit');
+      el.setAttribute('stroke','#3f3f46');
+      el.style.opacity=el.classList.contains('secondary')?'.15':'.3';
+    });
+
+    // Reset all node highlights
+    document.querySelectorAll('.g-node').forEach(n=>n.classList.remove('g-active'));
+
+    // Hide all flow particles
+    document.querySelectorAll('.g-flow').forEach(f=>f.classList.remove('show'));
+
+    // Light edges for this specific path only
+    pa.edgeIndices.forEach(ei=>{
+      document.querySelectorAll(`[data-edge="${ei}"]`).forEach(seg=>{
+        seg.classList.add('lit');
+        seg.setAttribute('stroke','#ea580c');
+        seg.style.opacity='.7';
+      });
+    });
+
+    // Show flow particles for this path
+    document.querySelectorAll(`.g-flow[data-path="${idx}"]`).forEach(f=>f.classList.add('show'));
+
+    // Highlight active nodes (connector, target, and mid-node if present)
+    const cCount=gData.connectors.length;
+    const mCount=gData.midNodes.length;
+    const allNodes=document.querySelectorAll('#gNodes .g-node');
+    if(allNodes[pa.cIdx])allNodes[pa.cIdx].classList.add('g-active');
+    if(allNodes[cCount+mCount+pa.tIdx])allNodes[cCount+mCount+pa.tIdx].classList.add('g-active');
+    if(pa.mIdx!==null&&pa.mIdx!==undefined&&allNodes[cCount+pa.mIdx])allNodes[cCount+pa.mIdx].classList.add('g-active');
+  }
+
   renderGraph();
+  let graphResizeTimer;
   window.addEventListener('resize',()=>{
-    document.getElementById('gNodes').innerHTML='';
-    document.getElementById('gSvg').innerHTML='';
-    renderGraph();
+    clearTimeout(graphResizeTimer);
+    graphResizeTimer=setTimeout(()=>{
+      if(graphCycleTimer)clearInterval(graphCycleTimer);
+      document.getElementById('gNodes').innerHTML='';
+      document.getElementById('gSvg').innerHTML='';
+      graphPaused=false;
+      graphPathIdx=0;
+      renderGraph();
+    },150);
   });
 
   // ── Terminal tab switching + typing animation ──
