@@ -4,7 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kinobi — GTM intelligence for AI agents</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ea580c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='22' fill='%23fef3c7'%3Ek%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ea580c'/%3E%3Cline x1='16' y1='5' x2='16' y2='27' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='6' y1='13' x2='26' y2='13' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='16' y1='13' x2='6' y2='26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='16' y1='13' x2='26' y2='26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <meta name="description" content="GTM intelligence for AI agents. Search, enrich, and map warm paths to any decision maker." />
+  <meta property="og:title" content="Kinobi — GTM intelligence for AI agents" />
+  <meta property="og:description" content="Search, enrich, and map warm paths to any decision maker. Structured JSON. Every field sourced." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kinobi.so" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kinobi — GTM intelligence for AI agents" />
+  <meta name="twitter:description" content="Search, enrich, and map warm paths to any decision maker." />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ea580c'/%3E%3Cline x1='16' y1='5' x2='16' y2='27' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='6' y1='13' x2='26' y2='13' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='16' y1='13' x2='6' y2='26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='16' y1='13' x2='26' y2='26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" />
   <link rel="canonical" href="https://kinobi.so" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,9 +34,14 @@
     ::selection{background:rgba(251,146,60,.3)}
 
     nav{max-width:1120px;margin:0 auto;padding:16px 40px 0;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fef3c7;text-decoration:none}
-    .nav-cta{font-size:13px;font-weight:400;color:#fff;text-decoration:none;padding:7px 18px;border:1px solid var(--accent-muted);border-radius:100px;transition:all .2s;background:var(--accent-muted)}
-    .nav-cta:hover{background:var(--accent-btn-hover);border-color:var(--accent-btn-hover)}
+    .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fef3c7;text-decoration:none;display:inline-flex;align-items:center;gap:7px;--icon-box:#ea580c;--icon-border:#ea580c;--icon-stroke:#fef3c7}
+    .logo-icon{flex-shrink:0}
+    .nav-waitlist{display:flex;gap:6px;align-items:center}
+    .nav-waitlist-input{font-size:12px;font-family:var(--sans);padding:7px 14px;border-radius:100px;border:1px solid var(--border2);background:var(--white);color:var(--fg);outline:none;width:180px;transition:border-color .2s}
+    .nav-waitlist-input:focus{border-color:var(--accent-muted)}
+    .nav-waitlist-input::placeholder{color:var(--fg3)}
+    .nav-waitlist-btn{font-size:12px;font-weight:500;color:#fff;padding:7px 16px;border:1px solid var(--accent-muted);border-radius:100px;background:var(--accent-muted);cursor:pointer;transition:all .2s;font-family:var(--sans)}
+    .nav-waitlist-btn:hover{background:var(--accent-btn-hover);border-color:var(--accent-btn-hover)}
     .nav-links{display:flex;align-items:center;gap:24px}
     .nav-link{font-size:13px;font-weight:400;color:var(--fg2);text-decoration:none;transition:color .2s}
     .nav-link:hover{color:var(--fg)}
@@ -42,12 +56,11 @@
     .hero h1 em{font-style:normal;font-weight:600}
     .hero-p{font-size:12.5px;font-weight:400;color:var(--fg2);line-height:1.65;max-width:400px;margin-top:10px}
     .hero-p code{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--fg)}
-    .install-pill{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:8px 14px;background:rgba(0,0,0,.25);border:1px solid rgba(254,243,199,.15);border-radius:8px;cursor:pointer;transition:all .2s;position:relative}
-    .install-pill:hover{background:rgba(0,0,0,.35);border-color:rgba(254,243,199,.25)}
-    .install-pill code{font-family:var(--mono);font-size:12px;font-weight:400;color:rgba(254,243,199,.8);letter-spacing:.01em}
-    .install-copy{color:rgba(254,243,199,.4);display:flex;transition:color .2s}
-    .install-pill:hover .install-copy{color:rgba(254,243,199,.7)}
-    .install-copied{font-size:10px;font-weight:500;color:#fef3c7;opacity:0;transition:opacity .2s;font-family:var(--sans);margin-left:4px;white-space:nowrap}
+    .install-wrap{display:inline-flex;align-items:center;gap:10px;margin-top:16px}
+    .install-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 10px;background:#fef3c7;border:1px solid #fef3c7;border-radius:6px;cursor:pointer;transition:all .2s}
+    .install-pill:hover{background:#fde68a}
+    .install-soon{font-size:10px;font-weight:400;color:rgba(254,243,199,.5);font-family:var(--sans);letter-spacing:.02em}
+    .install-pill code{font-family:var(--mono);font-size:12px;font-weight:400;color:#92400e;letter-spacing:.01em}
     .btn{font-size:11px;font-weight:500;font-family:var(--sans);padding:7px 16px;border-radius:100px;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
     .btn-dark{background:var(--accent-muted);color:#fff}
     .btn-dark:hover{background:var(--accent-btn-hover)}
@@ -101,26 +114,23 @@
     /* Hero zone — rose background */
     .hero-zone{background:var(--accent-muted);padding-bottom:0}
     .hero-zone-fade{height:80px;background:linear-gradient(to bottom,var(--accent-muted),var(--bg))}
-    .hero-zone .logo{color:#fef3c7}
-    .hero-zone .nav-cta{background:transparent;border-color:rgba(254,243,199,.4);color:#fef3c7}
-    .hero-zone .nav-cta:hover{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.6)}
+    .hero-zone .logo{color:#fef3c7;--icon-box:rgba(254,243,199,.15);--icon-border:rgba(254,243,199,.3);--icon-stroke:#fef3c7}
+    .hero-zone .nav-waitlist-input{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.25);color:#fef3c7}
+    .hero-zone .nav-waitlist-input::placeholder{color:rgba(254,243,199,.45)}
+    .hero-zone .nav-waitlist-input:focus{border-color:rgba(254,243,199,.5)}
+    .hero-zone .nav-waitlist-btn{background:#fef3c7;color:var(--accent-btn);border-color:#fef3c7}
+    .hero-zone .nav-waitlist-btn:hover{background:rgba(254,243,199,.85)}
     .hero-zone .hero h1{color:#fef3c7}
     .hero-zone .hero h1 em{color:#fef3c7}
     .hero-zone .hero-p{color:rgba(254,243,199,.7)}
     .hero-zone .hero-p code{color:#fef3c7}
-    .hero-zone .waitlist-input{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.25);color:#fef3c7}
-    .hero-zone .waitlist-input::placeholder{color:rgba(254,243,199,.45)}
-    .hero-zone .waitlist-input:focus{border-color:rgba(254,243,199,.5)}
-    .hero-zone .btn-dark{background:#fef3c7;color:var(--accent-btn)}
-    .hero-zone .btn-dark:hover{background:rgba(254,243,199,.85)}
-    .hero-zone .waitlist-msg{color:rgba(254,243,199,.75)}
-    .hero-zone .terminal-tab{background:#09090b;border-color:#3f3f46;color:#71717a}
-    .hero-zone .terminal-tab:hover{border-color:#52525b;color:#a1a1aa}
-    .hero-zone .terminal-tab.active{background:#1a1a1e;color:#e4e4e7;border-color:#52525b}
+    .hero-zone .terminal-tab{background:rgba(254,243,199,.6);border-color:rgba(254,243,199,.6);color:#92400e}
+    .hero-zone .terminal-tab:hover{background:rgba(254,243,199,.8);border-color:rgba(254,243,199,.8);color:#78350f}
+    .hero-zone .terminal-tab.active{background:#fef3c7;color:#78350f;border-color:#fef3c7;font-weight:500}
 
     /* CTA zone — orange bookend */
     .cta-zone{background:var(--accent-muted)}
-    .cta-zone .statement-line{background:rgba(254,243,199,.2)}
+
     .cta-zone h2{color:#fef3c7}
     .cta-zone h2 strong{color:#fef3c7}
     .cta-zone .s-desc{color:rgba(254,243,199,.7)}
@@ -328,7 +338,9 @@
     footer a{color:var(--fg3);text-decoration:none;font-weight:400;transition:color .2s}
     footer a:hover{color:var(--accent-light)}
 
-    .statement-line{width:40px;height:1px;background:var(--accent-muted);opacity:.3;margin:0 auto 20px}
+    .cta-mark{margin:0 auto 20px;text-align:center;opacity:.8}
+    .footer-logo{display:inline-flex;align-items:center;gap:6px;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.03em;color:var(--fg3);text-decoration:none;transition:color .2s}
+    .footer-logo:hover{color:var(--fg2)}
     .footer-tagline{font-size:10px;letter-spacing:.08em;color:var(--fg4);font-weight:400;text-transform:uppercase}
 
     /* Scroll-reveal animations */
@@ -359,13 +371,50 @@
       .g-node{min-width:120px;padding:7px 9px}
       .g-name{font-size:10px}
       .nav-links{display:none}
+      .nav-waitlist-input{width:140px;font-size:11px;padding:6px 12px}
+      .nav-waitlist-btn{font-size:11px;padding:8px 14px}
       .terminal-bg{padding-left:20px;padding-right:20px}
+      .terminal-tabs{flex-wrap:wrap;gap:6px}
+      .terminal-tab{font-size:10px;padding:6px 12px}
+      .terminal{padding:16px 14px;font-size:10.5px}
+      .agent-terminal{padding:14px 14px;font-size:10px;min-height:220px}
+      .j-head,.j-row{grid-template-columns:2fr 1fr .8fr .8fr}
+      .j-head span:nth-child(n+5),.j-row>*:nth-child(n+5){display:none}
+      .jobs-card-head{padding:12px 14px}
+      .j-head,.j-row{padding:0 14px}
       .waitlist-form{flex-direction:column;align-items:stretch}
       .waitlist-input{width:100%}
+      .cta{padding:64px 24px}
+      footer{flex-direction:column;align-items:center;text-align:center;gap:12px}
     }
     @media(max-width:480px){
       .t-head,.t-row{grid-template-columns:1.5fr 1fr .8fr}
       .t-head span:nth-child(n+4),.t-row>*:nth-child(n+4){display:none}
+      .terminal-tab{font-size:9px;padding:5px 10px}
+      .terminal{padding:12px 10px;font-size:9.5px}
+      .agent-terminal{padding:12px 10px;font-size:9.5px;min-height:180px}
+      .j-head,.j-row{grid-template-columns:2fr 1fr .8fr}
+      .j-head span:nth-child(n+4),.j-row>*:nth-child(n+4){display:none}
+      .j-head,.j-row{padding:0 10px}
+      .jobs-card-head{padding:10px 12px}
+      .grid{grid-template-columns:1fr}
+      .grid-item{padding:16px}
+      .grid-icon{width:24px;height:24px;font-size:12px}
+      .graph-canvas{min-height:320px}
+      .g-node{min-width:90px;padding:6px 8px}
+      .g-name{font-size:9px}
+      nav{padding:12px 20px 0}
+      .nav-waitlist-input{width:120px;font-size:10px;padding:8px 10px}
+      .nav-waitlist-btn{font-size:10px;padding:8px 12px}
+      .hero{padding:40px 20px 32px}
+      .hero h1{max-width:85vw}
+      .hero-p{max-width:85vw;font-size:11.5px}
+      .install-pill code{font-size:11px}
+      .install-soon{font-size:9px}
+      .screen-section{padding:0 20px 60px}
+      .cta{padding:48px 16px}
+      .cta-statement{font-size:12px}
+      .tech-card{padding:12px 14px}
     }
   </style>
 </head>
@@ -373,22 +422,21 @@
 
   <div class="hero-zone">
   <nav>
-    <a href="/" class="logo">kinobi</a>
-    <a href="#" class="nav-cta" onclick="document.querySelector('.waitlist-input').focus();return false;">Join Waitlist</a>
+    <a href="/" class="logo"><svg class="logo-icon" width="22" height="22" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="var(--icon-box)" stroke="var(--icon-border)" stroke-width="1"/><line x1="16" y1="5" x2="16" y2="27" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="6" y1="13" x2="26" y2="13" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="6" y2="26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="26" y2="26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/></svg>kinobi</a>
+    <form class="nav-waitlist" onsubmit="return handleWaitlist(event)">
+      <input type="email" class="nav-waitlist-input" placeholder="you@company.com" required />
+      <button type="submit" class="nav-waitlist-btn">Join Waitlist</button>
+    </form>
   </nav>
 
   <div class="hero">
     <h1>The highest-accuracy GTM intelligence <em>for your AI.</em></h1>
     <p class="hero-p">Warm paths, technographics, hiring signals, and relationship graphs — structured JSON for Claude Code, your scripts, or any MCP client.</p>
-    <form class="waitlist-form" onsubmit="return handleWaitlist(event)">
-      <input type="email" class="waitlist-input" placeholder="you@company.com" required />
-      <button type="submit" class="btn btn-dark">Join Waitlist</button>
-    </form>
-    <p class="waitlist-msg" id="waitlistMsg"></p>
-    <div class="install-pill" onclick="navigator.clipboard.writeText('pip install kinobi');this.querySelector('.install-copied').style.opacity='1';setTimeout(()=>this.querySelector('.install-copied').style.opacity='0',1500)">
-      <code>$ pip install kinobi</code>
-      <span class="install-copy" title="Copy to clipboard"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></span>
-      <span class="install-copied">Copied!</span>
+    <div class="install-wrap">
+      <div class="install-pill">
+        <code>$ pip install kinobi</code>
+      </div>
+      <span class="install-soon">coming soon</span>
     </div>
   </div>
 
@@ -781,7 +829,7 @@
 
   <div class="cta-zone">
   <section class="cta">
-    <div class="statement-line"></div>
+    <div class="cta-mark"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><line x1="16" y1="3" x2="16" y2="29" stroke="rgba(254,243,199,.25)" stroke-width="4" stroke-linecap="round"/><line x1="4" y1="13" x2="28" y2="13" stroke="rgba(254,243,199,.25)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="4" y2="29" stroke="rgba(254,243,199,.25)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="28" y2="29" stroke="rgba(254,243,199,.25)" stroke-width="4" stroke-linecap="round"/></svg></div>
     <p class="cta-statement">made for machines ... and humans <span class="cta-wink">;)</span></p>
     <form class="waitlist-form" onsubmit="return handleWaitlist(event)" style="justify-content:center">
       <input type="email" class="waitlist-input" placeholder="you@company.com" required />
@@ -792,7 +840,7 @@
   </div>
 
   <footer>
-    <span>&copy; 2026 <a href="https://kinobi.so" style="color:inherit;text-decoration:none">kinobi.so</a> — Ankit Pansari</span>
+    <a href="/" class="footer-logo"><svg width="14" height="14" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="currentColor"/><line x1="16" y1="5" x2="16" y2="27" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/><line x1="6" y1="13" x2="26" y2="13" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="6" y2="26" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="26" y2="26" stroke="var(--bg)" stroke-width="4" stroke-linecap="round"/></svg>kinobi</a>
     <span class="footer-tagline">towards programmatic go-to-market</span>
     <div style="display:flex;gap:16px">
       <a href="mailto:me@ankitpansari.com">me@ankitpansari.com</a>
@@ -808,7 +856,9 @@
     const email=e.target.querySelector('input').value;
     if(email){const list=JSON.parse(localStorage.getItem('kinobi_waitlist')||'[]');list.push({email,ts:Date.now()});localStorage.setItem('kinobi_waitlist',JSON.stringify(list))}
     const msg=e.target.nextElementSibling;
-    if(msg) msg.textContent="You're on the list. We'll be in touch.";
+    if(msg&&msg.classList.contains('waitlist-msg')) msg.textContent="You're on the list. We'll be in touch.";
+    const btn=e.target.querySelector('button');
+    if(btn){const orig=btn.textContent;btn.textContent="You're in!";setTimeout(()=>btn.textContent=orig,2000)}
     e.target.querySelector('input').value='';
     return false;
   }
