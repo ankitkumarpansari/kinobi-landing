@@ -515,7 +515,7 @@
       <span class="terminal-dot yellow"></span>
       <span class="terminal-dot green"></span>
     </div>
-    <div class="terminal" id="term">
+    <div class="terminal" id="term" style="height:380px;overflow:hidden">
       <!-- Tab 0: search -->
       <div class="term-pane" data-tab="0">
         <div class="t-block"><span class="cm"># find warm paths into any target account</span></div>
@@ -592,19 +592,11 @@
         <div class="t-block"><br/></div>
         <div class="t-block"><span class="re">  ┌─ </span><span class="warn">agent reasoning</span><span class="re"> ────────────────────────────────┐</span></div>
         <div class="t-block"><span class="re">  │ </span><span class="vel">*</span><span class="re"> CX scaling (+18% YoY)                       │</span></div>
-        <div class="t-block"><span class="re">  │ </span><span class="vel">*</span><span class="re"> Intercom renewal Q3                         │</span></div>
-        <div class="t-block"><span class="re">  │ </span><span class="vel">*</span><span class="re"> Torres → CTO Atiyeh                         │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="vel">*</span><span class="re"> Intercom renewal Q3 — Zendesk incumbent      │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="vel">*</span><span class="re"> 2-hop path via Sarah Chen (ex-Stripe)        │</span></div>
         <div class="t-block"><span class="re">  │                                                  │</span></div>
-        <div class="t-block"><span class="re">  │ </span><span class="warn">rec:</span><span class="hi"> intro via Sarah Chen. Timing optimal.</span><span class="re">  │</span></div>
-        <div class="t-block"><span class="re">  └──────────────────────────────────────────────────┘</span></div>
-        <div class="t-block"><br/></div>
-        <div class="t-block"><span class="re">  ┌─ </span><span class="vel">warm path</span><span class="re"> ───────────────────────────────────┐</span></div>
-        <div class="t-block"><span class="re">  │                                                  │</span></div>
-        <div class="t-block"><span class="re">  │    </span><span class="warn">You</span><span class="re">  ─────→  </span><span class="hi">Sarah Chen</span><span class="re">  ─────→  </span><span class="hi">Eric Atiyeh</span><span class="re">│</span></div>
-        <div class="t-block"><span class="re">  │               ex-Stripe              CTO, Ramp  │</span></div>
-        <div class="t-block"><span class="re">  │               2019-2021              decision    │</span></div>
-        <div class="t-block"><span class="re">  │                                                  │</span></div>
-        <div class="t-block"><span class="re">  │    strength: </span><span class="warn">████████</span><span class="re">░░  </span><span class="hi">82%</span><span class="re">   hops: </span><span class="hi">2</span><span class="re">         │</span></div>
+        <div class="t-block"><span class="re">  │ </span><span class="warn">rec:</span><span class="hi"> intro via Sarah Chen → CTO Atiyeh.</span><span class="re">     │</span></div>
+        <div class="t-block"><span class="re">  │      </span><span class="vel">timing optimal</span><span class="re"> · strength </span><span class="warn">████████</span><span class="re">░░ </span><span class="hi">82%</span><span class="re"> │</span></div>
         <div class="t-block"><span class="re">  └──────────────────────────────────────────────────┘</span><span class="cursor"></span></div>
       </div>
     </div>
@@ -619,7 +611,7 @@
     <div class="screen-intro reveal-up">
       <p class="s-label">knowledge graph</p>
       <h2>Cross-company queries. <strong>Live data.</strong></h2>
-      <p class="s-desc">Compound queries across companies, technologies, and signals. Every result is live from our production graph.</p>
+      <p class="s-desc">Every result is live from our production graph.</p>
     </div>
     <div class="query-box" id="queryBox">
       <span class="query-icon">&#x2315;</span>
@@ -631,7 +623,7 @@
         <span class="terminal-dot yellow"></span>
         <span class="terminal-dot green"></span>
       </div>
-      <div class="terminal" id="liveTerm">
+      <div class="terminal" id="liveTerm" style="height:340px;overflow-y:auto">
         <div class="live-empty"># select a query to search the knowledge graph</div>
       </div>
     </div>
@@ -1595,6 +1587,7 @@
     var dataCache=new Map();
     var companyList=null;
     var loopRunning=false;
+    var paused=false;
     var queryTexts=[
       'companies using Kubernetes with managed orchestration — Rancher, AKS, or GKE',
       'enterprises running both Snowflake and Databricks — dual data platform spend',
@@ -1750,9 +1743,8 @@
 
     async function runQuery(idx){
       var q=QUERIES[idx];
-      term.innerHTML='<div class="live-spinner-wrap"><span class="live-spinner"></span><span style="color:#52525b;font-family:var(--mono);font-size:11px">querying graph...</span></div>';
-
-      // Fetch company list + candidate data
+      var t0=Date.now();
+      // Data is pre-cached from runLoop init — just resolve from cache
       var companies;
       try{companies=await fetchList();}catch(e){
         term.innerHTML='<div class="live-empty"><span style="color:#f87171">API unreachable</span></div>';return;
@@ -1775,48 +1767,41 @@
         }
       });
 
+      var elapsed=((Date.now()-t0)/1000).toFixed(1);
+
       // Build terminal output
       var h='';
-      h+=B('<span class="cm"># compound query across the knowledge graph</span>');
       h+=B('<span class="pr">木</span> <span class="kb">kinobi query</span> <span class="st">"'+esc(queryTexts[idx])+'"</span>');
       h+=BR();
-      // Cypher
       q.cypher.forEach(function(line){h+=B('  '+line);});
       h+=BR();
-      // Funnel
-      h+=B(RE+'  traversing graph...'+X);
-      h+=B(RE+'  '+companies.length+' companies · '+candidates.length+' scanned · '+X+HI+results.length+' match'+(results.length!==1?'es':'')+X+RE+' found'+X);
+      h+=B('<span class="vel">  ✓</span> <span class="hi">query parsed</span>');
+      h+=B('<span class="vel">  ✓</span> <span class="hi">graph traversed</span>');
+      h+=B('<span class="vel">  ✓</span> <span class="hi">'+results.length+' match'+(results.length!==1?'es':'')+' found</span>'+RE+'                                        '+X+'<span class="vel">'+elapsed+'s</span>');
       h+=BR();
 
       if(results.length===0){
         h+=B(RE+'  no companies matched all conditions'+X);
       }else{
-        h+=B(RE+'  ┌─ '+X+HI+'RESULTS'+X+RE+' ──────────────────────────────────────────────┐'+X);
         results.forEach(function(r,i){
           var name=esc(r.data.company.name||r.info.name||r.info.domain);
           var dom=esc(r.info.domain);
-          var ind=esc(r.data.company.industry||'');
-          h+=B(RE+'  │'+X);
-          h+=B(RE+'  │  '+X+VL+(i+1)+'.'+X+'  '+HI+name+X+RE+'  '+dom+'  '+ind+X);
+          h+=B('  '+HI+name+X+RE+'  '+dom+X);
           if(r.ev.tech&&r.ev.tech.length>0){
-            h+=B(RE+'  │     ├─ match  '+X+'<span class="jk">'+r.ev.tech.map(esc).join(RE+', '+X+'<span class="jk">')+'</span>');
+            h+=B(RE+'  ├─ match  '+X+'<span class="kb">'+r.ev.tech.map(esc).join(RE+', '+X+'<span class="kb">')+'</span>');
           }
           if(r.ev.container&&r.ev.container.length>0){
-            h+=B(RE+'  │     ├─ stack  '+X+'<span class="vel">'+r.ev.container.map(esc).join(RE+', '+X+'<span class="vel">')+'</span>');
+            h+=B(RE+'  ├─ stack  '+X+'<span class="vel">'+r.ev.container.map(esc).join(RE+', '+X+'<span class="vel">')+'</span>');
           }
-          h+=B(RE+'  │     └─ total  '+X+RE+r.ev.total+' technologies detected'+X);
+          h+=B(RE+'  └─ '+X+RE+r.ev.total+' technologies detected'+X);
+          if(i<results.length-1) h+=BR();
         });
-        h+=B(RE+'  │'+X);
-        h+=B(RE+'  └──────────────────────────────────────────────────────┘'+X);
       }
-      h+=BR();
-      var tTech=results.reduce(function(s,r){return s+r.data.techs.length;},0);
-      var tSig=results.reduce(function(s,r){return s+r.data.signals.length;},0);
-      h+=B(RE+'  '+results.length+' matches · '+tTech+' technologies · '+tSig+' signals scanned'+X+'<span class="cursor" style="display:inline-block"></span>');
+      h+=B('<span class="cursor" style="display:inline-block"></span>');
 
       term.innerHTML=h;
       var blocks=term.querySelectorAll('.t-block');
-      blocks.forEach(function(b,i){setTimeout(function(){b.classList.add('visible');},50*i);});
+      blocks.forEach(function(b,i){setTimeout(function(){b.classList.add('visible');},35*i);});
     }
 
     function typeText(plainText,styledHTML){
@@ -1830,11 +1815,11 @@
           if(i>=plainText.length){
             clearInterval(iv);
             queryInput.innerHTML=styledHTML;
-            setTimeout(resolve,400);
+            setTimeout(resolve,250);
           }else{
             queryInput.innerHTML=esc(plainText.substring(0,i))+'<span class="qcur"></span>';
           }
-        },25);
+        },18);
       });
     }
 
@@ -1849,6 +1834,16 @@
       });
     }
 
+    function waitUnpaused(ms){
+      return new Promise(function(resolve){
+        var elapsed=0;
+        var iv=setInterval(function(){
+          if(!paused) elapsed+=100;
+          if(elapsed>=ms){clearInterval(iv);resolve();}
+        },100);
+      });
+    }
+
     async function runLoop(){
       if(loopRunning) return;
       loopRunning=true;
@@ -1858,20 +1853,24 @@
 
       var idx=0;
       while(loopRunning){
+        await waitUnpaused(0);
         await typeText(queryTexts[idx],queryHTML[idx]);
         await runQuery(idx);
-        // Wait for animation to finish + reading time
+        // Wait for animation to finish + reading time (pauses if hovered)
         var blockCount=term.querySelectorAll('.t-block').length;
-        await new Promise(function(r){setTimeout(r,blockCount*50+4000);});
+        await waitUnpaused(blockCount*40+2500);
         await clearInput();
-        await new Promise(function(r){setTimeout(r,600);});
+        await waitUnpaused(300);
         idx=(idx+1)%QUERIES.length;
       }
     }
 
-    // Start loop when section scrolls into view
+    // Pause on hover
     var liveSection=document.getElementById('liveIntel');
     if(liveSection){
+      liveSection.addEventListener('mouseenter',function(){paused=true;});
+      liveSection.addEventListener('mouseleave',function(){paused=false;});
+
       var liveObs=new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if(entry.isIntersecting){
