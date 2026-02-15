@@ -119,9 +119,8 @@
     @keyframes tabFill{0%{width:0}100%{width:100%}}
 
     /* Hero zone — rose background */
-    .hero-zone{background:var(--accent-muted);padding-bottom:0;position:relative}
-    .hero-zone-fade{position:relative;margin-top:-1px}
-    .hero-zone-fade svg{display:block;width:100%}
+    .hero-zone{background:var(--accent-muted);padding-bottom:120px;position:relative}
+    .hero-zone-fade{display:none}
     .hero-zone .logo{color:#fef3c7;--icon-box:#fef3c7;--icon-border:#fef3c7;--icon-stroke:#ea580c}
     .hero-zone .nav-waitlist-input{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.25);color:#fef3c7}
     .hero-zone .nav-waitlist-input::placeholder{color:rgba(254,243,199,.45)}
@@ -381,6 +380,8 @@
       position:relative;max-width:100%;margin:0 auto;
       padding:8px 64px 56px;
       overflow:hidden;
+      margin-bottom:-120px;
+      z-index:1;
     }
     .terminal-bg>*{max-width:1120px;margin-left:auto;margin-right:auto}
 
