@@ -180,7 +180,7 @@
     .s-desc{font-size:14px;font-weight:400;color:var(--fg2);line-height:1.7;max-width:460px;margin-top:14px}
 
     /* Screens (small fonts) — full-bleed wider */
-    .screen-section{max-width:1120px;margin:0 auto;padding:0 40px 80px;border-bottom:1px solid var(--border)}
+    .screen-section{max-width:1120px;margin:0 auto;padding:64px 40px 80px}
     .screen-intro{margin-bottom:28px}
     .screen-intro .s-desc{margin-top:10px}
     .screen-section .agent-terminal{margin-top:0}
@@ -229,7 +229,7 @@
     .t-funding{font-size:9.5px;font-weight:400;color:var(--fg2);padding:8px 0;font-variant-numeric:tabular-nums}
 
     /* Graph */
-    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:12px;background:var(--white);min-height:740px;overflow:hidden;padding-top:36px}
+    .graph-canvas{position:relative;border:1px solid var(--border);border-radius:12px;background:var(--white);min-height:780px;overflow:hidden;padding-top:36px}
     .g-col-labels{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:10px 20px;pointer-events:none;z-index:2}
     .g-col-label{font-size:8.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);opacity:.6}
     .g-node{position:absolute;border-radius:8px;padding:9px 11px;background:var(--white);border:1px solid var(--border2);font-size:10px;min-width:155px;transition:all .3s;box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default;z-index:1}
@@ -279,7 +279,6 @@
     .g-target-node{border-color:#1e1e3a;background:#0f0f1a;position:relative}
     .g-mid{border-color:#27272a;background:#111113;min-width:auto;width:100px;text-align:center;border-radius:50px;padding:10px 14px}
     .g-mid .g-name{font-size:10px}
-    .g-mid-icon{font-size:14px;line-height:1;margin-bottom:2px}
     .g-mid-sub{font-size:7.5px;font-weight:400;color:var(--fg3);letter-spacing:.03em;text-transform:uppercase;margin-top:2px}
     .g-edge{fill:none;stroke-width:1;transition:stroke .4s,stroke-width .4s,opacity .4s,filter .4s}
     .g-edge.lit{stroke-width:2;filter:drop-shadow(0 0 4px rgba(234,88,12,.3))}
@@ -388,10 +387,13 @@
     @media(max-width:768px){
       .t-head,.t-row{grid-template-columns:2fr 1fr 1fr .8fr}
       .t-head span:nth-child(n+5),.t-row>*:nth-child(n+5){display:none}
-      .graph-canvas{min-height:480px}
+      .graph-canvas{min-height:520px}
       .grid{grid-template-columns:1fr 1fr}
-      .g-node{min-width:120px;padding:7px 9px}
+      .g-node{min-width:115px;padding:7px 9px}
       .g-name{font-size:10px}
+      .g-col-label{font-size:7.5px}
+      .g-mid{width:85px;padding:8px 10px}
+      .g-score-pill{font-size:7px;padding:1.5px 5px}
       .nav-links{display:none}
       .nav-waitlist-input{width:140px;font-size:11px;padding:6px 12px}
       .nav-waitlist-btn{font-size:11px;padding:8px 14px}
@@ -424,9 +426,19 @@
       .grid{grid-template-columns:1fr}
       .grid-item{padding:16px}
       .grid-icon{width:24px;height:24px;font-size:12px}
-      .graph-canvas{min-height:320px}
-      .g-node{min-width:90px;padding:6px 8px}
+      .graph-canvas{min-height:400px}
+      .g-node{min-width:85px;padding:5px 7px}
       .g-name{font-size:9px}
+      .g-col-label{font-size:6.5px;letter-spacing:.04em}
+      .g-mid{width:65px;padding:6px 8px}
+      .g-mid-sub{font-size:6.5px}
+      .g-score-pill{font-size:6.5px;padding:1px 4px}
+      .g-reach{display:none}
+      .g-via{display:none}
+      .g-path-dots{display:none}
+      .g-popover{padding:8px 10px;gap:8px}
+      .g-popover-route{font-size:9px}
+      .g-popover-btn{padding:4px 8px;font-size:8px}
       nav{padding:12px 20px 0}
       .nav-waitlist-input{width:120px;font-size:10px;padding:8px 10px}
       .nav-waitlist-btn{font-size:10px;padding:8px 12px}
@@ -435,7 +447,7 @@
       .hero-p{max-width:85vw;font-size:11.5px}
       .install-pill code{font-size:11px}
       .install-soon{font-size:9px}
-      .screen-section{padding:0 20px 60px}
+      .screen-section{padding:48px 20px 60px}
       .cta{padding:48px 16px}
       .cta-statement{font-size:12px}
       .tech-card{padding:12px 14px}
@@ -971,10 +983,10 @@
       {name:'Lisa Park',title:'Board Observer',badge:'board',firm:'Sequoia',reach:7,cls:'g-connector-board'},
     ],
     midNodes:[
-      {name:'Plaid',sub:'shared board',icon:'\u{1F3DB}'},
-      {name:'Stripe',sub:'co-investor',icon:'\u26A1'},
-      {name:'Stanford GSB',sub:'alumni \'18',icon:'\u{1F393}'},
-      {name:'YC W19',sub:'batch mates',icon:'\u{1F680}'},
+      {name:'Plaid',sub:'shared board'},
+      {name:'Stripe',sub:'co-investor'},
+      {name:'Stanford GSB',sub:'alumni \'18'},
+      {name:'YC W19',sub:'batch mates'},
     ],
     targets:[
       {name:'Alex Rivera',title:'VP Customer Experience',company:'Ramp',dept:'cx',via:'Sarah Chen',strength:'strong',score:94},
@@ -1017,7 +1029,7 @@
     const midX=Math.floor(w/2)-50;
     const rightX=w-185;
     const topPad=46;
-    const bottomPad=70;
+    const bottomPad=80;
     const usableH=h-topPad-bottomPad;
 
     nodesEl.innerHTML='';
@@ -1045,7 +1057,6 @@
     gData.midNodes.forEach((m,i)=>{
       const y=topPad+i*mGap+mGap/2-28;
       nodesEl.innerHTML+=`<div class="g-node g-mid" data-type="m" data-idx="${i}" style="left:${midX}px;top:${y}px">
-        <div class="g-mid-icon">${m.icon}</div>
         <div class="g-name">${m.name}</div>
         <div class="g-mid-sub">${m.sub}</div>
       </div>`;
@@ -1165,14 +1176,12 @@
       highlightPath(0);
     });
 
-    // Hover interactivity on nodes
+    // Hover interactivity on nodes — find and highlight matching path
     requestAnimationFrame(()=>{
       canvas.querySelectorAll('.g-node').forEach(node=>{
         node.addEventListener('mouseenter',()=>{
-          graphPaused=true;
           const type=node.dataset.type;
           const idx=parseInt(node.dataset.idx);
-          // Find best path involving this node
           let foundPath=-1;
           gData.paths.forEach((pa,pi)=>{
             if(foundPath>=0)return;
@@ -1185,13 +1194,10 @@
             highlightPath(foundPath);
           }
         });
-        node.addEventListener('mouseleave',()=>{
-          graphPaused=false;
-        });
       });
     });
 
-    // Pause auto-cycle on canvas hover
+    // Pause auto-cycle when cursor is anywhere inside the graph canvas
     canvas.addEventListener('mouseenter',()=>{graphPaused=true;});
     canvas.addEventListener('mouseleave',()=>{graphPaused=false;});
 
@@ -1448,32 +1454,53 @@
   },{threshold:0.1});
   pipelineObs.observe(document.getElementById('pipelineSection'));
 
-  // Relationship graph — nodes scale in, then edges fade
+  // Relationship graph — column-by-column entrance then edges
   const graphObs=new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
-        // Intro
         const intro=document.querySelector('#graphApi .screen-intro');
         if(intro) intro.classList.add('visible');
-        // Nodes
-        const nodes=document.querySelectorAll('#gNodes .g-node');
-        nodes.forEach(n=>n.classList.add('reveal-node'));
+
+        const allNodes=document.querySelectorAll('#gNodes .g-node');
+        const cCount=gData.connectors.length;
+        const mCount=gData.midNodes.length;
+
+        // Column 1: connectors (left)
+        const connectors=Array.from(allNodes).slice(0,cCount);
+        connectors.forEach(n=>n.classList.add('reveal-node'));
         setTimeout(()=>{
-          nodes.forEach((n,i)=>{
-            setTimeout(()=>n.classList.add('visible'), 40*i);
-          });
+          connectors.forEach((n,i)=>setTimeout(()=>n.classList.add('visible'),60*i));
         },200);
-        // Edges fade in after nodes
+
+        // Column 2: mid-nodes (center)
+        const midDelay=200+60*cCount+150;
+        const mids=Array.from(allNodes).slice(cCount,cCount+mCount);
+        mids.forEach(n=>n.classList.add('reveal-node'));
+        setTimeout(()=>{
+          mids.forEach((n,i)=>setTimeout(()=>n.classList.add('visible'),70*i));
+        },midDelay);
+
+        // Column 3: targets (right)
+        const targetDelay=midDelay+70*mCount+150;
+        const targets=Array.from(allNodes).slice(cCount+mCount);
+        targets.forEach(n=>n.classList.add('reveal-node'));
+        setTimeout(()=>{
+          targets.forEach((n,i)=>setTimeout(()=>n.classList.add('visible'),45*i));
+        },targetDelay);
+
+        // Edges fade in after all nodes
+        const edgeDelay=targetDelay+45*targets.length+200;
         const edges=document.querySelectorAll('#gSvg .g-edge');
         edges.forEach(e=>e.classList.add('reveal-edge'));
         setTimeout(()=>{
-          edges.forEach((e,i)=>{
-            setTimeout(()=>e.classList.add('visible'), 30*i);
-          });
-        },200+40*nodes.length);
-        // Popover
+          edges.forEach((e,i)=>setTimeout(()=>e.classList.add('visible'),25*i));
+        },edgeDelay);
+
+        // Popover + flow particles after edges
         const pop=document.getElementById('gPopover');
-        if(pop){pop.classList.remove('show');setTimeout(()=>pop.classList.add('show'),200+40*nodes.length+30*edges.length);}
+        const popDelay=edgeDelay+25*edges.length+200;
+        if(pop){pop.classList.remove('show');setTimeout(()=>pop.classList.add('show'),popDelay);}
+
         graphObs.disconnect();
       }
     });
