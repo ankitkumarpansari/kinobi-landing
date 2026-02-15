@@ -67,13 +67,13 @@
 
     /* Terminal (small — screen) */
     .terminal-wrap{padding:0 0 16px}
-    .terminal-chrome{border-radius:10px;border:1px solid #2f2f34;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5)}
-    .terminal-titlebar{background:#222228;padding:10px 14px;display:flex;align-items:center;gap:7px}
+    .terminal-chrome{border-radius:10px;border:1px solid #27272a;overflow:hidden}
+    .terminal-titlebar{background:#1e1e22;padding:10px 14px;display:flex;align-items:center;gap:7px}
     .terminal-dot{width:10px;height:10px;border-radius:50%}
     .terminal-dot.red{background:#ff5f57}
     .terminal-dot.yellow{background:#febc2e}
     .terminal-dot.green{background:#28c840}
-    .terminal{background:#131316;border-radius:0;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#787882;overflow-x:auto;border:none;position:relative}
+    .terminal{background:#0d0d0f;border-radius:0;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#787882;overflow-x:auto;border:none;position:relative}
     .terminal .cm{color:#b4b4c3}
     .terminal .pr{color:#fb7185;font-weight:500}
     .terminal .fl{color:#787882;font-weight:400}
@@ -157,7 +157,7 @@
     .waitlist-input::placeholder{color:var(--fg3)}
     .waitlist-msg{font-size:11px;color:var(--accent-muted);margin-top:8px;min-height:16px}
 
-    .agent-terminal{background:#131316;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a8977a;border:1px solid #2f2f34;overflow-x:auto;min-height:280px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+    .agent-terminal{background:#09090b;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a8977a;border:1px solid #27272a;overflow-x:auto;min-height:280px}
     .at-block{opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease}
     .at-block.visible{opacity:1;transform:translateY(0)}
     .agent-terminal .cm{color:#7a6f5a}
@@ -194,8 +194,8 @@
     .intel-tab.active{background:var(--accent-muted);color:#fff;border-color:var(--accent-muted)}
     .intel-count{font-size:9.5px;color:var(--fg3);font-weight:300}
 
-    .table-wrap{border:1px solid #2f2f34;border-radius:10px;overflow:hidden;background:#151518;box-shadow:0 8px 40px rgba(0,0,0,.5)}
-    .t-head{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;background:#18181c;border-bottom:1px solid #2f2f34}
+    .table-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white)}
+    .t-head{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;background:#0e0e11;border-bottom:1px solid var(--border)}
     .t-head span{font-size:9px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:8px 0}
     .t-row{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
     .t-row:last-child{border-bottom:none}
@@ -288,7 +288,7 @@
 
     /* ── Techstack card ── */
     .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .tech-card{border:1px solid #2f2f34;border-radius:10px;background:#151518;padding:18px 20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+    .tech-card{border:1px solid var(--border);border-radius:10px;background:var(--white);padding:18px 20px;overflow:hidden}
     .tech-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
     .tech-card-company{font-size:14px;font-weight:600;color:var(--fg)}
     .tech-card-domain{font-size:10px;font-weight:300;color:var(--fg3)}
@@ -327,7 +327,7 @@
 
     /* Features */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
-    .grid-item{background:#151518;padding:24px;border-radius:12px;border:1px solid #2f2f34;transition:all .25s;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+    .grid-item{background:var(--white);padding:24px;border-radius:12px;border:1px solid var(--border);transition:all .25s;position:relative;overflow:hidden}
     .grid-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:.6;transition:opacity .25s}
     .grid-item:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
     .grid-item:hover::before{opacity:1}
