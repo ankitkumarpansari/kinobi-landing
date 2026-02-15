@@ -67,13 +67,13 @@
 
     /* Terminal (small — screen) */
     .terminal-wrap{padding:0 0 16px}
-    .terminal-chrome{border-radius:10px;border:1px solid #27272a;overflow:hidden}
-    .terminal-titlebar{background:#1e1e22;padding:10px 14px;display:flex;align-items:center;gap:7px}
+    .terminal-chrome{border-radius:10px;border:1px solid #2f2f34;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+    .terminal-titlebar{background:#222228;padding:10px 14px;display:flex;align-items:center;gap:7px}
     .terminal-dot{width:10px;height:10px;border-radius:50%}
     .terminal-dot.red{background:#ff5f57}
     .terminal-dot.yellow{background:#febc2e}
     .terminal-dot.green{background:#28c840}
-    .terminal{background:#0d0d0f;border-radius:0;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#787882;overflow-x:auto;border:none;position:relative}
+    .terminal{background:#131316;border-radius:0;padding:20px 22px;font-family:var(--mono);font-size:11.5px;line-height:1.9;color:#787882;overflow-x:auto;border:none;position:relative}
     .terminal .cm{color:#b4b4c3}
     .terminal .pr{color:#fb7185;font-weight:500}
     .terminal .fl{color:#787882;font-weight:400}
@@ -119,8 +119,9 @@
     @keyframes tabFill{0%{width:0}100%{width:100%}}
 
     /* Hero zone — rose background */
-    .hero-zone{background:var(--accent-muted);padding-bottom:0}
-    .hero-zone-fade{height:80px;background:linear-gradient(to bottom,var(--accent-muted),var(--bg))}
+    .hero-zone{background:var(--accent-muted);padding-bottom:0;position:relative}
+    .hero-zone-fade{position:relative;margin-top:-1px}
+    .hero-zone-fade svg{display:block;width:100%}
     .hero-zone .logo{color:#fef3c7;--icon-box:#fef3c7;--icon-border:#fef3c7;--icon-stroke:#ea580c}
     .hero-zone .nav-waitlist-input{background:rgba(254,243,199,.15);border-color:rgba(254,243,199,.25);color:#fef3c7}
     .hero-zone .nav-waitlist-input::placeholder{color:rgba(254,243,199,.45)}
@@ -157,7 +158,7 @@
     .waitlist-input::placeholder{color:var(--fg3)}
     .waitlist-msg{font-size:11px;color:var(--accent-muted);margin-top:8px;min-height:16px}
 
-    .agent-terminal{background:#09090b;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a8977a;border:1px solid #27272a;overflow-x:auto;min-height:280px}
+    .agent-terminal{background:#131316;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:11px;line-height:1.9;color:#a8977a;border:1px solid #2f2f34;overflow-x:auto;min-height:280px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
     .at-block{opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease}
     .at-block.visible{opacity:1;transform:translateY(0)}
     .agent-terminal .cm{color:#7a6f5a}
@@ -194,8 +195,8 @@
     .intel-tab.active{background:var(--accent-muted);color:#fff;border-color:var(--accent-muted)}
     .intel-count{font-size:9.5px;color:var(--fg3);font-weight:300}
 
-    .table-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white)}
-    .t-head{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;background:#0e0e11;border-bottom:1px solid var(--border)}
+    .table-wrap{border:1px solid #2f2f34;border-radius:10px;overflow:hidden;background:#151518;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+    .t-head{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;background:#18181c;border-bottom:1px solid #2f2f34}
     .t-head span{font-size:9px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);padding:8px 0}
     .t-row{display:grid;grid-template-columns:2fr .8fr 1.1fr .7fr .5fr .5fr .8fr .5fr;padding:0 14px;border-bottom:1px solid var(--border);transition:background .12s;cursor:pointer;align-items:center}
     .t-row:last-child{border-bottom:none}
@@ -288,7 +289,7 @@
 
     /* ── Techstack card ── */
     .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .tech-card{border:1px solid var(--border);border-radius:10px;background:var(--white);padding:18px 20px;overflow:hidden}
+    .tech-card{border:1px solid #2f2f34;border-radius:10px;background:#151518;padding:18px 20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5)}
     .tech-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
     .tech-card-company{font-size:14px;font-weight:600;color:var(--fg)}
     .tech-card-domain{font-size:10px;font-weight:300;color:var(--fg3)}
@@ -327,7 +328,7 @@
 
     /* Features */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
-    .grid-item{background:var(--white);padding:24px;border-radius:12px;border:1px solid var(--border);transition:all .25s;position:relative;overflow:hidden}
+    .grid-item{background:#151518;padding:24px;border-radius:12px;border:1px solid #2f2f34;transition:all .25s;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5)}
     .grid-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:.6;transition:opacity .25s}
     .grid-item:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
     .grid-item:hover::before{opacity:1}
@@ -454,11 +455,16 @@
     }
 
     /* ── Knowledge Graph Query Console ── */
-    .query-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px;max-width:780px;margin-left:auto;margin-right:auto}
-    .query-chip{font-size:11px;font-weight:400;font-family:var(--mono);padding:8px 16px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:var(--fg3);cursor:pointer;transition:all .2s;text-align:left;line-height:1.4}
-    .query-chip:hover{border-color:var(--fg3);color:var(--fg2)}
-    .query-chip.active{background:rgba(234,88,12,.1);color:var(--accent-light);border-color:var(--accent)}
-    #liveIntel .screen-intro{text-align:center;max-width:560px;margin:0 auto 28px}
+    .query-box{position:relative;max-width:600px;margin:0 auto 20px}
+    .query-input{width:100%;font-size:12px;font-family:var(--mono);padding:11px 16px 11px 34px;border-radius:10px;border:1px solid var(--border2);background:#111113;color:var(--fg3);outline:none;transition:border-color .2s;overflow:hidden;white-space:nowrap;min-height:18px}
+    .query-input.typing{border-color:var(--accent-muted);color:var(--fg2)}
+    .query-input .qt{font-weight:700;color:#7db8f5}
+    .query-input .qc{color:#5ddbb8}
+    .query-input .qo{color:#3f3f46}
+    .query-input .qcur{display:inline-block;width:7px;height:14px;background:var(--accent);animation:blink 1s step-end infinite;vertical-align:middle;margin-left:1px}
+    .query-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#3f3f46;font-size:13px;pointer-events:none;transition:color .2s}
+    .query-box.active .query-icon{color:var(--accent-muted)}
+    #liveIntel .screen-intro{text-align:center;max-width:560px;margin:0 auto 24px}
     #liveIntel .s-desc{margin:10px auto 0}
     #liveIntel h2{max-width:560px;margin:0 auto}
     @keyframes liveSpin{to{transform:rotate(360deg)}}
@@ -466,8 +472,7 @@
     .live-spinner{display:inline-block;width:12px;height:12px;border:1.5px solid #3f3f46;border-top-color:#fb7185;border-radius:50%;animation:liveSpin .6s linear infinite;vertical-align:middle;margin-right:8px}
     .live-empty{color:#3f3f46;padding:40px 0;text-align:center;font-family:var(--mono);font-size:11px}
     @media(max-width:768px){
-      .query-chips{gap:6px}
-      .query-chip{font-size:10px;padding:6px 12px}
+      .query-input{font-size:11px;padding:10px 14px 10px 32px}
     }
   </style>
 </head>
@@ -606,21 +611,18 @@
   </div>
   </div>
   </div>
-  <div class="hero-zone-fade"></div>
+  <div class="hero-zone-fade"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 C480,100 960,100 1440,0 L1440,120 L0,120 Z" fill="#09090b"/></svg></div>
 
   <!-- Knowledge Graph Query Console -->
   <div class="screen-section" id="liveIntel">
     <div class="screen-intro reveal-up">
       <p class="s-label">knowledge graph</p>
       <h2>Cross-company queries. <strong>Live data.</strong></h2>
-      <p class="s-desc">Compound queries across 93 companies, 4,300 technologies, and 5,700 signals. This is our production graph.</p>
+      <p class="s-desc">Compound queries across companies, technologies, and signals. Every result is live from our production graph.</p>
     </div>
-    <div class="query-chips">
-      <button class="query-chip" data-query="0">retail companies using AWS with hiring signals</button>
-      <button class="query-chip" data-query="1">companies running both Python and Kubernetes</button>
-      <button class="query-chip" data-query="2">pharma companies with 100+ techs and cloud infra</button>
-      <button class="query-chip" data-query="3">match AI/ML technologies to engineering leadership</button>
-      <button class="query-chip" data-query="4">companies that added 200+ technologies this quarter</button>
+    <div class="query-box" id="queryBox">
+      <span class="query-icon">&#x2315;</span>
+      <div class="query-input" id="queryInput">search the knowledge graph...</div>
     </div>
     <div class="terminal-chrome">
       <div class="terminal-titlebar">
@@ -1587,9 +1589,26 @@
   (function(){
     var API='https://kinobi-production.up.railway.app';
     var term=document.getElementById('liveTerm');
-    var chips=document.querySelectorAll('.query-chip');
+    var queryInput=document.getElementById('queryInput');
+    var queryBox=document.getElementById('queryBox');
     var dataCache=new Map();
     var companyList=null;
+    var loopRunning=false;
+    var queryTexts=[
+      'companies using Kubernetes with managed orchestration — Rancher, AKS, or GKE',
+      'enterprises running both Snowflake and Databricks — dual data platform spend',
+      'companies with CyberArk and SailPoint — enterprise identity stack',
+      'companies deploying TensorFlow or PyTorch with ML ops like Kubeflow',
+      'real-time pipelines — Kafka and Spark with a cloud data lake'
+    ];
+    // Styled versions with entity highlighting
+    var queryHTML=[
+      'companies using <span class="qt">Kubernetes</span> with <span class="qc">managed orchestration</span> — <span class="qt">Rancher</span>, <span class="qt">AKS</span>, or <span class="qt">GKE</span>',
+      'enterprises running both <span class="qt">Snowflake</span> and <span class="qt">Databricks</span> — <span class="qc">dual data platform</span> spend',
+      'companies with <span class="qt">CyberArk</span> and <span class="qt">SailPoint</span> — <span class="qc">enterprise identity</span> stack',
+      'companies deploying <span class="qt">TensorFlow</span> or <span class="qt">PyTorch</span> with <span class="qc">ML ops</span> like <span class="qt">Kubeflow</span>',
+      '<span class="qc">real-time pipelines</span> — <span class="qt">Kafka</span> and <span class="qt">Spark</span> with a <span class="qc">cloud data lake</span>'
+    ];
 
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     function B(h){return '<div class="t-block">'+h+'</div>';}
@@ -1624,97 +1643,106 @@
     var VL='<span class="st">';var RE='<span class="re">';var HI='<span class="hi">';
     var X='</span>';
 
+    var ALL12=['dell.com','bestbuy.com','pfizer.com','jnj.com','3m.com','pepsico.com','tjx.com','abbvie.com','kohls.com','ikea.com','7-eleven.com','adt.com'];
+
     var QUERIES=[
-      { text:'retail + AWS + hiring',
+      { // Q0: Kubernetes + managed orchestration
         cypher:[
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'IN_INDUSTRY'+X+RE+']->('+X+ND+'Industry'+X+' '+VL+'{name:\'retail\'}'+X+RE+')'+X,
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+ND+'Tech'+X+' '+VL+'{name:\'AWS\'}'+X+RE+')'+X,
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'HAS'+X+RE+']->('+X+ND+'Signal'+X+' '+VL+'{type:\'hiring_surge\'}'+X+RE+')'+X,
-          KW+'RETURN'+X+' c'+RE+','+X+' tech'+RE+','+X+' signal'
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t1'+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Kubernetes\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t2'+RE+':'+X+ND+'Tech'+X+RE+')'+X,
+          '       '+KW+'WHERE'+X+' t2.name '+KW+'IN'+X+' '+VL+'[\'Rancher\',\'AKS\',\'GKE\',\'EKS\',\'OpenShift\']'+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' t1'+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'t2.name'+RE+')'+X+' '+KW+'AS'+X+' managed'
         ],
-        indRe:/retail/i,
+        candidates:ALL12,
         filter:function(d){
-          var a=d.techs.some(function(t){return /\bAWS\b|Amazon Web Services|Amazon S3|CloudFront|Amazon EC2/i.test(t.name);});
-          var h=d.signals.some(function(s){return s.type==='hiring_surge'||s.type==='dept_expansion';});
-          return a&&h;
+          var hasK8s=d.techs.some(function(t){return /^kubernetes$/i.test(t.name);});
+          if(!hasK8s) return false;
+          return d.techs.some(function(t){return /\b(Rancher|AKS|GKE|EKS|OpenShift|Kubeflow)\b/i.test(t.name);});
         },
         evidence:function(d){
-          var aws=d.techs.filter(function(t){return /\bAWS\b|Amazon|CloudFront|S3|EC2|Lambda/i.test(t.name);}).map(function(t){return t.name;});
-          var sig=d.signals.filter(function(s){return s.type==='hiring_surge'||s.type==='dept_expansion';});
-          return {tech:aws.slice(0,3),signal:sig[0]?sig[0].title:null,total:d.techs.length};
+          var managed=d.techs.filter(function(t){return /\b(Rancher|AKS|GKE|EKS|OpenShift|Kubeflow)\b/i.test(t.name);}).map(function(t){return t.name;});
+          var container=d.techs.filter(function(t){return /kubernetes|docker|container|helm|argo|istio/i.test(t.name);}).map(function(t){return t.name;});
+          return {tech:managed,container:container,total:d.techs.length};
         }
       },
-      { text:'Python AND Kubernetes',
+      { // Q1: Snowflake AND Databricks
         cypher:[
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t1'+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Python\'}'+X+RE+')'+X,
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t2'+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Kubernetes\'}'+X+RE+')'+X,
-          KW+'RETURN'+X+' c'+RE+','+X+' t1'+RE+','+X+' t2'
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Snowflake\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Databricks\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t'+RE+':'+X+ND+'Tech'+X+' '+VL+'{category:\'data\'}'+X+RE+')'+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'t.name'+RE+')'+X+' '+KW+'AS'+X+' data_stack'
         ],
-        indRe:null,
-        candidates:['dell.com','bestbuy.com','pfizer.com','jnj.com','3m.com','pepsico.com','tjx.com','abbvie.com','kohls.com','ikea.com','7-eleven.com','adt.com'],
+        candidates:ALL12,
         filter:function(d){
-          var n=d.techs.map(function(t){return t.name.toLowerCase();});
-          return n.indexOf('python')!==-1&&n.indexOf('kubernetes')!==-1;
+          var names=d.techs.map(function(t){return t.name.toLowerCase();});
+          var hasSF=names.some(function(n){return n==='snowflake';});
+          var hasDB=names.some(function(n){return /databricks|azure databricks/i.test(n);});
+          return hasSF&&hasDB;
         },
         evidence:function(d){
-          var devops=d.techs.filter(function(t){return /python|kubernetes|docker|terraform|jenkins|ansible|aws|azure|gcp|ci.?cd/i.test(t.name);}).map(function(t){return t.name;});
-          return {tech:[].concat(new Set(devops)).slice(0,5),total:d.techs.length};
+          var dataStack=d.techs.filter(function(t){return /snowflake|databricks|spark|airflow|kafka|dbt|dagster|prefect|delta.?lake|redshift|bigquery|data.?factory|data.?lake|talend|informatica|glue|kinesis/i.test(t.name);}).map(function(t){return t.name;});
+          return {tech:dataStack.slice(0,6),total:d.techs.length};
         }
       },
-      { text:'pharma + tech_count>=100 + infra',
+      { // Q2: CyberArk AND SailPoint
         cypher:[
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'IN_INDUSTRY'+X+RE+']->('+X+ND+'Industry'+X+' '+VL+'{name:\'pharma\'}'+X+RE+')'+X,
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t'+RE+':'+X+ND+'Tech'+X+RE+')'+X,
-          KW+'WITH'+X+'   c'+RE+','+X+' '+KW+'count'+X+RE+'('+X+'t'+RE+')'+X+' '+KW+'AS'+X+' tc '+KW+'WHERE'+X+' tc '+RE+'>='+X+' '+VL+'100'+X,
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+ND+'Tech'+X+' '+VL+'{category:\'infra\'}'+X+RE+')'+X,
-          KW+'RETURN'+X+' c'+RE+','+X+' tc'
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'CyberArk\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+RE+':'+X+ND+'Tech'+X+' '+VL+'{vendor:\'SailPoint\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'s'+RE+':'+X+ND+'Tech'+X+RE+')'+X,
+          '       '+KW+'WHERE'+X+' s.category '+RE+'='+X+' '+VL+'\'security\''+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'s.name'+RE+')'+X+' '+KW+'AS'+X+' security_stack'
         ],
-        indRe:/pharma|health|biotech/i,
+        candidates:ALL12,
         filter:function(d){
-          if(d.techs.length<100) return false;
-          return d.techs.some(function(t){return (t.category||'')==='infra';});
+          var hasCyber=d.techs.some(function(t){return /cyberark/i.test(t.name);});
+          var hasSail=d.techs.some(function(t){return /sailpoint/i.test(t.name);});
+          return hasCyber&&hasSail;
         },
         evidence:function(d){
-          var infra=d.techs.filter(function(t){return (t.category||'')==='infra';}).map(function(t){return t.name;});
-          return {tech:infra.slice(0,4),total:d.techs.length,count:infra.length+' infra'};
+          var sec=d.techs.filter(function(t){return /cyberark|sailpoint|palo.?alto|zscaler|crowdstrike|okta|entra|zero.?trust|siem|wildfire|globalprotect|delinea|proofpoint|imperva/i.test(t.name);}).map(function(t){return t.name;});
+          return {tech:sec.slice(0,6),total:d.techs.length};
         }
       },
-      { text:'AI/ML tech → engineering leadership',
+      { // Q3: TensorFlow/PyTorch + ML ops (Kubeflow/Vertex AI/MLFlow)
         cypher:[
           KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t'+RE+':'+X+ND+'Tech'+X+RE+')'+X,
-          '       '+KW+'WHERE'+X+' t.name '+RE+'=~'+X+' '+VL+'\'(?i)AI|ML|TensorFlow|PyTorch|GPT|LLM\''+X,
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'EMPLOYS'+X+RE+']->('+X+'p'+RE+':'+X+ND+'Person'+X+RE+')'+X,
-          '       '+KW+'WHERE'+X+' p.title '+RE+'=~'+X+' '+VL+'\'(?i)CTO|VP Eng|Chief Tech|Director\''+X,
-          KW+'RETURN'+X+' c'+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'t'+RE+')'+X+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'p'+RE+')'+X
+          '       '+KW+'WHERE'+X+' t.name '+KW+'IN'+X+' '+VL+'[\'TensorFlow\',\'PyTorch\',\'scikit-learn\']'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'m'+RE+':'+X+ND+'Tech'+X+RE+')'+X,
+          '       '+KW+'WHERE'+X+' m.name '+KW+'IN'+X+' '+VL+'[\'Kubeflow\',\'Vertex AI\',\'MLFlow\']'+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'t'+RE+')'+X+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'m'+RE+')'+X
         ],
-        indRe:null,
-        candidates:['dell.com','pfizer.com','jnj.com','3m.com','pepsico.com','bestbuy.com','abbvie.com','tjx.com','kohls.com','ikea.com','7-eleven.com','adt.com'],
+        candidates:ALL12,
         filter:function(d){
-          var ai=d.techs.filter(function(t){return /\bAI\b|machine.?learn|tensor|torch|GPT|LLM|deep.?learn|neural|NLP|computer.?vision|generative|openai|hugging|scikit|pandas|jupyter|data.?science/i.test(t.name);});
-          return ai.length>0&&d.people.length>0;
+          var hasFramework=d.techs.some(function(t){return /\b(tensorflow|pytorch|scikit.?learn|xgboost)\b/i.test(t.name);});
+          var hasOps=d.techs.some(function(t){return /\b(kubeflow|vertex.?ai|mlflow|ml.?ops|sagemaker|dataiku|azure.?machine.?learn)\b/i.test(t.name);});
+          return hasFramework&&hasOps;
         },
         evidence:function(d){
-          var ai=d.techs.filter(function(t){return /\bAI\b|machine.?learn|tensor|torch|GPT|LLM|deep.?learn|neural|NLP|computer.?vision|generative|openai|hugging|scikit|pandas|jupyter|data.?science/i.test(t.name);}).map(function(t){return t.name;});
-          var leaders=d.people.filter(function(p){return /chief|cto|vp|president|director|head|svp/i.test(p.title||'');}).slice(0,2);
-          if(leaders.length===0) leaders=d.people.slice(0,2);
-          return {tech:ai.slice(0,4),people:leaders,total:d.techs.length};
+          var frameworks=d.techs.filter(function(t){return /tensorflow|pytorch|scikit|xgboost|random.?forest/i.test(t.name);}).map(function(t){return t.name;});
+          var ops=d.techs.filter(function(t){return /kubeflow|vertex|mlflow|sagemaker|dataiku|azure.?machine/i.test(t.name);}).map(function(t){return t.name;});
+          var all=frameworks.concat(ops);
+          return {tech:all.slice(0,6),total:d.techs.length};
         }
       },
-      { text:'signal:tech_shift count>=200',
+      { // Q4: Kafka + Spark + cloud data lake
         cypher:[
-          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'HAS'+X+RE+']->('+X+'s'+RE+':'+X+ND+'Signal'+X+' '+VL+'{type:\'tech_shift\'}'+X+RE+')'+X,
-          KW+'WITH'+X+'   c'+RE+','+X+' '+KW+'count'+X+RE+'('+X+'s'+RE+')'+X+' '+KW+'AS'+X+' sc',
-          KW+'WHERE'+X+'  sc '+RE+'>='+X+' '+VL+'200'+X,
-          KW+'RETURN'+X+' c'+RE+','+X+' sc '+KW+'ORDER BY'+X+' sc '+KW+'DESC'+X
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Kafka\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Apache Spark\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'lake'+RE+':'+X+ND+'Tech'+X+RE+')'+X,
+          '       '+KW+'WHERE'+X+' lake.name '+KW+'IN'+X+' '+VL+'[\'Delta Lake\',\'BigQuery\',\'Data Lake\',\'S3\']'+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'lake.name'+RE+')'+X+' '+KW+'AS'+X+' lake_layer'
         ],
-        indRe:null,
-        candidates:['dell.com','7-eleven.com','tjx.com','bestbuy.com','pfizer.com','jnj.com','3m.com','pepsico.com','kohls.com','abbvie.com','ikea.com','adt.com'],
+        candidates:ALL12,
         filter:function(d){
-          return d.signals.filter(function(s){return s.type==='tech_shift';}).length>=200;
+          var names=d.techs.map(function(t){return t.name.toLowerCase();});
+          var hasKafka=names.some(function(n){return /kafka/i.test(n);});
+          var hasSpark=names.some(function(n){return /spark|pyspark/i.test(n);});
+          if(!hasKafka||!hasSpark) return false;
+          return d.techs.some(function(t){return /delta.?lake|bigquery|data.?lake|redshift|s3|adls|gcs|lakehouse/i.test(t.name);});
         },
         evidence:function(d){
-          var shifts=d.signals.filter(function(s){return s.type==='tech_shift';});
-          return {shiftCount:shifts.length,recent:shifts.slice(0,3).map(function(s){return s.title;}),total:d.techs.length};
+          var streaming=d.techs.filter(function(t){return /kafka|spark|pyspark|kinesis|flink|delta.?lake|bigquery|data.?lake|redshift|airflow|s3|glue/i.test(t.name);}).map(function(t){return t.name;});
+          return {tech:streaming.slice(0,6),total:d.techs.length};
         }
       }
     ];
@@ -1728,20 +1756,11 @@
       try{companies=await fetchList();}catch(e){
         term.innerHTML='<div class="live-empty"><span style="color:#f87171">API unreachable</span></div>';return;
       }
-      var total=companies.length;
 
-      // Determine candidates
-      var candidates;
-      var industryCount=total;
-      if(q.indRe){
-        var indMatches=companies.filter(function(c){return q.indRe.test(c.industry||'');});
-        industryCount=indMatches.length;
-        candidates=indMatches.slice(0,15);
-      }else{
-        candidates=(q.candidates||[]).map(function(dom){
-          return companies.find(function(c){return c.domain===dom;})||{domain:dom,name:dom,industry:''};
-        });
-      }
+      // Resolve candidates
+      var candidates=(q.candidates||[]).map(function(dom){
+        return companies.find(function(c){return c.domain===dom;})||{domain:dom,name:dom,industry:''};
+      });
 
       // Fetch detailed data for candidates
       await Promise.all(candidates.map(function(c){return fetchDetail(c.domain);}));
@@ -1758,18 +1777,14 @@
       // Build terminal output
       var h='';
       h+=B('<span class="cm"># compound query across the knowledge graph</span>');
-      h+=B('<span class="pr">木</span> <span class="kb">kinobi query</span> <span class="st">"'+esc(chips[idx].textContent)+'"</span>');
+      h+=B('<span class="pr">木</span> <span class="kb">kinobi query</span> <span class="st">"'+esc(queryTexts[idx])+'"</span>');
       h+=BR();
       // Cypher
       q.cypher.forEach(function(line){h+=B('  '+line);});
       h+=BR();
       // Funnel
       h+=B(RE+'  traversing graph...'+X);
-      h+=B(RE+'  '+total+' companies indexed'+X);
-      if(q.indRe){
-        h+=B(RE+'  '+X+HI+'  → '+industryCount+X+RE+' match industry filter'+X);
-      }
-      h+=B(RE+'  '+X+HI+'  → '+results.length+X+RE+' match'+(results.length===1?'es':'')+ ' all conditions'+X);
+      h+=B(RE+'  '+companies.length+' companies · '+candidates.length+' scanned · '+X+HI+results.length+' match'+(results.length!==1?'es':'')+X+RE+' found'+X);
       h+=BR();
 
       if(results.length===0){
@@ -1783,29 +1798,12 @@
           h+=B(RE+'  │'+X);
           h+=B(RE+'  │  '+X+VL+(i+1)+'.'+X+'  '+HI+name+X+RE+'  '+dom+'  '+ind+X);
           if(r.ev.tech&&r.ev.tech.length>0){
-            h+=B(RE+'  │     ├─ tech   '+X+'<span class="jk">'+r.ev.tech.map(esc).join(RE+', '+X+'<span class="jk">')+'</span>'+RE+'  (+'+(r.ev.total-r.ev.tech.length)+' more)'+X);
+            h+=B(RE+'  │     ├─ match  '+X+'<span class="jk">'+r.ev.tech.map(esc).join(RE+', '+X+'<span class="jk">')+'</span>');
           }
-          if(r.ev.signal){
-            h+=B(RE+'  │     ├─ signal '+X+'<span class="warn">'+esc(r.ev.signal)+'</span>');
+          if(r.ev.container&&r.ev.container.length>0){
+            h+=B(RE+'  │     ├─ stack  '+X+'<span class="vel">'+r.ev.container.map(esc).join(RE+', '+X+'<span class="vel">')+'</span>');
           }
-          if(r.ev.count){
-            h+=B(RE+'  │     ├─ infra  '+X+'<span class="vel">'+esc(String(r.ev.count))+' detected</span>');
-          }
-          if(r.ev.people&&r.ev.people.length>0){
-            r.ev.people.forEach(function(p){
-              h+=B(RE+'  │     ├─ leader '+X+HI+esc(p.name)+X+RE+' — '+esc(p.title||'')+X);
-            });
-          }
-          if(r.ev.shiftCount){
-            h+=B(RE+'  │     ├─ shifts '+X+'<span class="vel">'+r.ev.shiftCount+' tech changes detected</span>');
-            if(r.ev.recent){
-              r.ev.recent.forEach(function(s){
-                h+=B(RE+'  │     │  '+X+VL+esc(s)+X);
-              });
-            }
-          }
-          var tree=i<results.length-1?'└':'└';
-          h+=B(RE+'  │     └─ total  '+X+RE+r.ev.total+' technologies · '+r.data.signals.length+' signals · '+r.data.people.length+' people'+X);
+          h+=B(RE+'  │     └─ total  '+X+RE+r.ev.total+' technologies detected'+X);
         });
         h+=B(RE+'  │'+X);
         h+=B(RE+'  └──────────────────────────────────────────────────────┘'+X);
@@ -1820,14 +1818,57 @@
       blocks.forEach(function(b,i){setTimeout(function(){b.classList.add('visible');},50*i);});
     }
 
-    chips.forEach(function(chip){
-      chip.addEventListener('click',function(){
-        chips.forEach(function(c){c.classList.remove('active');});
-        chip.classList.add('active');
-        runQuery(parseInt(chip.dataset.query));
+    function typeText(plainText,styledHTML){
+      return new Promise(function(resolve){
+        var i=0;
+        queryInput.innerHTML='<span class="qcur"></span>';
+        queryInput.classList.add('typing');
+        queryBox.classList.add('active');
+        var iv=setInterval(function(){
+          i++;
+          if(i>=plainText.length){
+            clearInterval(iv);
+            queryInput.innerHTML=styledHTML;
+            setTimeout(resolve,400);
+          }else{
+            queryInput.innerHTML=esc(plainText.substring(0,i))+'<span class="qcur"></span>';
+          }
+        },25);
       });
-    });
+    }
 
+    function clearInput(){
+      return new Promise(function(resolve){
+        queryInput.classList.remove('typing');
+        queryBox.classList.remove('active');
+        setTimeout(function(){
+          queryInput.innerHTML='search the knowledge graph...';
+          resolve();
+        },200);
+      });
+    }
+
+    async function runLoop(){
+      if(loopRunning) return;
+      loopRunning=true;
+      // Pre-fetch all candidate data on first run
+      try{await fetchList();}catch(e){}
+      await Promise.all(ALL12.map(function(d){return fetchDetail(d);}));
+
+      var idx=0;
+      while(loopRunning){
+        await typeText(queryTexts[idx],queryHTML[idx]);
+        await runQuery(idx);
+        // Wait for animation to finish + reading time
+        var blockCount=term.querySelectorAll('.t-block').length;
+        await new Promise(function(r){setTimeout(r,blockCount*50+4000);});
+        await clearInput();
+        await new Promise(function(r){setTimeout(r,600);});
+        idx=(idx+1)%QUERIES.length;
+      }
+    }
+
+    // Start loop when section scrolls into view
     var liveSection=document.getElementById('liveIntel');
     if(liveSection){
       var liveObs=new IntersectionObserver(function(entries){
@@ -1836,6 +1877,7 @@
             var intro=liveSection.querySelector('.screen-intro');
             if(intro) intro.classList.add('visible');
             liveObs.disconnect();
+            setTimeout(runLoop,800);
           }
         });
       },{threshold:0.1});
