@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kinobi — The company graph your AI agent thinks with</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ea580c'/%3E%3Cline x1='16' y1='5' x2='16' y2='27' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='6' y1='13' x2='26' y2='13' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='16' y1='13' x2='6' y2='26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='16' y1='13' x2='26' y2='26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ea580c'/%3E%3Cline x1='16' y1='5' x2='16' y2='27' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M6 13 Q16 11, 26 13' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3Cpath d='M16 13 Q11 17, 6 26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3Cpath d='M16 13 Q21 17, 26 26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" />
   <meta name="description" content="The company graph your AI agent thinks with. Search, enrich, and map warm paths to any decision maker." />
   <meta property="og:title" content="Kinobi — The company graph your AI agent thinks with" />
   <meta property="og:description" content="Search, enrich, and map warm paths to any decision maker. Structured JSON. Every field sourced." />
@@ -13,7 +13,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Kinobi — The company graph your AI agent thinks with" />
   <meta name="twitter:description" content="Search, enrich, and map warm paths to any decision maker." />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ea580c'/%3E%3Cline x1='16' y1='5' x2='16' y2='27' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='6' y1='13' x2='26' y2='13' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='16' y1='13' x2='6' y2='26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cline x1='16' y1='13' x2='26' y2='26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ea580c'/%3E%3Cline x1='16' y1='5' x2='16' y2='27' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M6 13 Q16 11, 26 13' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3Cpath d='M16 13 Q11 17, 6 26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3Cpath d='M16 13 Q21 17, 26 26' stroke='%23fef3c7' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" />
   <link rel="canonical" href="https://kinobi.so" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -453,28 +453,21 @@
       .tech-card{padding:12px 14px}
     }
 
-    /* ── Live Intelligence ── */
-    .live-company-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
-    .live-chip{font-size:12px;font-weight:400;font-family:var(--sans);padding:6px 18px;border-radius:100px;border:1px solid var(--border2);background:transparent;color:var(--fg2);cursor:pointer;transition:all .2s}
-    .live-chip:hover{border-color:var(--fg3);color:var(--fg)}
-    .live-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    #liveIntel .screen-intro{text-align:center;max-width:520px;margin:0 auto 28px}
+    /* ── Knowledge Graph Query Console ── */
+    .query-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px;max-width:780px;margin-left:auto;margin-right:auto}
+    .query-chip{font-size:11px;font-weight:400;font-family:var(--mono);padding:8px 16px;border-radius:8px;border:1px solid var(--border2);background:transparent;color:var(--fg3);cursor:pointer;transition:all .2s;text-align:left;line-height:1.4}
+    .query-chip:hover{border-color:var(--fg3);color:var(--fg2)}
+    .query-chip.active{background:rgba(234,88,12,.1);color:var(--accent-light);border-color:var(--accent)}
+    #liveIntel .screen-intro{text-align:center;max-width:560px;margin:0 auto 28px}
     #liveIntel .s-desc{margin:10px auto 0}
-    #liveIntel h2{max-width:520px;margin:0 auto}
-    #liveIntel .terminal-tabs{justify-content:flex-start}
-    .live-tab{font-size:11px;font-weight:400;letter-spacing:.03em;padding:7px 18px;color:#52525b;cursor:pointer;border:1px solid #27272a;background:#09090b;font-family:var(--mono);transition:all .2s;border-radius:6px;display:flex;align-items:center;gap:6px}
-    .live-tab:hover{border-color:#3f3f46;color:#a1a1aa}
-    .live-tab.active{background:#1a1a1e;color:#e4e4e7;border-color:#3f3f46;font-weight:500}
+    #liveIntel h2{max-width:560px;margin:0 auto}
     @keyframes liveSpin{to{transform:rotate(360deg)}}
     .live-spinner-wrap{padding:40px 0;text-align:center}
     .live-spinner{display:inline-block;width:12px;height:12px;border:1.5px solid #3f3f46;border-top-color:#fb7185;border-radius:50%;animation:liveSpin .6s linear infinite;vertical-align:middle;margin-right:8px}
     .live-empty{color:#3f3f46;padding:40px 0;text-align:center;font-family:var(--mono);font-size:11px}
     @media(max-width:768px){
-      .live-company-chips{gap:6px}
-      .live-chip{font-size:11px;padding:5px 14px}
-    }
-    @media(max-width:480px){
-      .live-chip{font-size:10px;padding:4px 12px}
+      .query-chips{gap:6px}
+      .query-chip{font-size:10px;padding:6px 12px}
     }
   </style>
 </head>
@@ -482,7 +475,7 @@
 
   <div class="hero-zone">
   <nav>
-    <a href="/" class="logo"><svg class="logo-icon" width="22" height="22" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="var(--icon-box)" stroke="var(--icon-border)" stroke-width="1"/><line x1="16" y1="5" x2="16" y2="27" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="6" y1="13" x2="26" y2="13" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="6" y2="26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="26" y2="26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/></svg>kinobi</a>
+    <a href="/" class="logo"><svg class="logo-icon" width="22" height="22" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="var(--icon-box)" stroke="var(--icon-border)" stroke-width="1"/><line x1="16" y1="5" x2="16" y2="27" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><path d="M6 13 Q16 11, 26 13" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M16 13 Q11 17, 6 26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M16 13 Q21 17, 26 26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round" fill="none"/></svg>kinobi</a>
     <form class="nav-waitlist" onsubmit="return handleWaitlist(event)">
       <input type="email" class="nav-waitlist-input" placeholder="you@company.com" required />
       <button type="submit" class="nav-waitlist-btn">Join Waitlist</button>
@@ -615,31 +608,19 @@
   </div>
   <div class="hero-zone-fade"></div>
 
-  <!-- Live Intelligence -->
+  <!-- Knowledge Graph Query Console -->
   <div class="screen-section" id="liveIntel">
     <div class="screen-intro reveal-up">
-      <p class="s-label">live data</p>
-      <h2>Real companies. <strong>Real intelligence.</strong></h2>
-      <p class="s-desc">This data is live — pulled from our API right now, not hardcoded. Pick a company.</p>
+      <p class="s-label">knowledge graph</p>
+      <h2>Cross-company queries. <strong>Live data.</strong></h2>
+      <p class="s-desc">Compound queries across 93 companies, 4,300 technologies, and 5,700 signals. This is our production graph.</p>
     </div>
-    <div class="live-company-chips">
-      <button class="live-chip" data-domain="dell.com">Dell</button>
-      <button class="live-chip" data-domain="pfizer.com">Pfizer</button>
-      <button class="live-chip" data-domain="jnj.com">Johnson &amp; Johnson</button>
-      <button class="live-chip" data-domain="bestbuy.com">Best Buy</button>
-      <button class="live-chip" data-domain="7-eleven.com">7-Eleven</button>
-      <button class="live-chip" data-domain="tjx.com">TJX</button>
-      <button class="live-chip" data-domain="3m.com">3M</button>
-      <button class="live-chip" data-domain="pepsico.com">PepsiCo</button>
-      <button class="live-chip" data-domain="kohls.com">Kohl's</button>
-      <button class="live-chip" data-domain="adt.com">ADT</button>
-      <button class="live-chip" data-domain="ikea.com">IKEA</button>
-      <button class="live-chip" data-domain="abbvie.com">AbbVie</button>
-    </div>
-    <div class="terminal-tabs" id="liveTabs" style="display:none">
-      <button class="live-tab active" data-live-tab="0"><span class="tab-dot dot-tech"></span>Enrich</button>
-      <button class="live-tab" data-live-tab="1"><span class="tab-dot dot-jobs"></span>Signals</button>
-      <button class="live-tab" data-live-tab="2"><span class="tab-dot dot-mcp"></span>Agent</button>
+    <div class="query-chips">
+      <button class="query-chip" data-query="0">retail companies using AWS with hiring signals</button>
+      <button class="query-chip" data-query="1">companies running both Python and Kubernetes</button>
+      <button class="query-chip" data-query="2">pharma companies with 100+ techs and cloud infra</button>
+      <button class="query-chip" data-query="3">match AI/ML technologies to engineering leadership</button>
+      <button class="query-chip" data-query="4">companies that added 200+ technologies this quarter</button>
     </div>
     <div class="terminal-chrome">
       <div class="terminal-titlebar">
@@ -648,7 +629,7 @@
         <span class="terminal-dot green"></span>
       </div>
       <div class="terminal" id="liveTerm">
-        <div class="live-empty"># select a company above to query live data</div>
+        <div class="live-empty"># select a query to search the knowledge graph</div>
       </div>
     </div>
   </div>
@@ -943,7 +924,7 @@
 
   <div class="cta-zone">
   <section class="cta">
-    <div class="cta-mark"><svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="var(--icon-box)" stroke="var(--icon-border)" stroke-width="1"/><line x1="16" y1="5" x2="16" y2="27" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="6" y1="13" x2="26" y2="13" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="6" y2="26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><line x1="16" y1="13" x2="26" y2="26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/></svg></div>
+    <div class="cta-mark"><svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" fill="var(--icon-box)" stroke="var(--icon-border)" stroke-width="1"/><line x1="16" y1="5" x2="16" y2="27" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round"/><path d="M6 13 Q16 11, 26 13" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M16 13 Q11 17, 6 26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M16 13 Q21 17, 26 26" stroke="var(--icon-stroke)" stroke-width="4" stroke-linecap="round" fill="none"/></svg></div>
     <p class="cta-statement">made for machines ... and humans <span class="cta-wink">;)</span></p>
     <form class="waitlist-form" onsubmit="return handleWaitlist(event)" style="justify-content:center">
       <input type="email" class="waitlist-input" placeholder="you@company.com" required />
@@ -1602,176 +1583,257 @@
     mcpObs.observe(mcpSection);
   }
 
-  // ── Live Intelligence Terminal ──
+  // ── Knowledge Graph Query Console ──
   (function(){
-    const API='https://kinobi-production.up.railway.app';
-    const term=document.getElementById('liveTerm');
-    const chips=document.querySelectorAll('.live-chip');
-    const tabsWrap=document.getElementById('liveTabs');
-    const tabs=document.querySelectorAll('.live-tab');
-    const cache=new Map();
-    let currentData=null;
-    let currentDomain=null;
+    var API='https://kinobi-production.up.railway.app';
+    var term=document.getElementById('liveTerm');
+    var chips=document.querySelectorAll('.query-chip');
+    var dataCache=new Map();
+    var companyList=null;
 
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-    function pad(s,len){s=String(s);while(s.length<len)s+=' ';return s;}
-    function block(html){return '<div class="t-block">'+html+'</div>';}
-    function br(){return '<div class="t-block"><br/></div>';}
+    function B(h){return '<div class="t-block">'+h+'</div>';}
+    function BR(){return '<div class="t-block"><br/></div>';}
 
-    // ── Enrich tab ──
-    function renderEnrich(d,company,techs,signals,people){
-      const name=esc(company.name||d);
-      const topTechs=techs.slice(0,3).map(t=>esc(t.name));
-      const topPerson=people.length>0?people[0]:null;
-      let h='';
-      h+=block('<span class="cm"># everything about a company in one call</span>');
-      h+=block('<span class="pr">木</span> <span class="kb">kinobi</span> <span class="hi">enrich</span> <span class="st">'+esc(d)+'</span> <span class="fl">--depth full</span>');
-      h+=br();
-      h+=block('<span class="re">  ┌──────────────────────────────────────────────┐</span>');
-      h+=block('<span class="re">  │</span> <span class="label">company</span>     <span class="kb">'+name+'</span><span class="re">  │</span>');
-      if(company.industry)
-        h+=block('<span class="re">  │</span> <span class="label">industry</span>    <span class="hi">'+esc(company.industry)+'</span><span class="re">  │</span>');
-      if(company.hq_location)
-        h+=block('<span class="re">  │</span> <span class="label">hq</span>          <span class="hi">'+esc(company.hq_location)+'</span><span class="re">  │</span>');
-      if(company.founded_year)
-        h+=block('<span class="re">  │</span> <span class="label">founded</span>     <span class="hi">'+company.founded_year+'</span><span class="re">  │</span>');
-      if(topTechs.length>0)
-        h+=block('<span class="re">  │</span> <span class="label">stack</span>       <span class="jk">'+topTechs.join('</span><span class="re">, </span><span class="jk">')+'</span><span class="re"> +'+(techs.length-3)+'  │</span>');
-      if(topPerson)
-        h+=block('<span class="re">  │</span> <span class="label">leader</span>      <span class="hi">'+esc(topPerson.name)+'</span><span class="re">, '+esc(topPerson.title||'')+'  │</span>');
-      h+=block('<span class="re">  │</span> <span class="label">signals</span>     <span class="st">'+signals.length+' detected</span><span class="re">  │</span>');
-      h+=block('<span class="re">  └──────────────────────────────────────────────┘</span>');
-      return h;
+    async function fetchList(){
+      if(companyList) return companyList;
+      var r=await fetch(API+'/companies');
+      companyList=await r.json();
+      return companyList;
+    }
+    async function fetchDetail(domain){
+      if(dataCache.has(domain)) return dataCache.get(domain);
+      try{
+        var rs=await Promise.all([
+          fetch(API+'/companies/'+domain),
+          fetch(API+'/companies/'+domain+'/tech'),
+          fetch(API+'/companies/'+domain+'/signals'),
+          fetch(API+'/companies/'+domain+'/people')
+        ]);
+        var company=await rs[0].json();
+        var td=await rs[1].json();var techs=td.technologies||[];
+        var signals=await rs[2].json();if(!Array.isArray(signals))signals=[];
+        var people=await rs[3].json();if(!Array.isArray(people))people=[];
+        var d={company:company,techs:techs,signals:signals,people:people};
+        dataCache.set(domain,d);return d;
+      }catch(e){return null;}
     }
 
-    // ── Signals tab ──
-    function renderSignals(d,signals,company){
-      const name=esc(company.name||d);
-      let h='';
-      h+=block('<span class="cm"># always-on monitoring — what just changed</span>');
-      h+=block('<span class="pr">木</span> <span class="kb">kinobi</span> <span class="hi">signals</span> <span class="st">'+esc(d)+'</span>');
-      h+=br();
-      h+=block('<span class="vel">  ✓</span> <span class="hi">'+signals.length+' changes</span><span class="re"> detected at </span><span class="kb">'+name+'</span>');
-      h+=br();
-      if(signals.length===0){
-        h+=block('<span class="re">  no signals yet — monitoring active</span>');
-        return h;
-      }
-      h+=block('<span class="hi">  CHANGE                                  TYPE          SEV</span>');
-      h+=block('<span class="re">  ─────────────────────────────────────────────────────────</span>');
-      signals.slice(0,7).forEach(function(s){
-        var title=esc(s.title||'').substring(0,40);
-        var type=esc(s.type||'').substring(0,12);
-        var sev=s.severity||'low';
-        var sevColor=sev==='high'?'warn':sev==='medium'?'st':'vel';
-        h+=block('<span class="hi">  '+pad(title,42)+'</span><span class="jk">'+pad(type,14)+'</span><span class="'+sevColor+'">'+sev+'</span>');
-      });
-      if(signals.length>7)
-        h+=block('<span class="label">  ... '+(signals.length-7)+' more</span>');
-      return h;
-    }
+    // Cypher coloring helpers
+    var KW='<span class="jk">';var ND='<span class="vel">';var RL='<span class="pr">';
+    var VL='<span class="st">';var RE='<span class="re">';var HI='<span class="hi">';
+    var X='</span>';
 
-    // ── Agent tab ──
-    function renderAgent(d,company,techs,signals,people){
-      const name=esc(company.name||d);
-      const topTechs=techs.slice(0,3).map(t=>esc(t.name));
-      const topPerson=people.length>0?esc(people[0].name):'decision maker';
-      const topTitle=people.length>0?esc(people[0].title||''):'';
-      const firstName=topPerson.split(' ')[0];
-
-      let h='';
-      h+=block('<span class="cm"># let your agent reason over the full graph</span>');
-      h+=block('<span class="pr">木</span> <span class="kb">kinobi</span> <span class="hi">agent</span> <span class="st">"analyze '+esc(d)+', draft approach"</span>');
-      h+=br();
-      h+=block('<span class="vel">  ✓</span> <span class="hi">kinobi.enrich</span><span class="re">   '+name+' · '+techs.length+' technologies</span>');
-      h+=block('<span class="vel">  ✓</span> <span class="hi">kinobi.signals</span><span class="re">  '+signals.length+' changes detected</span>');
-      h+=block('<span class="vel">  ✓</span> <span class="hi">kinobi.people</span><span class="re">   '+people.length+' leaders found</span>');
-      h+=br();
-      h+=block('<span class="re">  ┌─ </span><span class="warn">agent reasoning</span><span class="re"> ────────────────────────────────┐</span>');
-      h+=block('<span class="re">  │ </span><span class="vel">*</span><span class="re"> '+topTechs.join(', ')+' (+'+(techs.length-3)+' more)  │</span>');
-      h+=block('<span class="re">  │ </span><span class="vel">*</span><span class="re"> '+signals.length+' active signals                          │</span>');
-      if(topTitle) h+=block('<span class="re">  │ </span><span class="vel">*</span><span class="re"> '+topPerson+', '+topTitle+'  │</span>');
-      h+=block('<span class="re">  │                                                  │</span>');
-      h+=block('<span class="re">  │ </span><span class="warn">rec:</span><span class="hi"> engage via '+firstName+'. Timing optimal.</span><span class="re">  │</span>');
-      h+=block('<span class="re">  └──────────────────────────────────────────────────┘</span>');
-      h+=br();
-      h+=block('<span class="re">  ┌─ </span><span class="vel">draft outreach</span><span class="re"> ─────────────────────────────────┐</span>');
-      h+=block('<span class="re">  │</span> <span class="hi">Subject:</span><span class="re"> Quick question about '+name+'\'s stack  │</span>');
-      h+=block('<span class="re">  │</span> <span class="re">Hi '+firstName+' — saw '+name+' is using '+(topTechs[0]||'')+'</span><span class="re">  │</span>');
-      h+=block('<span class="re">  │</span> <span class="re">and picked up '+signals.length+' signals this month...</span><span class="re">       │</span>');
-      h+=block('<span class="re">  └──────────────────────────────────────────────────┘</span><span class="cursor" style="display:inline-block"></span>');
-      return h;
-    }
-
-    function showTab(idx){
-      tabs.forEach(t=>t.classList.remove('active'));
-      tabs[idx].classList.add('active');
-      if(!currentData||!currentDomain) return;
-      const {company,techs,signals,people}=currentData;
-      let html;
-      if(idx===0) html=renderEnrich(currentDomain,company,techs,signals,people);
-      else if(idx===1) html=renderSignals(currentDomain,signals,company);
-      else html=renderAgent(currentDomain,company,techs,signals,people);
-      term.innerHTML=html;
-      const blocks=term.querySelectorAll('.t-block');
-      blocks.forEach((b,i)=>setTimeout(()=>b.classList.add('visible'),40*i));
-    }
-
-    tabs.forEach((tab,i)=>{
-      tab.addEventListener('click',()=>showTab(i));
-    });
-
-    async function loadCompany(domain){
-      currentDomain=domain;
-      tabsWrap.style.display='flex';
-      tabs.forEach(t=>t.classList.remove('active'));
-      tabs[0].classList.add('active');
-
-      term.innerHTML='<div class="live-spinner-wrap"><span class="live-spinner"></span><span style="color:#52525b;font-family:var(--mono);font-size:11px">enriching '+esc(domain)+'...</span></div>';
-
-      let company,techs,signals,people;
-      if(cache.has(domain)){
-        ({company,techs,signals,people}=cache.get(domain));
-      }else{
-        try{
-          const [cRes,tRes,sRes,pRes]=await Promise.all([
-            fetch(API+'/companies/'+domain),
-            fetch(API+'/companies/'+domain+'/tech'),
-            fetch(API+'/companies/'+domain+'/signals'),
-            fetch(API+'/companies/'+domain+'/people'),
-          ]);
-          company=await cRes.json();
-          const techData=await tRes.json();
-          techs=techData.technologies||[];
-          signals=await sRes.json();
-          people=await pRes.json();
-          if(!Array.isArray(signals)) signals=[];
-          if(!Array.isArray(people)) people=[];
-          cache.set(domain,{company,techs,signals,people});
-        }catch(e){
-          term.innerHTML='<div class="live-empty"><span style="color:#f87171">API unreachable — try again in a moment</span></div>';
-          return;
+    var QUERIES=[
+      { text:'retail + AWS + hiring',
+        cypher:[
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'IN_INDUSTRY'+X+RE+']->('+X+ND+'Industry'+X+' '+VL+'{name:\'retail\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+ND+'Tech'+X+' '+VL+'{name:\'AWS\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'HAS'+X+RE+']->('+X+ND+'Signal'+X+' '+VL+'{type:\'hiring_surge\'}'+X+RE+')'+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' tech'+RE+','+X+' signal'
+        ],
+        indRe:/retail/i,
+        filter:function(d){
+          var a=d.techs.some(function(t){return /\bAWS\b|Amazon Web Services|Amazon S3|CloudFront|Amazon EC2/i.test(t.name);});
+          var h=d.signals.some(function(s){return s.type==='hiring_surge'||s.type==='dept_expansion';});
+          return a&&h;
+        },
+        evidence:function(d){
+          var aws=d.techs.filter(function(t){return /\bAWS\b|Amazon|CloudFront|S3|EC2|Lambda/i.test(t.name);}).map(function(t){return t.name;});
+          var sig=d.signals.filter(function(s){return s.type==='hiring_surge'||s.type==='dept_expansion';});
+          return {tech:aws.slice(0,3),signal:sig[0]?sig[0].title:null,total:d.techs.length};
+        }
+      },
+      { text:'Python AND Kubernetes',
+        cypher:[
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t1'+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Python\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t2'+RE+':'+X+ND+'Tech'+X+' '+VL+'{name:\'Kubernetes\'}'+X+RE+')'+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' t1'+RE+','+X+' t2'
+        ],
+        indRe:null,
+        candidates:['dell.com','bestbuy.com','pfizer.com','jnj.com','3m.com','pepsico.com','tjx.com','abbvie.com','kohls.com','ikea.com','7-eleven.com','adt.com'],
+        filter:function(d){
+          var n=d.techs.map(function(t){return t.name.toLowerCase();});
+          return n.indexOf('python')!==-1&&n.indexOf('kubernetes')!==-1;
+        },
+        evidence:function(d){
+          var devops=d.techs.filter(function(t){return /python|kubernetes|docker|terraform|jenkins|ansible|aws|azure|gcp|ci.?cd/i.test(t.name);}).map(function(t){return t.name;});
+          return {tech:[].concat(new Set(devops)).slice(0,5),total:d.techs.length};
+        }
+      },
+      { text:'pharma + tech_count>=100 + infra',
+        cypher:[
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'IN_INDUSTRY'+X+RE+']->('+X+ND+'Industry'+X+' '+VL+'{name:\'pharma\'}'+X+RE+')'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t'+RE+':'+X+ND+'Tech'+X+RE+')'+X,
+          KW+'WITH'+X+'   c'+RE+','+X+' '+KW+'count'+X+RE+'('+X+'t'+RE+')'+X+' '+KW+'AS'+X+' tc '+KW+'WHERE'+X+' tc '+RE+'>='+X+' '+VL+'100'+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+ND+'Tech'+X+' '+VL+'{category:\'infra\'}'+X+RE+')'+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' tc'
+        ],
+        indRe:/pharma|health|biotech/i,
+        filter:function(d){
+          if(d.techs.length<100) return false;
+          return d.techs.some(function(t){return (t.category||'')==='infra';});
+        },
+        evidence:function(d){
+          var infra=d.techs.filter(function(t){return (t.category||'')==='infra';}).map(function(t){return t.name;});
+          return {tech:infra.slice(0,4),total:d.techs.length,count:infra.length+' infra'};
+        }
+      },
+      { text:'AI/ML tech → engineering leadership',
+        cypher:[
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'USES'+X+RE+']->('+X+'t'+RE+':'+X+ND+'Tech'+X+RE+')'+X,
+          '       '+KW+'WHERE'+X+' t.name '+RE+'=~'+X+' '+VL+'\'(?i)AI|ML|TensorFlow|PyTorch|GPT|LLM\''+X,
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+')-[:'+X+RL+'EMPLOYS'+X+RE+']->('+X+'p'+RE+':'+X+ND+'Person'+X+RE+')'+X,
+          '       '+KW+'WHERE'+X+' p.title '+RE+'=~'+X+' '+VL+'\'(?i)CTO|VP Eng|Chief Tech|Director\''+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'t'+RE+')'+X+RE+','+X+' '+KW+'collect'+X+RE+'('+X+'p'+RE+')'+X
+        ],
+        indRe:null,
+        candidates:['dell.com','pfizer.com','jnj.com','3m.com','pepsico.com','bestbuy.com','abbvie.com','tjx.com','kohls.com','ikea.com','7-eleven.com','adt.com'],
+        filter:function(d){
+          var ai=d.techs.filter(function(t){return /\bAI\b|machine.?learn|tensor|torch|GPT|LLM|deep.?learn|neural|NLP|computer.?vision|generative|openai|hugging|scikit|pandas|jupyter|data.?science/i.test(t.name);});
+          return ai.length>0&&d.people.length>0;
+        },
+        evidence:function(d){
+          var ai=d.techs.filter(function(t){return /\bAI\b|machine.?learn|tensor|torch|GPT|LLM|deep.?learn|neural|NLP|computer.?vision|generative|openai|hugging|scikit|pandas|jupyter|data.?science/i.test(t.name);}).map(function(t){return t.name;});
+          var leaders=d.people.filter(function(p){return /chief|cto|vp|president|director|head|svp/i.test(p.title||'');}).slice(0,2);
+          if(leaders.length===0) leaders=d.people.slice(0,2);
+          return {tech:ai.slice(0,4),people:leaders,total:d.techs.length};
+        }
+      },
+      { text:'signal:tech_shift count>=200',
+        cypher:[
+          KW+'MATCH'+X+'  '+RE+'('+X+'c'+RE+':'+X+ND+'Company'+X+RE+')-[:'+X+RL+'HAS'+X+RE+']->('+X+'s'+RE+':'+X+ND+'Signal'+X+' '+VL+'{type:\'tech_shift\'}'+X+RE+')'+X,
+          KW+'WITH'+X+'   c'+RE+','+X+' '+KW+'count'+X+RE+'('+X+'s'+RE+')'+X+' '+KW+'AS'+X+' sc',
+          KW+'WHERE'+X+'  sc '+RE+'>='+X+' '+VL+'200'+X,
+          KW+'RETURN'+X+' c'+RE+','+X+' sc '+KW+'ORDER BY'+X+' sc '+KW+'DESC'+X
+        ],
+        indRe:null,
+        candidates:['dell.com','7-eleven.com','tjx.com','bestbuy.com','pfizer.com','jnj.com','3m.com','pepsico.com','kohls.com','abbvie.com','ikea.com','adt.com'],
+        filter:function(d){
+          return d.signals.filter(function(s){return s.type==='tech_shift';}).length>=200;
+        },
+        evidence:function(d){
+          var shifts=d.signals.filter(function(s){return s.type==='tech_shift';});
+          return {shiftCount:shifts.length,recent:shifts.slice(0,3).map(function(s){return s.title;}),total:d.techs.length};
         }
       }
-      currentData={company,techs,signals,people};
-      showTab(0);
+    ];
+
+    async function runQuery(idx){
+      var q=QUERIES[idx];
+      term.innerHTML='<div class="live-spinner-wrap"><span class="live-spinner"></span><span style="color:#52525b;font-family:var(--mono);font-size:11px">querying graph...</span></div>';
+
+      // Fetch company list + candidate data
+      var companies;
+      try{companies=await fetchList();}catch(e){
+        term.innerHTML='<div class="live-empty"><span style="color:#f87171">API unreachable</span></div>';return;
+      }
+      var total=companies.length;
+
+      // Determine candidates
+      var candidates;
+      var industryCount=total;
+      if(q.indRe){
+        var indMatches=companies.filter(function(c){return q.indRe.test(c.industry||'');});
+        industryCount=indMatches.length;
+        candidates=indMatches.slice(0,15);
+      }else{
+        candidates=(q.candidates||[]).map(function(dom){
+          return companies.find(function(c){return c.domain===dom;})||{domain:dom,name:dom,industry:''};
+        });
+      }
+
+      // Fetch detailed data for candidates
+      await Promise.all(candidates.map(function(c){return fetchDetail(c.domain);}));
+
+      // Filter
+      var results=[];
+      candidates.forEach(function(c){
+        var d=dataCache.get(c.domain);
+        if(d&&q.filter(d)){
+          results.push({info:c,data:d,ev:q.evidence(d)});
+        }
+      });
+
+      // Build terminal output
+      var h='';
+      h+=B('<span class="cm"># compound query across the knowledge graph</span>');
+      h+=B('<span class="pr">木</span> <span class="kb">kinobi query</span> <span class="st">"'+esc(chips[idx].textContent)+'"</span>');
+      h+=BR();
+      // Cypher
+      q.cypher.forEach(function(line){h+=B('  '+line);});
+      h+=BR();
+      // Funnel
+      h+=B(RE+'  traversing graph...'+X);
+      h+=B(RE+'  '+total+' companies indexed'+X);
+      if(q.indRe){
+        h+=B(RE+'  '+X+HI+'  → '+industryCount+X+RE+' match industry filter'+X);
+      }
+      h+=B(RE+'  '+X+HI+'  → '+results.length+X+RE+' match'+(results.length===1?'es':'')+ ' all conditions'+X);
+      h+=BR();
+
+      if(results.length===0){
+        h+=B(RE+'  no companies matched all conditions'+X);
+      }else{
+        h+=B(RE+'  ┌─ '+X+HI+'RESULTS'+X+RE+' ──────────────────────────────────────────────┐'+X);
+        results.forEach(function(r,i){
+          var name=esc(r.data.company.name||r.info.name||r.info.domain);
+          var dom=esc(r.info.domain);
+          var ind=esc(r.data.company.industry||'');
+          h+=B(RE+'  │'+X);
+          h+=B(RE+'  │  '+X+VL+(i+1)+'.'+X+'  '+HI+name+X+RE+'  '+dom+'  '+ind+X);
+          if(r.ev.tech&&r.ev.tech.length>0){
+            h+=B(RE+'  │     ├─ tech   '+X+'<span class="jk">'+r.ev.tech.map(esc).join(RE+', '+X+'<span class="jk">')+'</span>'+RE+'  (+'+(r.ev.total-r.ev.tech.length)+' more)'+X);
+          }
+          if(r.ev.signal){
+            h+=B(RE+'  │     ├─ signal '+X+'<span class="warn">'+esc(r.ev.signal)+'</span>');
+          }
+          if(r.ev.count){
+            h+=B(RE+'  │     ├─ infra  '+X+'<span class="vel">'+esc(String(r.ev.count))+' detected</span>');
+          }
+          if(r.ev.people&&r.ev.people.length>0){
+            r.ev.people.forEach(function(p){
+              h+=B(RE+'  │     ├─ leader '+X+HI+esc(p.name)+X+RE+' — '+esc(p.title||'')+X);
+            });
+          }
+          if(r.ev.shiftCount){
+            h+=B(RE+'  │     ├─ shifts '+X+'<span class="vel">'+r.ev.shiftCount+' tech changes detected</span>');
+            if(r.ev.recent){
+              r.ev.recent.forEach(function(s){
+                h+=B(RE+'  │     │  '+X+VL+esc(s)+X);
+              });
+            }
+          }
+          var tree=i<results.length-1?'└':'└';
+          h+=B(RE+'  │     └─ total  '+X+RE+r.ev.total+' technologies · '+r.data.signals.length+' signals · '+r.data.people.length+' people'+X);
+        });
+        h+=B(RE+'  │'+X);
+        h+=B(RE+'  └──────────────────────────────────────────────────────┘'+X);
+      }
+      h+=BR();
+      var tTech=results.reduce(function(s,r){return s+r.data.techs.length;},0);
+      var tSig=results.reduce(function(s,r){return s+r.data.signals.length;},0);
+      h+=B(RE+'  '+results.length+' matches · '+tTech+' technologies · '+tSig+' signals scanned'+X+'<span class="cursor" style="display:inline-block"></span>');
+
+      term.innerHTML=h;
+      var blocks=term.querySelectorAll('.t-block');
+      blocks.forEach(function(b,i){setTimeout(function(){b.classList.add('visible');},50*i);});
     }
 
-    chips.forEach(chip=>{
-      chip.addEventListener('click',()=>{
-        chips.forEach(c=>c.classList.remove('active'));
+    chips.forEach(function(chip){
+      chip.addEventListener('click',function(){
+        chips.forEach(function(c){c.classList.remove('active');});
         chip.classList.add('active');
-        loadCompany(chip.dataset.domain);
+        runQuery(parseInt(chip.dataset.query));
       });
     });
 
-    // Scroll-triggered reveal
-    const liveSection=document.getElementById('liveIntel');
+    var liveSection=document.getElementById('liveIntel');
     if(liveSection){
-      const liveObs=new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
+      var liveObs=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
           if(entry.isIntersecting){
-            const intro=liveSection.querySelector('.screen-intro');
+            var intro=liveSection.querySelector('.screen-intro');
             if(intro) intro.classList.add('visible');
             liveObs.disconnect();
           }
